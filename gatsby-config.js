@@ -3,6 +3,14 @@ module.exports = {
     siteUrl: `https://www.yourdomain.tld`,
   },
   plugins: [
-    'gatsby-plugin-postcss',],
-}
+    `gatsby-plugin-postcss`,
 
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [`Poppins\:400,500,600,700,800,900`],
+        display: "swap",
+      },
+    },
+  ],
+};
