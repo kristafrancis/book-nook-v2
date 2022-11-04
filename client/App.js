@@ -4,7 +4,7 @@ import React from 'react';
 function App() {
 
     return( 
-        <h1>hi spice girls! </h1>
+        <h1>hi spice girls! here's a test </h1>
     )
 }
 
