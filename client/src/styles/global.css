@@ -2,15 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
-h1,
-h2,
-h3,
-p,
-a,
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Karla&display=swap');
+
+@layer base {
+  body {
+      @apply bg-[#fafbfd];
+      @apply font-['Karla'];
+      @apply text-[#333];
+      @apply text-lg;
+      @apply leading-loose;
+  }
+
+  h1, h2, h3 {
+    @apply font-['Poppins'];
+    @apply text-[#345995];
+  }
+
+  button {
+    @apply uppercase;
+    @apply text-white;
+    @apply tracking-widest;
+    @apply transition-all;
+    @apply ease-in;
+    @apply duration-300;
+  }
+}
+
 span,
 select,
 li,
-button,
 label,
 textarea,
 input {
