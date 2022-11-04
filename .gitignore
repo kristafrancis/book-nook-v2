@@ -1,3 +1,5 @@
 node_modules
 public
 .cache
+.DS_Store
+.vscode
