@@ -12,7 +12,7 @@ const IndexPage = () => {
       <div class="container p-20">
         <img class="h-34 w-auto" src={WelcomeImg}></img>
 
-        <h1 class="text-2xl font-semibold">Make friends with a book!</h1>
+        <h1 class="text-3xl font-semibold">Make friends with a book!</h1>
         <p>
           Book Nook is an online community for big book worms to discuss books
           for their little book worms. Join today to find great reads for your
