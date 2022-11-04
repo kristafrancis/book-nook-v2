@@ -1,4 +1,8 @@
 var plugins = [{
+      name: 'gatsby-plugin-google-fonts',
+      plugin: require('C:/Users/chloe/Documents/project-3/book-nook-v2/node_modules/gatsby-plugin-google-fonts/gatsby-ssr.js'),
+      options: {"plugins":[],"fonts":["Poppins:400,500,600,700,800,900"],"display":"swap"},
+    },{
       name: 'partytown',
       plugin: require('C:/Users/chloe/Documents/project-3/book-nook-v2/node_modules/gatsby/dist/internal-plugins/partytown/gatsby-ssr.js'),
       options: {"plugins":[]},

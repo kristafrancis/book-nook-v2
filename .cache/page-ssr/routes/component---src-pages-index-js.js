@@ -46,16 +46,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const IndexPage = () => {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("main", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("main", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("style", null, "@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     class: "container p-20"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+    class: "h-34 w-auto",
     src: _images_welcome_page_png__WEBPACK_IMPORTED_MODULE_1__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", {
-    class: "text-2xl"
+    class: "text-2xl font-semibold"
   }, "Make friends with a book!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Book Nook is an online community for big book worms to discuss books for their little book worms. Join today to find great reads for your child!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
     href: "#"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-    class: "rounded-none bg-emerald-300 text-white font-semi-bold"
+    class: "p-2 hover:bg-emerald-400 rounded-none bg-emerald-300 text-white font-semibold"
   }, "GET STARTED"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_footer__WEBPACK_IMPORTED_MODULE_2__["default"], null));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (IndexPage);
