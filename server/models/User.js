@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 //import book schema
 const bookSchema = require('./Book');
 
-const UserSchema = new Schema({
+const userSchema = new Schema({
     username: {
         type: String,
         unique: true,
@@ -64,11 +64,11 @@ userSchema.pre('save', async function (next) {
 
 
 
-UserSchema.virtual('friendCount').get(function() {
+userSchema.virtual('friendCount').get(function() {
     return this.friends.length;
 })
 
-const User = model('User', UserSchema);
+const User = model('User', userSchema);
 
 module.exports = User;
 
