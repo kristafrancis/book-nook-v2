@@ -3,13 +3,12 @@ import { Link } from 'gatsby';
 
 const Home = () => {
     return (
-        <div className="container relative top-0 left-[55%] pl-[50px]">
-            <div className="wrapper flex flex-col justify-center items-center w-[35%]">
-                <h1 className="flex w-full mt-[40%] text-[5.5rem] drop-shadow-lg">
-                    Book<span className="text-[#03cea4]">Nook</span>
-                </h1>
-
-                <div className="intro-text">
+        <div className="w-full md:h-screen">
+            <div className="container flex flex-col justify-center items-center w-full h-full">
+                <div className="intro-text z-[5] bg-[#ffffffb2] rounded-lg w-full px-4 my-[45%] md:w-[600px] md:ml-[58%] md:my-0">
+                    <h1 className="drop-shadow-lg pb-8 text-6xl mt-4 md:text-8xl">
+                        Book<span className="text-[#03cea4]">Nook</span>
+                    </h1>
 
                     <h2 class="text-4xl font-normal pb-2">Make friends with a book!</h2>  
                     <p className="pb-4 text-left">
@@ -17,18 +16,17 @@ const Home = () => {
                         for their little book worms.
                     </p>
 
-                    <p class="text-sky-800 pb-5 text-center">Join today to find great reads for your
-                        child!
+                    <p class="text-sky-800 pb-5 text-center italic">
+                        Join today to find great reads for your child!
                     </p>
 
                     <div class="flex justify-center pb-4">
                         <Link to="/login">
-                            <button class="px-6 py-2 hover:bg-[#027bce] rounded-md bg-[#03cea4]">
+                            <button class="px-6 py-2 rounded-md bg-[#03cea4] hover:bg-[#027bce]">
                                 Get Started
                             </button>
                         </Link>
                     </div>
-
                 </div>
             </div>
         </div>
