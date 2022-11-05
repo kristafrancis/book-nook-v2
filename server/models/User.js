@@ -1,6 +1,9 @@
 const { Schema, model, Types } = require('mongoose');
 const bcrypt = require('bcrypt');
 
+//import book schema
+const bookSchema = require('./Book');
+
 const UserSchema = new Schema({
     username: {
         type: String,
@@ -32,8 +35,8 @@ const UserSchema = new Schema({
     friends: [{
         type: Schema.Types.ObjectId,
         ref: "User"
-    }]
-    
+    }], 
+    savedBooks: [bookSchema],
 },
 {
     toJSON: {
@@ -69,4 +72,3 @@ const User = model('User', UserSchema);
 
 module.exports = User;
 
-//need to add savedBooks to schema (sam)
