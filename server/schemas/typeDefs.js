@@ -8,7 +8,7 @@ type User {
 }
 
 type Query {
-    users: [User]
+    me: [User]
     user(username: String!): User
    
     

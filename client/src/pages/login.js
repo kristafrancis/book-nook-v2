@@ -1,5 +1,6 @@
 import React from 'react';
 import HomeLayout from '../components/homelayout';
+import Auth from '../utils/auth';
 
 const Login = () => {
   return (
