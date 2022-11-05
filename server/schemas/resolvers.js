@@ -4,7 +4,7 @@ const { signToken } = require('../utils/auth');
 
 const resolvers = {
    Query: {
-    users: async () => {
+    user: async () => {
         return User.find()
           .select('-__v -password')
           
@@ -12,9 +12,10 @@ const resolvers = {
       },
       user: async (parent, { username }) => {
         return User.findOne({ username })
-          .select('-__v -password')
+          .select('-__v -password');
 
       },
+      
       
    },
     Mutation: {
