@@ -1,5 +1,6 @@
 //app function 
 import React from 'react';
+import { setContext } from '@apollo/client/link/context';
 
 function App() {
 
