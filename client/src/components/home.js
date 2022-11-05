@@ -3,10 +3,10 @@ import { Link } from 'gatsby';
 
 const Home = () => {
     return (
-        <div className="w-full md:h-screen">
+        <div className="w-full md:h-[94vh]">
             <div className="container flex flex-col justify-center items-center w-full h-full">
                 <div className="intro-text z-[5] bg-[#ffffffb2] rounded-lg w-full px-4 my-[45%] md:w-[600px] md:ml-[58%] md:my-0">
-                    <h1 className="drop-shadow-lg pb-8 text-6xl mt-4 md:text-8xl">
+                    <h1 className="drop-shadow-lg pb-8 text-6xl mt-4 md:text-8xl md:mt-10">
                         Book<span className="text-[#03cea4]">Nook</span>
                     </h1>
 
