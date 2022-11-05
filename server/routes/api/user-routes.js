@@ -1,11 +1,30 @@
 const router = require('express').Router();
 
-//const for createUser, single user, savebook, deletebook, login
+const {
+    createUser,
+    getSingleUser,
+    saveBook,
+    deleteBook,
+    login
+} = require('../../controllers/user-controllers');
+
 
 
 //middleware
+const { authMiddleware } = require('../../utils/auth');
 
 
-//authMiddleware
+//authMiddleware to send token for verification of user
+const { authMiddleware } = require('../../utils/auth');
+
+router.route('/').post(createUser).put(authMiddleware, saveBook);
+
+router.route('/login').post(login);
+
+router.route('/me').get(authMiddleware, getSingleUser);
+
+router.route('/books/:bookId').delete(authMiddleware, deleteBook);
+
+module.exports = router;
 
 
