@@ -18,6 +18,13 @@
     @apply text-[#345995];
   }
 
+  a, a:active, a:visited {
+    @apply text-[#027bce];
+    @apply transition-all;
+    @apply ease-in;
+    @apply duration-300;
+  }
+
   button {
     @apply uppercase;
     @apply text-white;
