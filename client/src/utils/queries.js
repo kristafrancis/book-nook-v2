@@ -8,6 +8,16 @@ export const QUERY_ME = gql `
             username
             email
             friendCount
+            friends {
+                _id
+                username
+            }
+            comments {
+                _id
+                comment_text
+                createdAt
+
+            }
             savedBooks {
                 bookId
                 authors
@@ -18,3 +28,31 @@ export const QUERY_ME = gql `
         }
     }
 `;
+export const QUERY_USER = gql `
+    query user($username: String!) {
+        user(username: $username) {
+            _id
+            username
+            email
+            friendCount
+            friends{
+                _id
+                username
+            }
+            comments {
+                _id
+                comment_text
+                createdAt
+            }
+            savedBooks {
+                bookId
+                authors
+                description
+                title
+                image
+            }
+        }
+    }
+`;
+
+// do we need a query saved book? 
