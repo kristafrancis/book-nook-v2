@@ -43,7 +43,7 @@ const Dashboard = ({ pageTitle, children }) => {
         </div>
       </nav>
 
-      <main className="z-[5] w-full md:h-screen">{children}</main>
+      <main className="z-[5] pb-5">{children}</main>
       <FeedLayout />
       {/* This footer component is only used on this page for correct sequence */}
       <Footer />
