@@ -7,6 +7,8 @@ type User {
     email: String
     savedBooks: [Book]
     friendCount: Int
+    comments: [Comment]
+    friends: [User]
 }
 type Book {
     bookId: String!
@@ -22,11 +24,19 @@ input BookInput {
     title: String
     image: String
 }
+type Comment {
+    _id: ID
+    comment_text: String
+    username: String
+    createdAt: String
+  }
 
 type Query {
     me: [User]
+    users: [User]
     user(username: String!): User
-   
+   comments(username: String): [Comment]
+   comment(_id: ID!): Comment
     
 }
 
@@ -38,6 +48,8 @@ type Auth {
 type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
+    addComment(comment_text: String!): Comment
+    addFriend(friendId: ID!): User
     saveBook(BookInput: BookInput!): User
     removeBook(bookId: String!): User
  }
