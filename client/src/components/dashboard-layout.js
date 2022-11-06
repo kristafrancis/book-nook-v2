@@ -33,7 +33,7 @@ const Dashboard = ({ pageTitle, children }) => {
             <a class="hover:text-teal-400 font-semibold mr-6" href="/dashboard">
               Dashboard
             </a>
-            <a class="hover:text-teal-400 font-semibold mr-6" href="#">
+            <a class="hover:text-teal-400 font-semibold mr-6" href="/profile">
               Profile
             </a>
             <a class="hover:text-teal-400 font-semibold mr-6" href="#">
@@ -45,7 +45,6 @@ const Dashboard = ({ pageTitle, children }) => {
 
       <main className="z-[5] pb-5">{children}</main>
       <FeedLayout />
-      {/* This footer component is only used on this page for correct sequence */}
       <Footer />
     </div>
   );
