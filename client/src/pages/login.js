@@ -8,6 +8,17 @@ const Login = () => {
       {/* LOGIN FORM HERE & ADD LINK TO SIGNUP PAGE */}
       <p>Login Test</p>
     </HomeLayout>
+
+
+
+
+
+
+//authorization to retrieve tokens
+//Auth.login(data.login.token);
+//} catch (e) {
+//  console.error(e);
+//}
   )
 }
 
