@@ -2,23 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Karla:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins&family=Karla:wght@300;400;500;600;700&display=swap");
 
 @layer base {
   body {
-      @apply bg-[#fafbfd];
-      @apply font-['Karla'];
-      @apply text-[#333];
-      @apply text-lg;
-      @apply leading-loose;
+    @apply bg-[#fafbfd];
+    @apply font-['Karla'];
+    @apply text-[#333];
+    @apply text-lg;
+    @apply leading-loose;
   }
 
-  h1, h2, h3 {
+  h1,
+  h2,
+  h3 {
     @apply font-['Poppins'];
     @apply text-[#345995];
   }
 
-  a, a:active, a:visited {
+  a,
+  a:active,
+  a:visited {
     @apply text-[#027bce];
     @apply transition-all;
     @apply ease-in;
@@ -35,6 +39,7 @@
   }
 }
 
+button,
 a,
 span,
 select,

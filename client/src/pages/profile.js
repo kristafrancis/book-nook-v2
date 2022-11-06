@@ -94,11 +94,15 @@ const Profile = () => {
             </div>
             <a href="#" class="mt-4 block">
               <p class="text-xl font-semibold text-gray-900">Friends</p>
-              <p class="mt-3 text-base text-gray-500">
+              <p class="mt-3 text-base text-gray-500 pb-5">
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ab
                 iure iusto fugiat commodi sequi.
               </p>
             </a>
+
+            <button class="bg-teal-400 hover:bg-teal-300 p-2 text-xs rounded-md">
+              Search Users
+            </button>
           </div>
         </div>
       </div>
