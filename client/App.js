@@ -1,6 +1,8 @@
 //app function 
 import React from 'react';
-import { setContext } from '@apollo/client/link/context';
+// import { BrowserRouter as Router, Routes, Routes } from 'react-router-dom';
+// // import pages section
+// import { setContext } from '@apollo/client/link/context';
 
 function App() {
 
