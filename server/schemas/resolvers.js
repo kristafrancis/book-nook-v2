@@ -47,6 +47,19 @@ const resolvers = {
     const token = signToken(user);
     return { token, user };
     },
+    
+    updateUser: async(parent, {id, email}) => {
+      const user = await User.findOneAndUpdate(
+        {_id: id}, {email}, {new: true});
+      
+      return user
+    },
+
+    deleteUser: async(parent, {id}) => {
+      const wasDeleted = (await User.deleteOne({_id: id})).deletedCount;
+      return wasDeleted
+    },
+
     addComment: async (parent, args, context) => {
       if (context.user) {
         const comment = await Comments.create({ ...args, username: context.user.username });
@@ -62,6 +75,19 @@ const resolvers = {
     
       throw new AuthenticationError('You need to be logged in!');
     },
+
+    updateComment: async(parent, {id, comment_text}) => {
+      const comment = await Comments.findOneAndUpdate(
+        {_id: id}, {comment_text}, {new: true});
+      
+      return comment
+    },
+
+    deleteComment: async(parent, {id}) => {
+      const wasDeleted = (await Comments.deleteOne({_id: id})).deletedCount;
+      return wasDeleted
+    },
+
     addFriend: async (parent, { friendId }, context) => {
       if (context.user) {
         const updatedUser = await User.findOneAndUpdate(
