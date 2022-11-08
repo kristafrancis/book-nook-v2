@@ -17,9 +17,8 @@ class AuthService {
             const decoded = decode(token);
             if (decoded.exp < Date.now() / 1000) {
                 return true;
-            } else {
-                return false;
-            }
+            } else return false;
+            
         } catch (err) {
             return false;
         }
@@ -42,12 +41,6 @@ class AuthService {
         window.location.assign('/');
     }
 }
-
-
-
-
-
-
 
 export default new AuthService();
 //user authentication
