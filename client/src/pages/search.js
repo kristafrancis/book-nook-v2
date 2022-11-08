@@ -3,12 +3,11 @@ import { Link } from "gatsby";
 import bgImg from "../images/bg.png";
 import FeedLayout from "../components/feed-layout";
 import Footer from "../components/footer";
-import AnchorLink from "react-anchor-link-smooth-scroll";
 
-const Dashboard = ({ pageTitle, children }) => {
+const Search = () => {
   return (
     <div>
-      <title>Book Nook | {pageTitle}</title>
+      <title>Book Nook | Profile</title>
       <header>
         <div
           className="stars-bg bg-fixed bg-repeat-x bg-top absolute top-0 left-0 w-full h-full z-0"
@@ -31,29 +30,40 @@ const Dashboard = ({ pageTitle, children }) => {
             <a class="hover:text-teal-400 font-semibold mr-6" href="/search">
               Search
             </a>
-            <AnchorLink
-              class="hover:text-teal-400 font-semibold mr-6"
-              href="#Trending"
-            >
-              Trending
-            </AnchorLink>
             <a class="hover:text-teal-400 font-semibold mr-6" href="/dashboard">
               Dashboard
             </a>
             <a class="hover:text-teal-400 font-semibold mr-6" href="/profile">
               Profile
             </a>
-            <a class="hover:text-teal-400 font-semibold mr-6" href="#">
+            <a class="hover:text-teal-400 font-semibold mr-6" href="/404">
               Logout
             </a>
           </ul>
         </div>
       </nav>
-
-      <main className="z-[5] pb-5">{children}</main>
-      <FeedLayout />
-      <Footer />
+      <div>
+        <label
+          htmlFor="search"
+          className="block text-sm font-medium text-gray-700"
+        >
+          Quick search
+        </label>
+        <div className="relative mt-1 flex items-center">
+          <input
+            type="text"
+            name="search"
+            id="search"
+            className="block w-full rounded-md border-gray-300 pr-12 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+          />
+          <div className="absolute inset-y-0 right-0 flex py-1.5 pr-1.5">
+            <kbd className="inline-flex items-center rounded border border-gray-200 px-2 font-sans text-sm font-medium text-gray-400">
+              ⌘K
+            </kbd>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
-export default Dashboard;
+export default Search;
