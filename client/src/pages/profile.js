@@ -27,7 +27,7 @@ const Profile = () => {
           </h1>
           <ul className="h-full flex items-center list-none z-[5] text-base">
             {/* NAVIGATION LINKS HERE */}
-            <a class="hover:text-teal-400 font-semibold mr-6" href="/404">
+            <a class="hover:text-teal-400 font-semibold mr-6" href="/search">
               Search
             </a>
             <a class="hover:text-teal-400 font-semibold mr-6" href="/dashboard">
@@ -51,15 +51,8 @@ const Profile = () => {
         </div>
         <div class="mt-12 grid gap-16 pt-12 lg:grid-cols-3 lg:gap-x-5 lg:gap-y-12">
           <div>
-            <div>
-              <a href="#" class="inline-block">
-                <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-sky-200 text-[#027bce]">
-                  Reading Goal
-                </span>
-              </a>
-            </div>
             <a href="#" class="mt-4 block">
-              <p class="text-xl font-semibold text-gray-900">Reading Goal</p>
+              <p class="text-xl font-semibold text-gray-900">Reading List</p>
               <p class="mt-3 text-base text-gray-500">
                 Nullam risus blandit ac aliquam justo ipsum. Quam mauris
                 volutpat massa dictumst amet. Sapien tortor lacus arcu.
@@ -68,15 +61,8 @@ const Profile = () => {
           </div>
 
           <div>
-            <div>
-              <a href="#" class="inline-block">
-                <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-sky-200 text-[#027bce]">
-                  Favorites
-                </span>
-              </a>
-            </div>
             <a href="#" class="mt-4 block">
-              <p class="text-xl font-semibold text-gray-900">Favorites</p>
+              <p class="text-xl font-semibold text-gray-900">Reading Goal </p>
               <p class="mt-3 text-base text-gray-500">
                 Nullam risus blandit ac aliquam justo ipsum. Quam mauris
                 volutpat massa dictumst amet. Sapien tortor lacus arcu.
@@ -85,13 +71,6 @@ const Profile = () => {
           </div>
 
           <div>
-            <div>
-              <a href="#" class="inline-block">
-                <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-sky-200 text-[#027bce]">
-                  Friends
-                </span>
-              </a>
-            </div>
             <a href="#" class="mt-4 block">
               <p class="text-xl font-semibold text-gray-900">Friends</p>
               <p class="mt-3 text-base text-gray-500 pb-5">
