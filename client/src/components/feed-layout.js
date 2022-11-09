@@ -2,19 +2,21 @@ import React from "react";
 
 const Feed = () => {
   return (
-    <div className="z-10">
-      <div class="pb-2" id="Trending"></div>
+    <div className="z-10 pb-2" id="Trending">
       <div className="w-[80%] my-8 flex justify-between items-center mx-auto">
-        <h1 className="font-light drop-shadow-lg py-4 text-2xl md:text-4xl">
-          <div class="text-[#027bce] f">See what others are reading!</div>
+        <h1 className="font-light drop-shadow-lg py-8 text-2xl md:text-4xl">
+          See what others are reading!
         </h1>
       </div>
 
-      <div class="mx-auto max-w-2xl pb-16 px-4 sm:pb-24 sm:px-6 lg:max-w-7xl lg:px-8">
-        <div class="mt-6 space-y-10 divide-y divide-gray-200 border-t border-b border-gray-200 pb-10">
-          <div class="pt-10 lg:grid lg:grid-cols-12 lg:gap-x-8">
+      <div class="w-[85%] mx-auto my-8 py-4 px-10 bg-white shadow-lg rounded-lg divide-y divide-gray-200">
+    
+      {/* DYNAMICALLY CREATE TRENDING READS HERE VIA MAP FUNCTION */}
+
+          <div class="p-10 lg:grid lg:grid-cols-12 lg:gap-x-8">
             <div class="lg:col-span-8 lg:col-start-5 xl:col-span-9 xl:col-start-4 xl:grid xl:grid-cols-3 xl:items-start xl:gap-x-8">
               <div class="flex items-center xl:col-span-1">
+                {/* STARS RATING CONTAINER */}
                 <div class="flex items-center">
                   <svg
                     class="text-yellow-400 h-5 w-5 flex-shrink-0"
@@ -92,7 +94,9 @@ const Feed = () => {
                   5<span class="sr-only"> out of 5 stars</span>
                 </p>
               </div>
-              {/* Review */}
+              {/* END STARS RATING CONTAINER */}
+
+              {/* REVIEW CONTAINER */}
               <div class="mt-4 lg:mt-6 xl:col-span-2 xl:mt-0">
                 <h3 class="text-sm font-medium text-gray-900">
                   Such a great story
@@ -112,9 +116,10 @@ const Feed = () => {
                 </button>
               </div>
             </div>
+            {/* END REVIEW CONTAINER */}
 
-            {/* Book Info */}
-            <div class="mt-6 flex items-center text-sm lg:col-span-4 lg:col-start-1 lg:row-start-1 lg:mt-0 lg:flex-col lg:items-start xl:col-span-3">
+            {/* BOOK & USER INFO CONTAINER */}
+            <div class="mt-6 flex items-center text-sm gap-4 lg:col-span-4 lg:col-start-1 lg:row-start-1 lg:mt-0 lg:flex-col lg:items-start xl:col-span-3">
               <div>
                 <p class="text-lg font-medium text-gray-900 pb-2">Book Name 1</p>
               </div>
@@ -124,13 +129,13 @@ const Feed = () => {
                 <p class="font-medium text-gray-400">User123456789</p>
               </div>
             </div>
+            {/* END BOOK & USER INFO CONTAINER */}
           </div>
 
-          <div class="mt-6 space-y-10 divide-y divide-gray-200 border-t border-b border-gray-200 pb-10">
-            <div class="pt-10 lg:grid lg:grid-cols-12 lg:gap-x-8">
-              <div class="lg:col-span-8 lg:col-start-5 xl:col-span-9 xl:col-start-4 xl:grid xl:grid-cols-3 xl:items-start xl:gap-x-8">
-                <div class="flex items-center xl:col-span-1">
-                  <div class="flex items-center">
+          <div class="p-10 lg:grid lg:grid-cols-12 lg:gap-x-8">
+            <div class="lg:col-span-8 lg:col-start-5 xl:col-span-9 xl:col-start-4 xl:grid xl:grid-cols-3 xl:items-start xl:gap-x-8">
+              <div class="flex items-center xl:col-span-1">
+                <div class="flex items-center">
                     <svg
                       class="text-yellow-400 h-5 w-5 flex-shrink-0"
                       xmlns="http://www.w3.org/2000/svg"
@@ -215,21 +220,22 @@ const Feed = () => {
               </div>
 
               {/* Book Info */}
-              <div class="mt-6 flex items-center text-sm lg:col-span-4 lg:col-start-1 lg:row-start-1 lg:mt-0 lg:flex-col lg:items-start xl:col-span-3">
-                <p class="text-lg font-medium text-gray-900 pb-2">
-                  Book Name 2
-                </p>
+              <div class="mt-6 flex items-center text-sm gap-4 lg:col-span-4 lg:col-start-1 lg:row-start-1 lg:mt-0 lg:flex-col lg:items-start xl:col-span-3">
+              <div>
+                <p class="text-lg font-medium text-gray-900 pb-2">Book Name 2</p>
+              </div>
 
-                {/* User */}
+              {/* User */}
+              <div>
                 <p class="font-medium text-gray-400">User123456789</p>
               </div>
             </div>
-          </div>
-          <div class="mt-6 space-y-10 divide-y divide-gray-200 border-t border-b border-gray-200 pb-10">
-            <div class="pt-10 lg:grid lg:grid-cols-12 lg:gap-x-8">
-              <div class="lg:col-span-8 lg:col-start-5 xl:col-span-9 xl:col-start-4 xl:grid xl:grid-cols-3 xl:items-start xl:gap-x-8">
-                <div class="flex items-center xl:col-span-1">
-                  <div class="flex items-center">
+            </div>
+
+          <div class="p-10 lg:grid lg:grid-cols-12 lg:gap-x-8">
+            <div class="lg:col-span-8 lg:col-start-5 xl:col-span-9 xl:col-start-4 xl:grid xl:grid-cols-3 xl:items-start xl:gap-x-8">
+              <div class="flex items-center xl:col-span-1">
+                <div class="flex items-center">
                     <svg
                       class="text-yellow-400 h-5 w-5 flex-shrink-0"
                       xmlns="http://www.w3.org/2000/svg"
@@ -297,21 +303,22 @@ const Feed = () => {
               </div>
 
               {/* Book Info */}
-              <div class="mt-6 flex items-center text-sm lg:col-span-4 lg:col-start-1 lg:row-start-1 lg:mt-0 lg:flex-col lg:items-start xl:col-span-3">
-                <p class="text-lg font-medium text-gray-900 pb-2">
-                  Book Name 3
-                </p>
+              <div class="mt-6 flex items-center text-sm gap-4 lg:col-span-4 lg:col-start-1 lg:row-start-1 lg:mt-0 lg:flex-col lg:items-start xl:col-span-3">
+              <div>
+                <p class="text-lg font-medium text-gray-900 pb-2">Book Name 3</p>
+              </div>
 
-                {/* User */}
+              {/* User */}
+              <div>
                 <p class="font-medium text-gray-400">User123456789</p>
               </div>
             </div>
           </div>
-          <div class="mt-6 space-y-10 divide-y divide-gray-200 border-t border-b border-gray-200 pb-10">
-            <div class="pt-10 lg:grid lg:grid-cols-12 lg:gap-x-8">
-              <div class="lg:col-span-8 lg:col-start-5 xl:col-span-9 xl:col-start-4 xl:grid xl:grid-cols-3 xl:items-start xl:gap-x-8">
-                <div class="flex items-center xl:col-span-1">
-                  <div class="flex items-center">
+
+          <div class="p-10 lg:grid lg:grid-cols-12 lg:gap-x-8">
+            <div class="lg:col-span-8 lg:col-start-5 xl:col-span-9 xl:col-start-4 xl:grid xl:grid-cols-3 xl:items-start xl:gap-x-8">
+              <div class="flex items-center xl:col-span-1">
+                <div class="flex items-center">
                     <svg
                       class="text-yellow-400 h-5 w-5 flex-shrink-0"
                       xmlns="http://www.w3.org/2000/svg"
@@ -367,17 +374,16 @@ const Feed = () => {
                 </div>
               </div>
 
-              {/* Book Info */}
-              <div class="mt-6 flex items-center text-sm lg:col-span-4 lg:col-start-1 lg:row-start-1 lg:mt-0 lg:flex-col lg:items-start xl:col-span-3">
-                <p class="text-lg font-medium text-gray-900 pb-2">
-                  Book Name 4
-                </p>
+              <div class="mt-6 flex items-center text-sm gap-4 lg:col-span-4 lg:col-start-1 lg:row-start-1 lg:mt-0 lg:flex-col lg:items-start xl:col-span-3">
+              <div>
+                <p class="text-lg font-medium text-gray-900 pb-2">Book Name 4</p>
+              </div>
 
-                {/* User */}
+              {/* User */}
+              <div>
                 <p class="font-medium text-gray-400">User123456789</p>
               </div>
             </div>
-          </div>
         </div>
       </div>
     </div>
