@@ -40,7 +40,7 @@ const Dashboard = ({ pageTitle, children }) => {
             </a>
 
             <a
-              class="bg-gray-100 p-2 rounded-lg hover:text-sky-900  font-semibold mr-6"
+              class="bg-gray-100 p-2 rounded-lg   font-semibold mr-6"
               href="/profile"
             >
               Profile
