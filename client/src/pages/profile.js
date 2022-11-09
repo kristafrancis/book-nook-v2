@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "gatsby";
 import DashboardLayout from "../components/dashboard-layout";
+import Footer from "../components/footer";
 
 const Profile = () => {
   return (

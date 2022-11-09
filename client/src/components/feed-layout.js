@@ -375,9 +375,10 @@ const Feed = () => {
                 </div>
               </div>
             </div>
+          </div>
         </div>
+        <div class="p-5"></div>
       </div>
-      <div class="p-5"></div>
     </div>
   );
 };
