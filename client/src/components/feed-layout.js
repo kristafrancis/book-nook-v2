@@ -3,6 +3,7 @@ import React from "react";
 const Feed = () => {
   return (
     <div>
+      <div class="pb-2" id="Trending"></div>
       <div className="w-[80%] my-8 flex justify-between items-center mx-auto">
         <h1 className="font-light drop-shadow-lg py-4 text-2xl md:text-4xl">
           <div class="text-[#027bce] f">See what others are reading!</div>

@@ -3,6 +3,7 @@ import { Link } from "gatsby";
 import bgImg from "../images/bg.png";
 import FeedLayout from "../components/feed-layout";
 import Footer from "../components/footer";
+import AnchorLink from "react-anchor-link-smooth-scroll";
 
 const Dashboard = ({ pageTitle, children }) => {
   return (
@@ -27,16 +28,36 @@ const Dashboard = ({ pageTitle, children }) => {
           </h1>
           <ul className="h-full flex items-center list-none z-[5] text-base">
             {/* NAVIGATION LINKS HERE */}
-            <a class="hover:text-teal-400 font-semibold mr-6" href="#">
+
+            <AnchorLink
+              class="bg-gray-100 p-2 rounded-lg text-[#027bce] hover:text-sky-900  font-semibold mr-6"
+              href="#Trending"
+            >
+              Trending
+            </AnchorLink>
+            <a
+              class="bg-gray-100 p-2 rounded-lg hover:text-sky-900 font-semibold mr-6"
+              href="/search"
+            >
               Search
             </a>
-            <a class="hover:text-teal-400 font-semibold mr-6" href="/dashboard">
+
+            <a
+              class="bg-gray-100 p-2 rounded-lg hover:text-sky-900  font-semibold mr-6"
+              href="/dashboard"
+            >
               Dashboard
             </a>
-            <a class="hover:text-teal-400 font-semibold mr-6" href="/profile">
+            <a
+              class="bg-gray-100 p-2 rounded-lg hover:text-sky-900  font-semibold mr-6"
+              href="/profile"
+            >
               Profile
             </a>
-            <a class="hover:text-teal-400 font-semibold mr-6" href="#">
+            <a
+              class="bg-gray-100 p-2 rounded-lg hover:text-sky-900  font-semibold mr-6"
+              href="#"
+            >
               Logout
             </a>
           </ul>
