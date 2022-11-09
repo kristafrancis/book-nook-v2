@@ -2,7 +2,7 @@ import React from "react";
 
 const Feed = () => {
   return (
-    <div>
+    <div className="z-10">
       <div class="pb-2" id="Trending"></div>
       <div className="w-[80%] my-8 flex justify-between items-center mx-auto">
         <h1 className="font-light drop-shadow-lg py-4 text-2xl md:text-4xl">
@@ -107,7 +107,7 @@ const Feed = () => {
                   </p>
                 </div>
 
-                <button class="bg-teal-400 hover:bg-teal-300 p-2 text-sm rounded-md">
+                <button class="px-4 py-2 text-sm rounded">
                   Add to list
                 </button>
               </div>
@@ -115,10 +115,14 @@ const Feed = () => {
 
             {/* Book Info */}
             <div class="mt-6 flex items-center text-sm lg:col-span-4 lg:col-start-1 lg:row-start-1 lg:mt-0 lg:flex-col lg:items-start xl:col-span-3">
-              <p class="text-lg font-medium text-gray-900 pb-2">Book Name 1</p>
+              <div>
+                <p class="text-lg font-medium text-gray-900 pb-2">Book Name 1</p>
+              </div>
 
               {/* User */}
-              <p class="font-medium text-gray-400">User123456789</p>
+              <div>
+                <p class="font-medium text-gray-400">User123456789</p>
+              </div>
             </div>
           </div>
 
@@ -204,7 +208,7 @@ const Feed = () => {
                     </p>
                   </div>
 
-                  <button class="bg-teal-400 hover:bg-teal-300 p-2 text-sm rounded-md">
+                  <button class="px-4 py-2 text-sm rounded">
                     Add to list
                   </button>
                 </div>
@@ -286,7 +290,7 @@ const Feed = () => {
                       ullamco laboris nisi ut aliquip ex ea commodo consequat.
                     </p>
                   </div>
-                  <button class="bg-teal-400 hover:bg-teal-300 p-2 text-sm rounded-md">
+                  <button class="px-4 py-2 text-sm rounded">
                     Add to list
                   </button>
                 </div>
@@ -357,7 +361,7 @@ const Feed = () => {
                     </p>
                   </div>
 
-                  <button class="bg-teal-400 hover:bg-teal-300 p-2 text-sm rounded-md">
+                  <button class="px-4 py-2 text-sm rounded">
                     Add to list
                   </button>
                 </div>

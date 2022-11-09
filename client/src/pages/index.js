@@ -11,13 +11,13 @@ const IndexPage = () => {
           for their little book worms.
         </p>
 
-        <p class="text-sky-800 pb-5 text-center italic">
+        <p className="text-sky-800 pb-5 text-center italic">
             Join today to find great reads for your child!
         </p>
 
         <div class="flex justify-center pb-4">
             <Link to="/signup">
-                <button class="px-6 py-2 rounded-md bg-[#03cea4] hover:bg-[#027bce]">
+                <button className="px-6 py-2 rounded-md drop-shadow-lg bg-teal-400 hover:bg-teal-300">
                     Get Started
                 </button>
             </Link>
