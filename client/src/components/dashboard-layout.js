@@ -30,32 +30,32 @@ const Dashboard = ({ pageTitle, children }) => {
             {/* NAVIGATION LINKS HERE */}
 
             <AnchorLink
-              class="bg-gray-100 p-2 rounded-lg text-[#027bce] hover:text-sky-900  font-semibold mr-6"
+              class="bg-[#f1f1f1b7] px-4 py-2 rounded font-semibold mr-6"
               href="#Trending"
             >
               Trending
             </AnchorLink>
             <a
-              class="bg-gray-100 p-2 rounded-lg hover:text-sky-900 font-semibold mr-6"
+              class="bg-[#f1f1f1b7] px-4 py-2 rounded font-semibold mr-6"
               href="/search"
             >
               Search
             </a>
 
             <a
-              class="bg-gray-100 p-2 rounded-lg hover:text-sky-900  font-semibold mr-6"
+              class="bg-[#f1f1f1b7] px-4 py-2 rounded font-semibold mr-6"
               href="/dashboard"
             >
               Dashboard
             </a>
             <a
-              class="bg-gray-100 p-2 rounded-lg hover:text-sky-900  font-semibold mr-6"
+              class="bg-[#f1f1f1b7] px-4 py-2 rounded font-semibold mr-6"
               href="/profile"
             >
               Profile
             </a>
             <a
-              class="bg-gray-100 p-2 rounded-lg hover:text-sky-900  font-semibold mr-6"
+              class="bg-[#f1f1f1b7] px-4 py-2 rounded font-semibold mr-6"
               href="#"
             >
               Logout
@@ -64,7 +64,10 @@ const Dashboard = ({ pageTitle, children }) => {
         </div>
       </nav>
 
-      <main className="z-[5] pb-5">{children}</main>
+      <main className="z-[5] pb-5">
+        {children}
+      </main>
+
       <FeedLayout />
       <Footer />
     </>
