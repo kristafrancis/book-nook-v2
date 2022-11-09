@@ -1,16 +1,20 @@
 import React from "react";
+
+// import components
 import DashboardLayout from "../components/dashboard-layout";
 import DashHeroImg from "../images/dashboard-hero.png";
 import DashHeroReadingImg from "../images/dashboard-hero-reading.png";
+
+// import icons
 import { GiArchiveResearch } from "@react-icons/all-files/gi/GiArchiveResearch";
 import { GiSpellBook } from "@react-icons/all-files/gi/GiSpellBook";
-import { WiStars } from "@react-icons/all-files/wi/WiStars"
+import { WiStars } from "@react-icons/all-files/wi/WiStars";
 
 const Search = () => {
   return (
     <DashboardLayout pageTitle="Search">
       <div 
-        className="bg-[#fafbfd] bg-fixed bg-top bg-cover relative w-full h-full z-0"
+        className="bg-[#fafbfd] bg-center bg-cover relative w-full h-full z-0"
         style={{ backgroundImage: `url(${DashHeroImg})` }}
       >
         <div className="w-[85%] h-auto mx-auto py-24 flex flex-col justify-center items-center">
@@ -58,6 +62,7 @@ const Search = () => {
           </div>
         </div>
       </div>
+      {/* END SEARCH INPUT */}
 
       <div className="max-w-screen-lg w-full my-8 grid px-4 sm:grid-cols-3 mx-auto">
         <div className="flex flex-col justify-center items-center p-4 text-center border-b sm:border-b-0 sm:border-r border-gray-200">
