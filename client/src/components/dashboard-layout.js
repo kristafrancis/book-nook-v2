@@ -19,10 +19,7 @@ const Dashboard = ({ pageTitle, children }) => {
       <nav>
         <div className="w-[80%] my-8 flex justify-between items-center mx-auto">
           <h1 className="font-light drop-shadow-lg py-4 text-5xl md:text-7xl">
-            <Link
-              to="/dashboard"
-              className="text-[#027bce] hover:text-[#03cea4]"
-            >
+            <Link to="/search" className="text-[#027bce] hover:text-[#03cea4]">
               Book<span className="text-[#03cea4]">Nook</span>
             </Link>
           </h1>
@@ -30,7 +27,7 @@ const Dashboard = ({ pageTitle, children }) => {
             {/* NAVIGATION LINKS HERE */}
 
             <AnchorLink
-              class="bg-[#f1f1f1b7] px-4 py-2 rounded font-semibold mr-6"
+              class="bg-gray-100 p-2 rounded-lg text-amber-500 hover:text-amber-700  font-semibold mr-6"
               href="#Trending"
             >
               Trending
@@ -43,13 +40,7 @@ const Dashboard = ({ pageTitle, children }) => {
             </a>
 
             <a
-              class="bg-[#f1f1f1b7] px-4 py-2 rounded font-semibold mr-6"
-              href="/dashboard"
-            >
-              Dashboard
-            </a>
-            <a
-              class="bg-[#f1f1f1b7] px-4 py-2 rounded font-semibold mr-6"
+              class="bg-gray-100 p-2 rounded-lg hover:text-sky-900  font-semibold mr-6"
               href="/profile"
             >
               Profile
@@ -64,9 +55,7 @@ const Dashboard = ({ pageTitle, children }) => {
         </div>
       </nav>
 
-      <main className="z-[5] pb-5">
-        {children}
-      </main>
+      <main className="z-[5] pb-5">{children}</main>
 
       <FeedLayout />
       <Footer />

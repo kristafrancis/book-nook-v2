@@ -19,10 +19,7 @@ const EditProfile = () => {
       <nav>
         <div className="w-[80%] my-8 flex justify-between items-center mx-auto">
           <h1 className="font-light drop-shadow-lg py-4 text-5xl md:text-7xl">
-            <Link
-              to="/dashboard"
-              className="text-[#027bce] hover:text-[#03cea4]"
-            >
+            <Link to="/search" className="text-[#027bce] hover:text-[#03cea4]">
               Book<span className="text-[#03cea4]">Nook</span>
             </Link>
           </h1>
@@ -35,12 +32,6 @@ const EditProfile = () => {
               Search
             </a>
 
-            <a
-              class="bg-gray-100 p-2 rounded-lg hover:text-sky-900  font-semibold mr-6"
-              href="/dashboard"
-            >
-              Dashboard
-            </a>
             <a
               class="bg-gray-100 p-2 rounded-lg hover:text-sky-900  font-semibold mr-6"
               href="/profile"
