@@ -17,10 +17,7 @@ const Profile = () => {
       <nav>
         <div className="w-[80%] my-8 flex justify-between items-center mx-auto">
           <h1 className="font-light drop-shadow-lg py-4 text-5xl md:text-7xl">
-            <Link
-              to="/dashboard"
-              className="text-[#027bce] hover:text-[#03cea4]"
-            >
+            <Link to="/search" className="text-[#027bce] hover:text-[#03cea4]">
               Book<span className="text-[#03cea4]">Nook</span>
             </Link>
           </h1>
@@ -33,12 +30,6 @@ const Profile = () => {
               Search
             </a>
 
-            <a
-              class="bg-gray-100 p-2 rounded-lg hover:text-sky-900  font-semibold mr-6"
-              href="/dashboard"
-            >
-              Dashboard
-            </a>
             <a
               class="bg-gray-100 p-2 rounded-lg hover:text-sky-900  font-semibold mr-6"
               href="/profile"
@@ -55,7 +46,7 @@ const Profile = () => {
         </div>
       </nav>
 
-      <div class="min-h-full">
+      <div class="min-h-full bg-sky-50">
         <main class="py-10">
           <div class="mx-auto max-w-3xl px-4 sm:px-6 md:flex md:items-center md:justify-between md:space-x-5 lg:max-w-7xl lg:px-8">
             <div class="flex items-center space-x-5">
@@ -78,19 +69,32 @@ const Profile = () => {
               </div>
             </div>
             <div class="justify-stretch mt-6 flex flex-col-reverse space-y-4 space-y-reverse sm:flex-row-reverse sm:justify-end sm:space-y-0 sm:space-x-3 sm:space-x-reverse md:mt-0 md:flex-row md:space-x-3">
-              <button
-                type="button"
-                class="inline-flex items-center justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100"
-              >
-                ADD TO READING LIST
-              </button>
               <a href="/editprofile">
                 <button
                   type="button"
-                  class="inline-flex items-center justify-center rounded-md border border-transparent bg-[#027bce] px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100"
+                  class="inline-flex items-center justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100"
                 >
-                  EDIT PROFILE
-                </button>{" "}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-6 h-6"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.78l-.894-.15c-.542-.09-.94-.56-.94-1.109v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.107-1.204l-.527-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z"
+                    />
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                    />
+                  </svg>
+                  <p class="pl-2">Edit Account</p>
+                </button>
               </a>
             </div>
           </div>
@@ -98,22 +102,158 @@ const Profile = () => {
           <div class="mx-auto mt-8 grid max-w-3xl grid-cols-1 gap-6 sm:px-6 lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-3">
             <div class="space-y-6 lg:col-span-2 lg:col-start-1">
               <section>
-                <div class="bg-white shadow sm:rounded-lg">
+                <div class="bg-white px-4 py-5 shadow sm:rounded-lg sm:px-6">
+                  <h2 class="text-center text-sm">
+                    Your goal is 10 books read!
+                  </h2>{" "}
+                  <h2 class="text-center text-sm">You are currently at...</h2>
+                  <div class="mt-6 flow-root">
+                    <h2 class="animate-pulse text-center text-8xl text-amber-500 font-semibold">
+                      7
+                    </h2>
+                  </div>
+                  <div class="justify-center mt-6 flex grid-cols-2">
+                    <button
+                      type="button"
+                      class="inline-flex items-center justify-center rounded-md border  bg-sky-100 px-4 py-2 text-sm font-medium text-blue-900 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
+                      <p class="pl-2">Add to count</p>
+                    </button>
+                    <div class="p-2"></div>
+                    <button
+                      type="button"
+                      class="inline-flex items-center justify-center rounded-md border bg-white px-4 py-2 text-sm font-medium text-blue-900 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"
+                        />
+                      </svg>
+
+                      <p class="pl-2">Update goal</p>
+                    </button>
+                  </div>
+                </div>
+                <div class="py-2"></div>
+
+                <div class="bg-white shadow sm:rounded-lg ">
                   <div class="px-4 py-5 sm:px-6">
-                    <h2 class="text-lg font-medium leading-6 text-gray-900">
+                    <h2 className="pb-4 text-4xl font-medium drop-shadow-md">
                       Reading List
                     </h2>
-                    <p class="mt-1 max-w-2xl text-sm text-gray-500">
-                      Your personal picks for future reads.
-                    </p>
                   </div>
                   <div class="border-t border-gray-200 px-4 py-5 sm:px-6">
                     {" "}
-                    <p>Stuff goes here</p>
+                    <div class="overflow-hidden bg-white shadow sm:rounded-md">
+                      <ul role="list" class="divide-y divide-gray-200">
+                        <li>
+                          <a href="#" class="block hover:bg-gray-50">
+                            <div class="px-4 py-4 sm:px-6">
+                              <div class="flex items-center justify-between">
+                                <p class="truncate text-sm font-medium text-blue-900">
+                                  Book Title
+                                </p>
+                                <div class="ml-2 flex flex-shrink-0">
+                                  <p class="inline-flex rounded-full bg-teal-100 px-2 text-sm font-semibold leading-5 text-teal-700">
+                                    View
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="p-2"></div>
+                    <div class="overflow-hidden bg-white shadow sm:rounded-md">
+                      <ul role="list" class="divide-y divide-gray-200">
+                        <li>
+                          <a href="#" class="block hover:bg-gray-50">
+                            <div class="px-4 py-4 sm:px-6">
+                              <div class="flex items-center justify-between">
+                                <p class="truncate text-sm font-medium text-blue-900">
+                                  Book Title
+                                </p>
+                                <div class="ml-2 flex flex-shrink-0">
+                                  <p class="inline-flex rounded-full bg-teal-100 px-2 text-sm font-semibold leading-5 text-teal-700">
+                                    View
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="p-2"></div>
+                    <div class="overflow-hidden bg-white shadow sm:rounded-md">
+                      <ul role="list" class="divide-y divide-gray-200">
+                        <li>
+                          <a href="#" class="block hover:bg-gray-50">
+                            <div class="px-4 py-4 sm:px-6">
+                              <div class="flex items-center justify-between">
+                                <p class="truncate text-sm font-medium text-blue-900">
+                                  Book Title
+                                </p>
+                                <div class="ml-2 flex flex-shrink-0">
+                                  <p class="inline-flex rounded-full bg-teal-100 px-2 text-sm font-semibold leading-5 text-teal-700">
+                                    View
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="p-2"></div>
+                    <div class="overflow-hidden bg-white shadow sm:rounded-md">
+                      <ul role="list" class="divide-y divide-gray-200">
+                        <li>
+                          <a href="#" class="block hover:bg-gray-50">
+                            <div class="px-4 py-4 sm:px-6">
+                              <div class="flex items-center justify-between">
+                                <p class="truncate text-sm font-medium text-blue-900">
+                                  Book Title
+                                </p>
+                                <div class="ml-2 flex flex-shrink-0">
+                                  <p class="inline-flex rounded-full bg-teal-100 px-2 text-sm font-semibold leading-5 text-teal-700">
+                                    View
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
                   <div>
                     <a
-                      href="/dashboard"
+                      href="/search"
                       class="block bg-gray-50 px-4 py-4 text-center text-sm font-medium hover:text-blue-900 sm:rounded-b-lg"
                     >
                       Add to list
@@ -121,353 +261,72 @@ const Profile = () => {
                   </div>
                 </div>
               </section>
-
-              <section>
-                <div class="bg-white shadow sm:overflow-hidden sm:rounded-lg">
-                  <div class="divide-y divide-gray-200">
-                    <div class="px-4 py-5 sm:px-6">
-                      <h2 class="text-lg font-medium text-gray-900">
-                        Friends Activity
-                      </h2>
-                    </div>
-                    <div class="px-4 py-6 sm:px-6">
-                      <ul role="list" class="space-y-8">
-                        <li>
-                          <div class="flex space-x-3">
-                            <div class="flex-shrink-0">
-                              <img
-                                class="h-10 w-10 rounded-full"
-                                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                alt=""
-                              ></img>{" "}
-                            </div>
-                            <div>
-                              <div class="text-sm">
-                                <a href="#" class="font-medium text-gray-900">
-                                  Leslie Alexander
-                                </a>
-                              </div>
-                              <div class="mt-1 text-sm text-gray-700">
-                                <p>
-                                  Ducimus quas delectus ad maxime totam
-                                  doloribus reiciendis ex. Tempore dolorem
-                                  maiores. Similique voluptatibus tempore non
-                                  ut.
-                                </p>
-                              </div>
-                              <div class="mt-2 space-x-2 text-sm">
-                                <span class="font-medium text-gray-500">
-                                  4d ago
-                                </span>
-                                <span class="font-medium text-gray-500">
-                                  &middot;
-                                </span>
-                                <button
-                                  type="button"
-                                  class="font-medium text-gray-900"
-                                >
-                                  Reply
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                        </li>
-
-                        <li>
-                          <div class="flex space-x-3">
-                            <div class="flex-shrink-0">
-                              <img
-                                class="h-10 w-10 rounded-full"
-                                src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                alt=""
-                              ></img>
-                            </div>
-                            <div>
-                              <div class="text-sm">
-                                <a href="#" class="font-medium text-gray-900">
-                                  Michael Foster
-                                </a>
-                              </div>
-                              <div class="mt-1 text-sm text-gray-700">
-                                <p>
-                                  Et ut autem. Voluptatem eum dolores sint
-                                  necessitatibus quos. Quis eum qui dolorem
-                                  accusantium voluptas voluptatem ipsum. Quo
-                                  facere iusto quia accusamus veniam id
-                                  explicabo et aut.
-                                </p>
-                              </div>
-                              <div class="mt-2 space-x-2 text-sm">
-                                <span class="font-medium text-gray-500">
-                                  4d ago
-                                </span>
-                                <span class="font-medium text-gray-500">
-                                  &middot;
-                                </span>
-                                <button
-                                  type="button"
-                                  class="font-medium text-gray-900"
-                                >
-                                  Reply
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                        </li>
-
-                        <li>
-                          <div class="flex space-x-3">
-                            <div class="flex-shrink-0">
-                              <img
-                                class="h-10 w-10 rounded-full"
-                                src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                alt=""
-                              ></img>{" "}
-                            </div>
-                            <div>
-                              <div class="text-sm">
-                                <a href="#" class="font-medium text-gray-900">
-                                  Dries Vincent
-                                </a>
-                              </div>
-                              <div class="mt-1 text-sm text-gray-700">
-                                <p>
-                                  Expedita consequatur sit ea voluptas quo ipsam
-                                  recusandae. Ab sint et voluptatem repudiandae
-                                  voluptatem et eveniet. Nihil quas consequatur
-                                  autem. Perferendis rerum et.
-                                </p>
-                              </div>
-                              <div class="mt-2 space-x-2 text-sm">
-                                <span class="font-medium text-gray-500">
-                                  4d ago
-                                </span>
-                                <span class="font-medium text-gray-500">
-                                  &middot;
-                                </span>
-                                <button
-                                  type="button"
-                                  class="font-medium text-gray-900"
-                                >
-                                  Reply
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </section>
             </div>
 
             <section class="lg:col-span-1 lg:col-start-3">
-              <div class="bg-white px-4 py-5 shadow sm:rounded-lg sm:px-6">
-                <h2 class="text-lg font-medium text-gray-900">Reading Goal</h2>
-
-                <div class="mt-6 flow-root">
-                  <ul role="list" class="-mb-8">
-                    <li>
-                      <div class="relative pb-8">
-                        <span
-                          class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-gray-200"
-                          aria-hidden="true"
-                        ></span>
-                        <div class="relative flex space-x-3">
-                          <div>
-                            <span class="h-8 w-8 rounded-full bg-teal-400 text-white flex items-center justify-center ring-8 ring-white">
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke-width="1.5"
-                                ng
-                                stroke="currentColor"
-                                class="w-6 h-6"
-                              >
-                                <path
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  d="M4.5 12.75l6 6 9-13.5"
-                                />
-                              </svg>
-                            </span>
-                          </div>
-                          <div class="flex min-w-0 flex-1 justify-between space-x-4 pt-1.5">
-                            <div>
-                              <p class="text-sm text-gray-500">Read Book 1</p>
-                            </div>
-                            <div class="whitespace-nowrap text-right text-sm text-gray-500">
-                              <time datetime="2020-09-20">Sep 20</time>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-
-                    <li>
-                      <div class="relative pb-8">
-                        <span
-                          class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-gray-200"
-                          aria-hidden="true"
-                        ></span>
-                        <div class="relative flex space-x-3">
-                          <div>
-                            <span class="h-8 w-8 rounded-full bg-teal-400 text-white flex items-center justify-center ring-8 ring-white">
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke-width="1.5"
-                                stroke="currentColor"
-                                class="w-6 h-6"
-                              >
-                                <path
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  d="M4.5 12.75l6 6 9-13.5"
-                                />
-                              </svg>
-                            </span>
-                          </div>
-                          <div class="flex min-w-0 flex-1 justify-between space-x-4 pt-1.5">
-                            <div>
-                              <p class="text-sm text-gray-500">Read Book 2</p>
-                            </div>
-                            <div class="whitespace-nowrap text-right text-sm text-gray-500">
-                              <time datetime="2020-09-22">Sep 22</time>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-
-                    <li>
-                      <div class="relative pb-8">
-                        <span
-                          class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-gray-200"
-                          aria-hidden="true"
-                        ></span>
-                        <div class="relative flex space-x-3">
-                          <div>
-                            <span class="h-8 w-8 rounded-full bg-teal-400 text-white flex items-center justify-center ring-8 ring-white">
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke-width="1.5"
-                                stroke="currentColor"
-                                class="w-6 h-6"
-                              >
-                                <path
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  d="M4.5 12.75l6 6 9-13.5"
-                                />
-                              </svg>
-                            </span>
-                          </div>
-                          <div class="flex min-w-0 flex-1 justify-between space-x-4 pt-1.5">
-                            <div>
-                              <p class="text-sm text-gray-500">Read Book 3</p>
-                            </div>
-                            <div class="whitespace-nowrap text-right text-sm text-gray-500">
-                              <time datetime="2020-09-28">Sep 28</time>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-
-                    <li>
-                      <div class="relative pb-8">
-                        <span
-                          class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-gray-200"
-                          aria-hidden="true"
-                        ></span>
-                        <div class="relative flex space-x-3">
-                          <div>
-                            <span class="h-8 w-8 rounded-full bg-teal-400 text-white flex items-center justify-center ring-8 ring-white">
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke-width="1.5"
-                                stroke="currentColor"
-                                class="w-6 h-6"
-                              >
-                                <path
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  d="M4.5 12.75l6 6 9-13.5"
-                                />
-                              </svg>
-                            </span>
-                          </div>
-                          <div class="flex min-w-0 flex-1 justify-between space-x-4 pt-1.5">
-                            <div>
-                              <p class="text-sm text-gray-500">Read Book 4</p>
-                            </div>
-                            <div class="whitespace-nowrap text-right text-sm text-gray-500">
-                              <time datetime="2020-09-30">Sep 30</time>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-
-                    <li>
-                      <div class="relative pb-8">
-                        <div class="relative flex space-x-3">
-                          <div>
-                            <span class="h-8 w-8 rounded-full bg-teal-400 text-white flex items-center justify-center ring-8 ring-white">
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke-width="1.5"
-                                stroke="currentColor"
-                                class="w-6 h-6"
-                              >
-                                <path
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  d="M4.5 12.75l6 6 9-13.5"
-                                />
-                              </svg>
-                            </span>
-                          </div>
-                          <div class="flex min-w-0 flex-1 justify-between space-x-4 pt-1.5">
-                            <div>
-                              <p class="text-sm text-gray-500">Read Book 5</p>
-                            </div>
-                            <div class="whitespace-nowrap text-right text-sm text-gray-500">
-                              <time datetime="2020-10-04">Oct 4</time>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-                <div class="justify-stretch mt-6 flex flex-col">
-                  <button
-                    type="button"
-                    class="inline-flex items-center justify-center rounded-md border border-transparent bg-[#027bce] px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-                  >
-                    EDIT GOAL
-                  </button>
-                </div>
-              </div>
-
               {/* FRIENDS */}
-              <div class="p-2"></div>
+
               <div class="bg-white px-4 py-5 shadow sm:rounded-lg sm:px-6">
                 <h2 class="text-lg font-medium text-gray-900">Friends List</h2>
 
                 <div class="mt-6">
-                  <p> Friends go here </p>
+                  <tr>
+                    <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6">
+                      <div class="flex items-center">
+                        <div class="h-10 w-10 flex-shrink-0">
+                          <img
+                            class="h-10 w-10 rounded-full"
+                            src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                            alt=""
+                          ></img>
+                        </div>
+                        <div class="ml-4">
+                          <div class="font-medium text-gray-900">
+                            Lindsay Walton
+                          </div>
+                          <div class="text-gray-500">Username</div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6">
+                      <div class="flex items-center">
+                        <div class="h-10 w-10 flex-shrink-0">
+                          <img
+                            class="h-10 w-10 rounded-full"
+                            src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                            alt=""
+                          ></img>
+                        </div>
+                        <div class="ml-4">
+                          <div class="font-medium text-gray-900">
+                            Lindsay Walton
+                          </div>
+                          <div class="text-gray-500">Username</div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6">
+                      <div class="flex items-center">
+                        <div class="h-10 w-10 flex-shrink-0">
+                          <img
+                            class="h-10 w-10 rounded-full"
+                            src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                            alt=""
+                          ></img>
+                        </div>
+                        <div class="ml-4">
+                          <div class="font-medium text-gray-900">
+                            Lindsay Walton
+                          </div>
+                          <div class="text-gray-500">Username</div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
                 </div>
                 <div class="justify-stretch mt-6 flex flex-col">
                   <button
@@ -483,9 +342,7 @@ const Profile = () => {
         </main>
       </div>
 
-      <div class="pt-20">
-        <Footer />
-      </div>
+      <Footer />
     </div>
   );
 };
