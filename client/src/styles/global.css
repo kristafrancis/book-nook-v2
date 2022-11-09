@@ -30,12 +30,17 @@
   }
 
   button {
+    @apply bg-teal-400;
     @apply uppercase;
     @apply text-white;
     @apply tracking-widest;
     @apply transition-all;
     @apply ease-in;
     @apply duration-300;
+  }
+
+  button:hover {
+    @apply bg-teal-300;
   }
 }
 
