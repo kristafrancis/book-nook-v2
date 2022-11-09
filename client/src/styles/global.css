@@ -29,6 +29,10 @@
     @apply duration-300;
   }
 
+  a:hover {
+    @apply text-teal-400;
+  }
+
   button {
     @apply bg-teal-400;
     @apply uppercase;
