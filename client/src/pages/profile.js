@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "gatsby";
-import bgImg from "../images/bg.png";
-import Footer from "../components/footer";
+import DashboardLayout from "../components/dashboard-layout";
 
 const Profile = () => {
   return (
