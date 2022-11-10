@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "gatsby";
 import bgImg from "../images/bg.png";
-import FeedLayout from "../components/feed-layout";
 import Footer from "../components/footer";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 
@@ -56,9 +55,6 @@ const Dashboard = ({ pageTitle, children }) => {
       </nav>
 
       <main className="z-[5] pb-5">{children}</main>
-
-      <FeedLayout />
-      <Footer />
     </>
   );
 };
