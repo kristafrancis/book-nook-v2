@@ -1,8 +1,12 @@
 import React, { useState } from "react";
+import Dropdown from "react-dropdown";
+import "react-dropdown/style.css";
 import DashboardLayout from "../components/dashboard-layout";
 
 const Profile = () => {
   const [count, setCount] = useState(0);
+  const options = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
+  const defaultOption = options[0];
   return (
     <DashboardLayout pageTitle="Profile">
       <div class="min-h-full">
@@ -62,10 +66,21 @@ const Profile = () => {
             <div class="space-y-6 lg:col-span-2 lg:col-start-1">
               <section>
                 <div class="bg-white px-4 py-5 shadow sm:rounded-lg sm:px-6">
-                  <h2 class="text-center text-sm">
-                    Your goal is 10 books read!
-                  </h2>{" "}
-                  <h2 class="text-center text-sm">You are currently at...</h2>
+                  <div class="text-center pb-8 font-['poppins'] text-2xl font-medium text-[#345995] inline-flex w-full justify-center items-center">
+                    Your goal is
+                    <Dropdown
+                      className="w-[60px] text-base font-semibold ml-3 rounded mr-4"
+                      options={options}
+                      // onChange={this._onSelect}
+                      value={defaultOption}
+                      placeholder="Select an option"
+                    />
+                    books read!
+                  </div>
+
+                  <p class="text-center text-lg text-gray-500 font-medium">
+                    You are currently at...
+                  </p>
                   <section>
                     <div class="mt-6 flow-root">
                       <h2 class="animate-pulse text-center text-8xl text-amber-500 font-semibold">
@@ -76,7 +91,6 @@ const Profile = () => {
                       <button
                         type="button"
                         onClick={() => setCount(count + 1)}
-                        
                         class="inline-flex items-center justify-center rounded-md border  bg-sky-100 px-4 py-2 text-sm font-medium text-blue-900 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100"
                       >
                         <svg
@@ -113,11 +127,11 @@ const Profile = () => {
                           <path
                             stroke-linecap="round"
                             stroke-linejoin="round"
-                            d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"
+                            d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"
                           />
                         </svg>
 
-                        <p class="pl-2">Update goal</p>
+                        <p class="pl-2">Reset</p>
                       </button>
                     </div>
                   </section>
