@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import DashboardLayout from "../components/dashboard-layout";
 
 const Profile = () => {
+  const [count, setCount] = useState(0);
   return (
     <DashboardLayout pageTitle="Profile">
-
       <div class="min-h-full">
         <main class="pb-10">
           <div class="mx-auto max-w-3xl px-4 sm:px-6 md:flex md:items-center md:justify-between md:space-x-5 lg:max-w-7xl lg:px-8">
@@ -66,55 +66,61 @@ const Profile = () => {
                     Your goal is 10 books read!
                   </h2>{" "}
                   <h2 class="text-center text-sm">You are currently at...</h2>
-                  <div class="mt-6 flow-root">
-                    <h2 class="animate-pulse text-center text-8xl text-amber-500 font-semibold">
-                      7
-                    </h2>
-                  </div>
-                  <div class="justify-center mt-6 flex grid-cols-2">
-                    <button
-                      type="button"
-                      class="inline-flex items-center justify-center rounded-md border  bg-sky-100 px-4 py-2 text-sm font-medium text-blue-900 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke-width="1.5"
-                        stroke="currentColor"
-                        class="w-6 h-6"
+                  <section>
+                    <div class="mt-6 flow-root">
+                      <h2 class="animate-pulse text-center text-8xl text-amber-500 font-semibold">
+                        {count}
+                      </h2>
+                    </div>
+                    <div class="justify-center mt-6 flex grid-cols-2">
+                      <button
+                        type="button"
+                        onClick={() => setCount(count + 1)}
+                        
+                        class="inline-flex items-center justify-center rounded-md border  bg-sky-100 px-4 py-2 text-sm font-medium text-blue-900 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100"
                       >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                        />
-                      </svg>
-                      <p class="pl-2">Add to count</p>
-                    </button>
-                    <div class="p-2"></div>
-                    <button
-                      type="button"
-                      class="inline-flex items-center justify-center rounded-md border bg-white px-4 py-2 text-sm font-medium text-blue-900 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke-width="1.5"
-                        stroke="currentColor"
-                        class="w-6 h-6"
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke-width="1.5"
+                          stroke="currentColor"
+                          class="w-6 h-6"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                          />
+                        </svg>
+                        <p class="pl-2">Add to count</p>
+                      </button>
+                      <div class="p-2"></div>
+                      <button
+                        type="button"
+                        onClick={() => setCount(0)}
+                        disabled={count === 0}
+                        class="inline-flex items-center justify-center rounded-md border bg-white px-4 py-2 text-sm font-medium text-blue-900 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100"
                       >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"
-                        />
-                      </svg>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke-width="1.5"
+                          stroke="currentColor"
+                          class="w-6 h-6"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"
+                          />
+                        </svg>
 
-                      <p class="pl-2">Update goal</p>
-                    </button>
-                  </div>
+                        <p class="pl-2">Update goal</p>
+                      </button>
+                    </div>
+                  </section>
                 </div>
                 <div class="py-2"></div>
 
@@ -300,7 +306,6 @@ const Profile = () => {
           </div>
         </main>
       </div>
-
     </DashboardLayout>
   );
 };
