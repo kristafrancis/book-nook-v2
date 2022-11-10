@@ -66,8 +66,10 @@ const Search = () => {
       </div>
       {/* END SEARCH INPUT */}
 
-      <div className="max-w-screen-lg w-full my-8 grid px-4 sm:grid-cols-3 mx-auto">
-        <div className="flex flex-col justify-center items-center p-4 text-center border-b sm:border-b-0 sm:border-r border-gray-200">
+      {/* START BOOK NOOK INFO CONTAINER */}
+      <div className="max-w-screen-lg w-full mb-8 grid px-4 sm:grid-cols-3 mx-auto">
+        <div className="flex flex-col justify-center items-center px-8 py-4 text-center border-b sm:border-b-0 sm:border-r border-gray-200">
+          {/* GETTING STARTED INFO HERE */}
           <GiArchiveResearch size={65} />
           <h3 className="font-medium">Getting Started</h3>
           <p>
@@ -76,7 +78,8 @@ const Search = () => {
             about!
           </p>
         </div>
-        <div className="flex flex-col justify-center items-center p-4 text-center border-b sm:border-b-0 sm:border-r border-gray-200">
+        <div className="flex flex-col justify-center items-center px-8 py-4 text-center border-b sm:border-b-0 sm:border-r border-gray-200">
+          {/* DISCOVER READS INFO HERE */}
           <GiSpellBook size={65} className="flex justify-center items-center" />
           <h3 className="font-medium">Discover Reads</h3>
           <p>
@@ -85,9 +88,10 @@ const Search = () => {
             like him inside and out.
           </p>
         </div>
-        <div className="flex flex-col justify-center items-center p-4 text-center border-gray-200">
+        <div className="flex flex-col justify-center items-center px-8 py-4 text-center border-gray-200">
+          {/* MEET FRIENDS INFO HERE */}
           <WiStars size={65} className="flex justify-center items-center" />
-          <h3 className="font-medium">Make Friends</h3>
+          <h3 className="font-medium">Meet Friends</h3>
           <p>
             Blue his house with a blue little window and a blue corvette and
             everything is blue for him and himself and everybody around cause he
@@ -95,6 +99,8 @@ const Search = () => {
           </p>
         </div>
       </div>
+      {/* END BOOK NOOK INFO CONTAINER */}
+
     </DashboardLayout>
   );
 };

@@ -4,7 +4,7 @@ const Feed = () => {
   return (
     <div>
       <div class="pb-4" id="Trending"></div>
-      <h2 class="pb-4 text-4xl drop-shadow-md text-center pb-8">
+      <h2 class="text-4xl drop-shadow-md text-center pb-8">
         See what others are reading
       </h2>
 
