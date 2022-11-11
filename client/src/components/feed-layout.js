@@ -4,9 +4,6 @@ const Feed = () => {
   return (
     <div>
       <div class="pb-4" id="Trending"></div>
-      <h2 class="text-4xl drop-shadow-md text-center pb-8">
-        See what others are reading
-      </h2>
 
       <div class="mx-24 bg-sky-50 rounded-2xl drop-shadow-md">
         <div class="p-10">
