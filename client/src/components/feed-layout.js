@@ -101,7 +101,6 @@ const Feed = () => {
                 </div>
               </div>
             </div>
-            {/* END REVIEW CONTAINER */}
 
             <div class="flex space-x-4 text-sm text-gray-500">
               <div class="flex-none py-10">
