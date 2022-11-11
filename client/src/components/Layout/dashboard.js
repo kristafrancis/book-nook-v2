@@ -13,6 +13,7 @@ const Dashboard = ({ pageTitle, children }) => {
           className="bg-fixed bg-repeat-x bg-top absolute top-0 left-0 w-full h-full z-[-10]"
           style={{ backgroundImage: `url(${BgImg})` }}
         ></div>
+        {/* DELETE THIS COMMENT LATER */}
       </header>
 
       <nav>
