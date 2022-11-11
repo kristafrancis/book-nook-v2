@@ -13,7 +13,7 @@ const Feed =
         See what others are reading
       </h2>
 
-      <div class="mx-24 bg-sky-50 rounded-2xl drop-shadow-md">
+      <div class="mx-52 bg-slate-900 rounded-2xl drop-shadow-md">
         <div class="p-10">
           <div class="-my-10">
             <div class="flex space-x-4 text-sm text-gray-500">
@@ -25,7 +25,7 @@ const Feed =
                 ></img>
               </div>
               <div class="flex-1 py-10">
-                <h3 class="font-medium text-gray-900">Book title</h3>
+                <h3 class="font-medium">Book title</h3>
                 <p>Username</p>
 
                 <div class="mt-4 flex items-center">
@@ -116,7 +116,7 @@ const Feed =
                 ></img>{" "}
               </div>
               <div class="flex-1 py-10 border-t border-gray-200">
-                <h3 class="font-medium text-gray-900">Book Title</h3>
+                <h3 class="font-medium">Book Title</h3>
                 <p>Username</p>
 
                 <div class="mt-4 flex items-center">
@@ -207,7 +207,7 @@ const Feed =
                 ></img>{" "}
               </div>
               <div class="flex-1 py-10 border-t border-gray-200">
-                <h3 class="font-medium text-gray-900">Book Title</h3>
+                <h3 class="font-medium">Book Title</h3>
                 <p>Username</p>
 
                 <div class="mt-4 flex items-center">
@@ -298,7 +298,7 @@ const Feed =
                 ></img>{" "}
               </div>
               <div class="flex-1 py-10 border-t border-gray-200">
-                <h3 class="font-medium text-gray-900">Book Title</h3>
+                <h3 class="font-medium">Book Title</h3>
                 <p>Username</p>
 
                 <div class="mt-4 flex items-center">

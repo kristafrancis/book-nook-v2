@@ -94,20 +94,7 @@ const Login = () => {
                   </div>
                 </div>
                 <div class="flex items-center justify-between">
-                  <div class="flex items-center">
-                    <input
-                      id="remember-me"
-                      name="remember-me"
-                      type="checkbox"
-                      class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                    ></input>{" "}
-                    <label
-                      for="remember-me"
-                      class="ml-2 block text-sm"
-                    >
-                      Remember me
-                    </label>
-                  </div>
+            
 
                   <div class="text-sm">
                     <Link
@@ -121,7 +108,7 @@ const Login = () => {
                 <div>
                   <button
                     type="submit"
-                    className="bg-[#7C87f2] group flex w-full justify-center rounded-md py-2 px-4 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                    className="bg-[#7C87f2] w-full group flex w-full justify-center rounded-md py-2 px-4 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                   >
                     <span class="absolute inset-y-0 left-0 flex items-center pl-3">
                       <path

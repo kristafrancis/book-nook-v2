@@ -10,14 +10,14 @@ import Layout from "../components/Layout/home";
 
 const Signup = () => {
 
-    const [formState, setFormState] = useState({ username: '', email: '', password: '' });
-  const [addUser, { error }] = useMutation(ADD_USER);
+    const [formState, setUserFormState] = useState({ username: '', email: '', password: '' });
+  const [addUser] = useMutation(ADD_USER);
 
   // update state based on form input changes
   const handleInputChange = (event) => {
     const { name, value } = event.target;
 
-    setFormState({
+    setUserFormState({
       ...formState,
       [name]: value,
     });
@@ -27,20 +27,30 @@ const Signup = () => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
+    
+
     // use try/catch instead of promises to handle errors
   try {
     // execute addUser mutation and pass in variable data from form
-    console.log(data)
+    
     console.log(formState)
     const { data } = await addUser({
-      variables: { ...formState }
-
+      variables: { ...formState },
+      
     });
     
     Auth.login(data.addUser.token);
+    console.log(data)
   } catch (e) {
     console.error(e);
+    
   }
+  setUserFormState({
+    username: '',
+    email: '',
+    password: '',
+  });
+
   };
 
   return (
@@ -67,6 +77,22 @@ const Signup = () => {
                 ></input>{" "}
               </div>
               <div>
+                <label for="Username" className="sr-only">
+                  Username
+                </label>
+                <input
+                  id="Username"
+                  name="username"
+                  type="username"
+                  autocomplete="userame"
+                  required
+                  className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300
+              px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-non
+              focus:ring-indigo-500 sm:text-sm"
+                  placeholder="Username"
+                ></input>{" "}
+              </div>
+              <div>
                 <label for="password" className="sr-only">
                   Password
                 </label>
@@ -83,27 +109,15 @@ const Signup = () => {
               </div>
             </div>
             <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <input
-                  id="remember-me"
-                  name="remember-me"
-                  type="checkbox"
-                  className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                ></input>{" "}
-                <label
-                  for="remember-me"
-                  className="ml-2 block text-sm"
-                >
-                  Remember me
-                </label>
-              </div>
+      
+              
 
               <div className="text-sm">
                 <Link
                   to="/login"
                   className="font-medium"
                 >
-                  Already have an account? Log in.
+                 Already have an account? Log in.
                 </Link>
               </div>
             </div>
