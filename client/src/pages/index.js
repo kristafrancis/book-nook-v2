@@ -1,9 +1,32 @@
 import * as React from "react";
 import { Link } from 'gatsby';
 import HomeLayout from '../components/home-layout';
+import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
+import client from '../gatsby-plugin-apollo/client'
+
+//const httpLink = createHttpLink({
+ // uri: '/graphql',
+//});
+
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem('id_token');
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
+
+//const client = new ApolloClient({
+ // link: authLink.concat(httpLink),
+ // cache: new InMemoryCache(),
+//});
 
 const IndexPage = () => {
   return (
+    <ApolloProvider client={client}>
     <HomeLayout pageTitle="Travel to the stars, read!">
       <h2 class="text-4xl font-normal pb-2">Make friends with a book!</h2>  
         <p className="pb-4 text-left">
@@ -23,6 +46,7 @@ const IndexPage = () => {
             </Link>
         </div>
     </HomeLayout>
+    </ApolloProvider>
   );
 };
 
