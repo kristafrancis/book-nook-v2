@@ -3,4 +3,5 @@ server/node_modules
 public
 .cache
 .DS_Store
-.vscode
+.vscodeserver
+node_modules

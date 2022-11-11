@@ -5,7 +5,26 @@ import "../../styles/global.css";
 import BgImg from "../../images/bg.png";
 import CatImg from "../../images/animals/cat.png";
 // import HedgehogImg from "../../images/animals/hedgehog.png";
+import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
 
+const httpLink = createHttpLink({
+  uri: '/graphql',
+});
+
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem('id_token');
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
+const client = new ApolloClient({
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache(),
+});
 const HomeLayout = ({ pageTitle, children }) => {
   const style1 = useSpring({
     from: { opacity: 0, marginTop: -100 },
@@ -14,7 +33,7 @@ const HomeLayout = ({ pageTitle, children }) => {
   });
 
   return (
-    <>
+    <ApolloProvider client={client}>
       <title>Book Nook | {pageTitle}</title>
       <header>
         <div
@@ -41,7 +60,7 @@ const HomeLayout = ({ pageTitle, children }) => {
           &copy; {new Date().getFullYear()} The Spice Girls, LLC.
         </p>
       </footer>
-    </>
+    </ApolloProvider>
   );
 };
 
