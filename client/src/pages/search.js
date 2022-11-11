@@ -66,13 +66,14 @@ const Search = () => {
   //function to save book to db 
   const handleSavedBook = async(bookId) => {
     const bookToSave = searchedBooks.find((book) => book.bookId === bookId);
+    console.log({bookToSave})
 
     //token
-    const token = Auth.loggedIn() ? Auth.getToken() : null;
+    // const token = Auth.loggedIn() ? Auth.getToken() : null;
 
-    if (!token) {
-      return false;
-    }
+    // if (!token) {
+    //   return false;
+    // }
 
     try {
       await saveBook({
@@ -144,16 +145,30 @@ const Search = () => {
           </div>
         </div>
         {/* END SEARCH INPUT */}
-        <div>
-          <h2>
-            {searchedBooks.length
-            ? `${searchedBooks.length}`
-            : `something here`
-            }
-          </h2>
+        <div class='bookcard'>
           {searchedBooks.map((book) => {
-           
-
+            return (
+              <div key={book.bookId}>
+                {book.image ? (
+                  <img src={book.image} alt={`Cover of ${book.title}`}></img>
+                ): null }
+                <div class='cardBody'>
+                  <h1>{book.title}</h1>
+                  <p> Authors: {book.authors}</p>
+                  <p>Description: {book.description}</p>
+                  {/* {Auth.loggedIn() && ( */}
+                    <button class='btn md:btn-lg'
+                      disabled={savedBookIds?.some((savedBookId) => savedBookId === book.bookId)}
+                      onClick={() => handleSavedBook(book.bookId)}>
+                        {savedBookIds?.some((savedBookId) => savedBookId === book.bookId)
+                        ? 'This book has already been saved'
+                        : 'Save this book'}
+                        </button>
+                        
+                    {/* )} */}
+                  </div>
+                </div>
+            )
           })}
         </div>
 
