@@ -13,6 +13,7 @@ import { saveBookIds, getSavedBookIds } from "../utils/localStorage";
 import { useMutation } from '@apollo/client';
 
 
+
 // import icons
 import { GiArchiveResearch } from "@react-icons/all-files/gi/GiArchiveResearch";
 import { GiSpellBook } from "@react-icons/all-files/gi/GiSpellBook";
@@ -104,6 +105,7 @@ const Search = () => {
                 <div class="relative flex h-16 justify-between">
                   <div class="relative z-0 flex flex-1 items-center justify-center px-2 sm:absolute sm:inset-0">
                     <div class="w-full sm:max-w-xs">
+                      <form class='search' onSubmit={handleFormSubmit}>
                       <label for="search" class="sr-only">
                         Search
                       </label>
@@ -123,14 +125,17 @@ const Search = () => {
                             />
                           </svg>
                         </div>
-                        <input
+                        <input 
                           id="search"
                           name="search"
+                          value={searchInput}
+                          onChange = {(e) => setSearchInput(e.target.value)}
                           class="block w-full rounded-md border border-gray-300 bg-white py-2 pl-10 pr-3 text-sm placeholder-gray-500 focus:border-teal-400 focus:text-gray-900 focus:placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-teal-400 sm:text-2xl"
                           placeholder="Search"
-                          type="search"
+                          type="text"
                         ></input>
                       </div>
+                      </form>
                     </div>
                   </div>
                 </div>
@@ -139,6 +144,18 @@ const Search = () => {
           </div>
         </div>
         {/* END SEARCH INPUT */}
+        <div>
+          <h2>
+            {searchedBooks.length
+            ? `${searchedBooks.length}`
+            : `something here`
+            }
+          </h2>
+          {searchedBooks.map((book) => {
+           
+
+          })}
+        </div>
 
         {/* START BOOK NOOK INFO CONTAINER */}
         <div className="max-w-screen-lg w-full mb-8 grid px-4 sm:grid-cols-3 mx-auto">
