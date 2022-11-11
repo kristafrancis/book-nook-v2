@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import { Link } from "gatsby";
 import { useMutation } from '@apollo/client';
 import HomeLayout from "../components/home-layout";
+import { USER_LOGIN } from '../utils/mutations';
 import Auth from "../utils/auth";
 
 const Login = () => {
     const [userFormData, setUserFormData] = useState({ email: '', password: '' });
     const [validated] = useState(false);
-    const [loginUser] = useMutation(loginUser);
+    const [loginUser] = useMutation(USER_LOGIN);
     
   
     const handleInputChange = (event) => {
