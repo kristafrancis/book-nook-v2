@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 // import components
 import DashboardLayout from "../components/dashboard-layout";
@@ -6,6 +6,12 @@ import DashHeroImg from "../images/dashboard-hero.png";
 import FeedLayout from "../components/feed-layout";
 import DashHeroReadingImg from "../images/dashboard-hero-reading.png";
 import Footer from "../components/footer";
+import { googleBookSearch } from "../utils/API";
+import Auth from '../utils/auth';
+import { SAVE_BOOK } from "../utils/mutations";
+import { saveBookIds, getSavedBookIds } from "../utils/localStorage";
+import { useMutation } from '@apollo/client';
+
 
 // import icons
 import { GiArchiveResearch } from "@react-icons/all-files/gi/GiArchiveResearch";
@@ -13,6 +19,71 @@ import { GiSpellBook } from "@react-icons/all-files/gi/GiSpellBook";
 import { WiStars } from "@react-icons/all-files/wi/WiStars";
 
 const Search = () => {
+  const [searchedBooks, setSearchedBooks] = useState([]);
+  const [searchInput, setSearchInput] = useState('');
+
+  const [savedBookIds, setSavedBookIds] = useState(getSavedBookIds());
+
+  const [saveBook] = useMutation(SAVE_BOOK);
+
+  useEffect(() => {
+    return () => saveBookIds(savedBookIds);
+  });
+
+  //search books method and set state on form submit
+  const handleFormSubmit = async(event) => {
+    event.preventDefault();
+
+    if(!searchInput) {
+      return false;
+    }
+
+    try {
+      const response = await googleBookSearch(searchInput);
+
+      if(!response.ok) {
+        throw new Error('Something went Wrong!');
+      }
+      const { items } = await response.json();
+
+      const bookData = items.map((book) => ({
+        bookId: book.id, 
+        authors: book.volumeInfo.authors || ['No author to display'],
+        title: book.volumeInfo.title,
+        description: book.volumeInfo.description,
+        image:book.volumeInfo.imageLinks?.thumbnail || '',
+      }));
+
+      setSearchedBooks(bookData);
+      setSearchInput('');
+
+    } catch (err) {
+      console.err(err);
+    }
+  };
+
+  //function to save book to db 
+  const handleSavedBook = async(bookId) => {
+    const bookToSave = searchedBooks.find((book) => book.bookId === bookId);
+
+    //token
+    const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+    if (!token) {
+      return false;
+    }
+
+    try {
+      await saveBook({
+        variables: { BookInput: {...bookToSave} }
+      });
+
+      setSavedBookIds([...savedBookIds, bookToSave.bookId]);
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
   return (
     <div>
       <DashboardLayout pageTitle="Search">

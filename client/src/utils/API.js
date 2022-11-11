@@ -33,13 +33,14 @@ export const loginUser = (userData) => {
      
 
 //saveBook - //need to figure out book data 
-export const saveBook = () => {
+export const saveBook = (bookData, token) => {
     return fetch('/api/users', {
+        method: 'PUT',
         headers: {
             'Content-Type': 'application/json', 
             authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify()
+        body: JSON.stringify(bookData)
     });
 };
 
