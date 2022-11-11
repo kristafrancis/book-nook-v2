@@ -3,11 +3,18 @@ import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
 import DashboardLayout from "../components/dashboard-layout";
 import Footer from "../components/footer";
+// import { QUERY_ME } from "../utils/queries";
+// import { useQuery } from '@apollo/client';
+
+
 
 const Profile = () => {
   const [count, setCount] = useState(0);
   const options = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
   const defaultOption = options[0];
+  // const { loading, data } = useQuery(QUERY_ME);
+  // const userData = data?.me || {};
+
   return (
     <div>
       <DashboardLayout pageTitle="Profile">
