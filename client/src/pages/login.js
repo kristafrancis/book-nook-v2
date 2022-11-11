@@ -1,14 +1,17 @@
 import React from "react";
+import { Link } from "gatsby";
+
 import HomeLayout from "../components/home-layout";
 import Auth from "../utils/auth";
 
 const Login = () => {
   return (
     <HomeLayout pageTitle="Log In">
-      {/* LOGIN FORM HERE & ADD LINK TO SIGNUP PAGE */}
-      <div class="flex items-center justify-center pr-24">
+      <div class="flex items-center justify-center">
         <div class="w-full max-w-md space-y-8">
-          <form class="mt-8 space-y-6" action="#" method="POST">
+
+          {/* BEGIN LOGIN FORM */}
+          <form class="pb-8 space-y-6" action="#" method="POST">
             <input type="hidden" name="remember" value="true"></input>{" "}
             <div class="-space-y-px rounded-md shadow-sm">
               <div>
@@ -57,18 +60,18 @@ const Login = () => {
               </div>
 
               <div class="text-sm">
-                <a
-                  href="/signup"
-                  class="font-medium text-[#03cea4] hover:text-[#027bce]"
+                <Link
+                  to="/signup"
+                  className="font-medium hover:text-[#03cea4]"
                 >
                   Don't have an account? Sign up.
-                </a>
+                </Link>
               </div>
             </div>
             <div>
               <button
                 type="submit"
-                class="group relative flex w-full justify-center rounded-md border border-transparent bg-teal-400 py-2 px-4 text-sm font-medium text-white hover:bg-teal-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                class="group relative flex w-full justify-center rounded-md border border-transparent bg-teal-400 py-2 px-4 text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
               >
                 <span class="absolute inset-y-0 left-0 flex items-center pl-3">
                   <path
@@ -81,6 +84,8 @@ const Login = () => {
               </button>
             </div>
           </form>
+          {/* END LOGIN FORM */}
+
         </div>
       </div>
     </HomeLayout>
