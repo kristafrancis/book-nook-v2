@@ -2,17 +2,17 @@ import React, { useState } from "react";
 import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
 import Layout from "../components/Layout/dashboard";
-import Footer from "../components/footer";
 
 const Profile = () => {
   const [count, setCount] = useState(0);
   const options = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
   const defaultOption = options[0];
+
   return (
-    <div>
+    <>
       <Layout pageTitle="Profile">
-        <div class="min-h-full">
-          <main class="pb-10">
+          <main class="min-h-full pb-10">
+
             <div class="mx-auto max-w-3xl px-4 sm:px-6 md:flex md:items-center md:justify-between md:space-x-5 lg:max-w-7xl lg:px-8">
               <div class="flex items-center space-x-5">
                 <div class="flex-shrink-0">
@@ -322,11 +322,11 @@ const Profile = () => {
                 </div>
               </section>
             </div>
+
           </main>
-        </div>
+          
       </Layout>
-      <Footer />
-    </div>
+    </>
   );
 };
 export default Profile;

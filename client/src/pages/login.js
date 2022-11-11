@@ -103,7 +103,7 @@ const Login = () => {
                     ></input>{" "}
                     <label
                       for="remember-me"
-                      class="ml-2 block text-sm text-gray-900"
+                      class="ml-2 block text-sm"
                     >
                       Remember me
                     </label>
@@ -112,7 +112,7 @@ const Login = () => {
                   <div class="text-sm">
                     <Link
                       to="/signup"
-                      className="font-medium hover:text-[#03cea4]"
+                      className="font-medium"
                     >
                       Don't have an account? Sign up.
                     </Link>
@@ -121,7 +121,7 @@ const Login = () => {
                 <div>
                   <button
                     type="submit"
-                    class="group relative flex w-full justify-center rounded-md border border-transparent bg-teal-400 py-2 px-4 text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                    className="bg-[#7C87f2] group flex w-full justify-center rounded-md py-2 px-4 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                   >
                     <span class="absolute inset-y-0 left-0 flex items-center pl-3">
                       <path

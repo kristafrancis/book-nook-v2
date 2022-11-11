@@ -1,12 +1,13 @@
 import React from "react";
+import "../../styles/global.css";
 
-import BgImg from "../images/home/bg2.png";
-import CatImg from "../images/animals/cat.png";
-import HedgehogImg from "../images/hedgehog.png";
+import BgImg from "../../images/bg.png";
+import CatImg from "../../images/animals/cat.png";
+// import HedgehogImg from "../../images/animals/hedgehog.png";
 
 const HomeLayout = ({ pageTitle, children }) => {
   return (
-    <div>
+    <>
       <title>Book Nook | {pageTitle}</title>
       <header>
         <div
@@ -35,7 +36,7 @@ const HomeLayout = ({ pageTitle, children }) => {
           &copy; {new Date().getFullYear()} The Spice Girls, LLC.
         </p>
       </footer>
-    </div>
+    </>
   );
 };
 

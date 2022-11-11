@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import Layout from "../components/Layout/dashboard";
-import Footer from "../components/footer";
 
 const EditProfile = () => {
   const [selectedImage, setSelectedImage] = useState(null);
 
   return (
-    <div>
+    <>
       <Layout pageTitle="Edit Profile">
+
         <main class="flex-1">
           <div class="relative mx-auto max-w-4xl md:px-8 xl:px-0">
             <div class="pt-10 pb-16">
@@ -142,9 +142,9 @@ const EditProfile = () => {
             </div>
           </div>
         </main>
+
       </Layout>
-      <Footer />
-    </div>
+    </>
   );
 };
 export default EditProfile;
