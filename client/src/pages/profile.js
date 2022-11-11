@@ -7,6 +7,7 @@ import Footer from "../components/footer";
 // import { useQuery } from '@apollo/client';
 
 
+import Layout from "../components/Layout/dashboard";
 
 const Profile = () => {
   const [count, setCount] = useState(0);
@@ -16,10 +17,10 @@ const Profile = () => {
   // const userData = data?.me || {};
 
   return (
-    <div>
-      <DashboardLayout pageTitle="Profile">
-        <div class="min-h-full">
-          <main class="pb-10">
+    <>
+      <Layout pageTitle="Profile">
+          <main class="min-h-full pb-10">
+
             <div class="mx-auto max-w-3xl px-4 sm:px-6 md:flex md:items-center md:justify-between md:space-x-5 lg:max-w-7xl lg:px-8">
               <div class="flex items-center space-x-5">
                 <div class="flex-shrink-0">
@@ -329,11 +330,11 @@ const Profile = () => {
                 </div>
               </section>
             </div>
+
           </main>
-        </div>
-      </DashboardLayout>
-      <Footer />
-    </div>
+          
+      </Layout>
+    </>
   );
 };
 export default Profile;
