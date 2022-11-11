@@ -18,6 +18,12 @@ module.exports = {
       options: {
         uri: 'https://example.com/graphql'
       }
-    }
+    },
+    `gatsby-source-mongodb`,
+    {
+    resolve: `gatsby-source-mongodb`,
+      options: { dbName: `local`, collection: `documents` },
+      query: { documents: { as_of: { $gte: 1604397088013 } } },
+  }
   ],
 };
