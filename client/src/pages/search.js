@@ -70,7 +70,7 @@ const Search = () => {
               class="p-2 rounded-lg text-amber-500 hover:text-amber-700  font-semibold mr-6"
               href="#Trending"
             >
-              Or see what's trending!
+              Or see what others are reading!
             </AnchorLink>
           </div>
         </div>
