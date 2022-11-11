@@ -3,6 +3,7 @@ import { Link } from "gatsby";
 import "../../styles/global.css";
 import BgImg from "../../images/bg.png";
 import AnchorLink from "react-anchor-link-smooth-scroll";
+import Burger from "../Burger/Burger"
 
 const Dashboard = ({ pageTitle, children }) => {
   return (
@@ -23,35 +24,9 @@ const Dashboard = ({ pageTitle, children }) => {
             Book<span className="text-[#7286ff]">Nook</span>
             </Link>
           </h1>
-          <ul className="h-full flex items-center list-none z-[5] uppercase tracking-widest">
-            {/* NAVIGATION LINKS HERE */}
+      
+<Burger />
 
-            <AnchorLink
-              class="bg-[#090c26e2] p-2 rounded-lg text-amber-500 hover:text-amber-700  font-semibold mr-6"
-              href="#Trending"
-            >
-              Trending
-            </AnchorLink>
-            <a
-              class="bg-[#090c26ec] px-4 py-2 rounded font-semibold mr-6"
-              href="/search"
-            >
-              Search
-            </a>
-
-            <a
-              class="bg-[#090c26e2] p-2 rounded-lg   font-semibold mr-6"
-              href="/profile"
-            >
-              Profile
-            </a>
-            <a
-              class="bg-[#090c26e2] px-4 py-2 rounded font-semibold mr-6"
-              href="#"
-            >
-              Logout
-            </a>
-          </ul>
         </div>
       </nav>
 
