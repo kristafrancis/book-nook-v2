@@ -1,4 +1,3 @@
-//save book to local storage (sam)
 export const getSavedBookIds = () => {
     const savedIds = localStorage.getItem('books_saved')
     ? JSON.parse(localStorage.getItem('books_saved'))

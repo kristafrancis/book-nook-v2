@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
-import DashboardLayout from "../components/dashboard-layout";
-import Footer from "../components/footer";
+
 // import { QUERY_ME } from "../utils/queries";
 // import { useQuery } from '@apollo/client';
 

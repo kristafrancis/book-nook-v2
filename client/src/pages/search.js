@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 // import components
 import Layout from "../components/Layout/dashboard";
-import Feed from "../components/feed";
+// import Feed from "../components/feed";
 import HedgehogImg from "../images/animals/hedgehog.png";
 import { googleBookSearch } from "../utils/API";
 import Auth from '../utils/auth';
@@ -164,7 +164,7 @@ const Search = () => {
         </div>
         {/* END GOOGLE BOOKS API */}
 
-        <Feed />
+        {/* <Feed /> */}
 
       </Layout>
     </>
