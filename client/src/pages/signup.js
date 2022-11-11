@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "gatsby";
+//import React from "react";
+//import { Link } from "gatsby";
 import React, {useState} from "react";
 import { Link } from "gatsby";
 
@@ -14,7 +14,7 @@ const Signup = () => {
   const [addUser, { error }] = useMutation(ADD_USER);
 
   // update state based on form input changes
-  const handleChange = (event) => {
+  const handleInputChange = (event) => {
     const { name, value } = event.target;
 
     setFormState({
@@ -30,12 +30,13 @@ const Signup = () => {
     // use try/catch instead of promises to handle errors
   try {
     // execute addUser mutation and pass in variable data from form
+    console.log(data)
     console.log(formState)
     const { data } = await addUser({
       variables: { ...formState }
 
     });
-    console.log(data)
+    
     Auth.login(data.addUser.token);
   } catch (e) {
     console.error(e);
@@ -73,33 +74,34 @@ const Signup = () => {
                   id="password"
                   name="password"
                   type="password"
-                  autocomplete="current-password"
+                  onChange={handleInputChange}
+                //value={userFormData.password}
                   required
-                  classNameNameName="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                  className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                   placeholder="Password"
                 ></input>{" "}
               </div>
             </div>
-            <div classNameName="flex items-center justify-between">
-              <div classNameName="flex items-center">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center">
                 <input
                   id="remember-me"
                   name="remember-me"
                   type="checkbox"
-                  classNameName="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                  className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
                 ></input>{" "}
                 <label
                   for="remember-me"
-                  classNameName="ml-2 block text-sm text-gray-900"
+                  className="ml-2 block text-sm text-gray-900"
                 >
                   Remember me
                 </label>
               </div>
 
-              <div classNameName="text-sm">
+              <div className="text-sm">
                 <Link
                   to="/login"
-                  classNameName="font-medium hover:text-[#03cea4]"
+                  className="font-medium hover:text-[#03cea4]"
                 >
                   Already have an account? Log in.
                 </Link>
