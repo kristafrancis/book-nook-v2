@@ -9,7 +9,8 @@ import { googleBookSearch } from "../utils/API";
 import Auth from "../utils/auth";
 import { SAVE_BOOK } from "../utils/mutations";
 import { saveBookIds, getSavedBookIds } from "../utils/localStorage";
-import { useMutation } from "@apollo/client";
+import { useMutation } from '@apollo/client';
+import AnchorLink from "react-anchor-link-smooth-scroll";
 
 const Search = () => {
   const [searchedBooks, setSearchedBooks] = useState([]);
@@ -139,13 +140,15 @@ const Search = () => {
                           type="text"
                         ></input>
                       </div>
-                    </form>
+                      </form>
+                      <AnchorLink class="flex justify-center" href="#Trending">Or see what others are reading!</AnchorLink>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        
         {/* END SEARCH INPUT */}
 
         {/* GOOGLE BOOKS API */}

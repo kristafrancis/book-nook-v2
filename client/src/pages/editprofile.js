@@ -8,11 +8,11 @@ const EditProfile = () => {
     <>
       <Layout pageTitle="Edit Profile">
 
-        <main class="flex-1">
+        <main class="flex-1 bg-slate-900">
           <div class="relative mx-auto max-w-4xl md:px-8 xl:px-0">
             <div class="pt-10 pb-16">
               <div class="px-4 sm:px-6 md:px-0">
-                <h1 class="text-3xl font-bold tracking-tight text-gray-900">
+                <h1 class="text-3xl font-bold tracking-tight">
                   Settings
                 </h1>
               </div>
@@ -44,7 +44,7 @@ const EditProfile = () => {
 
                         <a
                           href="#"
-                          class="border-transparent hover:border-gray-300 hover:text-gray-700 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm"
+                          class="border-transparent whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm"
                         >
                           Password
                         </a>
@@ -54,10 +54,10 @@ const EditProfile = () => {
 
                   <div class="mt-10 divide-y divide-gray-200">
                     <div class="space-y-1">
-                      <h3 class="text-lg font-medium leading-6 text-gray-900">
+                      <h3 class="text-lg font-medium leading-6">
                         Profile
                       </h3>
-                      <p class="max-w-2xl text-sm text-gray-500">
+                      <p class="max-w-2xl text-sm">
                         This information will be displayed publicly so be
                         careful what you share.
                       </p>
@@ -65,15 +65,15 @@ const EditProfile = () => {
                     <div class="mt-6">
                       <dl class="divide-y divide-gray-200">
                         <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5">
-                          <dt class="text-sm font-medium text-gray-500">
+                          <dt class="text-sm font-medium">
                             Name
                           </dt>
-                          <dd class="mt-1 flex text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                          <dd class="mt-1 flex text-sm sm:col-span-2 sm:mt-0">
                             <span class="flex-grow">Bob Joe</span>
                             <span class="ml-4 flex-shrink-0">
                               <button
                                 type="button"
-                                class="rounded-md bg-white font-medium text-blue-900  hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-900  focus:ring-offset-2"
+                                class="rounded-md font-medium hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-900  focus:ring-offset-2"
                               >
                                 Update
                               </button>
@@ -81,10 +81,10 @@ const EditProfile = () => {
                           </dd>
                         </div>
                         <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:pt-5">
-                          <dt class="text-sm font-medium text-gray-500">
+                          <dt class="text-sm font-medium">
                             Photo
                           </dt>
-                          <dd class="mt-1 flex text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                          <dd class="mt-1 flex text-sm sm:col-span-2 sm:mt-0">
                             <span class="flex-grow">
                               <img
                                 class="h-16 w-16 rounded-full"
@@ -100,16 +100,16 @@ const EditProfile = () => {
                                   console.log(event.target.files[0]);
                                   setSelectedImage(event.target.files[0]);
                                 }}
-                                class="rounded-md bg-white font-medium text-blue-900 hover:text-text-blue-700  focus:outline-none focus:ring-2 focus:ring-blue-900 focus:ring-offset-2"
+                                class="rounded-md font-medium hover:text-text-blue-700 bg-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-900 focus:ring-offset-2"
                               >
                                 Update
                               </button>
-                              <span class="text-gray-300" aria-hidden="true">
+                              <span class="" aria-hidden="true">
                                 |
                               </span>
                               <button
                                 type="button"
-                                class="rounded-md bg-white font-medium text-blue-900  hover:text-text-blue-700  focus:outline-none focus:ring-2 focus:ring-blue-900 focus:ring-offset-2"
+                                class="rounded-md font-medium hover:text-text-blue-700  focus:outline-none focus:ring-2 focus:ring-blue-900 focus:ring-offset-2"
                               >
                                 Remove
                               </button>
@@ -117,17 +117,17 @@ const EditProfile = () => {
                           </dd>
                         </div>
                         <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:pt-5">
-                          <dt class="text-sm font-medium text-gray-500">
+                          <dt class="text-sm font-medium">
                             Email
                           </dt>
-                          <dd class="mt-1 flex text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                          <dd class="mt-1 flex text-sm sm:col-span-2 sm:mt-0">
                             <span class="flex-grow">
                               bob.joe@spicegirls.com
                             </span>
                             <span class="ml-4 flex-shrink-0">
                               <button
                                 type="button"
-                                class="rounded-md bg-white font-medium text-blue-900 hover:text-text-blue-700  focus:outline-none focus:ring-2 focus:ring-blue-900 focus:ring-offset-2"
+                                class="rounded-md font-medium hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-900 focus:ring-offset-2"
                               >
                                 Update
                               </button>

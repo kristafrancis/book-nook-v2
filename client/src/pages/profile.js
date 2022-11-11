@@ -18,7 +18,7 @@ const Profile = () => {
   return (
     <>
       <Layout pageTitle="Profile">
-          <main class="min-h-full pb-10">
+          <main class="min-h-full pb-10 mx-32">
 
             <div class="mx-auto max-w-3xl px-4 sm:px-6 md:flex md:items-center md:justify-between md:space-x-5 lg:max-w-7xl lg:px-8">
               <div class="flex items-center space-x-5">
@@ -36,7 +36,7 @@ const Profile = () => {
                   </div>
                 </div>
                 <div>
-                  <h1 class="text-2xl font-bold text-gray-900">Username</h1>
+                  <h1 class="text-2xl font-semibold">Username</h1>
                   <p class="text-sm font-medium text-gray-500">Bob Joe</p>
                 </div>
               </div>
@@ -44,7 +44,7 @@ const Profile = () => {
                 <a href="/editprofile">
                   <button
                     type="button"
-                    class="inline-flex items-center justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100"
+                    class="inline-flex items-center justify-center rounded-md border border-gray-300 bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -74,7 +74,7 @@ const Profile = () => {
             <div class="mx-auto mt-8 grid max-w-3xl grid-cols-1 gap-6 sm:px-6 lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-3">
               <div class="space-y-6 lg:col-span-2 lg:col-start-1">
                 <section>
-                  <div class="bg-white px-4 py-5 shadow sm:rounded-lg sm:px-6">
+                  <div class="bg-slate-900 px-4 py-5 shadow sm:rounded-lg sm:px-6">
                     <div class="text-center pb-8 font-['poppins'] text-2xl font-medium text-[#345995] inline-flex w-full justify-center items-center">
                       Your goal is
                       <Dropdown
@@ -147,7 +147,7 @@ const Profile = () => {
                   </div>
                   <div class="py-2"></div>
 
-                  <div class="bg-white shadow sm:rounded-lg ">
+                  <div class="bg-slate-900 shadow sm:rounded-lg ">
                     <div class="px-4 py-5 sm:px-6">
                       <h2 className="pb-4 text-4xl font-medium drop-shadow-md">
                         Reading List
@@ -242,7 +242,7 @@ const Profile = () => {
                     <div>
                       <a
                         href="/search"
-                        class="cursor-pointer block bg-gray-50 px-4 py-4 text-center text-sm font-medium hover:text-blue-900 sm:rounded-b-lg"
+                        class="cursor-pointer block bg-sky-100 px-4 py-4 text-center text-blue-900 font-medium hover:text-blue-900 sm:rounded-b-lg"
                       >
                         Add to list
                       </a>
@@ -254,8 +254,8 @@ const Profile = () => {
               <section class="lg:col-span-1 lg:col-start-3">
                 {/* FRIENDS */}
 
-                <div class="bg-white px-4 py-5 shadow sm:rounded-lg sm:px-6">
-                  <h2 class="text-lg font-medium text-gray-900">
+                <div class="bg-slate-900 px-4 py-5 shadow sm:rounded-lg sm:px-6">
+                  <h2 class="text-lg font-medium">
                     Friends List
                   </h2>
 
@@ -271,10 +271,10 @@ const Profile = () => {
                             ></img>
                           </div>
                           <div class="ml-4">
-                            <div class="font-medium text-gray-900">
+                            <div class="font-medium">
                               Lindsay Walton
                             </div>
-                            <div class="text-gray-500">Username</div>
+                            <div class="text-teal-400">Username</div>
                           </div>
                         </div>
                       </td>
@@ -290,10 +290,10 @@ const Profile = () => {
                             ></img>
                           </div>
                           <div class="ml-4">
-                            <div class="font-medium text-gray-900">
+                            <div class="font-medium">
                               Lindsay Walton
                             </div>
-                            <div class="text-gray-500">Username</div>
+                            <div class="text-teal-400">Username</div>
                           </div>
                         </div>
                       </td>
@@ -309,10 +309,10 @@ const Profile = () => {
                             ></img>
                           </div>
                           <div class="ml-4">
-                            <div class="font-medium text-gray-900">
+                            <div class="font-medium">
                               Lindsay Walton
                             </div>
-                            <div class="text-gray-500">Username</div>
+                            <div class="text-teal-400">Username</div>
                           </div>
                         </div>
                       </td>

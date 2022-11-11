@@ -11,25 +11,31 @@ const MenuStyled = ({ open }) => (
           aria-labelledby="options-menu"
         >
           <div class="rounded-lg pb-3 pt-3">
-          <a
-              class="bg-[#090c26ec] px-4 py-2 rounded font-semibold mr-6"
+            <a
               href="/search"
+              class="block px-4 py-2 text-lg leading-5 font-semibold hover:bg-teal-50 hover:pl-8 text-indigo-500 hover:text-[#7286ff]"
+              role="menuitem"
             >
               Search
             </a>
 
             <a
-              class="bg-[#090c26e2] p-2 rounded-lg   font-semibold mr-6"
               href="/profile"
+              class="block px-4 py-2 text-lg leading-5 font-semibold hover:bg-teal-50 hover:pl-8 text-indigo-500 hover:text-[#7286ff]"
+              role="menuitem"
             >
               Profile
             </a>
+
             <a
-              class="bg-[#090c26e2] px-4 py-2 rounded font-semibold mr-6"
               href="#"
+              class="block px-4 py-2 text-lg leading-5 font-semibold hover:bg-teal-50 hover:pl-8 text-indigo-500  hover:text-[#7286ff]"
+              role="menuitem"
             >
-              Logout
+              Sign Out
             </a>
+
+         
           </div>
         </div>
       </div>
