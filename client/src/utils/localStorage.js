@@ -1,5 +1,5 @@
 //save book to local storage (sam)
-export const getIds = () => {
+export const getSavedBookIds = () => {
     const savedIds = localStorage.getItem('books_saved')
     ? JSON.parse(localStorage.getItem('books_saved'))
     : [];
@@ -7,7 +7,7 @@ export const getIds = () => {
     return savedIds;
 };
 
-export const saveIds = (bookIdArr) => {
+export const saveBookIds = (bookIdArr) => {
     if (bookIdArr.length) {
         localStorage.setItem('books_saved', JSON.stringify(bookIdArr));
     } else {
@@ -15,7 +15,7 @@ export const saveIds = (bookIdArr) => {
     }
 };
 
-export const removeId = (bookId) => {
+export const removeBookId = (bookId) => {
     const savedIds = localStorage.getItem('books_saved')
     ? JSON.parse(localStorage.getItem('books_saved'))
     : null;

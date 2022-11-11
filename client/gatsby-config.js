@@ -12,5 +12,12 @@ module.exports = {
         display: "swap",
       },
     },
+    `gatsby-plugin-apollo`,
+    {
+      resolve: 'gatsby-plugin-apollo',
+      options: {
+        uri: 'https://example.com/graphql'
+      }
+    }
   ],
 };
