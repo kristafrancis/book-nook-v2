@@ -9,6 +9,7 @@ import Auth from '../utils/auth';
 import { SAVE_BOOK } from "../utils/mutations";
 import { saveBookIds, getSavedBookIds } from "../utils/localStorage";
 import { useMutation } from '@apollo/client';
+import AnchorLink from "react-anchor-link-smooth-scroll";
 
 const Search = () => {
   const [searchedBooks, setSearchedBooks] = useState([]);
@@ -127,6 +128,7 @@ const Search = () => {
                         ></input>
                       </div>
                       </form>
+                      <AnchorLink class="flex justify-center" href="#Trending">Or see what others are reading!</AnchorLink>
                     </div>
                   </div>
                 </div>

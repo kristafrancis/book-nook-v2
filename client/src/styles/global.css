@@ -23,7 +23,7 @@
   a,
   a:active,
   a:visited {
-    @apply text-[#6bfbce];
+    /* @apply text-[#6bfbce]; */
     @apply transition-all;
     @apply ease-in;
     @apply duration-300;

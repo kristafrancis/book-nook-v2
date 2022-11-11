@@ -15,20 +15,24 @@ const Dashboard = ({ pageTitle, children }) => {
           style={{ backgroundImage: `url(${BgImg})` }}
         ></div>
         {/* DELETE THIS COMMENT LATER */}
+        
       </header>
 
       <nav>
         <div className="w-[80%] my-8 flex justify-between items-center mx-auto">
-          <h1 className="font-light drop-shadow-lg py-4 text-5xl md:text-7xl">
+          <h1 className="font-medium drop-shadow-lg py-4 text-5xl md:text-7xl">
             <Link to="/search" className="hover:text-[#7286ff]">
-            Book<span className="text-[#7286ff]">Nook</span>
+            book<span className="text-[#7286ff]">nook</span>
             </Link>
           </h1>
       
-<Burger />
+      
+          <Burger />
+
 
         </div>
       </nav>
+
 
       <main className="z-[5] pb-5">{children}</main>
 
