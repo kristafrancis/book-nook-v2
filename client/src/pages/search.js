@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 // import components
-import DashboardLayout from "../components/dashboard-layout";
+import Layout from "../components/Layout/dashboard";
 import DashHeroImg from "../images/dashboard-hero.png";
 import FeedLayout from "../components/feed-layout";
 import DashHeroReadingImg from "../images/dashboard-hero-reading.png";
@@ -88,7 +88,7 @@ const Search = () => {
 
   return (
     <div>
-      <DashboardLayout pageTitle="Search">
+      <Layout pageTitle="Search">
         <div
           className="bg-[#fafbfd] bg-center bg-cover relative w-full h-full z-0"
           style={{ backgroundImage: `url(${DashHeroImg})` }}
@@ -209,7 +209,7 @@ const Search = () => {
           </div>
         </div>
         {/* END BOOK NOOK INFO CONTAINER */}
-      </DashboardLayout>
+      </Layout>
       <FeedLayout />
       <Footer />
     </div>

@@ -2,11 +2,11 @@
 //import { Link } from "gatsby";
 import React, {useState} from "react";
 import { Link } from "gatsby";
-
-import HomeLayout from "../components/home-layout";
 import { useMutation } from '@apollo/client';
+
 import { ADD_USER } from '../utils/mutations';
 import Auth from "../utils/auth";
+import Layout from "../components/Layout/home";
 
 const Signup = () => {
 
@@ -44,7 +44,7 @@ const Signup = () => {
   };
 
   return (
-    <HomeLayout pageTitle="Sign Up">
+    <Layout pageTitle="Sign Up">
       <div className="flex items-center justify-center">
         <div className="w-full max-w-md space-y-8">
 
@@ -127,7 +127,7 @@ const Signup = () => {
 
         </div>
       </div>
-    </HomeLayout>
+    </Layout>
   );
 };
 

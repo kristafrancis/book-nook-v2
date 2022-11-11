@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
-import DashboardLayout from "../components/dashboard-layout";
+import Layout from "../components/Layout/dashboard";
 import Footer from "../components/footer";
 
 const Profile = () => {
@@ -10,7 +10,7 @@ const Profile = () => {
   const defaultOption = options[0];
   return (
     <div>
-      <DashboardLayout pageTitle="Profile">
+      <Layout pageTitle="Profile">
         <div class="min-h-full">
           <main class="pb-10">
             <div class="mx-auto max-w-3xl px-4 sm:px-6 md:flex md:items-center md:justify-between md:space-x-5 lg:max-w-7xl lg:px-8">
@@ -324,7 +324,7 @@ const Profile = () => {
             </div>
           </main>
         </div>
-      </DashboardLayout>
+      </Layout>
       <Footer />
     </div>
   );

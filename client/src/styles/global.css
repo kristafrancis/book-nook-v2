@@ -6,9 +6,9 @@
 
 @layer base {
   body {
-    @apply bg-[#fafbfd];
+    @apply bg-[#22274f];
     @apply font-['Karla'];
-    @apply text-[#333];
+    @apply text-gray-200;
     @apply text-lg;
     @apply leading-loose;
   }
@@ -17,24 +17,24 @@
   h2,
   h3 {
     @apply font-['Poppins'];
-    @apply text-[#345995];
+    @apply text-[#6bfbce];
   }
 
   a,
   a:active,
   a:visited {
-    @apply text-[#027bce];
+    @apply text-[#6bfbce];
     @apply transition-all;
     @apply ease-in;
     @apply duration-300;
   }
 
   a:hover {
-    @apply text-teal-400;
+    @apply text-[#7286ff];
   }
 
   button {
-    @apply bg-teal-400;
+    @apply bg-[#7C87f2];
     @apply uppercase;
     @apply text-white;
     @apply tracking-widest;
@@ -44,7 +44,7 @@
   }
 
   button:hover {
-    @apply bg-teal-300;
+    @apply bg-indigo-600;
   }
 }
 

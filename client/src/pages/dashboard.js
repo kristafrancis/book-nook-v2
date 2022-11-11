@@ -1,9 +1,9 @@
 import React from "react";
-import DashboardLayout from "../components/dashboard-layout";
+import Layout from "../components/Layout/dashboard";
 
 const Dashboard = () => {
   return (
-    <DashboardLayout pageTitle="Dashboard">
+    <Layout pageTitle="Dashboard">
       <div className="">
         <div className="w-[85%] mx-auto pb-4 grid grid-cols-1 md:grid-cols-3 gap-4">
           {/* DYNAMICALLY CREATE CARDS HERE */}
@@ -39,7 +39,7 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
-    </DashboardLayout>
+    </Layout>
   );
 };
 export default Dashboard;
