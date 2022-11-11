@@ -24,11 +24,11 @@ const HomeLayout = ({ pageTitle, children }) => {
       </header>
 
       <main className="w-full h-full relative flex flex-col justify-center items-center">
-        <animated.div style={style1}>
+        {/* <animated.div style={style1}> */}
           <div className="flex flex-col justify-center items-center">
             <img src={CatImg} className="mt-20 w-[250px]" />
           </div>
-        </animated.div>
+        {/* </animated.div> */}
         <h1 className="font-medium drop-shadow-lg pb-8 text-6xl md:text-8xl md:mt-10">
           Book<span className="text-[#7286ff]">Nook</span>
         </h1>
