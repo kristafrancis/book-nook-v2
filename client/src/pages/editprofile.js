@@ -1,14 +1,13 @@
 import React, { useState } from "react";
-import { Link } from "gatsby";
-import DashboardLayout from "../components/dashboard-layout";
-import Footer from "../components/footer";
+import Layout from "../components/Layout/dashboard";
 
 const EditProfile = () => {
   const [selectedImage, setSelectedImage] = useState(null);
 
   return (
-    <div>
-      <DashboardLayout pageTitle="Edit Profile">
+    <>
+      <Layout pageTitle="Edit Profile">
+
         <main class="flex-1">
           <div class="relative mx-auto max-w-4xl md:px-8 xl:px-0">
             <div class="pt-10 pb-16">
@@ -143,9 +142,9 @@ const EditProfile = () => {
             </div>
           </div>
         </main>
-      </DashboardLayout>
-      <Footer />
-    </div>
+
+      </Layout>
+    </>
   );
 };
 export default EditProfile;
