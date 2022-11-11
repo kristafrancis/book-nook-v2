@@ -5,6 +5,7 @@ import DashboardLayout from "../components/dashboard-layout";
 import DashHeroImg from "../images/dashboard-hero.png";
 import FeedLayout from "../components/feed-layout";
 import DashHeroReadingImg from "../images/dashboard-hero-reading.png";
+import AnchorLink from "react-anchor-link-smooth-scroll";
 import Footer from "../components/footer";
 
 // import icons
@@ -65,6 +66,12 @@ const Search = () => {
                 </div>
               </div>
             </div>
+            <AnchorLink
+              class="p-2 rounded-lg text-amber-500 hover:text-amber-700  font-semibold mr-6"
+              href="#Trending"
+            >
+              Or see what's trending!
+            </AnchorLink>
           </div>
         </div>
         {/* END SEARCH INPUT */}

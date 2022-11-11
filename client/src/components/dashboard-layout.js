@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "gatsby";
 import bgImg from "../images/bg.png";
 import Footer from "../components/footer";
-import AnchorLink from "react-anchor-link-smooth-scroll";
 
 const Dashboard = ({ pageTitle, children }) => {
   return (
@@ -25,12 +24,7 @@ const Dashboard = ({ pageTitle, children }) => {
           <ul className="h-full flex items-center list-none z-[5] text-base">
             {/* NAVIGATION LINKS HERE */}
 
-            <AnchorLink
-              class="bg-gray-100 p-2 rounded-lg text-amber-500 hover:text-amber-700  font-semibold mr-6"
-              href="#Trending"
-            >
-              Trending
-            </AnchorLink>
+          
             <a
               class="bg-[#f1f1f1b7] px-4 py-2 rounded font-semibold mr-6"
               href="/search"
