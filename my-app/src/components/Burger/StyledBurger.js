@@ -4,7 +4,6 @@ import { bool, func } from "prop-types";
 const StyledBurger = ({ open, setOpen }) => {
   return (
     <div className="relative z-50 hover:opacity-80">
-      <link href="/dist/output.css" rel="stylesheet"></link>
       {open ? (
         <span className="rounded-md">
           <button

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../components/Layout/dashboard";
 // import Feed from "../components/feed";
-// import HedgehogImg from "../images/animals/hedgehog.png";
+import HedgehogImg from "../images/animals/hedgehog.png";
 import { googleBookSearch } from "../utils/API";
 import Auth from "../utils/auth";
 import { SAVE_BOOK } from "../utils/mutations";
@@ -91,16 +91,16 @@ const Search = () => {
       <Layout pageTitle="Search">
         
       <div className="w-[85%] h-auto mx-auto flex flex-col justify-center items-center">
-          {/* <animated.div style={style2}>
+        
             <div className="flex flex-col justify-center items-center py-4">
               <img src={HedgehogImg} className="w-[250px]" />
             </div>
-          </animated.div>
-          <animated.div style={style3}>
+      
+       
             <h2 className="text-indigo-400 text-4xl font-medium italic drop-shadow-md">
               Travel to the stars, read!
             </h2>
-          </animated.div> */}
+       
           {/* SEARCH INPUT */}
           <div className="w-full drop-shadow-md py-8">
             <div className="mx-auto max-w-7xl px-2 sm:px-4 lg:divide-y lg:divide-gray-200 lg:px-8">
