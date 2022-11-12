@@ -1,6 +1,5 @@
 import React from "react";
 import { useSpring, animated, useTransition } from "react-spring";
-import "../../styles/global.css";
 
 import BgImg from "../../images/bg.png";
 import CatImg from "../../images/animals/cat.png";
@@ -25,6 +24,7 @@ const client = new ApolloClient({
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
+
 const HomeLayout = ({ pageTitle, children }) => {
   const style1 = useSpring({
     from: { opacity: 0, marginTop: -100 },
@@ -33,7 +33,7 @@ const HomeLayout = ({ pageTitle, children }) => {
   });
 
   return (
-    <ApolloProvider client={client}>
+    <>
       <title>Book Nook | {pageTitle}</title>
       <header>
         <div
@@ -48,9 +48,9 @@ const HomeLayout = ({ pageTitle, children }) => {
             <img src={CatImg} className="mt-20 w-[250px]" />
           </div>
         {/* </animated.div> */}
-        <h1 className="font-medium drop-shadow-lg pb-8 text-6xl md:text-8xl md:mt-10">
-          Book<span className="text-[#7286ff]">Nook</span>
-        </h1>
+          <h1 className="font-medium drop-shadow-lg pb-8 text-6xl md:text-8xl md:mt-10">
+            book<span className="text-[#7286ff]">nook</span>
+          </h1>
 
         <div className="bg-[#090c26] p-8 rounded-lg shadow-lg">{children}</div>
       </main>
@@ -60,7 +60,7 @@ const HomeLayout = ({ pageTitle, children }) => {
           &copy; {new Date().getFullYear()} The Spice Girls, LLC.
         </p>
       </footer>
-    </ApolloProvider>
+    </>
   );
 };
 

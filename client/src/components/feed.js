@@ -9,14 +9,14 @@ const Feed =
   return (
     <div>
       <div class="pb-4" id="Trending"></div>
-      <h2 class="text-4xl drop-shadow-md text-center pb-8">
+      <h2 class="text-4xl text-indigo-400 drop-shadow-md text-center pb-8">
         See what others are reading
       </h2>
 
-      <div class="mx-52 bg-slate-900 rounded-2xl drop-shadow-md">
+      <div class="mx-24 bg-[#090c26] rounded-2xl shadow-lg">
         <div class="p-10">
           <div class="-my-10">
-            <div class="flex space-x-4 text-sm text-gray-500">
+            <div class="flex space-x-4 text-md">
               <div class="flex-none py-10">
                 <img
                   src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80"
@@ -25,8 +25,8 @@ const Feed =
                 ></img>
               </div>
               <div class="flex-1 py-10">
-                <h3 class="font-medium">Book title</h3>
-                <p>Username</p>
+                <h3 class="text-3xl text-indigo-500">Book title</h3>
+                <p className="text-gray-400">Username</p>
 
                 <div class="mt-4 flex items-center">
                   <svg
@@ -101,7 +101,7 @@ const Feed =
                 </div>
                 <p class="sr-only">5 out of 5 stars</p>
 
-                <div class="prose prose-sm mt-4 max-w-none text-gray-500">
+                <div class="prose prose-sm mt-4 max-w-none">
                   <p>Comment goes here</p>
                 </div>
               </div>
