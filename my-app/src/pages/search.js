@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../components/Layout/dashboard";
-import Feed from "../components/feed";
-import HedgehogImg from "../images/animals/hedgehog.png";
+// import Feed from "../components/feed";
+// import HedgehogImg from "../images/animals/hedgehog.png";
 import { googleBookSearch } from "../utils/API";
 import Auth from "../utils/auth";
 import { SAVE_BOOK } from "../utils/mutations";
@@ -69,12 +69,11 @@ const Search = () => {
     const bookToSave = searchedBooks.find((book) => book.bookId === bookId);
     console.log({ bookToSave });
 
-    //token
-    // const token = Auth.loggedIn() ? Auth.getToken() : null;
+    const token = Auth.loggedIn() ? Auth.getToken() : null;
 
-    // if (!token) {
-    //   return false;
-    // }
+    if (!token) {
+      return false;
+    }
 
     try {
       await saveBook({
@@ -108,7 +107,7 @@ const Search = () => {
               <div className="relative flex h-16 justify-between">
                 <div className="relative z-0 flex flex-1 items-center justify-center px-2 sm:absolute sm:inset-0">
                   <div className="w-full sm:max-w-xs">
-                    <form>
+                    <form class='search' onSubmit={handleFormSubmit} >
                       <label for="search" className="sr-only">
                         Search
                       </label>
@@ -129,13 +128,13 @@ const Search = () => {
                           </svg>
                         </div>
                         <input
-                          id="search"
-                          name="search"
                           
-              
+                          name="search"
+                          value={searchInput}
+                          onChange={(e) => setSearchInput(e.target.value)}
+                          type='text'
                           className="block w-full rounded-md border border-gray-300 bg-white py-2 pl-10 pr-3 text-sm placeholder-gray-500 focus:border-teal-400 focus:text-gray-900 focus:placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-teal-400 sm:text-2xl"
                           placeholder="Search"
-                          type="text"
                         ></input>
                       </div>
                       </form>
