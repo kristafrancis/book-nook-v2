@@ -4,6 +4,7 @@
 // import { ADD_USER } from '../utils/mutations';
 // import Auth from "../utils/auth";
 // import Layout from "../components/Layout/home";
+// import * as React from "react";
 
 // const Signup = () => {
 
@@ -141,5 +142,13 @@
 //     </Layout>
 //   );
 // };
+
+// export default Signup;
+//   return (                                                                                                                                    
+// <div>signup</div>
+
+//   );
+
+
 
 // export default Signup;
