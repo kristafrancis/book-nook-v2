@@ -1,13 +1,7 @@
+
 import React, { useState } from "react";
 import Dropdown from "react-dropdown";
-import "react-dropdown/style.css";
-import { Link } from 'react-router-dom';
-
-// import { QUERY_ME } from "../utils/queries";
-// import { useQuery } from '@apollo/client';
-
-
-import Layout from "../components/Layout/dashboard";
+import Layout from "../components/Layout/home";
 
 const Profile = () => {
   const [count, setCount] = useState(0);
@@ -16,10 +10,10 @@ const Profile = () => {
   // const { loading, data } = useQuery(QUERY_ME);
   // const userData = data?.me || {};
 
-  return (
+  return (                                                                                                                                    
     <>
       <Layout pageTitle="Profile">
-      <link href="/dist/output.css" rel="stylesheet"></link>
+  
           <main class="min-h-full pb-10 mx-32">
 
             <div class="mx-auto max-w-3xl px-4 sm:px-6 md:flex md:items-center md:justify-between md:space-x-5 lg:max-w-7xl lg:px-8">
@@ -38,15 +32,15 @@ const Profile = () => {
                   </div>
                 </div>
                 <div>
-                  <h1 class="text-2xl font-semibold">Username</h1>
-                  <p class="text-sm font-medium text-gray-500">Bob Joe</p>
+                  <h1 className="text-2xl font-semibold">Username</h1>
+                  <p className="text-sm font-medium text-gray-500">Bob Joe</p>
                 </div>
               </div>
-              <div class="justify-stretch mt-6 flex flex-col-reverse space-y-4 space-y-reverse sm:flex-row-reverse sm:justify-end sm:space-y-0 sm:space-x-3 sm:space-x-reverse md:mt-0 md:flex-row md:space-x-3">
+              <div className="justify-stretch mt-6 flex flex-col-reverse space-y-4 space-y-reverse sm:flex-row-reverse sm:justify-end sm:space-y-0 sm:space-x-3 sm:space-x-reverse md:mt-0 md:flex-row md:space-x-3">
                 <a href="/editprofile">
                   <button
                     type="button"
-                    class="inline-flex items-center justify-center rounded-md border border-gray-300 bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100"
+                    className="inline-flex items-center justify-center rounded-md border border-gray-300 bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -54,7 +48,7 @@ const Profile = () => {
                       viewBox="0 0 24 24"
                       stroke-width="1.5"
                       stroke="currentColor"
-                      class="w-6 h-6"
+                      className="w-6 h-6"
                     >
                       <path
                         stroke-linecap="round"
@@ -67,17 +61,17 @@ const Profile = () => {
                         d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
                       />
                     </svg>
-                    <p class="pl-2">Edit Account</p>
+                    <p className="pl-2">Edit Account</p>
                   </button>
                 </a>
               </div>
             </div>
 
-            <div class="mx-auto mt-8 grid max-w-3xl grid-cols-1 gap-6 sm:px-6 lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-3">
-              <div class="space-y-6 lg:col-span-2 lg:col-start-1">
+            <div className="mx-auto mt-8 grid max-w-3xl grid-cols-1 gap-6 sm:px-6 lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-3">
+              <div className="space-y-6 lg:col-span-2 lg:col-start-1">
                 <section>
-                  <div class="bg-slate-900 px-4 py-5 shadow sm:rounded-lg sm:px-6">
-                    <div class="text-center pb-8 font-['poppins'] text-2xl font-medium text-[#345995] inline-flex w-full justify-center items-center">
+                  <div className="bg-slate-900 px-4 py-5 shadow sm:rounded-lg sm:px-6">
+                    <div className="text-center pb-8 font-['poppins'] text-2xl font-medium text-[#345995] inline-flex w-full justify-center items-center">
                       Your goal is
                       <Dropdown
                         className="w-[60px] text-base font-semibold ml-3 mr-4"
@@ -89,20 +83,20 @@ const Profile = () => {
                       books read!
                     </div>
 
-                    <p class="text-center text-lg text-gray-500 font-medium">
+                    <p className="text-center text-lg text-gray-500 font-medium">
                       You are currently at...
                     </p>
                     <section>
-                      <div class="mt-6 flow-root">
-                        <h2 class="animate-pulse text-center text-8xl text-amber-500 font-semibold">
+                      <div className="mt-6 flow-root">
+                        <h2 className="animate-pulse text-center text-8xl text-amber-500 font-semibold">
                           {count}
                         </h2>
                       </div>
-                      <div class="justify-center mt-6 flex grid-cols-2">
+                      <div className="justify-center mt-6 flex grid-cols-2">
                         <button
                           type="button"
                           onClick={() => setCount(count + 1)}
-                          class="cursor-pointer inline-flex items-center justify-center rounded-md border  bg-sky-100 px-4 py-2 text-sm font-medium text-blue-900 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100"
+                          className="cursor-pointer inline-flex items-center justify-center rounded-md border  bg-sky-100 px-4 py-2 text-sm font-medium text-blue-900 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100"
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -110,7 +104,7 @@ const Profile = () => {
                             viewBox="0 0 24 24"
                             stroke-width="1.5"
                             stroke="currentColor"
-                            class="w-6 h-6"
+                            className="w-6 h-6"
                           >
                             <path
                               stroke-linecap="round"
@@ -118,14 +112,14 @@ const Profile = () => {
                               d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                             />
                           </svg>
-                          <p class="pl-2">Add to count</p>
+                          <p className="pl-2">Add to count</p>
                         </button>
-                        <div class="p-2"></div>
+                        <div className="p-2"></div>
                         <button
                           type="button"
                           onClick={() => setCount(0)}
                           disabled={count === 0}
-                          class="cursor-pointer inline-flex items-center justify-center rounded-md border bg-white px-4 py-2 text-sm font-medium text-blue-900 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100"
+                          className="cursor-pointer inline-flex items-center justify-center rounded-md border bg-white px-4 py-2 text-sm font-medium text-blue-900 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100"
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -133,7 +127,7 @@ const Profile = () => {
                             viewBox="0 0 24 24"
                             stroke-width="1.5"
                             stroke="currentColor"
-                            class="w-6 h-6"
+                            className="w-6 h-6"
                           >
                             <path
                               stroke-linecap="round"
@@ -142,32 +136,32 @@ const Profile = () => {
                             />
                           </svg>
 
-                          <p class="pl-2">Reset</p>
+                          <p className="pl-2">Reset</p>
                         </button>
                       </div>
                     </section>
                   </div>
-                  <div class="py-2"></div>
+                  <div className="py-2"></div>
 
-                  <div class="bg-slate-900 shadow sm:rounded-lg ">
-                    <div class="px-4 py-5 sm:px-6">
+                  <div className="bg-slate-900 shadow sm:rounded-lg ">
+                    <div className="px-4 py-5 sm:px-6">
                       <h2 className="pb-4 text-4xl font-medium drop-shadow-md">
                         Reading List
                       </h2>
                     </div>
-                    <div class="border-t border-gray-200 px-4 py-5 sm:px-6">
+                    <div className="border-t border-gray-200 px-4 py-5 sm:px-6">
                       {" "}
-                      <div class="overflow-hidden bg-white shadow sm:rounded-md">
-                        <ul role="list" class="divide-y divide-gray-200">
+                      <div className="overflow-hidden bg-white shadow sm:rounded-md">
+                        <ul role="list" className="divide-y divide-gray-200">
                           <li>
-                            <a href="#" class="block hover:bg-gray-50">
-                              <div class="px-4 py-4 sm:px-6">
-                                <div class="flex items-center justify-between">
-                                  <p class="truncate text-sm font-medium text-blue-900">
+                            <a href="#" className="block hover:bg-gray-50">
+                              <div className="px-4 py-4 sm:px-6">
+                                <div className="flex items-center justify-between">
+                                  <p className="truncate text-sm font-medium text-blue-900">
                                     Book Title
                                   </p>
-                                  <div class="ml-2 flex flex-shrink-0">
-                                    <p class="inline-flex rounded-full bg-teal-100 px-2 text-sm font-semibold leading-5 text-teal-700">
+                                  <div className="ml-2 flex flex-shrink-0">
+                                    <p className="inline-flex rounded-full bg-teal-100 px-2 text-sm font-semibold leading-5 text-teal-700">
                                       View
                                     </p>
                                   </div>
@@ -177,18 +171,18 @@ const Profile = () => {
                           </li>
                         </ul>
                       </div>
-                      <div class="p-2"></div>
-                      <div class="overflow-hidden bg-white shadow sm:rounded-md">
-                        <ul role="list" class="divide-y divide-gray-200">
+                      <div className="p-2"></div>
+                      <div className="overflow-hidden bg-white shadow sm:rounded-md">
+                        <ul role="list" className="divide-y divide-gray-200">
                           <li>
-                            <a href="#" class="block hover:bg-gray-50">
-                              <div class="px-4 py-4 sm:px-6">
-                                <div class="flex items-center justify-between">
-                                  <p class="truncate text-sm font-medium text-blue-900">
+                            <a href="#" className="block hover:bg-gray-50">
+                              <div className="px-4 py-4 sm:px-6">
+                                <div className="flex items-center justify-between">
+                                  <p className="truncate text-sm font-medium text-blue-900">
                                     Book Title
                                   </p>
-                                  <div class="ml-2 flex flex-shrink-0">
-                                    <p class="inline-flex rounded-full bg-teal-100 px-2 text-sm font-semibold leading-5 text-teal-700">
+                                  <div className="ml-2 flex flex-shrink-0">
+                                    <p className="inline-flex rounded-full bg-teal-100 px-2 text-sm font-semibold leading-5 text-teal-700">
                                       View
                                     </p>
                                   </div>
@@ -198,18 +192,18 @@ const Profile = () => {
                           </li>
                         </ul>
                       </div>
-                      <div class="p-2"></div>
-                      <div class="overflow-hidden bg-white shadow sm:rounded-md">
-                        <ul role="list" class="divide-y divide-gray-200">
+                      <div className="p-2"></div>
+                      <div className="overflow-hidden bg-white shadow sm:rounded-md">
+                        <ul role="list" className="divide-y divide-gray-200">
                           <li>
-                            <a href="#" class="block hover:bg-gray-50">
-                              <div class="px-4 py-4 sm:px-6">
-                                <div class="flex items-center justify-between">
-                                  <p class="truncate text-sm font-medium text-blue-900">
+                            <a href="#" className="block hover:bg-gray-50">
+                              <div className="px-4 py-4 sm:px-6">
+                                <div className="flex items-center justify-between">
+                                  <p className="truncate text-sm font-medium text-blue-900">
                                     Book Title
                                   </p>
-                                  <div class="ml-2 flex flex-shrink-0">
-                                    <p class="inline-flex rounded-full bg-teal-100 px-2 text-sm font-semibold leading-5 text-teal-700">
+                                  <div className="ml-2 flex flex-shrink-0">
+                                    <p className="inline-flex rounded-full bg-teal-100 px-2 text-sm font-semibold leading-5 text-teal-700">
                                       View
                                     </p>
                                   </div>
@@ -219,18 +213,18 @@ const Profile = () => {
                           </li>
                         </ul>
                       </div>
-                      <div class="p-2"></div>
-                      <div class="overflow-hidden bg-white shadow sm:rounded-md">
-                        <ul role="list" class="divide-y divide-gray-200">
+                      <div className="p-2"></div>
+                      <div className="overflow-hidden bg-white shadow sm:rounded-md">
+                        <ul role="list" className="divide-y divide-gray-200">
                           <li>
-                            <a href="#" class="block hover:bg-gray-50">
-                              <div class="px-4 py-4 sm:px-6">
-                                <div class="flex items-center justify-between">
-                                  <p class="truncate text-sm font-medium text-blue-900">
+                            <a href="#" className="block hover:bg-gray-50">
+                              <div className="px-4 py-4 sm:px-6">
+                                <div className="flex items-center justify-between">
+                                  <p className="truncate text-sm font-medium text-blue-900">
                                     Book Title
                                   </p>
-                                  <div class="ml-2 flex flex-shrink-0">
-                                    <p class="inline-flex rounded-full bg-teal-100 px-2 text-sm font-semibold leading-5 text-teal-700">
+                                  <div className="ml-2 flex flex-shrink-0">
+                                    <p className="inline-flex rounded-full bg-teal-100 px-2 text-sm font-semibold leading-5 text-teal-700">
                                       View
                                     </p>
                                   </div>
@@ -244,7 +238,7 @@ const Profile = () => {
                     <div>
                       <a
                         href="/search"
-                        class="cursor-pointer block bg-sky-100 px-4 py-4 text-center text-blue-900 font-medium hover:text-blue-900 sm:rounded-b-lg"
+                        className="cursor-pointer block bg-sky-100 px-4 py-4 text-center text-blue-900 font-medium hover:text-blue-900 sm:rounded-b-lg"
                       >
                         Add to list
                       </a>
@@ -253,77 +247,77 @@ const Profile = () => {
                 </section>
               </div>
 
-              <section class="lg:col-span-1 lg:col-start-3">
+              <section className="lg:col-span-1 lg:col-start-3">
                 {/* FRIENDS */}
 
-                <div class="bg-slate-900 px-4 py-5 shadow sm:rounded-lg sm:px-6">
-                  <h2 class="text-lg font-medium">
+                <div className="bg-slate-900 px-4 py-5 shadow sm:rounded-lg sm:px-6">
+                  <h2 className="text-lg font-medium">
                     Friends List
                   </h2>
 
-                  <div class="mt-6">
+                  <div className="mt-6">
                     <tr>
-                      <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6">
-                        <div class="flex items-center">
-                          <div class="h-10 w-10 flex-shrink-0">
+                      <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6">
+                        <div className="flex items-center">
+                          <div className="h-10 w-10 flex-shrink-0">
                             <img
-                              class="h-10 w-10 rounded-full"
+                              className="h-10 w-10 rounded-full"
                               src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                               alt=""
                             ></img>
                           </div>
-                          <div class="ml-4">
-                            <div class="font-medium">
+                          <div className="ml-4">
+                            <div className="font-medium">
                               Lindsay Walton
                             </div>
-                            <div class="text-teal-400">Username</div>
+                            <div className="text-teal-400">Username</div>
                           </div>
                         </div>
                       </td>
                     </tr>
                     <tr>
-                      <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6">
-                        <div class="flex items-center">
-                          <div class="h-10 w-10 flex-shrink-0">
+                      <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6">
+                        <div className="flex items-center">
+                          <div className="h-10 w-10 flex-shrink-0">
                             <img
-                              class="h-10 w-10 rounded-full"
+                              className="h-10 w-10 rounded-full"
                               src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                               alt=""
                             ></img>
                           </div>
-                          <div class="ml-4">
-                            <div class="font-medium">
+                          <div className="ml-4">
+                            <div className="font-medium">
                               Lindsay Walton
                             </div>
-                            <div class="text-teal-400">Username</div>
+                            <div className="text-teal-400">Username</div>
                           </div>
                         </div>
                       </td>
                     </tr>
                     <tr>
-                      <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6">
-                        <div class="flex items-center">
-                          <div class="h-10 w-10 flex-shrink-0">
+                      <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6">
+                        <div className="flex items-center">
+                          <div className="h-10 w-10 flex-shrink-0">
                             <img
-                              class="h-10 w-10 rounded-full"
+                              className="h-10 w-10 rounded-full"
                               src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                               alt=""
                             ></img>
                           </div>
-                          <div class="ml-4">
-                            <div class="font-medium">
+                          <div className="ml-4">
+                            <div className="font-medium">
                               Lindsay Walton
                             </div>
-                            <div class="text-teal-400">Username</div>
+                            <div className="text-teal-400">Username</div>
                           </div>
                         </div>
                       </td>
                     </tr>
                   </div>
-                  <div class="justify-stretch mt-6 flex flex-col">
+                  <div className="justify-stretch mt-6 flex flex-col">
                     <button
                       type="button"
-                      class="cursor-pointer inline-flex items-center justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100"
+                      className="cursor-pointer inline-flex items-center justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100"
                     >
                       ADD FRIENDS
                     </button>
@@ -336,6 +330,9 @@ const Profile = () => {
           
       </Layout>
     </>
+
   );
 };
+
+
 export default Profile;
