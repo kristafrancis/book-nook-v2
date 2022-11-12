@@ -8,6 +8,7 @@ import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@ap
 import { setContext } from '@apollo/client/link/context';
 
 
+
 const httpLink = createHttpLink({
   uri: '/graphql',
 });
@@ -34,7 +35,7 @@ const HomeLayout = ({ pageTitle, children }) => {
   });
 
   return (
-    <>
+    <ApolloProvider client= {client}>
       <title>Book Nook | {pageTitle}</title>
       <header>
         <div
@@ -61,7 +62,7 @@ const HomeLayout = ({ pageTitle, children }) => {
           &copy; {new Date().getFullYear()} The Spice Girls, LLC.
         </p>
       </footer>
-    </>
+    </ApolloProvider>
   );
 };
 
