@@ -13,13 +13,6 @@ const Profile = () => {
     });
   };
 
-  const decrease = () => {
-    setCount(prevCount => {
-      const newCount = Number(prevCount) - 1;
-      localStorage.setItem("count", newCount);
-      return newCount;
-    });
-  };
   useEffect(() => {
     const initialValue = localStorage.getItem("count");
     if (initialValue) setCount(initialValue);
