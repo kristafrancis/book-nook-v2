@@ -15,7 +15,6 @@
     "date-fns": "^2.29.3",
     "emoji-regex": "^8.0.0",
     "escalade": "^3.1.1",
-    "gatsby-source-mongodb": "^5.0.0",
     "get-caller-file": "^2.0.5",
     "graphql": "^16.6.0",
     "has-flag": "^4.0.0",
@@ -40,8 +39,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server/server.js",
-    "develop": "concurrently \"cd server && npm run start\" \"cd client && npm start\"",
-    "install": "cd server && npm i && cd ../client && npm i"
+    "develop": "concurrently \"cd server && npm run start\" \"cd my-app && npm start\"",
+    "install": "cd server && npm i && cd ../my-app && npm i"
   },
   "repository": {
     "type": "git",
@@ -53,5 +52,8 @@
   "bugs": {
     "url": "https://github.com/kristafrancis/book-nook-v2/issues"
   },
-  "homepage": "https://github.com/kristafrancis/book-nook-v2#readme"
+  "homepage": "https://github.com/kristafrancis/book-nook-v2#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.2.4"
+  }
 }
