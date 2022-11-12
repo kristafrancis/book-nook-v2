@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import { useMutation } from '@apollo/client';
+// import React, {useState} from "react";
+// import { useMutation } from '@apollo/client';
 
 // import { ADD_USER } from '../utils/mutations';
 // import Auth from "../utils/auth";
@@ -109,32 +109,32 @@ import { useMutation } from '@apollo/client';
       
               
 
-              <div className="text-sm">
-                <a
-                  href="/login"
-                  className="font-medium"
-                >
-                 Already have an account? Log in.
-                </a>
-              </div>
-            </div>
-            <div>
-              <button
-                type="submit"
-                className="bg-[#7C87f2] group flex w-full justify-center rounded-md border border-transparent py-2 px-4 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-              >
-                <span className="absolute inset-y-0 left-0 flex items-center pl-3">
-                  <path
-                    fill-rule="evenodd"
-                    d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z"
-                    clip-rule="evenodd"
-                  />
-                </span>
-                Sign up
-              </button>
-            </div>
-          </form>
-          {/* END SIGNUP FORM */}
+          //     <div className="text-sm">
+          //       <a
+          //         href="/login"
+          //         className="font-medium"
+          //       >
+          //        Already have an account? Log in.
+          //       </a>
+          //     </div>
+          //   </div>
+          //   <div>
+          //     <button
+          //       type="submit"
+          //       className="bg-[#7C87f2] group flex w-full justify-center rounded-md border border-transparent py-2 px-4 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+          //     >
+          //       <span className="absolute inset-y-0 left-0 flex items-center pl-3">
+          //         <path
+          //           fill-rule="evenodd"
+          //           d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z"
+          //           clip-rule="evenodd"
+          //         />
+          //       </span>
+          //       Sign up
+          //     </button>
+          //   </div>
+          // </form>
+          // {/* END SIGNUP FORM */}
 
 //         </div>
 //       </div>
