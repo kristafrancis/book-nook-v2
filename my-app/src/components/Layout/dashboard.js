@@ -8,7 +8,7 @@ const Dashboard = ({ pageTitle, children }) => {
       <title>Book Nook | {pageTitle}</title>
 
       <nav>
-        <div className="w-full mx-8 my-6 flex justify-between items-center">
+        <div className="w-full my-6 flex justify-evenly space-x-60 items-center">
           <div>
             <h1 className="drop-shadow-lg text-5xl md:text-7xl">
               <a href="/search" className="hover:text-[#7286ff]">
@@ -16,10 +16,9 @@ const Dashboard = ({ pageTitle, children }) => {
               </a>
             </h1>
           </div>
-      
           <div>
-            <Burger />
           </div>
+          <Burger />
         </div>
       </nav>
 

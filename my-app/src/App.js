@@ -6,7 +6,7 @@ import Login from './pages/Login';
 import Signup from '../src/components/SignupForm';
 import Search from './pages/Search';
 import Profile from './pages/Profile';
-import Editprofile from './pages/Editprofile';
+import Editprofile from './pages/editprofile';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';

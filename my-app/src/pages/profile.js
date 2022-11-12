@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from "react";
 import Dropdown from "react-dropdown";
-import Layout from "../components/Layout/home";
+import Layout from "../components/Layout/dashboard";
 
 const Profile = () => {
   const [count, setCount] = useState(0);
@@ -251,7 +251,7 @@ const Profile = () => {
                     <div>
                       <a
                         href="/search"
-                        className="cursor-pointer block bg-sky-100 px-4 py-4 text-center text-blue-900 font-medium hover:text-blue-900 sm:rounded-b-lg"
+                        className="cursor-pointer block bg-sky-900 px-4 py-4 text-center text-blue-900 font-medium hover:text-blue-900 sm:rounded-b-lg"
                       >
                         Add to list
                       </a>
