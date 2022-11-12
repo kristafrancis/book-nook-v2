@@ -1,10 +1,30 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Dropdown from "react-dropdown";
 import Layout from "../components/Layout/home";
 
 const Profile = () => {
   const [count, setCount] = useState(0);
+  const increase = () => {
+    setCount(prevCount => {
+      const newCount = Number(prevCount) + 1;
+      localStorage.setItem("count", newCount);
+      return newCount;
+    });
+  };
+
+  const decrease = () => {
+    setCount(prevCount => {
+      const newCount = Number(prevCount) - 1;
+      localStorage.setItem("count", newCount);
+      return newCount;
+    });
+  };
+  useEffect(() => {
+    const initialValue = localStorage.getItem("count");
+    if (initialValue) setCount(initialValue);
+  }, []);
+
   const options = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
   const defaultOption = options[0];
   // const { loading, data } = useQuery(QUERY_ME);
@@ -95,7 +115,7 @@ const Profile = () => {
                       <div className="justify-center mt-6 flex grid-cols-2">
                         <button
                           type="button"
-                          onClick={() => setCount(count + 1)}
+                          onClick={increase}
                           className="cursor-pointer inline-flex items-center justify-center rounded-md border  bg-sky-100 px-4 py-2 text-sm font-medium text-blue-900 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100"
                         >
                           <svg
