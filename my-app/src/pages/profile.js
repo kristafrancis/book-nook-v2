@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import Dropdown from "react-dropdown";
 import Layout from "../components/Layout/dashboard";
+import Auth from '../utils/auth';
 
 const Profile = () => {
   const [count, setCount] = useState(0);

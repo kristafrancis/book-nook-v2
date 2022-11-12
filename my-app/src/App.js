@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 // import './index.css';
 import React from 'react';
 import Index from './pages/index';
@@ -6,7 +6,7 @@ import Login from './pages/Login';
 import Signup from '../src/components/SignupForm';
 import Search from './pages/Search';
 import Profile from './pages/Profile';
-import Editprofile from './pages/editprofile';
+import Editprofile from './pages/Editprofile';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
