@@ -1,7 +1,7 @@
 import * as React from "react";
 import Layout from '../components/Layout/home';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import Search from '../pages/Search';
+import Search from './Search';
 
 const Index = () => {
 

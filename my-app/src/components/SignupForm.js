@@ -1,47 +1,48 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
-// import { ADD_USER } from '';
-import Layout from "./Layout/home";
+import { ADD_USER } from '../utils/mutations';
+// import { Link } from "gatsby";
+import Layout from "../components/Layout/home";
 import Auth from '../utils/auth';
 
 const Signup = () => {
     const [userFormData, setUserFormData] = useState({ username: '', email: '', password: '' });
     const [validated] = useState(false);
     const [showAlert, setShowAlert] = useState(false);
-    // const [addUser]  = useMutation(ADD_USER);
+    const [addUser]  = useMutation(ADD_USER);
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
         setUserFormData({ ...userFormData, [name]: value });
     };
 
-    // const handleFormSubmit = async (event) => {
-    //     event.preventDefault();
+    const handleFormSubmit = async (event) => {
+        event.preventDefault();
 
-    //     try {
-    //         const { data} = await addUser({
-    //             variables: { ...userFormData }
-    //         });
-    //         Auth.login(data.addUser.token);
-    //     } catch (e) {
-    //         console.error(e);
-    //         setShowAlert(true);
-    //     };
-    //     setUserFormData({
-    //         username: '', 
-    //         email: '',
-    //         password: '',
-    //     });
-    // };
+        try {
+            const { data} = await addUser({
+                variables: { ...userFormData }
+            });
+            Auth.login(data.addUser.token);
+        } catch (e) {
+            console.error(e);
+            setShowAlert(true);
+        };
+        setUserFormData({
+            username: '', 
+            email: '',
+            password: '',
+        });
+    };
 
     return (
         <Layout pageTitle="Sign Up">
-          <link href="/dist/output.css" rel="stylesheet"></link>
+           <link href="/dist/output.css" rel="stylesheet"></link>
           <div className="flex items-center justify-center">
             <div className="w-full max-w-md">
     
               {/* BEGIN SIGNUP FORM */}
-              <form className="space-y-6" noValidate validated={validated} >
+              <form className="space-y-6" noValidate validated={validated} onSubmit={handleFormSubmit}>
                 <input type="hidden" name="remember" value="true"></input>{" "}
                 <div className="-space-y-px rounded-md shadow-sm">
                   <div>
@@ -97,7 +98,7 @@ const Signup = () => {
                   
     
                   <div className="text-sm">
-                    <a href="/login"
+                  <a href="/login"
                       className="font-medium"
                     >
                      Already have an account? Log in.
