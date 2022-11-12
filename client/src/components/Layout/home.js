@@ -7,6 +7,7 @@ import CatImg from "../../images/animals/cat.png";
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 
+
 const httpLink = createHttpLink({
   uri: '/graphql',
 });
