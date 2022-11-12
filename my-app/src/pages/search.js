@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../components/Layout/dashboard";
-import Feed from "../components/feed";
-import HedgehogImg from "../images/animals/hedgehog.png";
+// import Feed from "../components/feed";
+// import HedgehogImg from "../images/animals/hedgehog.png";
 import { googleBookSearch } from "../utils/API";
 import Auth from "../utils/auth";
 import { SAVE_BOOK } from "../utils/mutations";
@@ -10,82 +10,81 @@ import { useMutation } from '@apollo/client';
 // import AnchorLink from "react-anchor-link-smooth-scroll";
 
 const Search = () => {
-  // const [searchedBooks, setSearchedBooks] = useState([]);
-  // const [searchInput, setSearchInput] = useState("");
+  const [searchedBooks, setSearchedBooks] = useState([]);
+  const [searchInput, setSearchInput] = useState("");
 
-  // const [savedBookIds, setSavedBookIds] = useState(getSavedBookIds());
+  const [savedBookIds, setSavedBookIds] = useState(getSavedBookIds());
 
-  // const [saveBook] = useMutation(SAVE_BOOK);
+  const [saveBook] = useMutation(SAVE_BOOK);
 
-  // // const style2 = useSpring({
-  // //   from: { opacity: 0, marginRight: -1000 },
-  // //   to: { opacity: 1, marginRight: 0 },
-  // //   config: { duration: 3000 },
-  // // });
-
-  // // const style3 = useSpring({
-  // //   from: { opacity: 0, marginLeft: -1000 },
-  // //   to: { opacity: 1, marginLeft: 0 },
-  // //   config: { duration: 3000 },
-  // // });
-
-  // useEffect(() => {
-  //   return () => saveBookIds(savedBookIds);
+  // const style2 = useSpring({
+  //   from: { opacity: 0, marginRight: -1000 },
+  //   to: { opacity: 1, marginRight: 0 },
+  //   config: { duration: 3000 },
   // });
 
-  // //search books method and set state on form submit
-  // const handleFormSubmit = async (event) => {
-  //   event.preventDefault();
+  // const style3 = useSpring({
+  //   from: { opacity: 0, marginLeft: -1000 },
+  //   to: { opacity: 1, marginLeft: 0 },
+  //   config: { duration: 3000 },
+  // });
 
-  //   if (!searchInput) {
-  //     return false;
-  //   }
+  useEffect(() => {
+    return () => saveBookIds(savedBookIds);
+  });
 
-  //   try {
-  //     const response = await googleBookSearch(searchInput);
+  //search books method and set state on form submit
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
 
-  //     if (!response.ok) {
-  //       throw new Error("Something went Wrong!");
-  //     }
-  //     const { items } = await response.json();
+    if (!searchInput) {
+      return false;
+    }
 
-  //     const bookData = items.map((book) => ({
-  //       bookId: book.id,
-  //       authors: book.volumeInfo.authors || ["No author to display"],
-  //       title: book.volumeInfo.title,
-  //       description: book.volumeInfo.description,
-  //       image: book.volumeInfo.imageLinks?.thumbnail || "",
-  //     }));
+    try {
+      const response = await googleBookSearch(searchInput);
 
-  //     setSearchedBooks(bookData);
-  //     setSearchInput("");
-  //   } catch (err) {
-  //     console.err(err);
-  //   }
-  // };
+      if (!response.ok) {
+        throw new Error("Something went Wrong!");
+      }
+      const { items } = await response.json();
 
-  // //function to save book to db
-  // const handleSavedBook = async (bookId) => {
-  //   const bookToSave = searchedBooks.find((book) => book.bookId === bookId);
-  //   console.log({ bookToSave });
+      const bookData = items.map((book) => ({
+        bookId: book.id,
+        authors: book.volumeInfo.authors || ["No author to display"],
+        title: book.volumeInfo.title,
+        description: book.volumeInfo.description,
+        image: book.volumeInfo.imageLinks?.thumbnail || "",
+      }));
 
-  //   //token
-  //   // const token = Auth.loggedIn() ? Auth.getToken() : null;
+      setSearchedBooks(bookData);
+      setSearchInput("");
+    } catch (err) {
+      console.err(err);
+    }
+  };
 
-  //   // if (!token) {
-  //   //   return false;
-  //   // }
+  //function to save book to db
+  const handleSavedBook = async (bookId) => {
+    const bookToSave = searchedBooks.find((book) => book.bookId === bookId);
+    console.log({ bookToSave });
 
-  //   try {
-  //     await saveBook({
-  //       variables: { BookInput: { ...bookToSave } },
-  //     });
+    const token = Auth.loggedIn() ? Auth.getToken() : null;
 
-  //     setSavedBookIds([...savedBookIds, bookToSave.bookId]);
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // };
+    if (!token) {
+      return false;
+    }
+
+    try {
+      await saveBook({
+        variables: { BookInput: { ...bookToSave } },
+      });
+
+      setSavedBookIds([...savedBookIds, bookToSave.bookId]);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   return (
     <>
@@ -108,7 +107,7 @@ const Search = () => {
               <div className="relative flex h-16 justify-between">
                 <div className="relative z-0 flex flex-1 items-center justify-center px-2 sm:absolute sm:inset-0">
                   <div className="w-full sm:max-w-xs">
-                    <form>
+                    <form class='search' onSubmit={handleFormSubmit} >
                       <label for="search" className="sr-only">
                         Search
                       </label>
@@ -129,13 +128,13 @@ const Search = () => {
                           </svg>
                         </div>
                         <input
-                          id="search"
-                          name="search"
                           
-              
+                          name="search"
+                          value={searchInput}
+                          onChange={(e) => setSearchInput(e.target.value)}
+                          type='text'
                           className="block w-full rounded-md border border-gray-300 bg-white py-2 pl-10 pr-3 text-sm placeholder-gray-500 focus:border-teal-400 focus:text-gray-900 focus:placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-teal-400 sm:text-2xl"
                           placeholder="Search"
-                          type="text"
                         ></input>
                       </div>
                       </form>
@@ -150,7 +149,39 @@ const Search = () => {
         {/* END SEARCH INPUT */}
 
         {/* GOOGLE BOOKS API */}
-       
+        <div class="bookcard">
+          {searchedBooks.map((book) => {
+            return (
+              <div key={book.bookId}>
+                {book.image ? (
+                  <img src={book.image} alt={`Cover of ${book.title}`}></img>
+                ) : null}
+                <div class="cardBody">
+                  <h1>{book.title}</h1>
+                  <p> Authors: {book.authors}</p>
+                  <p>Description: {book.description}</p>
+                  {/* {Auth.loggedIn() && ( */}
+                  <button
+                    class="btn md:btn-lg"
+                    disabled={savedBookIds?.some(
+                      (savedBookId) => savedBookId === book.bookId
+                    )}
+                    onClick={() => handleSavedBook(book.bookId)}
+                  >
+                    {savedBookIds?.some(
+                      (savedBookId) => savedBookId === book.bookId
+                    )
+                      ? "This book has already been saved"
+                      : "Save this book"}
+                  </button>
+
+                  {/* )} */}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+        {/* END GOOGLE BOOKS API */}
 
 
       </Layout>
