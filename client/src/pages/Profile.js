@@ -40,7 +40,6 @@ const Profile = () => {
   return (                                                                                                                                    
     <>
       <Layout pageTitle="Profile">
-  
           <main class="min-h-full">
 
             <div class="mx-auto max-w-3xl px-4 sm:px-6 md:flex md:items-center md:justify-between md:space-x-5 lg:max-w-7xl lg:px-8">
@@ -59,7 +58,7 @@ const Profile = () => {
                   </div>
                 </div>
                 <div>
-                <h1 className="bg-[#050615cc] rounded text-4xl font-semibold drop-shadow">Username</h1>
+                <h1 className="text-4xl font-semibold drop-shadow">Username</h1>
                   <p className="font-medium text-gray-100">Bob Joe</p>
                 </div>
               </div>
