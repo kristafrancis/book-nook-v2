@@ -1,14 +1,16 @@
 
-// import { useQuery } from "@apollo/client";
+
+import { useQuery } from "@apollo/client";
 import React, { useState, useEffect } from "react";
+import { useParams, Navigate } from 'react-router-dom';
 import Dropdown from "react-dropdown";
 import Layout from "../components/Layout/dashboard";
-// import Auth from '../utils/auth';
-import ReadingList from "../components/ReadingList";
+import Auth from '../utils/auth';
+// import ReadingList from "../components/ReadingList";
+import { QUERY_ME, QUERY_USER } from "../utils/queries";
 
 
 const Profile = () => {
- 
   const [count, setCount] = useState(0);
   const increase = () => {
     setCount(prevCount => {
@@ -36,7 +38,18 @@ const Profile = () => {
       );
       setSelected(lastSelected);
     }, []);
-  
+    
+const { username: userParam } = useParams();
+const { data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
+  variables: { username: userParam },
+});
+
+const user = data?.me || data?.user || {};
+
+// if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
+//   return <Navigate to="/profile:username"/>;
+// }
+   
   return (                                                                                                                                    
     <>
       <Layout pageTitle="Profile">
@@ -59,8 +72,10 @@ const Profile = () => {
                   </div>
                 </div>
                 <div>
-                <h1 className="bg-[#050615cc] rounded text-4xl font-semibold drop-shadow">Username</h1>
-                  <p className="font-medium text-gray-100">Bob Joe</p>
+                <h1 className="bg-[#050615cc] rounded text-4xl font-semibold drop-shadow">
+                  Viewing {userParam ? `${user.username}'s` : 'your'} profile.
+                </h1>
+                  <p className="font-medium text-gray-100">{user.username}</p>
                 </div>
               </div>
               <div className="justify-stretch mt-6 flex flex-col-reverse space-y-4 space-y-reverse sm:flex-row-reverse sm:justify-end sm:space-y-0 sm:space-x-3 sm:space-x-reverse md:mt-0 md:flex-row md:space-x-3">

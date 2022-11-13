@@ -1,50 +1,46 @@
 import * as React from "react";
+import { useState } from 'react';
 import Layout from '../components/Layout/home'
-// import { useMutation } from '@apollo/client';
-// import { USER_LOGIN } from '../utils/mutations';
-// import Auth from "../utils/auth";
-// import Layout from '../components/Layout/home';
+import { useMutation } from '@apollo/client';
+import { USER_LOGIN } from '../utils/mutations';
+import Auth from "../utils/auth";
 
-// const Login = () => {
-//     const [userFormData, setUserFormData] = useState({ email: '', password: '' });
-//     const [validated] = useState(false);
-//     const [loginUser] = useMutation(USER_LOGIN);
+
+const Login = () => {
+    const [formState, setFormState] = useState({ email: '', password: '' });
+    const [login] = useMutation(USER_LOGIN);
     
+    const handleChange = (event) => {
+      const { name, value } = event.target;
+
+      setFormState({
+        ...formState,
+        [name]: value,
+      });
+    };
   
-//     const handleInputChange = (event) => {
-//       const { name, value } = event.target;
-//       setUserFormData({ ...userFormData, [name]: value });
-//     };
+
   
-//     const handleFormSubmit = async (event) => {
-//       event.preventDefault();
+    const handleFormSubmit = async (event) => {
+      event.preventDefault();
   
-//       // check if form has everything (as per react-bootstrap docs)
-//       const form = event.currentTarget;
-//       if (form.checkValidity() === false) {
-//         event.preventDefault();
-//         event.stopPropagation();
-//       }
+      try {
+        const {data} = await login({
+          variables: {...formState}
+        });
   
-//       try {
-//         const {data} = await loginUser({
-//           variables: {...userFormData}
-//         });
-  
-//         //const { token, user } = await response.json();
-//        // console.log(user);
-//         Auth.login(data.login.token);
-//       } catch (err) {
-//         console.error(err);
+     
+        Auth.login(data.login.token);
+      } catch (err) {
+        console.error(err);
         
-//       }
+      }
   
-//       setUserFormData({
-//         username: '',
-//         email: '',
-//         password: '',
-//       });
-//     };
+      setFormState({
+        email: '',
+        password: '',
+      });
+    };
 
 const Login = () => {
 
@@ -54,7 +50,7 @@ const Login = () => {
         <div className="w-full max-w-md flex items-center justify-center">
         
 
-        <form className="w-[400px]" action="#" method="POST">
+        <form className="w-[400px]" onSubmit={handleFormSubmit}>
           <input type="hidden" name="remember" value="true"></input>{" "}
             <div className="rounded-md shadow-lg">
               <div>
@@ -65,6 +61,8 @@ const Login = () => {
                       id="email-address"
                       name="email"
                       type="email"
+                      value={formState.email}
+                      onChange={handleChange}
                       autocomplete="email"
                       required
                       className="relative block w-full appearance-none rounded-none rounded-t-md bg-[#22274f] border border-slate-700 px-3 py-2 text-sm md:text-lg text-gray-200 placeholder-slate-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
@@ -83,6 +81,8 @@ const Login = () => {
                       required
                       className="relative block w-full appearance-none rounded-none rounded-b-md bg-[#22274f] border border-slate-700 px-3 py-2 text-sm md:text-lg text-gray-200 placeholder-slate-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
                       placeholder="Password"
+                      value={formState.password}
+                      onChange={handleChange}
                     ></input>{" "}
                   </div>
                 </div>
@@ -119,6 +119,6 @@ const Login = () => {
  </>
   );
 };
-
+}
 
 export default Login;

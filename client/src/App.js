@@ -56,6 +56,10 @@ function App() {
                 element={<Profile />}
               />
               <Route
+                path="/profile/:username"
+                element={<Profile />}
+              />
+              <Route
                 path="/editprofile"
                 element={<Editprofile />}
               />
