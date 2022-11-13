@@ -1,7 +1,7 @@
 import React from 'react';
 import Burger from '../Burger/Burger';
 import Auth from '../../utils/auth';
-
+//recommit
 const Navbar = () => {
     const logout = event => {
         event.preventDefault();
