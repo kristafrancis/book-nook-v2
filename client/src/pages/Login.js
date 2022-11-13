@@ -49,14 +49,16 @@ import Layout from '../components/Layout/home'
 const Login = () => {
 
   return (    
-    <>                                                                                                                             
-    <Layout pageTitle="Log In">
-    <form className="space-y-6" action="#" method="POST">
-            <input type="hidden" name="remember" value="true"></input>{" "}
-            <div className="-space-y-px rounded-md shadow-sm">
+    <>                                                                                                                                                                                                                                                  
+      <Layout pageTitle="Log In">
+        <div className="w-full max-w-md flex items-center justify-center">
+        
+
+        <form className="w-[400px]" action="#" method="POST">
+          <input type="hidden" name="remember" value="true"></input>{" "}
+            <div className="rounded-md shadow-lg">
               <div>
                 <label for="email-address" className="sr-only">
-                  
                   Email address
                 </label>
                   <input
@@ -65,7 +67,7 @@ const Login = () => {
                       type="email"
                       autocomplete="email"
                       required
-                      className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                      className="relative block w-full appearance-none rounded-none rounded-t-md bg-[#22274f] border border-slate-700 px-3 py-2 text-sm md:text-lg text-gray-200 placeholder-slate-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
                       placeholder="Email address"
                     ></input>{" "}
                   </div>
@@ -79,7 +81,7 @@ const Login = () => {
                       type="password"
                       autocomplete="current-password"
                       required
-                      className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                      className="relative block w-full appearance-none rounded-none rounded-b-md bg-[#22274f] border border-slate-700 px-3 py-2 text-sm md:text-lg text-gray-200 placeholder-slate-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
                       placeholder="Password"
                     ></input>{" "}
                   </div>
@@ -87,7 +89,7 @@ const Login = () => {
                 <div className="flex items-center justify-between">
             
 
-                  <div className="text-sm">
+                  <div className="text-sm pt-4 pb-6">
                     <a href="/signup"
                       className="font-medium"
                     >
@@ -98,7 +100,7 @@ const Login = () => {
                 <div>
                   <button
                     type="submit"
-                    className="bg-[#7C87f2] w-full group flex w-full justify-center rounded-md py-2 px-4 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                    className="bg-[#7C87f2] w-full group flex justify-center rounded-md py-1 text-base md:text-lg font-medium focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                   >
                     <span className="absolute inset-y-0 left-0 flex items-center pl-3">
                       <path
@@ -111,7 +113,9 @@ const Login = () => {
                   </button>
                 </div>
               </form>
- </Layout>
+
+    </div>
+  </Layout>
  </>
   );
 };

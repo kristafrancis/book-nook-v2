@@ -7,7 +7,6 @@ const EditProfile = () => {
   return (
     <>
       <Layout pageTitle="Edit Profile">
-      <link href="/dist/output.css" rel="stylesheet"></link>
         <main className="flex-1 bg-slate-900">
           <div className="relative mx-auto max-w-4xl md:px-8 xl:px-0">
             <div className="pt-10 pb-16">
