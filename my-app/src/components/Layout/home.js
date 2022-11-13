@@ -1,23 +1,27 @@
 import React from "react";
-// import { useSpring, animated, useTransition } from "react-spring";
-
+import { useSpring, animated } from "react-spring";
+//import Sparkle from "react-sparkle";
 import BgImg from "../../images/bg.png";
 import CatImg from "../../images/animals/cat.png";
 // import HedgehogImg from "../../images/animals/hedgehog.png";
-import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
-import { setContext } from '@apollo/client/link/context';
-
+import {
+  ApolloProvider,
+  ApolloClient,
+  InMemoryCache,
+  createHttpLink,
+} from "@apollo/client";
+import { setContext } from "@apollo/client/link/context";
 
 const httpLink = createHttpLink({
-  uri: '/graphql',
+  uri: "/graphql",
 });
 
 const authLink = setContext((_, { headers }) => {
-  const token = localStorage.getItem('id_token');
+  const token = localStorage.getItem("id_token");
   return {
     headers: {
       ...headers,
-      authorization: token ? `Bearer ${token}` : '',
+      authorization: token ? `Bearer ${token}` : "",
     },
   };
 });
@@ -27,32 +31,39 @@ const client = new ApolloClient({
 });
 
 const HomeLayout = ({ pageTitle, children }) => {
-  // const style1 = useSpring({
-  //   from: { opacity: 0, marginTop: -100 },
-  //   to: { opacity: 1, marginTop: 0 },
-  //   config: { duration: 3000 },
-  // });
+  const style1 = useSpring({
+    from: { opacity: 0, marginTop: -100 },
+    to: { opacity: 1, marginTop: 0 },
+    config: { duration: 3000 },
+  });
+  // const Sparkle = () => (
+  //   <div style={{ position: "relative" }}>
+  //     <Sparkle />
+  //   </div>
+  // );
 
   return (
     <>
-    <link href="/dist/output.css" rel="stylesheet"></link>
+      <link href="/dist/output.css" rel="stylesheet"></link>
       <title>Book Nook | {pageTitle}</title>
       <header>
+        {/* <Sparkle> */}
         <div
           className="bg-fixed bg-repeat-x bg-top absolute top-0 left-0 w-full h-full z-[-10]"
           style={{ backgroundImage: `url(${BgImg})` }}
         ></div>
+        {/* </Sparkle> */}
       </header>
 
       <main className="w-full h-full relative flex flex-col justify-center items-center">
-        {/* <animated.div style={style1}> */}
+        <animated.div style={style1}>
           <div className="flex flex-col justify-center items-center">
             <img src={CatImg} className="mt-20 w-[250px]" />
           </div>
-        {/* </animated.div> */}
-          <h1 className="font-medium drop-shadow-lg pb-8 text-6xl md:text-8xl md:mt-10">
-            book<span className="text-[#7286ff]">nook</span>
-          </h1>
+        </animated.div>
+        <h1 className="font-medium drop-shadow-lg pb-8 text-6xl md:text-8xl md:mt-10">
+          book<span className="text-[#7286ff]">nook</span>
+        </h1>
 
         <div className="bg-[#090c26] p-8 rounded-lg shadow-lg">{children}</div>
       </main>
