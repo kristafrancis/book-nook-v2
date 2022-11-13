@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import BearImg from '../images/animals/bear.png';
 import CatImg from '../images/animals/cat.png';
 import FoxImg from '../images/animals/fox.png';
@@ -36,6 +36,8 @@ export default function RandomAnimal () {
         <img
             src={images[currentImageIndex]}
             alt="Travel to the stars, read!"
+            height={275}
+            className="h-[275px]"
         />
     );
 };

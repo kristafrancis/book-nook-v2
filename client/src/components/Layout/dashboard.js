@@ -36,12 +36,12 @@ const Dashboard = ({ pageTitle, children }) => {
 
       <main>
         {/* GENERATE ANIMAL HEADER */}
-        <div className="flex flex-col justify-center items-center py-4">
+        <div className="mt-0 mb-8 flex flex-col justify-center items-center">
           <RandomAnimal />
         </div>
         
         {children}
-        </main>
+      </main>
 
       <footer class="py-8 text-center">
         <p class="md:text-base text-sm tracking-wider font-medium text-gray-400">
