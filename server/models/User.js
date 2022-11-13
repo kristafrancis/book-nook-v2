@@ -41,11 +41,7 @@ const userSchema = new Schema({
 },
 {
     toJSON: {
-<<<<<<< HEAD
      virtuals: true,
-=======
-    //  virtuals: true,
->>>>>>> cd46011bbc1f4c398d020fe66259463753d1e19a
     getters: true
     },
   
