@@ -5,11 +5,11 @@ const StyledBurger = ({ open, setOpen }) => {
   return (
     <div className="relative z-50 hover:opacity-80">
       {open ? (
-        <span className="rounded-md">
+        <span>
           <button
             type="button"
             onClick={() => setOpen(!open)}
-            className="mt-1 p-2 rounded-xl"
+            className="px-3 py-1 rounded-md"
             id="close"
             aria-haspopup="true"
             aria-expanded="true"
@@ -18,11 +18,11 @@ const StyledBurger = ({ open, setOpen }) => {
           </button>
         </span>
       ) : (
-        <span className="rounded-md rounded-xl">
+        <span>
           <button
             type="button"
             onClick={() => setOpen(!open)}
-            className="mt-1 p-2 bg-[#7286ff] rounded-xl"
+            className="px-3 py-1 bg-[#7286ff] rounded-md"
             id="open"
             aria-haspopup="true"
             aria-expanded="true"
