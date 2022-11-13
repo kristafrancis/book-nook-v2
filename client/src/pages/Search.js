@@ -102,11 +102,8 @@ const Search = () => {
             </h2>
        
           {/* SEARCH INPUT */}
-          <div className="w-full drop-shadow-md py-8">
-            <div className="mx-auto max-w-7xl px-2 sm:px-4 lg:divide-y lg:divide-gray-200 lg:px-8">
-              <div className="relative flex h-16 justify-between">
-                <div className="relative z-0 flex flex-1 items-center justify-center px-2 sm:absolute sm:inset-0">
-                  <div className="w-full sm:max-w-xs">
+          <div className="py-5">
+           
                     <form className="search w-[500px]" onSubmit={handleFormSubmit} >
                       <label for="search" className="sr-only">
                         Search
@@ -141,28 +138,29 @@ const Search = () => {
                       {/* <AnchorLink className="flex justify-center" href="#Trending">Or see what others are reading!</AnchorLink> */}
                     </div>
                   </div>
-                </div>
-              </div>
-            </div>
-          </div>
+              
         
         {/* END SEARCH INPUT */}
 
         {/* GOOGLE BOOKS API */}
+
+        <div class="mx-56 pt-5 columns-2 text-base">
         <div class="bookcard">
           {searchedBooks.map((book) => {
             return (
-              <div key={book.bookId}>
+              <div className="p-5 " key={book.bookId}>
+                 <div class="cardBody" className="bg-slate-900 p-10 pb-20  rounded-2xl shadow-inner shadow-slate-700 columns-2 ">
                 {book.image ? (
-                  <img src={book.image} alt={`Cover of ${book.title}`}></img>
+                  <img className="float-left pr-10 pb-5" src={book.image} alt={`Cover of ${book.title}`}></img>
                 ) : null}
-                <div class="cardBody">
+               
                   <h1>{book.title}</h1>
                   <p> Authors: {book.authors}</p>
                   <p>Description: {book.description}</p>
                   {/* {Auth.loggedIn() && ( */}
+                  <div class="pt-10">
                   <button
-                    class="btn md:btn-lg"
+                    className="float-right inline-flex items-center justify-center rounded-md border border-indigo-200 bg-[#22274f] px-4 py-2 text-sm font-medium text-indigo-200 shadow-sm hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100"
                     disabled={savedBookIds?.some(
                       (savedBookId) => savedBookId === book.bookId
                     )}
@@ -174,12 +172,13 @@ const Search = () => {
                       ? "This book has already been saved"
                       : "Save this book"}
                   </button>
-
+                  </div>
                   {/* )} */}
                 </div>
               </div>
             );
           })}
+        </div>
         </div>
         {/* END GOOGLE BOOKS API */}
 
