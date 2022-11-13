@@ -7,6 +7,7 @@ const Navbar = () => {
         event.preventDefault();
         Auth.logout();
       }
+
 return (
     <>
     {/* ANIMATION HERE */}
