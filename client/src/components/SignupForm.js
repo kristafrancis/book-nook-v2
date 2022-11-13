@@ -4,7 +4,7 @@ import { ADD_USER } from '../utils/mutations';
 // import { Link } from "gatsby";
 import Layout from "./Layout/home";
 import Auth from '../utils/auth';
-
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const Signup = () => {
     const [formState, setFormState] = useState({ username: '', email: '', password: '' });
@@ -16,28 +16,32 @@ const Signup = () => {
         const { name, value } = event.target;
         setFormState({ ...formState, [name]: value });
     };
-
+    
     const handleFormSubmit = async (event) => {
         event.preventDefault();
+       
         console.log(formState)
 
         try {
             const { data } = await addUser({
                 variables: { ...formState }
             });
-
+            console.log(data);
             Auth.login(data.addUser.token);
         } catch (e) {
             console.error(e);
             setShowAlert(true);
         };
-    };
+};
 
     return (
       <Layout pageTitle="Sign Up">
         <div className="w-full max-w-md flex items-center justify-center">
   
             {/* BEGIN SIGNUP FORM */}
+            <div>
+              {<Navigate to="/search" replace={true}/>}
+            </div>
             <form className="w-[400px]" onSubmit={handleFormSubmit}>
               <input type="hidden" name="remember" value="true"></input>{" "}
               <div className="-space-y-px rounded-md shadow-lg">

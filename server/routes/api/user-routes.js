@@ -1,37 +1,37 @@
-const router = require('express').Router();
+// const router = require('express').Router();
 
-const {
-    newUser,
-    getSingleUser,
-    saveBook,
-    deleteBook,
-    login,
-    addFriend,
-    addComment
-} = require('../../controllers/user-controllers');
-
-
-
-//middleware
-const { authMiddleware } = require('../../utils/auth');
+// const {
+//     newUser,
+//     getSingleUser,
+//     saveBook,
+//     deleteBook,
+//     login,
+//     addFriend,
+//     addComment
+// } = require('../../controllers/user-controllers');
 
 
-//authMiddleware to send token for verification of user
-const { authMiddleware } = require('../../utils/auth');
 
-router.route('/').post(newUser).put(authMiddleware, saveBook);
+// //middleware
+// const { authMiddleware } = require('../../utils/auth');
 
-router.route('/login').post(login);
 
-router.route('/me').get(authMiddleware, getSingleUser);
+// //authMiddleware to send token for verification of user
+// const { authMiddleware } = require('../../utils/auth');
 
-//route for addFriend
-// router.route('/friends').post(addFriend).put(authMiddleware, addFriend)
+// router.route('/').post(newUser).put(authMiddleware, saveBook);
 
-//route for addcomment 
-//router.route().post
-router.route('/books/:bookId').delete(authMiddleware, deleteBook);
+// router.route('/login').post(login);
 
-module.exports = router;
+// router.route('/me').get(authMiddleware, getSingleUser);
+
+// //route for addFriend
+// // router.route('/friends').post(addFriend).put(authMiddleware, addFriend)
+
+// //route for addcomment 
+// //router.route().post
+// router.route('/books/:bookId').delete(authMiddleware, deleteBook);
+
+// module.exports = router;
 
 
