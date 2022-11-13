@@ -46,9 +46,7 @@ const { data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
 
 const user = data?.me || data?.user || {};
 
-// if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
-//   return <Navigate to="/profile:username"/>;
-// }
+
    
   return (                                                                                                                                    
     <>
