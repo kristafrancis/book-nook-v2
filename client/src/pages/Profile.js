@@ -51,7 +51,6 @@ const user = data?.me || data?.user || {};
   return (                                                                                                                                    
     <>
       <Layout pageTitle="Profile">
-  
           <main class="min-h-full">
 
             <div class="mx-auto max-w-3xl px-4 sm:px-6 md:flex md:items-center md:justify-between md:space-x-5 lg:max-w-7xl lg:px-8">
@@ -70,10 +69,15 @@ const user = data?.me || data?.user || {};
                   </div>
                 </div>
                 <div>
+<<<<<<< HEAD
                 <h1 className="bg-[#050615cc] rounded text-4xl font-semibold drop-shadow">
                   Viewing {userParam ? `${user.username}'s` : 'your'} profile.
                 </h1>
                   <p className="font-medium text-gray-100">{user.username}</p>
+=======
+                <h1 className="text-4xl font-semibold drop-shadow">Username</h1>
+                  <p className="font-medium text-gray-100">Bob Joe</p>
+>>>>>>> 62a49d4c2c2c78b27c63c121606018231476ca41
                 </div>
               </div>
               <div className="justify-stretch mt-6 flex flex-col-reverse space-y-4 space-y-reverse sm:flex-row-reverse sm:justify-end sm:space-y-0 sm:space-x-3 sm:space-x-reverse md:mt-0 md:flex-row md:space-x-3">

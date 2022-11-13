@@ -1,5 +1,6 @@
 import React from "react";
 import { useSpring, animated, useTransition } from "react-spring";
+import Sparkle from 'react-sparkle';
 import {
   ApolloProvider,
   ApolloClient,
@@ -31,7 +32,7 @@ const client = new ApolloClient({
 
 const HomeLayout = ({ pageTitle, children }) => {
   const style1 = useSpring({
-    from: { opacity: 0, marginTop: -100 },
+    from: { opacity: 0, marginTop: 0 },
     to: { opacity: 1, marginTop: 0 },
     config: { duration: 3000 },
   });
@@ -41,11 +42,21 @@ const HomeLayout = ({ pageTitle, children }) => {
       <title>Book Nook | {pageTitle}</title>
 
       <main className="w-full h-full relative flex flex-col justify-center items-center">
+        <div className="w-full h-[350px] z-[-5]">
+          <Sparkle 
+            // color={'#f9d18f'}
+            count={10}
+            minSize={5}
+            maxSize={15}
+            fadeOutSpeed={20}
+            flickerSpeed={'slowest'}
+          />
         <animated.div style={style1}>
-          <div className="mt-20">
+          <div className="mt-20 flex justify-center items-center">
             <RandomAnimal />
           </div>
         </animated.div>
+        </div>
 
         <h1 className="font-medium drop-shadow-lg pb-8 text-6xl md:text-8xl md:mt-10">
           book<span className="text-[#7286ff]">nook</span>

@@ -1,12 +1,14 @@
 import React from "react";
 import { useSpring, animated, useTransition } from "react-spring";
+import Sparkle from 'react-sparkle';
 import { Link } from "react-router-dom";
-import Burger from "../Burger/Burger";
+// import Burger from "../Burger/Burger";
 import RandomAnimal from "../../hooks/RandomAnimal";
+import Navbar from '../Navbar';
 
 const Dashboard = ({ pageTitle, children }) => {
   const style1 = useSpring({
-    from: { opacity: 0, marginTop: -100 },
+    from: { opacity: 0, marginTop: 0 },
     to: { opacity: 1, marginTop: 0 },
     config: { duration: 3000 },
   });
@@ -23,36 +25,27 @@ const Dashboard = ({ pageTitle, children }) => {
             </Link>
           </h1>
         </div>
-
-        {/* NAVBAR AT 768PX & HIGHER */}
-        <div className="uppercase tracking-widest">
-          <div className="hidden md:flex bg-[#02030ac8] px-7 py-2 rounded-md font-semibold">
-            <a href="/search" className="mx-4">
-              Search
-            </a>
-            <a className="mx-4" href="/profile">
-              Profile
-            </a>
-            <a className="ml-4" href="#">
-              Logout
-            </a>
-          </div>
-
-          {/* NAVBAR AT 768PX & LOWER */}
-          <div className="md:hidden">
-            <Burger />
-          </div>
+        <div>
+          <Navbar />
         </div>
       </nav>
 
       <main>
-        {/* GENERATE ANIMAL HEADER */}
-        <animated.div style={style1}>
-          <div className="mt-0 mb-8 flex flex-col justify-center items-center">
-            <RandomAnimal />
-          </div>
-        </animated.div>
-        {children}
+          {/* GENERATE ANIMAL HEADER */}
+          <animated.div style={style1}>
+            <div className="mt-0 mb-8 flex flex-col justify-center items-center">
+              <RandomAnimal />
+              <Sparkle 
+                // color={'#f9d18f'}
+                count={10}
+                minSize={5}
+                maxSize={15}
+                fadeOutSpeed={20}
+                flickerSpeed={'slowest'}
+              />
+            </div>
+          </animated.div>
+          {children}
       </main>
 
       <footer class="py-8 text-center">
