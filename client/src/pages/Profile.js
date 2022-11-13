@@ -1,10 +1,14 @@
 
+// import { useQuery } from "@apollo/client";
 import React, { useState, useEffect } from "react";
 import Dropdown from "react-dropdown";
 import Layout from "../components/Layout/dashboard";
-import Auth from '../utils/auth';
+// import Auth from '../utils/auth';
+import ReadingList from "../components/ReadingList";
+
 
 const Profile = () => {
+ 
   const [count, setCount] = useState(0);
   const increase = () => {
     setCount(prevCount => {
@@ -20,10 +24,19 @@ const Profile = () => {
   }, []);
 
   const options = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
-  const defaultOption = options[0];
-  // const { loading, data } = useQuery(QUERY_ME);
-  // const userData = data?.me || {};
-
+  const selectedValue = 'SelectedValue';
+  const [selected, setSelected] = useState([]);
+  const handleChange = (s) => {
+      localStorage.setItem(selectedValue, JSON.stringify(s));
+      setSelected(s);
+    };
+    React.useEffect(() => {
+      const lastSelected = JSON.parse(
+        localStorage.getItem(selectedValue) ?? "[]"
+      );
+      setSelected(lastSelected);
+    }, []);
+  
   return (                                                                                                                                    
     <>
       <Layout pageTitle="Profile">
@@ -90,8 +103,9 @@ const Profile = () => {
                       <Dropdown
                         className="w-[60px] text-base font-semibold ml-3 mr-4"
                         options={options}
-                        // onChange={this._onSelect}
-                        value={defaultOption}
+                        onChange={handleChange}
+                        value={selected}
+                        isMulti
                         placeholder="Select an option"
                       />
                       books read!
@@ -347,6 +361,5 @@ const Profile = () => {
 
   );
 };
-
 
 export default Profile;

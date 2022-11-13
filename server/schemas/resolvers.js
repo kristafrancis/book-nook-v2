@@ -1,6 +1,5 @@
-const { User, Post, Comments } = require("../models");
+const { User, Comments } = require("../models");
 const { AuthenticationError } = require("apollo-server-express");
-
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
@@ -16,23 +15,23 @@ const resolvers = {
       throw new AuthenticationError("Not logged in!");
     },
 
-    // users: async () => {
-    //   return User.find().select("-__v -password");
-    // },
-    // user: async (parent, { username }) => {
-    //   return User.findOne({ username }).select("-__v -password");
-    // },
-    // comments: async (parent, { username }) => {
-    //   const params = username ? { username } : {};
-    //   return Comments.find(params).sort({ createdAt: -1 });
-    // },
-    // comment: async (parent, { _id }) => {
-    //   return Comments.findOne({ _id });
-    // },
+    users: async () => {
+      return User.find().select("-__v -password");
+    },
+    user: async (parent, { username }) => {
+      return User.findOne({ username }).select("-__v -password");
+    },
+    comments: async (parent, { username }) => {
+      const params = username ? { username } : {};
+      return Comments.find(params).sort({ createdAt: -1 });
+    },
+    comment: async (parent, { _id }) => {
+      return Comments.findOne({ _id });
+    },
   },
   Mutation: {
-    addUser: async (parent, { username, email, password }) => {
-      const user = await User.create({ username, email, password });
+    addUser: async (parent, args) => {
+      const user = await User.create(args);
       const token = signToken(user);
       return { token, user};
     },

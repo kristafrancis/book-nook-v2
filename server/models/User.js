@@ -1,9 +1,9 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model, Types } = require('mongoose');
 const bcrypt = require('bcrypt');
 //const jwt = require('jsonwebtoken');
 //const crypto = require('crypto');
 //import book schema
-const bookSchema = require('./Book');
+// const bookSchema = require('./Book');
 
 const userSchema = new Schema({
     username: {
@@ -26,7 +26,7 @@ const userSchema = new Schema({
     password: {
         type: String,
         required: true,
-        // minlength: 8
+        minlength: 5
       },
 
     comments:[{
@@ -37,11 +37,15 @@ const userSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "User"
     }], 
-    savedBooks: [bookSchema],
+    // savedBooks: [bookSchema],
 },
 {
     toJSON: {
+<<<<<<< HEAD
      virtuals: true,
+=======
+    //  virtuals: true,
+>>>>>>> cd46011bbc1f4c398d020fe66259463753d1e19a
     getters: true
     },
   
