@@ -1,7 +1,12 @@
 import React from 'react';
 import Burger from '../Burger/Burger';
+import Auth from '../../utils/auth';
 
 const Navbar = () => {
+    const logout = event => {
+        event.preventDefault();
+        Auth.logout();
+      }
 return (
     <>
     {/* ANIMATION HERE */}
@@ -15,9 +20,9 @@ return (
                 <a className="mx-4" href="/profile">
                     Profile
                 </a>
-                <a className="ml-4" href="#">
+                <button onClick={logout}>
                     Logout
-                </a>
+                </button>
             </div>
 
         {/* END ANIMATION */}
