@@ -1,5 +1,5 @@
 import React from "react";
-import { useSpring, animated, useTransition } from "react-spring";
+// import { useSpring, animated, useTransition } from "react-spring";
 
 import BgImg from "../../images/bg.png";
 import CatImg from "../../images/animals/cat.png";
@@ -27,14 +27,15 @@ const client = new ApolloClient({
 });
 
 const HomeLayout = ({ pageTitle, children }) => {
-  const style1 = useSpring({
-    from: { opacity: 0, marginTop: -100 },
-    to: { opacity: 1, marginTop: 0 },
-    config: { duration: 3000 },
-  });
+  // const style1 = useSpring({
+  //   from: { opacity: 0, marginTop: -100 },
+  //   to: { opacity: 1, marginTop: 0 },
+  //   config: { duration: 3000 },
+  // });
 
   return (
     <>
+    <link href="/dist/output.css" rel="stylesheet"></link>
       <title>Book Nook | {pageTitle}</title>
       <header>
         <div

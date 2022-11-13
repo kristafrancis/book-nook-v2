@@ -1,6 +1,5 @@
 import React from "react";
-import { Link } from "gatsby";
-import AnchorLink from "react-anchor-link-smooth-scroll";
+// import AnchorLink from "react-anchor-link-smooth-scroll";
 import Burger from "../Burger/Burger"
 
 const Dashboard = ({ pageTitle, children }) => {
@@ -9,18 +8,17 @@ const Dashboard = ({ pageTitle, children }) => {
       <title>Book Nook | {pageTitle}</title>
 
       <nav>
-        <div className="w-full mx-8 my-6 flex justify-between items-center">
+        <div className="w-full my-6 flex justify-evenly space-x-60 items-center">
           <div>
             <h1 className="drop-shadow-lg text-5xl md:text-7xl">
-              <Link to="/search" className="hover:text-[#7286ff]">
+              <a href="/search" className="hover:text-[#7286ff]">
                 book<span className="text-[#7286ff]">nook</span>
-              </Link>
+              </a>
             </h1>
           </div>
-      
           <div>
-            <Burger />
           </div>
+          <Burger />
         </div>
       </nav>
 

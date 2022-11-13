@@ -8,29 +8,30 @@ const Feed =
     // }
   return (
     <div>
-      <div class="pb-4" id="Trending"></div>
-      <h2 class="text-4xl text-indigo-400 drop-shadow-md text-center pb-8">
+      <div className="pb-4" id="Trending"></div>
+      <link href="/dist/output.css" rel="stylesheet"></link>
+      <h2 className="text-4xl text-indigo-400 drop-shadow-md text-center pb-8">
         See what others are reading
       </h2>
 
-      <div class="mx-24 bg-[#090c26] rounded-2xl shadow-lg">
-        <div class="p-10">
-          <div class="-my-10">
-            <div class="flex space-x-4 text-md">
-              <div class="flex-none py-10">
+      <div className="mx-24 bg-[#090c26] rounded-2xl shadow-lg">
+        <div className="p-10">
+          <div className="-my-10">
+            <div className="flex space-x-4 text-md">
+              <div className="flex-none py-10">
                 <img
                   src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80"
                   alt=""
-                  class="h-10 w-10 rounded-full bg-gray-100"
+                  className="h-10 w-10 rounded-full bg-gray-100"
                 ></img>
               </div>
-              <div class="flex-1 py-10">
-                <h3 class="text-3xl text-indigo-500">Book title</h3>
+              <div className="flex-1 py-10">
+                <h3 className="text-3xl text-indigo-500">Book title</h3>
                 <p className="text-gray-400">Username</p>
 
-                <div class="mt-4 flex items-center">
+                <div className="mt-4 flex items-center">
                   <svg
-                    class="text-yellow-400 h-5 w-5 flex-shrink-0"
+                    className="text-yellow-400 h-5 w-5 flex-shrink-0"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 20 20"
                     fill="currentColor"
@@ -44,7 +45,7 @@ const Feed =
                   </svg>
 
                   <svg
-                    class="text-yellow-400 h-5 w-5 flex-shrink-0"
+                    className="text-yellow-400 h-5 w-5 flex-shrink-0"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 20 20"
                     fill="currentColor"
@@ -58,7 +59,7 @@ const Feed =
                   </svg>
 
                   <svg
-                    class="text-yellow-400 h-5 w-5 flex-shrink-0"
+                    className="text-yellow-400 h-5 w-5 flex-shrink-0"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 20 20"
                     fill="currentColor"
@@ -72,7 +73,7 @@ const Feed =
                   </svg>
 
                   <svg
-                    class="text-yellow-400 h-5 w-5 flex-shrink-0"
+                    className="text-yellow-400 h-5 w-5 flex-shrink-0"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 20 20"
                     fill="currentColor"
@@ -86,7 +87,7 @@ const Feed =
                   </svg>
 
                   <svg
-                    class="text-yellow-400 h-5 w-5 flex-shrink-0"
+                    className="text-yellow-400 h-5 w-5 flex-shrink-0"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 20 20"
                     fill="currentColor"
@@ -99,29 +100,29 @@ const Feed =
                     />
                   </svg>
                 </div>
-                <p class="sr-only">5 out of 5 stars</p>
+                <p className="sr-only">5 out of 5 stars</p>
 
-                <div class="prose prose-sm mt-4 max-w-none">
+                <div className="prose prose-sm mt-4 max-w-none">
                   <p>Comment goes here</p>
                 </div>
               </div>
             </div>
 
-            <div class="flex space-x-4 text-sm text-gray-500">
-              <div class="flex-none py-10">
+            <div className="flex space-x-4 text-sm text-gray-500">
+              <div className="flex-none py-10">
                 <img
                   src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80"
                   alt=""
-                  class="h-10 w-10 rounded-full bg-gray-100"
+                  className="h-10 w-10 rounded-full bg-gray-100"
                 ></img>{" "}
               </div>
-              <div class="flex-1 py-10 border-t border-gray-200">
-                <h3 class="font-medium">Book Title</h3>
+              <div className="flex-1 py-10 border-t border-gray-200">
+                <h3 className="font-medium">Book Title</h3>
                 <p>Username</p>
 
-                <div class="mt-4 flex items-center">
+                <div className="mt-4 flex items-center">
                   <svg
-                    class="text-yellow-400 h-5 w-5 flex-shrink-0"
+                    className="text-yellow-400 h-5 w-5 flex-shrink-0"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 20 20"
                     fill="currentColor"
@@ -135,7 +136,7 @@ const Feed =
                   </svg>
 
                   <svg
-                    class="text-yellow-400 h-5 w-5 flex-shrink-0"
+                    className="text-yellow-400 h-5 w-5 flex-shrink-0"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 20 20"
                     fill="currentColor"
@@ -149,7 +150,7 @@ const Feed =
                   </svg>
 
                   <svg
-                    class="text-yellow-400 h-5 w-5 flex-shrink-0"
+                    className="text-yellow-400 h-5 w-5 flex-shrink-0"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 20 20"
                     fill="currentColor"
@@ -163,7 +164,7 @@ const Feed =
                   </svg>
 
                   <svg
-                    class="text-yellow-400 h-5 w-5 flex-shrink-0"
+                    className="text-yellow-400 h-5 w-5 flex-shrink-0"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 20 20"
                     fill="currentColor"
@@ -177,7 +178,7 @@ const Feed =
                   </svg>
 
                   <svg
-                    class="text-yellow-400 h-5 w-5 flex-shrink-0"
+                    className="text-yellow-400 h-5 w-5 flex-shrink-0"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 20 20"
                     fill="currentColor"
@@ -190,29 +191,29 @@ const Feed =
                     />
                   </svg>
                 </div>
-                <p class="sr-only">5 out of 5 stars</p>
+                <p className="sr-only">5 out of 5 stars</p>
 
-                <div class="prose prose-sm mt-4 max-w-none text-gray-500">
+                <div className="prose prose-sm mt-4 max-w-none text-gray-500">
                   <p>Comment goes here</p>
                 </div>
               </div>
             </div>
 
-            <div class="flex space-x-4 text-sm text-gray-500">
-              <div class="flex-none py-10">
+            <div className="flex space-x-4 text-sm text-gray-500">
+              <div className="flex-none py-10">
                 <img
                   src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80"
                   alt=""
-                  class="h-10 w-10 rounded-full bg-gray-100"
+                  className="h-10 w-10 rounded-full bg-gray-100"
                 ></img>{" "}
               </div>
-              <div class="flex-1 py-10 border-t border-gray-200">
-                <h3 class="font-medium">Book Title</h3>
+              <div className="flex-1 py-10 border-t border-gray-200">
+                <h3 className="font-medium">Book Title</h3>
                 <p>Username</p>
 
-                <div class="mt-4 flex items-center">
+                <div className="mt-4 flex items-center">
                   <svg
-                    class="text-yellow-400 h-5 w-5 flex-shrink-0"
+                    className="text-yellow-400 h-5 w-5 flex-shrink-0"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 20 20"
                     fill="currentColor"
@@ -226,7 +227,7 @@ const Feed =
                   </svg>
 
                   <svg
-                    class="text-yellow-400 h-5 w-5 flex-shrink-0"
+                    className="text-yellow-400 h-5 w-5 flex-shrink-0"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 20 20"
                     fill="currentColor"
@@ -240,7 +241,7 @@ const Feed =
                   </svg>
 
                   <svg
-                    class="text-yellow-400 h-5 w-5 flex-shrink-0"
+                    className="text-yellow-400 h-5 w-5 flex-shrink-0"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 20 20"
                     fill="currentColor"
@@ -254,7 +255,7 @@ const Feed =
                   </svg>
 
                   <svg
-                    class="text-yellow-400 h-5 w-5 flex-shrink-0"
+                    className="text-yellow-400 h-5 w-5 flex-shrink-0"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 20 20"
                     fill="currentColor"
@@ -268,7 +269,7 @@ const Feed =
                   </svg>
 
                   <svg
-                    class="text-yellow-400 h-5 w-5 flex-shrink-0"
+                    className="text-yellow-400 h-5 w-5 flex-shrink-0"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 20 20"
                     fill="currentColor"
@@ -281,29 +282,29 @@ const Feed =
                     />
                   </svg>
                 </div>
-                <p class="sr-only">5 out of 5 stars</p>
+                <p className="sr-only">5 out of 5 stars</p>
 
-                <div class="prose prose-sm mt-4 max-w-none text-gray-500">
+                <div className="prose prose-sm mt-4 max-w-none text-gray-500">
                   <p>Comment goes here</p>
                 </div>
               </div>
             </div>
 
-            <div class="flex space-x-4 text-sm text-gray-500">
-              <div class="flex-none py-10">
+            <div className="flex space-x-4 text-sm text-gray-500">
+              <div className="flex-none py-10">
                 <img
                   src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80"
                   alt=""
-                  class="h-10 w-10 rounded-full bg-gray-100"
+                  className="h-10 w-10 rounded-full bg-gray-100"
                 ></img>{" "}
               </div>
-              <div class="flex-1 py-10 border-t border-gray-200">
-                <h3 class="font-medium">Book Title</h3>
+              <div className="flex-1 py-10 border-t border-gray-200">
+                <h3 className="font-medium">Book Title</h3>
                 <p>Username</p>
 
-                <div class="mt-4 flex items-center">
+                <div className="mt-4 flex items-center">
                   <svg
-                    class="text-yellow-400 h-5 w-5 flex-shrink-0"
+                    className="text-yellow-400 h-5 w-5 flex-shrink-0"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 20 20"
                     fill="currentColor"
@@ -317,7 +318,7 @@ const Feed =
                   </svg>
 
                   <svg
-                    class="text-yellow-400 h-5 w-5 flex-shrink-0"
+                    className="text-yellow-400 h-5 w-5 flex-shrink-0"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 20 20"
                     fill="currentColor"
@@ -331,7 +332,7 @@ const Feed =
                   </svg>
 
                   <svg
-                    class="text-yellow-400 h-5 w-5 flex-shrink-0"
+                    className="text-yellow-400 h-5 w-5 flex-shrink-0"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 20 20"
                     fill="currentColor"
@@ -345,7 +346,7 @@ const Feed =
                   </svg>
 
                   <svg
-                    class="text-yellow-400 h-5 w-5 flex-shrink-0"
+                    className="text-yellow-400 h-5 w-5 flex-shrink-0"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 20 20"
                     fill="currentColor"
@@ -359,7 +360,7 @@ const Feed =
                   </svg>
 
                   <svg
-                    class="text-yellow-400 h-5 w-5 flex-shrink-0"
+                    className="text-yellow-400 h-5 w-5 flex-shrink-0"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 20 20"
                     fill="currentColor"
@@ -372,16 +373,16 @@ const Feed =
                     />
                   </svg>
                 </div>
-                <p class="sr-only">5 out of 5 stars</p>
+                <p className="sr-only">5 out of 5 stars</p>
 
-                <div class="prose prose-sm mt-4 max-w-none text-gray-500">
+                <div className="prose prose-sm mt-4 max-w-none text-gray-500">
                   <p>Comment goes here</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="p-5"></div>
+        <div className="p-5"></div>
       </div>
     </div>
   );

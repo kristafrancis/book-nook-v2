@@ -16,25 +16,25 @@ const resolvers = {
       throw new AuthenticationError("Not logged in!");
     },
 
-    users: async () => {
-      return User.find().select("-__v -password");
-    },
-    user: async (parent, { username }) => {
-      return User.findOne({ username }).select("-__v -password");
-    },
-    comments: async (parent, { username }) => {
-      const params = username ? { username } : {};
-      return Comments.find(params).sort({ createdAt: -1 });
-    },
-    comment: async (parent, { _id }) => {
-      return Comments.findOne({ _id });
-    },
+    // users: async () => {
+    //   return User.find().select("-__v -password");
+    // },
+    // user: async (parent, { username }) => {
+    //   return User.findOne({ username }).select("-__v -password");
+    // },
+    // comments: async (parent, { username }) => {
+    //   const params = username ? { username } : {};
+    //   return Comments.find(params).sort({ createdAt: -1 });
+    // },
+    // comment: async (parent, { _id }) => {
+    //   return Comments.findOne({ _id });
+    // },
   },
   Mutation: {
-    addUser: async (parent, args) => {
-      const user = await User.create(args);
+    addUser: async (parent, { username, email, password }) => {
+      const user = await User.create({ username, email, password });
       const token = signToken(user);
-      return { token, user, email, password };
+      return { token, user};
     },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
@@ -114,11 +114,11 @@ const resolvers = {
       throw new AuthenticationError("You need to be logged in!");
     },
 
-    saveBook: async (parent, { BookInput }, context) => {
+    saveBook: async (parent, args, context) => {
       if (context.user) {
         const updateUser = await User.findByIdAndUpdate(
           { _id: context.user._id },
-          { $push: { savedBooks: BookInput } },
+          { $push: { savedBooks: args.input } },
           { new: true, runValidators: true }
         );
         return updateUser;
@@ -126,11 +126,11 @@ const resolvers = {
       throw new AuthenticationError("You need to be logged in!");
     },
 
-    removeBook: async (parent, { bookId }, context) => {
+    removeBook: async (parent, args, context) => {
       if (context.user) {
         const updateSavedBooks = await User.findOneAndUpdate(
           { _id: context.user.id },
-          { $pull: { savedBooks: { bookId } } },
+          { $pull: { savedBooks: { bookId: args.bookId } } },
           { new: true }
         );
         return updateSavedBooks;
