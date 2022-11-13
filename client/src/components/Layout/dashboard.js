@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from 'react-router-dom';
-// import AnchorLink from "react-anchor-link-smooth-scroll";
 import Burger from "../Burger/Burger"
 
 const Dashboard = ({ pageTitle, children }) => {
@@ -20,7 +19,6 @@ const Dashboard = ({ pageTitle, children }) => {
         {/* NAVBAR AT 768PX & HIGHER */}
         <div className="uppercase tracking-widest">
           <div className="hidden md:flex bg-[#02030ac8] px-7 py-2 rounded-md font-semibold">
-            <Link href="#Trending" className="mr-4">Trending</Link>
             <a href="/search" className="mx-4">Search</a>
             <a className="mx-4" href="/profile">Profile</a>
             <a className="ml-4" href="#">Logout</a>
