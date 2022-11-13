@@ -31,9 +31,6 @@ const Dashboard = ({ pageTitle, children }) => {
       </nav>
 
       <main>
-        {/* <div className="relative h-[400px] z-[-5]">
-          <Sparkle />
-        </div> */}
           {/* GENERATE ANIMAL HEADER */}
           <animated.div style={style1}>
             <div className="mt-0 mb-8 flex flex-col justify-center items-center">
