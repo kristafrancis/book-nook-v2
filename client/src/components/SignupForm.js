@@ -11,6 +11,7 @@ const Signup = () => {
     //const [validated] = useState(false);
     const [showAlert, setShowAlert] = useState(false);
     const [addUser, { error }] = useMutation(ADD_USER);
+    const navigate = useNavigate();
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -19,7 +20,7 @@ const Signup = () => {
     
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-       
+       navigate('/search');
         console.log(formState)
 
         try {
@@ -32,6 +33,12 @@ const Signup = () => {
             console.error(e);
             setShowAlert(true);
         };
+
+        setFormState({
+          username: '',
+          email: '',
+          password: '',
+        });
 };
 
     return (
@@ -39,9 +46,6 @@ const Signup = () => {
         <div className="w-full max-w-md flex items-center justify-center">
   
             {/* BEGIN SIGNUP FORM */}
-            <div>
-              {<Navigate to="/search" replace={true}/>}
-            </div>
             <form className="w-[400px]" onSubmit={handleFormSubmit}>
               <input type="hidden" name="remember" value="true"></input>{" "}
               <div className="-space-y-px rounded-md shadow-lg">
