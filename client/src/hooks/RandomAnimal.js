@@ -37,7 +37,7 @@ export default function RandomAnimal () {
             src={images[currentImageIndex]}
             alt="Travel to the stars, read!"
             height={275}
-            className="h-[275px]"
+            className="h-[275px] z-10"
         />
     );
 };

@@ -74,11 +74,11 @@ const Search = () => {
   //   config: { duration: 3000 },
   // });
 
-  // const style3 = useSpring({
-  //   from: { opacity: 0, marginLeft: -1000 },
-  //   to: { opacity: 1, marginLeft: 0 },
-  //   config: { duration: 3000 },
-  // });
+  const style3 = useSpring({
+    from: { opacity: 0, marginLeft: -50 },
+    to: { opacity: 1, marginLeft: 0 },
+    config: { duration: 1000 },
+  });
 
   useEffect(() => {
     return () => saveBookIds(savedBookIds);
