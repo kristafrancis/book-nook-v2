@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 // import AnchorLink from "react-anchor-link-smooth-scroll";
-import Burger from "../Burger/Burger"
+import Burger from "../Burger/Burger";
+import RandomAnimal from './RandomAnimal';
 
 const Dashboard = ({ pageTitle, children }) => {
   return (
