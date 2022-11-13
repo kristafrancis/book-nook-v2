@@ -59,6 +59,10 @@ function App() {
                 path="/editprofile"
                 element={<Editprofile />}
               />
+              <Route
+              path='/logout'
+              element={<logout />}
+              />
 
           </Routes>
       </Router>
