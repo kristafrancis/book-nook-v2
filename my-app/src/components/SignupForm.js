@@ -5,34 +5,32 @@ import { ADD_USER } from '../utils/mutations';
 import Layout from "../components/Layout/home";
 import Auth from '../utils/auth';
 
+
 const Signup = () => {
-    const [userFormData, setUserFormData] = useState({ username: '', email: '', password: '' });
-    const [validated] = useState(false);
+    const [formState, setFormState] = useState({ username: '', email: '', password: '' });
+    //const [validated] = useState(false);
     const [showAlert, setShowAlert] = useState(false);
-    const [addUser]  = useMutation(ADD_USER);
+    const [addUser, { error }] = useMutation(ADD_USER);
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
-        setUserFormData({ ...userFormData, [name]: value });
+        setFormState({ ...formState, [name]: value });
     };
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
+        console.log(formState)
 
         try {
-            const { data} = await addUser({
-                variables: { ...userFormData }
+            const { data } = await addUser({
+                variables: { ...formState }
             });
+
             Auth.login(data.addUser.token);
         } catch (e) {
             console.error(e);
             setShowAlert(true);
         };
-        setUserFormData({
-            username: '', 
-            email: '',
-            password: '',
-        });
     };
 
     return (
@@ -42,11 +40,11 @@ const Signup = () => {
             <div className="w-full max-w-md">
     
               {/* BEGIN SIGNUP FORM */}
-              <form className="space-y-6" noValidate validated={validated} onSubmit={handleFormSubmit}>
+              <form className="space-y-6" onSubmit={handleFormSubmit}>
                 <input type="hidden" name="remember" value="true"></input>{" "}
                 <div className="-space-y-px rounded-md shadow-sm">
                   <div>
-                    <label for="email-address" className="sr-only">
+                    <label For="email-address" className="sr-only">
                       Email address
                     </label>
                     <input
@@ -54,14 +52,14 @@ const Signup = () => {
                       type="email"
                       autocomplete="email"
                       onChange={handleInputChange}
-                      value= {userFormData.email}
+                      value= {formState.email}
                       required
                       className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                       placeholder="Email address"
                     ></input>{" "}
                   </div>
                   <div>
-                    <label for="Username" className="sr-only">
+                    <label For="Username" className="sr-only">
                       Username
                     </label>
                     <input
@@ -69,7 +67,7 @@ const Signup = () => {
                       type="username"
                       autocomplete="username"
                       onChange={handleInputChange}
-                      value= {userFormData.username}
+                      value= {formState.username}
                       required
                       className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300
                   px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-non
@@ -78,7 +76,7 @@ const Signup = () => {
                     ></input>{" "}
                   </div>
                   <div>
-                    <label for="password" className="sr-only">
+                    <label For="password" className="sr-only">
                       Password
                     </label>
                     <input
@@ -86,7 +84,7 @@ const Signup = () => {
                       name="password"
                       type="password"
                       onChange={handleInputChange}
-                      value={userFormData.password}
+                      value={formState.password}
                       required
                       className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                       placeholder="Password"
@@ -107,7 +105,7 @@ const Signup = () => {
                 </div>
                 <div>
                   <button
-                    disabled={!(userFormData.username && userFormData.email && userFormData.password)}
+                    disabled={!(formState.username && formState.email && formState.password)}
                     type="submit"
                     variant='success'
                     className="bg-[#7C87f2] group flex w-full justify-center rounded-md border border-transparent py-2 px-4 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"

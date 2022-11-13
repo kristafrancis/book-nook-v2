@@ -1,4 +1,4 @@
-const { Schema, model, Types } = require('mongoose');
+const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 //const jwt = require('jsonwebtoken');
 //const crypto = require('crypto');
@@ -10,7 +10,7 @@ const userSchema = new Schema({
         type: String,
         unique: true,
         required: true,
-        trim: true
+        //trim: true
     },
     email: {
         type: String,
@@ -20,13 +20,13 @@ const userSchema = new Schema({
             validator: function(v) {
                 return /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/.test(v);
             },
-            message: props => `${props.value} Please enter a valid email address!` 
+            //message: props => `${props.value} Please enter a valid email address!` 
         }
     },
     password: {
         type: String,
         required: true,
-        minlength: 8
+        // minlength: 8
       },
 
     comments:[{
