@@ -1,9 +1,10 @@
 import decode from 'jwt-decode';
 
 class AuthService {
-    getProfile() {
-        return decode(this.getToken());
-    }
+    
+  getProfile() {
+    return decode(this.getToken());
+  }
 
     //is user still logged in?
     loggedIn() {
