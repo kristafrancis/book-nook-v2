@@ -23,6 +23,8 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
+
+
 const HomeLayout = ({ pageTitle, children }) => {
   // const style1 = useSpring({
   //   from: { opacity: 0, marginTop: -100 },
