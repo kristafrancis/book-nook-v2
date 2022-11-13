@@ -5,6 +5,7 @@ import { ADD_USER } from '../utils/mutations';
 import Layout from "../components/Layout/home";
 import Auth from '../utils/auth';
 
+
 const Signup = () => {
     const [userFormData, setUserFormData] = useState({ username: '', email: '', password: '' });
     const [validated] = useState(false);
@@ -18,9 +19,10 @@ const Signup = () => {
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
+        console.log(userFormData)
 
         try {
-            const { data} = await addUser({
+            const { data } = await addUser({
                 variables: { ...userFormData }
             });
             Auth.login(data.addUser.token);
