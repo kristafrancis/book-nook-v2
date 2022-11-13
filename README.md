@@ -1,1 +1,1 @@
-# BookNook V2 v2
+# BookNook V2

@@ -1,20 +1,24 @@
 import React from "react";
-// import { useSpring, animated, useTransition } from "react-spring";
-import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
-import { setContext } from '@apollo/client/link/context';
-import RandomAnimal from '../../hooks/RandomAnimal';
-
+import { useSpring, animated, useTransition } from "react-spring";
+import {
+  ApolloProvider,
+  ApolloClient,
+  InMemoryCache,
+  createHttpLink,
+} from "@apollo/client";
+import { setContext } from "@apollo/client/link/context";
+import RandomAnimal from "../../hooks/RandomAnimal";
 
 const httpLink = createHttpLink({
-  uri: '/graphql',
+  uri: "/graphql",
 });
 
 const authLink = setContext((_, { headers }) => {
-  const token = localStorage.getItem('id_token');
+  const token = localStorage.getItem("id_token");
   return {
     headers: {
       ...headers,
-      authorization: token ? `Bearer ${token}` : '',
+      authorization: token ? `Bearer ${token}` : "",
     },
   };
 });
@@ -23,23 +27,25 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
+
+
 const HomeLayout = ({ pageTitle, children }) => {
-  // const style1 = useSpring({
-  //   from: { opacity: 0, marginTop: -100 },
-  //   to: { opacity: 1, marginTop: 0 },
-  //   config: { duration: 3000 },
-  // });
+  const style1 = useSpring({
+    from: { opacity: 0, marginTop: -100 },
+    to: { opacity: 1, marginTop: 0 },
+    config: { duration: 3000 },
+  });
 
   return (
     <>
       <title>Book Nook | {pageTitle}</title>
 
       <main className="w-full h-full relative flex flex-col justify-center items-center">
-        {/* <animated.div style={style1}> */}
-        <div className="mt-20">
-          <RandomAnimal />
-        </div>
-        {/* </animated.div> */}
+        <animated.div style={style1}>
+          <div className="mt-20">
+            <RandomAnimal />
+          </div>
+        </animated.div>
 
         <h1 className="font-medium drop-shadow-lg pb-8 text-6xl md:text-8xl md:mt-10">
           book<span className="text-[#7286ff]">nook</span>
