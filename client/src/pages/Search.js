@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useSpring, animated, useTransition } from "react-spring";
 import Layout from "../components/Layout/dashboard";
 // import Feed from "../components/feed";
 import HedgehogImg from "../images/animals/hedgehog.png";
@@ -6,7 +7,7 @@ import { googleBookSearch } from "../utils/API";
 import Auth from "../utils/auth";
 import { SAVE_BOOK } from "../utils/mutations";
 import { saveBookIds, getSavedBookIds } from "../utils/localStorage";
-import { useMutation } from '@apollo/client';
+import { useMutation } from "@apollo/client";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 
 const Search = () => {
@@ -19,66 +20,66 @@ const Search = () => {
 
   const posts = [
     {
-      title: 'Adorable',
-      href: '#',
+      title: "Adorable",
+      href: "#",
       description:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto accusantium praesentium eius, ut atque fuga culpa, similique sequi cum eos quis dolorum.',
-      date: 'Mar 16, 2020',
-      datetime: '2020-03-16',
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto accusantium praesentium eius, ut atque fuga culpa, similique sequi cum eos quis dolorum.",
+      date: "Mar 16, 2020",
+      datetime: "2020-03-16",
       imageUrl:
-        'https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80',
+        "https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80",
       author: {
-        name: 'Roel Aufderehar',
-        href: '#',
+        name: "Roel Aufderehar",
+        href: "#",
         imageUrl:
-          'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+          "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
       },
     },
     {
-      title: 'My kid reads this everyday!',
-      href: '#',
+      title: "My kid reads this everyday!",
+      href: "#",
       description:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit facilis asperiores porro quaerat doloribus, eveniet dolore. Adipisci tempora aut inventore optio animi., tempore temporibus quo laudantium.',
-      date: 'Mar 10, 2020',
-      datetime: '2020-03-10',
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit facilis asperiores porro quaerat doloribus, eveniet dolore. Adipisci tempora aut inventore optio animi., tempore temporibus quo laudantium.",
+      date: "Mar 10, 2020",
+      datetime: "2020-03-10",
       imageUrl:
-        'https://images.unsplash.com/photo-1547586696-ea22b4d4235d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80',
+        "https://images.unsplash.com/photo-1547586696-ea22b4d4235d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80",
       author: {
-        name: 'Brenna Goyette',
-        href: '#',
+        name: "Brenna Goyette",
+        href: "#",
         imageUrl:
-          'https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+          "https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
       },
     },
     {
-      title: 'Love this book!',
-      href: '#',
+      title: "Love this book!",
+      href: "#",
       description:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint harum rerum voluptatem quo recusandae magni placeat saepe molestiae, sed excepturi cumque corporis perferendis hic.',
-      date: 'Feb 12, 2020',
-      datetime: '2020-02-12',
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint harum rerum voluptatem quo recusandae magni placeat saepe molestiae, sed excepturi cumque corporis perferendis hic.",
+      date: "Feb 12, 2020",
+      datetime: "2020-02-12",
       imageUrl:
-        'https://images.unsplash.com/photo-1492724441997-5dc865305da7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80',
+        "https://images.unsplash.com/photo-1492724441997-5dc865305da7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80",
       author: {
-        name: 'Daniela Metz',
-        href: '#',
+        name: "Daniela Metz",
+        href: "#",
         imageUrl:
-          'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+          "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
       },
     },
-  ]
+  ];
 
-  // const style2 = useSpring({
-  //   from: { opacity: 0, marginRight: -1000 },
-  //   to: { opacity: 1, marginRight: 0 },
-  //   config: { duration: 3000 },
-  // });
+  const style2 = useSpring({
+    from: { opacity: 0, marginRight: -1000 },
+    to: { opacity: 1, marginRight: 0 },
+    config: { duration: 3000 },
+  });
 
-  // const style3 = useSpring({
-  //   from: { opacity: 0, marginLeft: -1000 },
-  //   to: { opacity: 1, marginLeft: 0 },
-  //   config: { duration: 3000 },
-  // });
+  const style3 = useSpring({
+    from: { opacity: 0, marginLeft: -1000 },
+    to: { opacity: 1, marginLeft: 0 },
+    config: { duration: 3000 },
+  });
 
   useEffect(() => {
     return () => saveBookIds(savedBookIds);
@@ -140,149 +141,167 @@ const Search = () => {
   return (
     <>
       <Layout pageTitle="Search">
-        
-      <div className="w-[85%] h-auto mx-auto flex flex-col justify-center items-center">
-          <h2 className="text-4xl font-medium italic drop-shadow-md">
-            Travel to the stars, read!
-          </h2>
-       
+        <div className="w-[85%] h-auto mx-auto flex flex-col justify-center items-center">
+          <animated.div style={style3}>
+            <h2 className="text-4xl font-medium italic drop-shadow-md">
+              Travel to the stars, read!
+            </h2>
+          </animated.div>
           {/* SEARCH INPUT */}
           <div className="py-5">
-           
-                    <form className="search w-[500px]" onSubmit={handleFormSubmit} >
-                      <label for="search" className="sr-only">
-                        Search
-                      </label>
-                      <div className="relative">
-                        <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                          <svg
-                            className="h-5 w-5 text-gray-300"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 20 20"
-                            fill="currentColor"
-                            aria-hidden="true"
-                          >
-                            <path
-                              fill-rule="evenodd"
-                              d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
-                              clip-rule="evenodd"
-                            />
-                          </svg>
-                        </div>
-                        <input
-                          
-                          name="search"
-                          value={searchInput}
-                          onChange={(e) => setSearchInput(e.target.value)}
-                          type='text'
-                          className="block w-full rounded-md  bg-[#22274f] border border-slate-700 text-gray-200 placeholder-slate-500 py-2 pl-10 pr-3 text-sm focus:border-teal-400 focus:text-gray-200 focus:placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-teal-400 sm:text-2xl"
-                          placeholder="Search"
-                        ></input>
-                      </div>
-                      </form>
-                      <AnchorLink className="flex justify-center" href="#Trending">Or see what others are reading! 
-                      </AnchorLink>
-                      
-                    </div>
-                  </div>
-              
-        
+            <form className="search w-[500px]" onSubmit={handleFormSubmit}>
+              <label for="search" className="sr-only">
+                Search
+              </label>
+              <div className="relative">
+                <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                  <svg
+                    className="h-5 w-5 text-gray-300"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                </div>
+                <input
+                  name="search"
+                  value={searchInput}
+                  onChange={(e) => setSearchInput(e.target.value)}
+                  type="text"
+                  className="block w-full rounded-md  bg-[#22274f] border border-slate-700 text-gray-200 placeholder-slate-500 py-2 pl-10 pr-3 text-sm focus:border-teal-400 focus:text-gray-200 focus:placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-teal-400 sm:text-2xl"
+                  placeholder="Search"
+                ></input>
+              </div>
+            </form>
+            <AnchorLink className="flex justify-center" href="#Trending">
+              Or see what others are reading!
+            </AnchorLink>
+          </div>
+        </div>
+
         {/* END SEARCH INPUT */}
 
         {/* GOOGLE BOOKS API */}
 
         <div class="mx-56 pt-5 columns-2 text-base">
-        <div class="bookcard">
-          {searchedBooks.map((book) => {
-            return (
-              <div className="p-5 " key={book.bookId}>
-                 <div class="cardBody" className="bg-slate-900 p-10 pb-20  rounded-2xl shadow-inner shadow-slate-700 columns-2 ">
-                {book.image ? (
-                  <img className="float-left pr-10 pb-5" src={book.image} alt={`Cover of ${book.title}`}></img>
-                ) : null}
-               
-                  <h1>{book.title}</h1>
-                  <p> Authors: {book.authors}</p>
-                  <p>Description: {book.description}</p>
-                  {/* {Auth.loggedIn() && ( */}
-                  <div class="pt-10">
-                  <button
-                    className="float-right inline-flex items-center justify-center rounded-md border border-indigo-200 bg-[#22274f] px-4 py-2 text-sm font-medium shadow-sm"
-                    disabled={savedBookIds?.some(
-                      (savedBookId) => savedBookId === book.bookId
-                    )}
-                    onClick={() => handleSavedBook(book.bookId)}
+          <div class="bookcard">
+            {searchedBooks.map((book) => {
+              return (
+                <div className="p-5 " key={book.bookId}>
+                  <div
+                    class="cardBody"
+                    className="bg-slate-900 p-10 pb-20  rounded-2xl shadow-inner shadow-slate-700 columns-2 "
                   >
-                    {savedBookIds?.some(
-                      (savedBookId) => savedBookId === book.bookId
-                    )
-                      ? "This book has already been saved"
-                      : "Save this book"}
-                  </button>
+                    {book.image ? (
+                      <img
+                        className="float-left pr-10 pb-5"
+                        src={book.image}
+                        alt={`Cover of ${book.title}`}
+                      ></img>
+                    ) : null}
+
+                    <h1>{book.title}</h1>
+                    <p> Authors: {book.authors}</p>
+                    <p>Description: {book.description}</p>
+                    {/* {Auth.loggedIn() && ( */}
+                    <div class="pt-10">
+                      <button
+                        className="float-right inline-flex items-center justify-center rounded-md border border-indigo-200 bg-[#22274f] px-4 py-2 text-sm font-medium shadow-sm"
+                        disabled={savedBookIds?.some(
+                          (savedBookId) => savedBookId === book.bookId
+                        )}
+                        onClick={() => handleSavedBook(book.bookId)}
+                      >
+                        {savedBookIds?.some(
+                          (savedBookId) => savedBookId === book.bookId
+                        )
+                          ? "This book has already been saved"
+                          : "Save this book"}
+                      </button>
+                    </div>
+                    {/* )} */}
                   </div>
-                  {/* )} */}
                 </div>
-              </div>
-              
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
         </div>
         {/* END GOOGLE BOOKS API */}
 
-
-
         <div id="Trending"></div>
         <div className="relative bg-transparent px-4 pt-16 pb-20 sm:px-6 lg:px-8 lg:pt-24 lg:pb-28">
-      <div className="absolute inset-0">
-        <div className="h-1/3 bg-transparent sm:h-2/3" />
-      </div>
-      <div className="relative mx-auto max-w-7xl">
-        <div className="text-center">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Trending</h2>
-          <p className="mx-auto mt-3 max-w-2xl text-xl sm:mt-4">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa libero labore natus atque, ducimus sed.
-          </p>
-        </div>
-        <div className="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-3">
-          {posts.map((post) => (
-            <div key={post.title} className="flex flex-col overflow-hidden rounded-lg shadow-lg">
-              <div className="flex-shrink-0">
-                <img className="h-48 w-full object-cover" src={post.imageUrl} alt="" />
-              </div>
-              <div className="flex flex-1 flex-col justify-between bg-slate-900 p-6">
-                <div className="flex-1">
-
-                  <a href={post.href} className="mt-2 block">
-                    <p className="text-xl font-semibold">{post.title}</p>
-                    <p className="mt-3 text-base text-white">{post.description}</p>
-                  </a>
-                </div>
-                <div className="mt-6 flex items-center">
+          <div className="absolute inset-0">
+            <div className="h-1/3 bg-transparent sm:h-2/3" />
+          </div>
+          <div className="relative mx-auto max-w-7xl">
+            <div className="text-center">
+              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+                Trending
+              </h2>
+              <p className="mx-auto mt-3 max-w-2xl text-xl sm:mt-4">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa
+                libero labore natus atque, ducimus sed.
+              </p>
+            </div>
+            <div className="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-3">
+              {posts.map((post) => (
+                <div
+                  key={post.title}
+                  className="flex flex-col overflow-hidden rounded-lg shadow-lg"
+                >
                   <div className="flex-shrink-0">
-                    <a href={post.author.href}>
-                      <span className="sr-only">{post.author.name}</span>
-                      <img className="h-10 w-10 rounded-full" src={post.author.imageUrl} alt="" />
-                    </a>
+                    <img
+                      className="h-48 w-full object-cover"
+                      src={post.imageUrl}
+                      alt=""
+                    />
                   </div>
-                  <div className="ml-3">
-                    <p className="text-sm font-medium">
-                      <a href={post.author.href} className="hover:underline">
-                        {post.author.name}
+                  <div className="flex flex-1 flex-col justify-between bg-slate-900 p-6">
+                    <div className="flex-1">
+                      <a href={post.href} className="mt-2 block">
+                        <p className="text-xl font-semibold">{post.title}</p>
+                        <p className="mt-3 text-base text-white">
+                          {post.description}
+                        </p>
                       </a>
-                    </p>
-                    <div className="flex space-x-1 text-sm">
-                      <time dateTime={post.datetime}>{post.date}</time>
+                    </div>
+                    <div className="mt-6 flex items-center">
+                      <div className="flex-shrink-0">
+                        <a href={post.author.href}>
+                          <span className="sr-only">{post.author.name}</span>
+                          <img
+                            className="h-10 w-10 rounded-full"
+                            src={post.author.imageUrl}
+                            alt=""
+                          />
+                        </a>
+                      </div>
+                      <div className="ml-3">
+                        <p className="text-sm font-medium">
+                          <a
+                            href={post.author.href}
+                            className="hover:underline"
+                          >
+                            {post.author.name}
+                          </a>
+                        </p>
+                        <div className="flex space-x-1 text-sm">
+                          <time dateTime={post.datetime}>{post.date}</time>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
-      </div>
-    </div>
-
       </Layout>
     </>
   );

@@ -1,9 +1,16 @@
 import React from "react";
-import { Link } from 'react-router-dom';
-import Burger from "../Burger/Burger"
-import RandomAnimal from '../../hooks/RandomAnimal';
+import { useSpring, animated, useTransition } from "react-spring";
+import { Link } from "react-router-dom";
+import Burger from "../Burger/Burger";
+import RandomAnimal from "../../hooks/RandomAnimal";
 
 const Dashboard = ({ pageTitle, children }) => {
+  const style1 = useSpring({
+    from: { opacity: 0, marginTop: -100 },
+    to: { opacity: 1, marginTop: 0 },
+    config: { duration: 3000 },
+  });
+
   return (
     <>
       <title>Book Nook | {pageTitle}</title>
@@ -20,9 +27,15 @@ const Dashboard = ({ pageTitle, children }) => {
         {/* NAVBAR AT 768PX & HIGHER */}
         <div className="uppercase tracking-widest">
           <div className="hidden md:flex bg-[#02030ac8] px-7 py-2 rounded-md font-semibold">
-            <a href="/search" className="mx-4">Search</a>
-            <a className="mx-4" href="/profile">Profile</a>
-            <a className="ml-4" href="#">Logout</a>
+            <a href="/search" className="mx-4">
+              Search
+            </a>
+            <a className="mx-4" href="/profile">
+              Profile
+            </a>
+            <a className="ml-4" href="#">
+              Logout
+            </a>
           </div>
 
           {/* NAVBAR AT 768PX & LOWER */}
@@ -34,10 +47,11 @@ const Dashboard = ({ pageTitle, children }) => {
 
       <main>
         {/* GENERATE ANIMAL HEADER */}
-        <div className="mt-0 mb-8 flex flex-col justify-center items-center">
-          <RandomAnimal />
-        </div>
-        
+        <animated.div style={style1}>
+          <div className="mt-0 mb-8 flex flex-col justify-center items-center">
+            <RandomAnimal />
+          </div>
+        </animated.div>
         {children}
       </main>
 
