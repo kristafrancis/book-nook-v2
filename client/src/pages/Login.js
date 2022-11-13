@@ -1,52 +1,56 @@
-import * as React from "react";
+import React, {useState } from "react";
 import Layout from '../components/Layout/home'
-// import { useMutation } from '@apollo/client';
-// import { USER_LOGIN } from '../utils/mutations';
-// import Auth from "../utils/auth";
-// import Layout from '../components/Layout/home';
+ import { useMutation } from '@apollo/client';
+ import { USER_LOGIN } from '../utils/mutations';
+ import Auth from "../utils/auth";
+ //import Layout from '../components/Layout/home';
+ import { useNavigate } from 'react-router-dom'
+ 
+ const Login = () => {
+     const [formState, setFormState] = useState({ email: '', password: '' });
+    // const [validated] = useState(false);
+     const [loginUser] = useMutation(USER_LOGIN);
+     const navigate = useNavigate();
+  
 
-// const Login = () => {
-//     const [userFormData, setUserFormData] = useState({ email: '', password: '' });
-//     const [validated] = useState(false);
-//     const [loginUser] = useMutation(USER_LOGIN);
-    
-  
-//     const handleInputChange = (event) => {
-//       const { name, value } = event.target;
-//       setUserFormData({ ...userFormData, [name]: value });
-//     };
-  
-//     const handleFormSubmit = async (event) => {
-//       event.preventDefault();
-  
-//       // check if form has everything (as per react-bootstrap docs)
-//       const form = event.currentTarget;
-//       if (form.checkValidity() === false) {
-//         event.preventDefault();
-//         event.stopPropagation();
-//       }
-  
-//       try {
-//         const {data} = await loginUser({
-//           variables: {...userFormData}
-//         });
-  
-//         //const { token, user } = await response.json();
-//        // console.log(user);
-//         Auth.login(data.login.token);
-//       } catch (err) {
-//         console.error(err);
-        
-//       }
-  
-//       setUserFormData({
-//         username: '',
-//         email: '',
-//         password: '',
-//       });
-//     };
+     const handleInputChange = (event) => {
+       const { name, value } = event.target;
+        setFormState({ ...formState, [name]: value });
+       
+      };
 
-const Login = () => {
+     const handleFormSubmit = async (event) => {
+       event.preventDefault();
+       navigate('/search');
+       console.log(formState)
+
+      // // check if form has everything (as per react-bootstrap docs)
+      // const form = event.currentTarget;
+      // if (form.checkValidity() === false) {
+      //   event.preventDefault();
+      //   event.stopPropagation();
+      // }
+
+       try {
+         const {data} = await loginUser({
+           variables: {...formState}
+         });
+
+         //const { token, user } = await response.json();
+        // console.log(user);
+         Auth.login(data.login.token);
+       } catch (err) {
+         console.error(err);
+      
+       }
+
+       setFormState({
+         email: '',
+         password: '',
+       });
+     };
+
+//const Login = () => {
 
   return (    
     <>                                                                                                                                                                                                                                                  
@@ -54,7 +58,7 @@ const Login = () => {
         <div className="w-full max-w-md flex items-center justify-center">
         
 
-        <form className="w-[400px]" action="#" method="POST">
+        <form className="w-[400px]" action="#" method="POST" onSubmit={handleFormSubmit}>
           <input type="hidden" name="remember" value="true"></input>{" "}
             <div className="rounded-md shadow-lg">
               <div>
@@ -67,6 +71,8 @@ const Login = () => {
                       type="email"
                       autocomplete="email"
                       required
+                      onChange={handleInputChange}
+                      value= {formState.email}
                       className="relative block w-full appearance-none rounded-none rounded-t-md bg-[#22274f] border border-slate-700 px-3 py-2 text-sm md:text-lg text-gray-200 placeholder-slate-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
                       placeholder="Email address"
                     ></input>{" "}
@@ -81,6 +87,8 @@ const Login = () => {
                       type="password"
                       autocomplete="current-password"
                       required
+                      onChange={handleInputChange}
+                      value= {formState.password}
                       className="relative block w-full appearance-none rounded-none rounded-b-md bg-[#22274f] border border-slate-700 px-3 py-2 text-sm md:text-lg text-gray-200 placeholder-slate-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
                       placeholder="Password"
                     ></input>{" "}
@@ -99,7 +107,9 @@ const Login = () => {
                 </div>
                 <div>
                   <button
+                  disable={!(formState.email && formState.password)}
                     type="submit"
+                    variant='sucess'
                     className="bg-[#7C87f2] w-full group flex justify-center rounded-md py-1 text-base md:text-lg font-medium focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                   >
                     <span className="absolute inset-y-0 left-0 flex items-center pl-3">
@@ -119,6 +129,7 @@ const Login = () => {
  </>
   );
 };
+ 
 
 
 export default Login;
