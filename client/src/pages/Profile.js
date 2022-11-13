@@ -1,10 +1,11 @@
 
-import { useQuery } from "@apollo/client";
+// import { useQuery } from "@apollo/client";
 import React, { useState, useEffect } from "react";
 import Dropdown from "react-dropdown";
 import Layout from "../components/Layout/dashboard";
-import Auth from '../utils/auth';
-import { QUERY_ME } from '../utils/queries';
+// import Auth from '../utils/auth';
+import ReadingList from "../components/ReadingList";
+
 
 const Profile = () => {
  
@@ -169,7 +170,9 @@ const Profile = () => {
                     </section>
                   </div>
                   <div className="py-2"></div>
-
+                  <ReadingList>
+                    
+                  </ReadingList>
                   <div className="bg-slate-900 shadow sm:rounded-lg ">
                     <div className="px-4 py-5 sm:px-6">
                       <h2 className="pb-4 text-4xl font-medium drop-shadow-md">
