@@ -142,15 +142,9 @@ const Search = () => {
       <Layout pageTitle="Search">
         
       <div className="w-[85%] h-auto mx-auto flex flex-col justify-center items-center">
-        
-            <div className="flex flex-col justify-center items-center py-4">
-              <img src={HedgehogImg} className="w-[250px]" />
-            </div>
-      
-       
-            <h2 className="text-4xl font-medium italic drop-shadow-md">
-              Travel to the stars, read!
-            </h2>
+          <h2 className="text-4xl font-medium italic drop-shadow-md">
+            Travel to the stars, read!
+          </h2>
        
           {/* SEARCH INPUT */}
           <div className="py-5">
@@ -213,7 +207,7 @@ const Search = () => {
                   {/* {Auth.loggedIn() && ( */}
                   <div class="pt-10">
                   <button
-                    className="float-right inline-flex items-center justify-center rounded-md border border-indigo-200 bg-[#22274f] px-4 py-2 text-sm font-medium text-indigo-200 shadow-sm hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100"
+                    className="float-right inline-flex items-center justify-center rounded-md border border-indigo-200 bg-[#22274f] px-4 py-2 text-sm font-medium shadow-sm"
                     disabled={savedBookIds?.some(
                       (savedBookId) => savedBookId === book.bookId
                     )}
@@ -256,12 +250,12 @@ const Search = () => {
               <div className="flex-shrink-0">
                 <img className="h-48 w-full object-cover" src={post.imageUrl} alt="" />
               </div>
-              <div className="flex flex-1 flex-col justify-between bg-white p-6">
+              <div className="flex flex-1 flex-col justify-between bg-slate-900 p-6">
                 <div className="flex-1">
 
                   <a href={post.href} className="mt-2 block">
-                    <p className="text-xl font-semibold text-gray-900">{post.title}</p>
-                    <p className="mt-3 text-base text-gray-500">{post.description}</p>
+                    <p className="text-xl font-semibold">{post.title}</p>
+                    <p className="mt-3 text-base text-white">{post.description}</p>
                   </a>
                 </div>
                 <div className="mt-6 flex items-center">
@@ -272,14 +266,13 @@ const Search = () => {
                     </a>
                   </div>
                   <div className="ml-3">
-                    <p className="text-sm font-medium text-gray-900">
+                    <p className="text-sm font-medium">
                       <a href={post.author.href} className="hover:underline">
                         {post.author.name}
                       </a>
                     </p>
-                    <div className="flex space-x-1 text-sm text-gray-500">
+                    <div className="flex space-x-1 text-sm">
                       <time dateTime={post.datetime}>{post.date}</time>
-                      <span aria-hidden="true">&middot;</span>
                     </div>
                   </div>
                 </div>
