@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import BearImg from '../../../images/animals/bear.png';
-import CatImg from '../../../images/animals/cat.png';
-import FoxImg from '../../../images/animals/fox.png';
-import HedgehogImg from '../../../images/animals/hedgehog.png';
-import MooseImg from '../../../images/animals/moose.png';
-import OwlImg from '../../../images/animals/owl.png';
-import OwlsImg from '../../../images/animals/owls.png';
-import RabbitImg from '../../../images/animals/rabbit.png';
-import RaccoonImg from '../../../images/animals/raccoon.png';
-import WolfImg from '../../../images/animals/wolf.png';
+import BearImg from '../images/animals/bear.png';
+import CatImg from '../images/animals/cat.png';
+import FoxImg from '../images/animals/fox.png';
+import HedgehogImg from '../images/animals/hedgehog.png';
+import MooseImg from '../images/animals/moose.png';
+import OwlImg from '../images/animals/owl.png';
+import OwlsImg from '../images/animals/owls.png';
+import RabbitImg from '../images/animals/rabbit.png';
+import RaccoonImg from '../images/animals/raccoon.png';
+import WolfImg from '../images/animals/wolf.png';
 
 const images = [
     BearImg,
