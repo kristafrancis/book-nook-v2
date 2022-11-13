@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../components/Layout/dashboard";
-// import Feed from "../components/feed";
-import HedgehogImg from "../images/animals/hedgehog.png";
 import { googleBookSearch } from "../utils/API";
 import Auth from "../utils/auth";
 import { SAVE_BOOK } from "../utils/mutations";
@@ -12,9 +10,7 @@ import AnchorLink from "react-anchor-link-smooth-scroll";
 const Search = () => {
   const [searchedBooks, setSearchedBooks] = useState([]);
   const [searchInput, setSearchInput] = useState("");
-
   const [savedBookIds, setSavedBookIds] = useState(getSavedBookIds());
-
   const [saveBook] = useMutation(SAVE_BOOK);
 
   const posts = [
@@ -74,11 +70,11 @@ const Search = () => {
   //   config: { duration: 3000 },
   // });
 
-  const style3 = useSpring({
-    from: { opacity: 0, marginLeft: -50 },
-    to: { opacity: 1, marginLeft: 0 },
-    config: { duration: 1000 },
-  });
+  // const style3 = useSpring({
+  //   from: { opacity: 0, marginLeft: -50 },
+  //   to: { opacity: 1, marginLeft: 0 },
+  //   config: { duration: 1000 },
+  // });
 
   useEffect(() => {
     return () => saveBookIds(savedBookIds);

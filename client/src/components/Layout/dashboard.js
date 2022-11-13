@@ -30,8 +30,6 @@ const Dashboard = ({ pageTitle, children }) => {
         </div>
       </nav>
 
-        
-
       <main>
         {/* <div className="relative h-[400px] z-[-5]">
           <Sparkle />
@@ -41,10 +39,10 @@ const Dashboard = ({ pageTitle, children }) => {
             <div className="mt-0 mb-8 flex flex-col justify-center items-center">
               <RandomAnimal />
               <Sparkle 
-                color={'#f9d18f'}
+                // color={'#f9d18f'}
                 count={10}
-                minSize={3}
-                maxSize={8}
+                minSize={5}
+                maxSize={15}
                 fadeOutSpeed={20}
                 flickerSpeed={'slowest'}
               />
