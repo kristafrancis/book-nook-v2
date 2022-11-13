@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
 // import { Link } from "gatsby";
-import Layout from "../components/Layout/home";
+import Layout from "./Layout/home";
 import Auth from '../utils/auth';
 
 
