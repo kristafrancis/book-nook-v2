@@ -19,7 +19,6 @@
     "graphql": "^16.6.0",
     "has-flag": "^4.0.0",
     "is-fullwidth-code-point": "^3.0.0",
-    "isomorphic-fetch": "^3.0.0",
     "lodash": "^4.17.21",
     "react-anchor-link-smooth-scroll": "^1.0.12",
     "require-directory": "^2.1.1",

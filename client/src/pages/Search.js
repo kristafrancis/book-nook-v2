@@ -91,15 +91,9 @@ const Search = () => {
       <Layout pageTitle="Search">
         
       <div className="w-[85%] h-auto mx-auto flex flex-col justify-center items-center">
-        
-            <div className="flex flex-col justify-center items-center py-4">
-              <img src={HedgehogImg} className="w-[250px]" />
-            </div>
-      
-       
-            <h2 className="text-4xl font-medium italic drop-shadow-md">
-              Travel to the stars, read!
-            </h2>
+          <h2 className="text-4xl font-medium italic drop-shadow-md">
+            Travel to the stars, read!
+          </h2>
        
           {/* SEARCH INPUT */}
           <div className="py-5">
