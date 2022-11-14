@@ -97,7 +97,7 @@ const Profile = () => {
                   <div className="text-center pb-8 font-['poppins'] text-2xl font-medium text-indigo-400 inline-flex w-full justify-center items-center">
                     Your goal is
                     <Dropdown
-                      className="w-[60px] text-base font-semibold ml-3 rounded mr-4"
+                      className="w-[60px] text-yellow-100 text-lg font-semibold ml-3 py-2 rounded-sm mr-4 border border-slate-600"
                       options={options}
                       // onChange={handleChange}
                       value={defaultOption}
