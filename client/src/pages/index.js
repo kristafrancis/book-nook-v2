@@ -7,8 +7,8 @@ import Search from './Search';
 import { GiSpellBook, GiArchiveResearch } from 'react-icons/gi';
 import { WiStars } from "react-icons/wi";
 
-const Index = () => {
 
+const Index = () => {
   return (                                                                                                                                    
     <Layout pageTitle="Travel to the stars, read!">
       <div className="w-full h-full">
@@ -44,7 +44,6 @@ const Index = () => {
               </div>
             </div>
             {/* END BOOK NOOK INFO CONTAINER */}
-    
     
           <div className="flex justify-center pb-4">
             
