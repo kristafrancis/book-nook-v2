@@ -10,7 +10,7 @@ const Dashboard = ({ pageTitle, children }) => {
   const style1 = useSpring({
     from: { opacity: 0, marginTop: 0 },
     to: { opacity: 1, marginTop: 0 },
-    config: { duration: 3000 },
+    config: { duration: 2000 },
   });
 
   return (
