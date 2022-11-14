@@ -28,12 +28,10 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-
-
 const HomeLayout = ({ pageTitle, children }) => {
   const style1 = useSpring({
-    from: { opacity: 0, marginTop: 0 },
-    to: { opacity: 1, marginTop: 0 },
+    from: { opacity: 0 },
+    to: { opacity: 1 },
     config: { duration: 2000 },
   });
 
@@ -62,7 +60,9 @@ const HomeLayout = ({ pageTitle, children }) => {
           book<span className="text-[#7286ff]">nook</span>
         </h1>
 
-        <div className="bg-[#090c26] p-8 rounded-lg shadow-lg">{children}</div>
+        <div className="bg-[#090c26] p-8 rounded-lg shadow-lg">
+          {children}
+        </div>
       </main>
 
       <footer>
