@@ -6,9 +6,7 @@ import { SAVE_BOOK } from "../utils/mutations";
 import { saveBookIds, getSavedBookIds } from "../utils/localStorage";
 import { useMutation } from "@apollo/client";
 import AnchorLink from "react-anchor-link-smooth-scroll";
-import StarsImg from '../images/stars.png';
-
-
+import StarsImg from "../images/stars.png";
 
 const Search = () => {
   const [searchedBooks, setSearchedBooks] = useState([]);
@@ -138,84 +136,73 @@ const Search = () => {
 
   return (
     <>
-
-    
-      <Layout pageTitle="Search">
-        
       <div className="w-[85%] h-auto mx-auto flex flex-col justify-center items-center">
-          <h2 className="text-4xl font-medium italic drop-shadow-md">
+        <animated.div style={style1}>
+          <h2 className="text-4xl text-indigo-400 font-medium italic drop-shadow-md">
             Travel to the stars, read!
           </h2>
-       
+        </animated.div>
 
-        <div className="w-[85%] h-auto mx-auto flex flex-col justify-center items-center">
-          <animated.div style={style1}>
-            <h2 className="text-4xl text-indigo-400 font-medium italic drop-shadow-md">
-              Travel to the stars, read!
-            </h2>
-          </animated.div>
+        {/* SEARCH INPUT */}
+        <div className="py-5">
+          <form className="search w-[500px]" onSubmit={handleFormSubmit}>
+            <label for="search" className="sr-only">
+              Search
+            </label>
 
-
-          {/* SEARCH INPUT */}
-          <div className="py-5">
-            <form className="search w-[500px]" onSubmit={handleFormSubmit}>
-              <label for="search" className="sr-only">
-                Search
-              </label>
-
-              <div className="relative">
-                <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                  <svg
-                    className="h-5 w-5 text-gray-300"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
-                </div>
-                <input
-                  name="search"
-                  value={searchInput}
-                  onChange={(e) => setSearchInput(e.target.value)}
-                  type="text"
-                  className="block w-full rounded-md  bg-slate-900 border border-slate-600 text-gray-200 placeholder-slate-500 mt-2 mb-4 py-2 pl-10 pr-3 text-sm focus:border-indigo-500 focus:text-gray-200 focus:placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-2xl"
-                  placeholder="Search"
-                ></input>
+            <div className="relative">
+              <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                <svg
+                  className="h-5 w-5 text-gray-300"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
               </div>
-            </form>
+              <input
+                name="search"
+                value={searchInput}
+                onChange={(e) => setSearchInput(e.target.value)}
+                type="text"
+                className="block w-full rounded-md  bg-slate-900 border border-slate-600 text-gray-200 placeholder-slate-500 mt-2 mb-4 py-2 pl-10 pr-3 text-sm focus:border-indigo-500 focus:text-gray-200 focus:placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-2xl"
+                placeholder="Search"
+              ></input>
+            </div>
+          </form>
 
-            {/* END SEARCH INPUT */}
+          {/* END SEARCH INPUT */}
 
-            <AnchorLink className="flex justify-center" href="#Trending">
-              Or see what others are reading!
-            </AnchorLink> 
-          </div>
-          
-          {/* LAYOUT BREAK - HORIZONTAL LINE */}
-          <div className="w-1/3 my-4 inline-flex justify-center items-center">
-            <img src={StarsImg} />
-            <img src={StarsImg} />
-          </div>
+          <AnchorLink className="flex justify-center" href="#Trending">
+            Or see what others are reading!
+          </AnchorLink>
         </div>
 
-        {/* GOOGLE BOOKS API */}
+        {/* LAYOUT BREAK - HORIZONTAL LINE */}
+        <div className="w-1/3 my-4 inline-flex justify-center items-center">
+          <img src={StarsImg} />
+          <img src={StarsImg} />
+        </div>
+      </div>
 
-        <div class="w-[90%] h-full mx-auto columns-2">
-          <div class="bookcard">
-            {searchedBooks.map((book) => {
-              return (
-                <div className="m-6" key={book.bookId}>
-                  <div
-                    class="cardBody"
-                    className="w-full grid grid-cols-1 md:grid-cols-none md:grid-flow-col md:auto-cols-auto bg-slate-900 p-6 rounded-lg shadow-inner shadow-slate-700"
-                  >
-                    <div>
+      {/* GOOGLE BOOKS API */}
+
+      <div class="w-[90%] h-full mx-auto columns-2">
+        <div class="bookcard">
+          {searchedBooks.map((book) => {
+            return (
+              <div className="m-6" key={book.bookId}>
+                <div
+                  class="cardBody"
+                  className="w-full grid grid-cols-1 md:grid-cols-none md:grid-flow-col md:auto-cols-auto bg-slate-900 p-6 rounded-lg shadow-inner shadow-slate-700"
+                >
+                  <div>
                     {book.image ? (
                       <img
                         className="p-4"
@@ -223,15 +210,17 @@ const Search = () => {
                         alt={`Cover of ${book.title}`}
                       ></img>
                     ) : null}
-                    </div>
-                    <div>
-                      <h3 className="text-2xl font-medium">{book.title}</h3>
-                      <em className="pb-8 text-gray-400">{book.authors}</em>
-                      <p className="line-clamp-5 leading-normal">{book.description}</p>
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-medium">{book.title}</h3>
+                    <em className="pb-8 text-gray-400">{book.authors}</em>
+                    <p className="line-clamp-5 leading-normal">
+                      {book.description}
+                    </p>
 
-                      {/* SAVE BOOK BUTTON */}
-                      <div className="mt-4 flex items-center justify-end">
-                    {/* {Auth.loggedIn() && ( */}
+                    {/* SAVE BOOK BUTTON */}
+                    <div className="mt-4 flex items-center justify-end">
+                      {/* {Auth.loggedIn() && ( */}
                       <button
                         className="rounded-md border border-indigo-300 bg-[#22274f] px-4 py-2 text-sm font-medium shadow-md"
                         disabled={savedBookIds?.some(
@@ -245,85 +234,82 @@ const Search = () => {
                           ? "This book has already been saved"
                           : "Save this book"}
                       </button>
-                    {/* )} */}
-                    </div>
+                      {/* )} */}
                     </div>
                   </div>
                 </div>
-              );
-            })}
-          </div>
+              </div>
+            );
+          })}
         </div>
-        {/* END GOOGLE BOOKS API */}
+      </div>
+      {/* END GOOGLE BOOKS API */}
 
-        <div id="Trending"></div>
-        <div className="relative bg-transparent px-4 pt-16 sm:px-6 lg:px-8 lg:pt-24 pb-10">
-          <div className="absolute inset-0">
-            <div className="h-1/3 bg-transparent sm:h-2/3" />
+      <div id="Trending"></div>
+      <div className="relative bg-transparent px-4 pt-10 sm:px-6 lg:px-8 pb-10">
+        <div className="absolute inset-0">
+          <div className="h-1/3 bg-transparent sm:h-2/3" />
+        </div>
+        <div className="relative mx-auto max-w-7xl">
+          <div className="text-center">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+              Trending
+            </h2>
+            <p className="mx-auto mt-3 max-w-2xl text-xl sm:mt-4">
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa
+              libero labore natus atque, ducimus sed.
+            </p>
           </div>
-          <div className="relative mx-auto max-w-7xl">
-            <div className="text-center">
-              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-                Trending
-              </h2>
-              <p className="mx-auto mt-3 max-w-2xl text-xl sm:mt-4">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa
-                libero labore natus atque, ducimus sed.
-              </p>
-            </div>
-            <div className="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-3">
-              {posts.map((post) => (
-                <div
-                  key={post.title}
-                  className="flex flex-col overflow-hidden rounded-lg shadow-lg"
-                >
-                  <div className="flex flex-1 flex-col justify-between bg-slate-900 p-6">
-                    <div className="flex-1">
-                      <div className="flex-shrink-0">
+          <div className="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-3">
+            {posts.map((post) => (
+              <div
+                key={post.title}
+                className="flex flex-col overflow-hidden rounded-lg shadow-lg"
+              >
+                <div className="flex flex-1 flex-col justify-between bg-slate-900 p-6">
+                  <div className="flex-1">
+                    <div className="flex-shrink-0">
+                      <img
+                        className="float-left pr-5"
+                        src={post.imageUrl}
+                        alt=""
+                      />
+                    </div>
+                    <a href={post.href} className="mt-2 block">
+                      <p className="text-xl font-semibold">{post.title}</p>
+                      <p className="mt-3 text-base text-white">
+                        {post.description}
+                      </p>
+                    </a>
+                  </div>
+                  <div className="mt-6 flex items-center">
+                    <div className="flex-shrink-0">
+                      <a href={post.author.href}>
+                        <span className="sr-only">{post.author.name}</span>
                         <img
-                          className="float-left pr-5"
-                          src={post.imageUrl}
+                          className="h-10 w-10 rounded-full"
+                          src={post.author.imageUrl}
                           alt=""
                         />
-                      </div>
-                      <a href={post.href} className="mt-2 block">
-                        <p className="text-xl font-semibold">{post.title}</p>
-                        <p className="mt-3 text-base text-white">
-                          {post.description}
-                        </p>
                       </a>
                     </div>
-                    <div className="mt-6 flex items-center">
-                      <div className="flex-shrink-0">
-                        <a href={post.author.href}>
-                          <span className="sr-only">{post.author.name}</span>
-                          <img
-                            className="h-10 w-10 rounded-full"
-                            src={post.author.imageUrl}
-                            alt=""
-                          />
+                    <div className="ml-3">
+                      <p className="text-sm font-medium">
+                        <a href={post.author.href} className="hover:underline">
+                          {post.author.name}
                         </a>
-                      </div>
-                      <div className="ml-3">
-                        <p className="text-sm font-medium">
-                          <a
-                            href={post.author.href}
-                            className="hover:underline"
-                          >
-                            {post.author.name}
-                          </a>
-                        </p>
-                        <div className="flex space-x-1 text-sm">
-                          <time dateTime={post.datetime}>{post.date}</time>
-                        </div>
+                      </p>
+                      <div className="flex space-x-1 text-sm">
+                        <time dateTime={post.datetime}>{post.date}</time>
                       </div>
                     </div>
                   </div>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </div>
+      </div>
     </>
   );
 };
