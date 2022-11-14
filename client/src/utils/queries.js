@@ -7,7 +7,6 @@ export const QUERY_ME = gql `
             _id
             username
             email
-            userImage
             friendCount
             friends {
                 _id

@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
+import { useSpring, animated } from "react-spring";
 
 // import components
+import Header from './components/Header';
+import Footer from './components/Footer';
+
+// import pages
 import Index from './pages/index';
 import Login from './pages/Login';
 import Signup from '../src/components/SignupForm';
@@ -14,6 +19,13 @@ import Editprofile from './pages/Editprofile';
 const httpLink = createHttpLink({
   uri: '/graphql',
 });
+
+
+
+
+
+
+
 
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem('id_token');
@@ -31,9 +43,18 @@ const client = new ApolloClient({
 });
 
 function App() {
+  const [animFinished, setAnimFinished] = useState(false);
+  const navStyle = useSpring(animFinished, null, {
+    from: { opacity: 0, transform: animFinished ? "translateY(0)" : "translateY(200px)" },
+    to: { opacity: 1 },
+    config: { duration: 2000 },
+    onRest: () => setAnimFinished(true)
+  });
+
   return (
     <ApolloProvider client = {client}>
       <Router>
+      <Header animFinished={animFinished} setAnimFinished={setAnimFinished} />
         <Routes>
               <Route
                 path="/"
@@ -50,6 +71,7 @@ function App() {
               <Route
                 path="/search"
                 element={<Search />}
+                
               />
               <Route
                 path="/profile"
@@ -65,6 +87,7 @@ function App() {
               />
 
           </Routes>
+          <Footer />
       </Router>
     </ApolloProvider>
   );
