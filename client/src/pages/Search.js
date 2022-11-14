@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useSpring, animated, useTransition } from "react-spring";
-import Layout from "../components/Layout/dashboard";
 import { googleBookSearch } from "../utils/API";
 import Auth from "../utils/auth";
 import { SAVE_BOOK } from "../utils/mutations";
@@ -136,7 +135,7 @@ const Search = () => {
   };
 
   return (
-    <Layout>
+    <>
         <div className="w-[85%] h-auto mx-auto flex flex-col justify-center items-center">
           <animated.div style={style1}>
             <h2 className="text-4xl text-indigo-400 font-medium italic drop-shadow-md">
@@ -312,7 +311,7 @@ const Search = () => {
             </div>
           </div>
         </div>
-    </Layout>
+    </>
   );
 };
 

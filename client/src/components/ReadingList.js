@@ -1,6 +1,5 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
-import Layout from "../components/Layout/dashboard";
 
 import { QUERY_ME } from '../utils/queries';
 
@@ -11,7 +10,6 @@ const ReadingList = () => {
 
     return (
         <>
-        <Layout pageTitle="ReadingList">
         <main class="min-h-full pb-10 mx-32">
         <div className="bg-slate-900 shadow sm:rounded-lg ">
                     <div className="px-4 py-5 sm:px-6">
@@ -48,7 +46,6 @@ const ReadingList = () => {
 </div>
 </div>
 </main>
-                    </Layout>
                 </>
             );
 

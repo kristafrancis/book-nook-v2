@@ -1,7 +1,6 @@
 // import { useQuery } from "@apollo/client";
 import React, { useState, useEffect } from "react";
 import Dropdown from "react-dropdown";
-import Layout from "../components/Layout/dashboard";
 // import Auth from '../utils/auth';
 import ReadingList from "../components/ReadingList";
 
@@ -36,7 +35,7 @@ const Profile = () => {
   }, []);
 
   return (
-    <Layout>
+    <>
         <main class="min-h-full">
           
           <div class="mx-auto max-w-3xl px-4 sm:px-6 md:flex md:items-center md:justify-between md:space-x-5 lg:max-w-7xl lg:px-8">
@@ -345,7 +344,7 @@ const Profile = () => {
           </div>
 
       </main>
-    </Layout>
+    </>
   );
 };
 

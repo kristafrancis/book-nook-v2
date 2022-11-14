@@ -1,5 +1,4 @@
 import * as React from "react";
-import Layout from '../components/Layout/home';
 import { Link } from 'react-router-dom';
 
 // import icons
@@ -9,10 +8,10 @@ import { WiStars } from "react-icons/wi";
 
 const Index = () => {
   return (                                                                                                                                    
-    <Layout>
-      <div className="w-full h-full">
-    
-          <h2 className="pb-8 text-4xl text-indigo-300 text-center font-normal">Make friends with a book!</h2>  
+    <main className="w-full h-full">
+
+      <h2 className="pb-8 text-5xl text-center font-medium drop-shadow">Make friends with a book!</h2>  
+        <div className="max-w-screen-lg mx-auto bg-slate-900 p-6 rounded-lg shadow-lg">
     
             {/* START BOOK NOOK INFO CONTAINER */}
             <div className="max-w-screen-lg w-full mb-8 grid sm:grid-cols-3 mx-auto">
@@ -44,7 +43,7 @@ const Index = () => {
             </div>
             {/* END BOOK NOOK INFO CONTAINER */}
     
-          <div className="flex justify-center pb-4">
+          <div className="flex justify-center">
             
             <Link to='/signup'>
               <button className="px-6 py-2 rounded drop-shadow-md">Get Started</button>
@@ -52,9 +51,8 @@ const Index = () => {
 
           </div>
     
-         
       </div>
-    </Layout>
+    </main>
   );
 };
 
