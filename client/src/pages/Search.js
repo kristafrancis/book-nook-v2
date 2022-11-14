@@ -7,6 +7,7 @@ import { saveBookIds, getSavedBookIds } from "../utils/localStorage";
 import { useMutation } from '@apollo/client';
 import AnchorLink from "react-anchor-link-smooth-scroll";
 
+
 const Search = () => {
   const [searchedBooks, setSearchedBooks] = useState([]);
   const [searchInput, setSearchInput] = useState("");
@@ -135,6 +136,7 @@ const Search = () => {
 
   return (
     <>
+    
       <Layout pageTitle="Search">
         
       <div className="w-[85%] h-auto mx-auto flex flex-col justify-center items-center">

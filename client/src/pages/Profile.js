@@ -185,7 +185,7 @@ const Profile = () => {
                               <div className="px-4 py-2 sm:px-6">
                                 <div className="flex items-center justify-between">
                                   <p className="truncate font-medium">
-                                    Book Title
+                                  
                                   </p>
                                   <div className="ml-2 flex flex-shrink-0">
                                     <p className="inline-flex rounded-full bg-[#090c26] px-2 text-sm font-semibold leading-5 text-indigo-300">
