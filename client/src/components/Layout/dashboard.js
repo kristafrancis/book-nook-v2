@@ -1,10 +1,10 @@
 import React from "react";
 import { useSpring, animated, useTransition } from "react-spring";
-import Sparkle from 'react-sparkle';
+import Sparkle from "react-sparkle";
 import { Link } from "react-router-dom";
 // import Burger from "../Burger/Burger";
 import RandomAnimal from "../../hooks/RandomAnimal";
-import Navbar from '../Navbar';
+import Navbar from "../Navbar";
 
 const Dashboard = ({ pageTitle, children }) => {
   const style1 = useSpring({
@@ -31,21 +31,21 @@ const Dashboard = ({ pageTitle, children }) => {
       </nav>
 
       <main>
-          {/* GENERATE ANIMAL HEADER */}
-          <animated.div style={style1}>
-            <div className="mt-0 mb-8 flex flex-col justify-center items-center">
-              <RandomAnimal />
-              <Sparkle 
-                // color={'#f9d18f'}
-                count={10}
-                minSize={5}
-                maxSize={15}
-                fadeOutSpeed={20}
-                flickerSpeed={'slowest'}
-              />
-            </div>
-          </animated.div>
-          {children}
+        {/* GENERATE ANIMAL HEADER */}
+        <animated.div style={style1}>
+          <div className="mt-0 mb-8 flex flex-col justify-center items-center">
+            <RandomAnimal />
+            <Sparkle
+              // color={'#f9d18f'}
+              count={10}
+              minSize={5}
+              maxSize={15}
+              fadeOutSpeed={20}
+              flickerSpeed={"slowest"}
+            />
+          </div>
+        </animated.div>
+        {children}
       </main>
 
       <footer class="py-8 text-center">
