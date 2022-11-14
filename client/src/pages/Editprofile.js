@@ -98,21 +98,19 @@ const EditProfile = () => {
                       Photo
                     </dt>
                     <dd className="mt-1 flex sm:col-span-2 sm:mt-0">
-                      <span className="flex-grow">
-                        <img
-                          className="h-16 w-16 rounded-full"
-                          src="https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80"
-                          alt=""
-                        ></img>{" "}
-                      </span>
-                      <span className="ml-4 flex flex-shrink-0 items-center space-x-4">
-                        <div>
+                      <span className="ml-64 pl-1 flex flex-shrink-0 items-center space-x-4">
+                        <div className="hover:bg-indigo-700 rounded-full ease-in duration-300">
                           <label htmlFor="upload-button">
                             {image.preview ? (
-                              <img
-                                src={image.preview}
-                                className="h-16 w-16 rounded-full"
-                              />
+                              <div class="relative rounded-full overflow-hidden">
+                                <img
+                                  src={image.preview}
+                                  className="opacity-50 h-16 w-16 rounded-full"
+                                />
+                                <div class="absolute w-full py-3 bottom-0 inset-0 mt-3 text-white text-xs text-center leading-4 rounded cursor-pointer tracking-widest ease-in duration-300">
+                                  UPDATE
+                                </div>
+                              </div>
                             ) : (
                               <>
                                 <span className="fa-stack fa-2x mt-3 mb-2">
