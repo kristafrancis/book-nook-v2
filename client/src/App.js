@@ -20,6 +20,13 @@ const httpLink = createHttpLink({
   uri: '/graphql',
 });
 
+
+
+
+
+
+
+
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem('id_token');
   return {
@@ -64,6 +71,7 @@ function App() {
               <Route
                 path="/search"
                 element={<Search />}
+                
               />
               <Route
                 path="/profile"
