@@ -7,6 +7,7 @@ import { SAVE_BOOK } from "../utils/mutations";
 import { saveBookIds, getSavedBookIds } from "../utils/localStorage";
 import { useMutation } from "@apollo/client";
 import AnchorLink from "react-anchor-link-smooth-scroll";
+import StarsImg from '../images/stars.png';
 
 const Search = () => {
   const [searchedBooks, setSearchedBooks] = useState([]);
@@ -139,12 +140,12 @@ const Search = () => {
       <Layout pageTitle="Search">
         <div className="w-[85%] h-auto mx-auto flex flex-col justify-center items-center">
           <animated.div style={style1}>
-            <h2 className="text-4xl font-medium italic drop-shadow-md">
+            <h2 className="text-4xl text-indigo-400 font-medium italic drop-shadow-md">
               Travel to the stars, read!
             </h2>
           </animated.div>
-          {/* SEARCH INPUT */}
 
+          {/* SEARCH INPUT */}
           <div className="py-5">
             <form className="search w-[500px]" onSubmit={handleFormSubmit}>
               <label for="search" className="sr-only">
@@ -172,7 +173,7 @@ const Search = () => {
                   value={searchInput}
                   onChange={(e) => setSearchInput(e.target.value)}
                   type="text"
-                  className="block w-full rounded-md  bg-[#22274f] border border-slate-700 text-gray-200 placeholder-slate-500 py-2 pl-10 pr-3 text-sm focus:border-teal-400 focus:text-gray-200 focus:placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-teal-400 sm:text-2xl"
+                  className="block w-full rounded-md  bg-[#22274f] border border-slate-700 text-gray-200 placeholder-slate-500 mt-2 mb-4 py-2 pl-10 pr-3 text-sm focus:border-indigo-500 focus:text-gray-200 focus:placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-2xl"
                   placeholder="Search"
                 ></input>
               </div>
@@ -182,20 +183,25 @@ const Search = () => {
               Or see what others are reading!
             </AnchorLink>
           </div>
+
+          <div className="w-1/3 my-4 inline-flex justify-center items-center">
+            <img src={StarsImg} />
+            <img src={StarsImg} />
+          </div>
         </div>
 
         {/* END SEARCH INPUT */}
 
         {/* GOOGLE BOOKS API */}
 
-        <div class="mx-56 pt-5 columns-2 text-base">
+        <div class="mx-56 columns-2 text-base">
           <div class="bookcard">
             {searchedBooks.map((book) => {
               return (
-                <div className="p-5 " key={book.bookId}>
+                <div className="p-3" key={book.bookId}>
                   <div
                     class="cardBody"
-                    className="bg-slate-900 p-10 pb-20  rounded-2xl shadow-inner shadow-slate-700 columns-2 "
+                    className="bg-slate-900 p-10 rounded-2xl shadow-inner shadow-slate-700 columns-2 "
                   >
                     {book.image ? (
                       <img
@@ -206,12 +212,12 @@ const Search = () => {
                     ) : null}
 
                     <h1>{book.title}</h1>
-                    <p> Authors: {book.authors}</p>
+                    <p>Authors: {book.authors}</p>
                     <p>Description: {book.description}</p>
                     {/* {Auth.loggedIn() && ( */}
                     <div class="pt-10">
                       <button
-                        className="float-right inline-flex items-center justify-center rounded-md border border-indigo-200 bg-[#22274f] px-4 py-2 text-sm font-medium shadow-md"
+                        className="float-right inline-flex items-center justify-center rounded-md border border-indigo-300 bg-[#22274f] px-4 py-2 text-sm font-medium shadow-md"
                         disabled={savedBookIds?.some(
                           (savedBookId) => savedBookId === book.bookId
                         )}
