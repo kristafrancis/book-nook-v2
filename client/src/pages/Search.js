@@ -9,6 +9,7 @@ import { useMutation } from "@apollo/client";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import StarsImg from '../images/stars.png';
 
+
 const Search = () => {
   const [searchedBooks, setSearchedBooks] = useState([]);
   const [searchInput, setSearchInput] = useState("");
@@ -183,7 +184,7 @@ const Search = () => {
 
             <AnchorLink className="flex justify-center" href="#Trending">
               Or see what others are reading!
-            </AnchorLink>
+            </AnchorLink> 
           </div>
           
           {/* LAYOUT BREAK - HORIZONTAL LINE */}
