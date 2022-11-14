@@ -9,6 +9,7 @@ import AnchorLink from "react-anchor-link-smooth-scroll";
 import StarsImg from '../images/stars.png';
 
 
+
 const Search = () => {
   const [searchedBooks, setSearchedBooks] = useState([]);
   const [searchInput, setSearchInput] = useState("");
@@ -137,12 +138,23 @@ const Search = () => {
 
   return (
     <>
+
+    
+      <Layout pageTitle="Search">
+        
+      <div className="w-[85%] h-auto mx-auto flex flex-col justify-center items-center">
+          <h2 className="text-4xl font-medium italic drop-shadow-md">
+            Travel to the stars, read!
+          </h2>
+       
+
         <div className="w-[85%] h-auto mx-auto flex flex-col justify-center items-center">
           <animated.div style={style1}>
             <h2 className="text-4xl text-indigo-400 font-medium italic drop-shadow-md">
               Travel to the stars, read!
             </h2>
           </animated.div>
+
 
           {/* SEARCH INPUT */}
           <div className="py-5">

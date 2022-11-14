@@ -166,6 +166,23 @@ const Profile = () => {
                 </div>
                 <div className="py-2"></div>
 
+                  <div className="mt-8 px-4 sm:px-6">
+                    <h2 className="text-4xl text-indigo-300 font-medium drop-shadow">
+                      Reading List
+                    </h2>
+                  </div>
+                  <div className="bg-slate-900 shadow-lg sm:rounded-lg mt-8">
+                    <div className="px-4 py-5 sm:px-6">
+                      {" "}
+                      <div className="overflow-hidden bg-[#22274f] shadow sm:rounded-md">
+                        <ul role="list" className="divide-y divide-gray-700">
+                          <li>
+                            <a href="#" className="block hover:bg-slate-800">
+                              <div className="px-4 py-2 sm:px-6">
+                                <div className="flex items-center justify-between">
+                                  <p className="truncate font-medium">
+                                  
+
                 <div className="mt-8 px-4 sm:px-6">
                   <h2 className="text-4xl text-indigo-300 font-medium drop-shadow">
                     Reading List
@@ -186,6 +203,7 @@ const Profile = () => {
                                 <div className="ml-2 flex flex-shrink-0">
                                   <p className="inline-flex rounded-full bg-[#090c26] px-2 text-sm font-semibold leading-5 text-indigo-300">
                                     View
+
                                   </p>
                                 </div>
                               </div>
