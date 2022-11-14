@@ -1,7 +1,5 @@
 import * as React from "react";
-import Layout from '../components/Layout/home';
 import { Link } from 'react-router-dom';
-import Search from './Search';
 
 // import icons
 import { GiSpellBook, GiArchiveResearch } from 'react-icons/gi';
@@ -10,10 +8,10 @@ import { WiStars } from "react-icons/wi";
 
 const Index = () => {
   return (                                                                                                                                    
-    <Layout pageTitle="Travel to the stars, read!">
-      <div className="w-full h-full">
-    
-          <h2 className="pb-8 text-4xl text-indigo-300 text-center font-normal">Make friends with a book!</h2>  
+    <main className="w-full h-full">
+
+      <h2 className="pb-8 text-5xl text-center font-medium drop-shadow">Make friends with a book!</h2>  
+        <div className="max-w-screen-lg mx-auto bg-slate-900 p-6 rounded-lg shadow-lg">
     
             {/* START BOOK NOOK INFO CONTAINER */}
             <div className="max-w-screen-lg w-full mb-8 grid sm:grid-cols-3 mx-auto">
@@ -23,7 +21,7 @@ const Index = () => {
                 <h3 className="font-medium">Welcome</h3>
                 <p>
                   Book Nook is an online community for big book worms to discuss books
-                  for their little book worms. Join today to find great reads for your child!
+                  for their little book worms for school and home.
                 </p>
               </div>
               <div className="flex flex-col justify-center items-center px-8 py-4 text-center border-b sm:border-b-0 sm:border-r border-gray-700">
@@ -31,7 +29,7 @@ const Index = () => {
                 <GiArchiveResearch size={65} style={{ color: '#ffffff' }} className="flex justify-center items-center" />
                 <h3 className="font-medium">Discover Reads</h3>
                 <p>
-                  Look up new books that meets your child's reading level using our search feature, or find recommendations from other parents! 
+                  Search for new books that meets your child's reading level using our search feature, or find recommendations from others! 
                 </p>
               </div>
               <div className="flex flex-col justify-center items-center px-8 py-4 text-center">
@@ -39,13 +37,13 @@ const Index = () => {
                 <WiStars size={65} style={{ color: '#ffffff' }} className="flex justify-center items-center" />
                 <h3 className="font-medium">Meet Friends</h3>
                 <p>
-                  Meet fellow book worms and read up on what they are letting their children read
+                  Connect with fellow book worms and see what they have been letting their kids read. Join today to find great reads for your child!
                 </p>
               </div>
             </div>
             {/* END BOOK NOOK INFO CONTAINER */}
     
-          <div className="flex justify-center pb-4">
+          <div className="flex justify-center">
             
             <Link to='/signup'>
               <button className="px-6 py-2 rounded drop-shadow-md">Get Started</button>
@@ -53,9 +51,8 @@ const Index = () => {
 
           </div>
     
-         
       </div>
-    </Layout>
+    </main>
   );
 };
 

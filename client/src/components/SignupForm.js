@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
-// import { Link } from "gatsby";
-import Layout from "./Layout/home";
 import Auth from '../utils/auth';
 import { Navigate, useNavigate } from 'react-router-dom';
 
@@ -42,11 +40,13 @@ const Signup = () => {
 };
 
     return (
-      <Layout pageTitle="Sign Up">
-        <div className="w-full max-w-md flex items-center justify-center">
+      <main className="w-full h-full">
+        <h2 className="pb-8 text-5xl text-center font-medium drop-shadow">Create New Account</h2>  
+        
+        <div className="w-[500px] mx-auto bg-slate-900 p-10 rounded-lg shadow-lg">
   
             {/* BEGIN SIGNUP FORM */}
-            <form className="w-[400px]" onSubmit={handleFormSubmit}>
+            <form className="w-[full]" onSubmit={handleFormSubmit}>
               <input type="hidden" name="remember" value="true"></input>{" "}
               <div className="-space-y-px rounded-md shadow-lg">
                 <div>
@@ -129,7 +129,7 @@ const Signup = () => {
             {/* END SIGNUP FORM */}
     
       </div>
-    </Layout>
+    </main>
   );
 };
     
