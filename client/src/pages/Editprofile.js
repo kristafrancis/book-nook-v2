@@ -5,8 +5,7 @@ const EditProfile = () => {
   const [selectedImage, setSelectedImage] = useState(null);
 
   return (
-    <>
-      <Layout pageTitle="Edit Profile">
+    <Layout>
         <main className="max-w-screen-md h-full mx-auto">
 
           <h1 className="my-8 ml-4 text-4xl font-semibold drop-shadow">
@@ -137,9 +136,8 @@ const EditProfile = () => {
                 </div>
               </div>
               
-        </main>
-      </Layout>
-    </>
+      </main>
+    </Layout>
   );
 };
 export default EditProfile;

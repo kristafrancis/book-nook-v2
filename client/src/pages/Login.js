@@ -52,12 +52,10 @@ import Layout from '../components/Layout/home'
 
 //const Login = () => {
 
-  return (    
-    <>                                                                                                                                                                                                                                                  
-      <Layout pageTitle="Log In">
-        <div className="w-full max-w-md flex items-center justify-center">
+return (    
+  <Layout>
+    <div className="w-full max-w-md flex items-center justify-center">
         
-
         <form className="w-[400px]" action="#" method="POST" onSubmit={handleFormSubmit}>
           <input type="hidden" name="remember" value="true"></input>{" "}
             <div className="rounded-md shadow-lg">
@@ -126,7 +124,6 @@ import Layout from '../components/Layout/home'
 
     </div>
   </Layout>
- </>
   );
 };
  

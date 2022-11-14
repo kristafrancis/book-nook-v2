@@ -136,8 +136,7 @@ const Search = () => {
   };
 
   return (
-    <>
-      <Layout pageTitle="Search">
+    <Layout>
         <div className="w-[85%] h-auto mx-auto flex flex-col justify-center items-center">
           <animated.div style={style1}>
             <h2 className="text-4xl text-indigo-400 font-medium italic drop-shadow-md">
@@ -173,7 +172,7 @@ const Search = () => {
                   value={searchInput}
                   onChange={(e) => setSearchInput(e.target.value)}
                   type="text"
-                  className="block w-full rounded-md  bg-[#22274f] border border-slate-700 text-gray-200 placeholder-slate-500 mt-2 mb-4 py-2 pl-10 pr-3 text-sm focus:border-indigo-500 focus:text-gray-200 focus:placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-2xl"
+                  className="block w-full rounded-md  bg-slate-900 border border-slate-600 text-gray-200 placeholder-slate-500 mt-2 mb-4 py-2 pl-10 pr-3 text-sm focus:border-indigo-500 focus:text-gray-200 focus:placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-2xl"
                   placeholder="Search"
                 ></input>
               </div>
@@ -313,8 +312,7 @@ const Search = () => {
             </div>
           </div>
         </div>
-      </Layout>
-    </>
+    </Layout>
   );
 };
 

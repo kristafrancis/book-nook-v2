@@ -36,9 +36,9 @@ const Profile = () => {
   }, []);
 
   return (
-    <>
-      <Layout pageTitle="Profile">
+    <Layout>
         <main class="min-h-full">
+          
           <div class="mx-auto max-w-3xl px-4 sm:px-6 md:flex md:items-center md:justify-between md:space-x-5 lg:max-w-7xl lg:px-8">
             <div class="flex items-center space-x-5">
               <div class="flex-shrink-0">
@@ -343,9 +343,9 @@ const Profile = () => {
               </div>
             </section>
           </div>
-        </main>
-      </Layout>
-    </>
+
+      </main>
+    </Layout>
   );
 };
 

@@ -23,6 +23,7 @@ const authLink = setContext((_, { headers }) => {
     },
   };
 });
+
 const client = new ApolloClient({
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
@@ -37,8 +38,6 @@ const HomeLayout = ({ pageTitle, children }) => {
 
   return (
     <>
-      <title>Book Nook | {pageTitle}</title>
-
       <main className="w-full h-full relative flex flex-col justify-center items-center">
         <div className="w-full h-[350px] z-[-5]">
           <Sparkle 
@@ -67,7 +66,7 @@ const HomeLayout = ({ pageTitle, children }) => {
 
       <footer>
         <p class="text-center p-6 md:text-base text-sm tracking-wider font-medium text-gray-400">
-          &copy; {new Date().getFullYear()} The Spice Girls, LLC.
+          &copy; {new Date().getFullYear()} <a href="https://github.com/kristafrancis/book-nook-v2" target="_blank">The Spice Girls</a>, LLC.
         </p>
       </footer>
     </>
