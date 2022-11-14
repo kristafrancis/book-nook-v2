@@ -1,53 +1,28 @@
-import React from "react";
-import { useSpring, animated, useTransition } from "react-spring";
+import React, { useState } from "react";
+import { useSpring, animated } from "react-spring";
 import Sparkle from "react-sparkle";
-import { Link } from "react-router-dom";
+import Navbar from '../Navbar';
 import RandomAnimal from "../../hooks/RandomAnimal";
-import Burger from "../Burger/Burger";
-import Auth from "../../utils/auth";
 
 const Dashboard = ({ children }) => {
-  const logout = (event) => {
-    event.preventDefault();
-    Auth.logout();
-  };
-  const style1 = useSpring({
-    from: { opacity: 0, marginTop: 0 },
-    to: { opacity: 1, marginTop: 0 },
-    config: { duration: 1000 },
-  });
+const [animFinished, setAnimFinished] = useState(false);
 
+const style1 = useSpring( {
+    from: { opacity: 0 },
+    to: { opacity: 1 },
+    config: { duration: 1000 }
+});
+
+// const navStyle = useSpring(animFinished, null, {
+//     from: { opacity: 0, transform: animFinished ? "translateY(0)" : "translateY(200px)" },
+//     to: { opacity: 1 },
+//     config: { duration: 2000 },
+//     onRest: () => setAnimFinished(true)
+// });
+  
   return (
     <>
-      <nav className="mx-8 my-6 flex justify-between items-center">
-        <div>
-          <h1 className="drop-shadow-lg text-5xl md:text-7xl">
-            <Link to="/search" className="hover:text-[#7286ff]">
-              book<span className="text-[#7286ff]">nook</span>
-            </Link>
-          </h1>
-        </div>
-        <div>
-          {/* ANIMATION HERE */}
-          <animated.div style={style1}>
-          {/* NAVBAR AT 768PX & HIGHER */}
-          <div className="uppercase tracking-widest">
-            <div className="hidden md:flex bg-[#02030ac8] px-7 py-2 rounded-md font-semibold">
-              <a href="/search" className="mr-6">Search</a>
-              <a className="mx-6" href="/profile">Profile</a>
-              <button onClick={logout} className="bg-transparent hover:bg-transparent ml-6 text-[#6bfbce] hover:text-[#7286ff]">Logout</button>
-            </div>
-          </div>
-        </animated.div>
-      </div>
-
-      {/* END ANIMATION */}
-
-      {/* NAVBAR AT 768PX & LOWER */}
-      <div className="md:hidden">
-        <Burger />
-      </div>
-    </nav>
+      <Navbar animFinished={animFinished} setAnimFinished={setAnimFinished} />
 
       <main>
         {/* GENERATE ANIMAL HEADER */}
@@ -76,4 +51,5 @@ const Dashboard = ({ children }) => {
     </>
   );
 };
+
 export default Dashboard;
