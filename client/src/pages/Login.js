@@ -4,6 +4,7 @@ import { USER_LOGIN } from "../utils/mutations";
 import Auth from "../utils/auth";
 import { useNavigate } from "react-router-dom";
 
+
 const Login = () => {
   const [formState, setFormState] = useState({ email: "", password: "" });
   // const [validated] = useState(false);
@@ -20,20 +21,13 @@ const Login = () => {
     navigate("/search");
     console.log(formState);
 
-    // // check if form has everything (as per react-bootstrap docs)
-    // const form = event.currentTarget;
-    // if (form.checkValidity() === false) {
-    //   event.preventDefault();
-    //   event.stopPropagation();
-    // }
 
     try {
       const { data } = await loginUser({
         variables: { ...formState },
       });
 
-      //const { token, user } = await response.json();
-      // console.log(user);
+  
       Auth.login(data.login.token);
     } catch (err) {
       console.error(err);
@@ -45,7 +39,6 @@ const Login = () => {
     });
   };
 
-  //const Login = () => {
 
   return (
     <main className="w-full h-full">

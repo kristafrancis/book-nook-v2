@@ -138,10 +138,20 @@ const EditProfile = () => {
                     </dd>
                   </div>
                 </dl>
+                
               </div>
             </div>
+            <div className="p-8">
+              <button
+                type="button"
+                className="bg-[#22274f] rounded-lg hover:opacity-50 ease-in duration-300 border border-indigo-200 p-2 px-4 text-base w-full"
+                >
+                SAVE CHANGES
+                </button>
+                </div>
           </div>
         </div>
+        <div class="p-10"></div>
       </main>
     </>
   );
