@@ -1,5 +1,8 @@
 // import { useQuery } from "@apollo/client";
 import React, { useState, useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faInstagram } from "@fortawesome/free-brands-svg-icons";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { useParams, Navigate } from "react-router-dom";
 import Dropdown from "react-dropdown";
 // import Auth from '../utils/auth';
@@ -299,25 +302,26 @@ const Profile = () => {
               <div className="columns-2 flex justify-center gap-4 mt-2">
                 <tr>
                   <a
-                    className="bg-[#22274f] rounded-lg pt-2 px-2 hover:opacity-50 ease-in duration-300"
+                    className="bg-[#22274f] rounded-lg px-2 hover:opacity-50 ease-in duration-300"
                     href="https://www.instagram.com/thebooknookproject/"
                   >
+                    <FontAwesomeIcon icon={faInstagram} />
                     <td>
                       <div className="flex items-center">
-                        <svg
+                        {/* <svg
                           xmlns="http://www.w3.org/2000/svg"
                           fill="none"
                           viewBox="0 0 24 24"
                           stroke-width="1.5"
                           stroke="currentColor"
-                          class="w-6 h-6"
+                          // class="w-6 h-6"
                         >
                           <path
                             stroke-linecap="round"
                             stroke-linejoin="round"
                             d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z"
                           />
-                        </svg>
+                        </svg> */}
 
                         <div className="ml-2 text-center">
                           <div className="font-medium">Instagram</div>
@@ -329,12 +333,13 @@ const Profile = () => {
 
                 <tr>
                   <a
-                    className="bg-[#22274f] rounded-lg pt-2 px-2 hover:opacity-50 ease-in duration-300"
+                    className="bg-[#22274f] rounded-lg px-2 hover:opacity-50 ease-in duration-300"
                     href="mailto:traveltothestars.booknook@gmail.com"
                   >
+                    <FontAwesomeIcon icon={faEnvelope} />
                     <td>
                       <div className="flex items-center">
-                        <svg
+                        {/* <svg
                           xmlns="http://www.w3.org/2000/svg"
                           fill="none"
                           viewBox="0 0 24 24"
@@ -347,7 +352,7 @@ const Profile = () => {
                             stroke-linejoin="round"
                             d="M9 3.75H6.912a2.25 2.25 0 00-2.15 1.588L2.35 13.177a2.25 2.25 0 00-.1.661V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18v-4.162c0-.224-.034-.447-.1-.661L19.24 5.338a2.25 2.25 0 00-2.15-1.588H15M2.25 13.5h3.86a2.25 2.25 0 012.012 1.244l.256.512a2.25 2.25 0 002.013 1.244h3.218a2.25 2.25 0 002.013-1.244l.256-.512a2.25 2.25 0 012.013-1.244h3.859M12 3v8.25m0 0l-3-3m3 3l3-3"
                           />
-                        </svg>
+                        </svg> */}
 
                         <div className="ml-2">
                           <div className="font-medium">Email</div>
