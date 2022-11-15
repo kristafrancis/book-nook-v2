@@ -4,7 +4,6 @@ import { useParams, Navigate, useRouteLoaderData } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
-import { useParams, Navigate } from "react-router-dom";
 import Dropdown from "react-dropdown";
 import Auth from '../utils/auth';
 import ReadingList from "../components/ReadingList";
@@ -45,11 +44,6 @@ const Profile = () => {
     );
     setSelected(lastSelected);
   }, []);
-
-
-  
-
- 
 
   const [deleteBook] = useMutation(REMOVE_BOOK);
   const handleDeleteBook = async (bookId) => {
