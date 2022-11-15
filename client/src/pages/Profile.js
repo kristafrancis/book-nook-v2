@@ -1,11 +1,13 @@
 // import { useQuery } from "@apollo/client";
 import React, { useState, useEffect } from "react";
-import { useParams, Navigate } from "react-router-dom";
+import { useParams, Navigate, useRouteLoaderData } from "react-router-dom";
 import Dropdown from "react-dropdown";
-// import Auth from '../utils/auth';
+import Auth from '../utils/auth';
 import ReadingList from "../components/ReadingList";
-import { useQuery } from "@apollo/client";
+import { useQuery, useMutation} from "@apollo/client";
 import { QUERY_ME } from "../utils/queries";
+import { removeBookId } from "../utils/localStorage";
+import { REMOVE_BOOK } from "../utils/mutations";
 
 const Profile = () => {
   const [count, setCount] = useState(0);
@@ -19,6 +21,8 @@ const Profile = () => {
 
   const { loading, data } = useQuery(QUERY_ME);
   console.log(data);
+  const userData = data?.me || {};
+ 
 
   useEffect(() => {
     const initialValue = localStorage.getItem("count");
@@ -40,6 +44,23 @@ const Profile = () => {
     setSelected(lastSelected);
   }, []);
 
+  const [deleteBook] = useMutation(REMOVE_BOOK);
+  const handleDeleteBook = async (bookId) => {
+    const token = Auth.loggedIn() ? Auth.getToken() : null;
+    if (!token) {
+      return false;
+    }
+    try {
+      await deleteBook({
+        variables: {bookId}
+      });
+
+      removeBookId(bookId);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <>
       <main class="min-h-full">
@@ -59,8 +80,8 @@ const Profile = () => {
               </div>
             </div>
             <div>
-              <h1 className="text-4xl font-semibold drop-shadow">Username</h1>
-              <p className="font-medium text-gray-100">Bob Joe</p>
+              <h1 className="text-4xl font-semibold drop-shadow">{userData.username}</h1>
+              <p className="font-medium text-gray-100">{userData.username}</p>
             </div>
           </div>
           <div className="justify-stretch mt-6 flex flex-col-reverse space-y-4 space-y-reverse sm:flex-row-reverse sm:justify-end sm:space-y-0 sm:space-x-3 sm:space-x-reverse md:mt-0 md:flex-row md:space-x-3">
@@ -195,7 +216,8 @@ const Profile = () => {
                                       View
                                     </button>
                                     <div class="px-2"></div>
-                                    <button className="inline-flex rounded-full hover:text-slate-900 bg-rose-900 text-rose-300 px-2 text-sm hover:font-semibold leading-5 text-indigo-300">
+                                    <button className="inline-flex rounded-full hover:text-slate-900 bg-rose-900 text-rose-300 px-2 text-sm hover:font-semibold leading-5 text-indigo-300"
+                                    onClick={()=> handleDeleteBook(book.bookId)}>
                                       Remove
                                     </button>
                                   </div>

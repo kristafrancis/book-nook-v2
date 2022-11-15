@@ -5,11 +5,10 @@ const { signToken } = require("../utils/auth");
 const resolvers = {
   Query: {
     me: async (parent, args, context) => {
-      console.log("trying to workk")
+      
       if (context.user) {
-        const userData = await User.findOne({ _id: context.user._id }).select(
-          "-__v -password"
-        );
+        const userData = await User.findOne({ _id: context.user._id })
+        .select("-__v -password")
 
         return userData;
       }
@@ -17,7 +16,8 @@ const resolvers = {
     },
 
     users: async () => {
-      return User.find().select("-__v -password");
+      return User.find().select("-__v -password")
+      
     },
     user: async (parent, { username }) => {
       return User.findOne({ username }).select("-__v -password");
@@ -117,7 +117,7 @@ const resolvers = {
     saveBook: async (parent, args, context) => {
       console.log("saveBook")
       if (context.user) {
-        console.log(context.user, "not working")
+        console.log(context.user)
         const updateUser = await User.findByIdAndUpdate(
           { _id: context.user._id },
           { $push: { savedBooks: args.input } },
@@ -128,11 +128,11 @@ const resolvers = {
       throw new AuthenticationError("You need to be logged in!");
     },
 
-    removeBook: async (parent, args, context) => {
+    removeBook: async (parent, { bookId }, context) => {
       if (context.user) {
         const updateSavedBooks = await User.findOneAndUpdate(
           { _id: context.user.id },
-          { $pull: { savedBooks: { bookId: args.bookId } } },
+          { $pull: { savedBooks: { bookId } } },
           { new: true }
         );
         return updateSavedBooks;
