@@ -3,7 +3,6 @@
 ## Table of Contents
 
 - [Description](#description)
-- [License](#license)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contribution](#contribution)
@@ -13,10 +12,6 @@
 ## Description
 
 Generator for README files
-
-## License
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Installation
 
