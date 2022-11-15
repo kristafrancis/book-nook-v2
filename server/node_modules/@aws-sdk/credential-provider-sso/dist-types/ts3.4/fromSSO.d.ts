@@ -3,6 +3,7 @@ import { SourceProfileInit } from "@aws-sdk/shared-ini-file-loader";
 import { CredentialProvider } from "@aws-sdk/types";
 export interface SsoCredentialsParameters {
   ssoStartUrl: string;
+  ssoSession?: string;
   ssoAccountId: string;
   ssoRegion: string;
   ssoRoleName: string;

@@ -11,6 +11,7 @@ type User {
     friends: [User]
 }
 type Book {
+    _id: ID!
     bookId: String!
     title: String
     authors: [String]
@@ -32,7 +33,7 @@ type Comment {
   }
 
 type Query {
-    me: [User]
+    me: User
     users: [User]
     user(username: String!): User
    comments(username: String): [Comment]
@@ -54,7 +55,7 @@ type Mutation {
     updateComment(id: ID!, comment_text: String!): Comment
     deleteComment(id: ID!): Boolean
     addFriend(friendId: ID!): User
-    saveBook(BookInput: BookInput!): User
+    saveBook(input: BookInput!): User
     removeBook(bookId: String!): User
  }
 `;
