@@ -7,7 +7,5 @@ const FriendList = ({ username, friends }) => {
     
     }
 
-    return (
-        
-    )
-}
+
+};

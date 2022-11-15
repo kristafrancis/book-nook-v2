@@ -1,13 +1,10 @@
 // import { useQuery } from "@apollo/client";
 import React, { useState, useEffect } from "react";
-<<<<<<< HEAD
 import { useParams, Navigate, useRouteLoaderData } from "react-router-dom";
-=======
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { useParams, Navigate } from "react-router-dom";
->>>>>>> d88159356233713ff08edd82cfa8ef59f54f6061
 import Dropdown from "react-dropdown";
 import Auth from '../utils/auth';
 import ReadingList from "../components/ReadingList";
