@@ -131,9 +131,7 @@ const Profile = () => {
                 <div className="text-center pb-8 font-['poppins'] text-2xl font-medium text-indigo-400 inline-flex w-full justify-center items-center">
                   Your goal is
                   <Dropdown
-                    className="w-[60px] bg-slate-700 mx-4 rounded-sm border border-slate-600"
-                    placeholderClassName="text-indigo-700 text-lg font-semibold"
-                    menuClassName="bg-slate-700 text-base font-semibold"
+                    className="w-[60px] bg-slate-700 mx-4"
                     options={options}
                     onChange={handleChange}
                     value={defaultOption}
