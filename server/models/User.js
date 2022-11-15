@@ -37,7 +37,14 @@ const userSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "User"
     }], 
-    // savedBooks: [bookSchema],
+     savedBooks: [{
+        bookId: String,
+        authors: [String],
+        description: String,
+        title: String,
+        image: String,
+
+     }],
 },
 {
     toJSON: {

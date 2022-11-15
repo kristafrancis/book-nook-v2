@@ -6,7 +6,7 @@ import { QUERY_ME } from "../utils/queries";
 const ReadingList = () => {
   const { data } = useQuery(QUERY_ME);
   const userData = data?.me || {};
-  console.log("invokes", data);
+  
 
   return (
     <>
