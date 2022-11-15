@@ -1,16 +1,20 @@
 // import { useQuery } from "@apollo/client";
-import React, { useState, useEffect } from "react";
-import { useParams, Navigate, useRouteLoaderData } from "react-router-dom";
+import React, { useState, useEffect, Fragment } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import Dropdown from "react-dropdown";
-import Auth from '../utils/auth';
+import Auth from "../utils/auth";
 import ReadingList from "../components/ReadingList";
-import { useMutation, useQuery} from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { QUERY_ME } from "../utils/queries";
 import { removeBookId } from "../utils/localStorage";
 import { REMOVE_BOOK } from "../utils/mutations";
+import { Menu, Transition } from "@headlessui/react";
+
+function classNames(...classes) {
+  return classes.filter(Boolean).join(" ");
+}
 
 const Profile = () => {
   const [count, setCount] = useState(0);
@@ -53,7 +57,7 @@ const Profile = () => {
     }
     try {
       await deleteBook({
-        variables: {bookId}
+        variables: { bookId },
       });
 
       removeBookId(bookId);
@@ -81,7 +85,9 @@ const Profile = () => {
               </div>
             </div>
             <div>
-              <h1 className="text-4xl font-semibold drop-shadow">{userData.username}</h1>
+              <h1 className="text-4xl font-semibold drop-shadow">
+                {userData.username}
+              </h1>
               <p className="font-medium text-gray-100">{userData.username}</p>
             </div>
           </div>
@@ -218,8 +224,12 @@ const Profile = () => {
                                       View
                                     </button>
                                     <div class="px-2"></div>
-                                    <button className="inline-flex rounded-full hover:text-slate-900 bg-rose-900 text-rose-300 px-2 text-sm hover:font-semibold leading-5>"
-                                    onClick={()=> handleDeleteBook(book.bookId)}>
+                                    <button
+                                      className="inline-flex rounded-full hover:text-slate-900 bg-rose-900 text-rose-300 px-2 text-sm hover:font-semibold leading-5>"
+                                      onClick={() =>
+                                        handleDeleteBook(book.bookId)
+                                      }
+                                    >
                                       Remove
                                     </button>
                                   </div>
@@ -229,6 +239,61 @@ const Profile = () => {
                           </li>
                         </ul>
                       </div>
+                      <Menu
+                        as="div"
+                        className="relative inline-block text-left"
+                      >
+                        <div>
+                          <Menu.Button className="cursor-pointer inline-flex items-center justify-center rounded-md border border-indigo-200 px-4 py-2 text-sm font-medium text-indigo-200 shadow-sm hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100">
+                            Comment
+                          </Menu.Button>
+                        </div>
+
+                        <Transition
+                          as={Fragment}
+                          enter="transition ease-out duration-100"
+                          enterFrom="transform opacity-0 scale-95"
+                          enterTo="transform opacity-100 scale-100"
+                          leave="transition ease-in duration-75"
+                          leaveFrom="transform opacity-100 scale-100"
+                          leaveTo="transform opacity-0 scale-95"
+                        >
+                          <Menu.Items className="absolute left-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-slate-500 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                            <div className="py-1">
+                              <Menu.Item>
+                                {({ active }) => (
+                                  <textarea
+                                    id="message"
+                                    className={classNames(
+                                      active
+                                        ? "bg-slate-900 text-gray-100"
+                                        : "text-gray-100",
+                                      "block px-4 py-2 text-sm bg-slate-900 "
+                                    )}
+                                  >
+                                    Write your comment here
+                                  </textarea>
+                                )}
+                              </Menu.Item>
+                              <Menu.Item>
+                                {({ active }) => (
+                                  <a
+                                    href
+                                    className={classNames(
+                                      active
+                                        ? "cursor-pointer inline-flex items-center justify-center rounded-md border border-indigo-200 px-4 py-2 text-sm font-medium text-indigo-200 shadow-sm hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100"
+                                        : "cursor-pointer inline-flex items-center justify-center rounded-md border border-indigo-200 px-4 py-2 text-sm font-medium text-indigo-200 shadow-sm hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100",
+                                      "cursor-pointer inline-flex items-center justify-center rounded-md border border-indigo-200 px-4 py-2 text-sm font-medium text-indigo-200 shadow-sm hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100"
+                                    )}
+                                  >
+                                    Submit
+                                  </a>
+                                )}
+                              </Menu.Item>
+                            </div>
+                          </Menu.Items>
+                        </Transition>
+                      </Menu>
                       <div className="p-2"></div>
                     </>
                   ))}
@@ -316,34 +381,19 @@ const Profile = () => {
 
             <div className="p-10"></div>
             <div className="bg-slate-900 pb-5 pt-3 shadow-lg sm:rounded-lg sm:px-6">
-              <h2 className="text-1xl text-center text-indigo-300 font-medium">
+              <h2 className="text-2xl tracking-widest text-center text-indigo-300 font-medium">
                 Stay in touch!
               </h2>
 
-              <div className="columns-2 flex justify-center gap-4 mt-2">
+              <div className="columns-2 flex justify-center gap-4 mt-4">
                 <tr>
                   <a
-                    className="bg-[#22274f] rounded-lg px-2 hover:opacity-50 ease-in duration-300"
+                    className="bg-[#22274f] rounded-lg px-2 hover:opacity-50 ease-in duration-300 border border-indigo-200 p-2 px-4 text-base"
                     href="https://www.instagram.com/thebooknookproject/"
                   >
                     <FontAwesomeIcon icon={faInstagram} />
                     <td>
                       <div className="flex items-center">
-                        {/* <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke-width="1.5"
-                          stroke="currentColor"
-                          // class="w-6 h-6"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z"
-                          />
-                        </svg> */}
-
                         <div className="ml-2 text-center">
                           <div className="font-medium">Instagram</div>
                         </div>
@@ -354,27 +404,12 @@ const Profile = () => {
 
                 <tr>
                   <a
-                    className="bg-[#22274f] rounded-lg px-2 hover:opacity-50 ease-in duration-300"
+                    className="bg-[#22274f] rounded-lg hover:opacity-50 ease-in duration-300 border border-indigo-200 p-2 px-4 text-base"
                     href="mailto:traveltothestars.booknook@gmail.com"
                   >
                     <FontAwesomeIcon icon={faEnvelope} />
                     <td>
                       <div className="flex items-center">
-                        {/* <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke-width="1.5"
-                          stroke="currentColor"
-                          class="w-6 h-6"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M9 3.75H6.912a2.25 2.25 0 00-2.15 1.588L2.35 13.177a2.25 2.25 0 00-.1.661V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18v-4.162c0-.224-.034-.447-.1-.661L19.24 5.338a2.25 2.25 0 00-2.15-1.588H15M2.25 13.5h3.86a2.25 2.25 0 012.012 1.244l.256.512a2.25 2.25 0 002.013 1.244h3.218a2.25 2.25 0 002.013-1.244l.256-.512a2.25 2.25 0 012.013-1.244h3.859M12 3v8.25m0 0l-3-3m3 3l3-3"
-                          />
-                        </svg> */}
-
                         <div className="ml-2">
                           <div className="font-medium">Email</div>
                         </div>
