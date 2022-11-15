@@ -6,8 +6,8 @@ import RandomAnimal from "../../hooks/RandomAnimal";
 import { Link } from "react-router-dom";
 import Auth from "../../utils/auth";
 
-const Header = (props) => {
-	const { animFinished, setAnimFinished } = props;
+const Header = () => {
+	// const { animFinished, setAnimFinished } = props;
 
 	const style1 = useSpring({
 		from: { opacity: 0 },
@@ -23,7 +23,7 @@ const Header = (props) => {
 	return (
 		<header>
 			<nav>
-				<animated.div style={props}>
+				<animated.div style={style1}>
 					<div className="mx-8 my-6 flex justify-between items-center">
 						<div>
 							<h1 className="drop-shadow-lg text-5xl md:text-7xl">
@@ -37,28 +37,31 @@ const Header = (props) => {
 							{/* NAVBAR AT 768PX & HIGHER */}
 							<div className="uppercase tracking-widest">
 								<div className="hidden md:flex bg-[#02030ac8] px-7 py-2 rounded-md font-semibold">
-									{/* AUTH NOT REQUIRED */}
-									<a href="/signup" className="mr-6">
-										Sign Up
-									</a>
-									<a href="/login" className="mx-6">
-										Log In
-									</a>
-									{/* END AUTH NOT REQUIRED */}
-									{/* AUTH REQUIRED */}
-									<a href="/search" className="mx-6">
-										Search
-									</a>
-									<a className="mx-6" href="/profile">
-										Profile
-									</a>
-									<button
-										onClick={logout}
-										className="bg-transparent hover:bg-transparent ml-6 text-[#6bfbce] hover:text-[#7286ff]"
-									>
-										Logout
-									</button>
-									{/* END AUTH REQUIRED */}
+									{/* {Auth.loggedIn() ? (
+										<> */}
+											<Link to="/search" className="mr-6">
+												Search
+											</Link>
+											<Link to="/profile" className="mx-6">
+												Profile
+											</Link>
+											<button
+												onClick={logout}
+												className="bg-transparent hover:bg-transparent ml-6 text-[#6bfbce] hover:text-[#7286ff]"
+											>
+												Logout
+											</button>
+										{/* </>
+										) : (
+										<> */}
+											<Link to="/signup" className="mr-6">
+												Sign Up
+											</Link>
+											<Link to="/login" className="ml-6">
+												Log In
+											</Link>
+										{/* </>
+									)} */}
 								</div>
 							</div>
 
