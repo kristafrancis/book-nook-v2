@@ -67,3 +67,35 @@ textarea,
 input {
   font-family: poppins, sans-serif;
 }
+
+div.Dropdown-menu {
+  @apply bg-slate-700;
+  @apply text-yellow-100;
+  @apply border-slate-600;
+}
+
+div.Dropdown-control {
+  @apply bg-slate-700;
+  @apply text-yellow-100;
+  @apply font-semibold;
+  @apply border-slate-600;
+}
+
+div.Dropdown-option {
+  @apply bg-slate-700;
+  @apply text-yellow-100;
+  @apply text-base;
+  @apply font-semibold;
+}
+
+div.Dropdown-option.is-selected {
+  @apply bg-slate-900;
+  @apply text-yellow-100;
+  @apply font-semibold;
+}
+
+div.Dropdown-option:hover {
+  @apply bg-slate-900;
+  @apply text-yellow-100;
+  @apply font-semibold;
+}
