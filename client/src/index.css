@@ -55,6 +55,10 @@
   button:hover {
     @apply bg-indigo-600;
   }
+
+  .Dropdown-menu {
+    @apply bg-slate-700;
+  }
 }
 
 button,

@@ -5,6 +5,7 @@ import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { useParams, Navigate } from "react-router-dom";
 import Dropdown from "react-dropdown";
+import 'react-dropdown/style.css';
 import Auth from "../utils/auth";
 import ReadingList from "../components/ReadingList";
 import { useMutation, useQuery } from "@apollo/client";
@@ -130,7 +131,9 @@ const Profile = () => {
                 <div className="text-center pb-8 font-['poppins'] text-2xl font-medium text-indigo-400 inline-flex w-full justify-center items-center">
                   Your goal is
                   <Dropdown
-                    className="w-[60px] text-yellow-100 text-lg font-semibold ml-3 py-2 rounded-sm mr-4 border border-slate-600"
+                    className="w-[60px] bg-slate-700 mx-4 rounded-sm border border-slate-600"
+                    placeholderClassName="text-indigo-700 text-lg font-semibold"
+                    menuClassName="bg-slate-700 text-base font-semibold"
                     options={options}
                     onChange={handleChange}
                     value={defaultOption}
@@ -380,8 +383,7 @@ const Profile = () => {
               </div>
             </div>
 
-            <div className="p-10"></div>
-            <div className="bg-slate-900 pb-5 pt-3 shadow-lg sm:rounded-lg sm:px-6">
+            <div className="bg-slate-900 mt-8 pb-5 pt-3 shadow-lg sm:rounded-lg sm:px-6">
               <h2 className="text-2xl tracking-widest text-center text-indigo-300 font-medium">
                 Stay in touch!
               </h2>
@@ -389,15 +391,13 @@ const Profile = () => {
               <div className="columns-2 flex justify-center gap-4 mt-4">
                 <tr>
                   <a
-                    className="bg-[#22274f] rounded-lg px-2 hover:opacity-50 ease-in duration-300 border border-indigo-200 p-2 px-4 text-base"
+                    className="bg-[#22274f] hover:bg-slate-700 rounded-md border border-indigo-200 py-2 px-4 text-base"
                     href="https://www.instagram.com/thebooknookproject/"
                   >
-                    <FontAwesomeIcon icon={faInstagram} />
+                    <FontAwesomeIcon icon={faInstagram} style={{ color: 'a4b4fc' }} />
                     <td>
-                      <div className="flex items-center">
-                        <div className="ml-2 text-center">
-                          <div className="font-medium">Instagram</div>
-                        </div>
+                      <div className="flex items-center ml-2 text-center">
+                        <div className="text-indigo-200 font-normal uppercase tracking-widest">Instagram</div>
                       </div>
                     </td>
                   </a>
@@ -405,15 +405,13 @@ const Profile = () => {
 
                 <tr>
                   <a
-                    className="bg-[#22274f] rounded-lg hover:opacity-50 ease-in duration-300 border border-indigo-200 p-2 px-4 text-base"
+                    className="bg-[#22274f] hover:bg-slate-700 rounded-md border border-indigo-200 py-2 px-4 text-base"
                     href="mailto:traveltothestars.booknook@gmail.com"
                   >
-                    <FontAwesomeIcon icon={faEnvelope} />
+                    <FontAwesomeIcon icon={faEnvelope} style={{ color: 'a4b4fc' }} />
                     <td>
-                      <div className="flex items-center">
-                        <div className="ml-2">
-                          <div className="font-medium">Email</div>
-                        </div>
+                      <div className="flex items-center ml-2 text-center">
+                          <div className="text-indigo-200 font-normal uppercase tracking-widest">Email</div>
                       </div>
                     </td>
                   </a>
