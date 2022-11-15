@@ -55,6 +55,22 @@ const Signup = () => {
           <input type="hidden" name="remember" value="true"></input>{" "}
           <div className="-space-y-px rounded-md shadow-lg">
             <div class="relative rounded-md shadow-sm">
+              <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  className="w-5 h-auto text-teal-300"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"
+                  />
+                </svg>
+              </div>
               <label For="Username" className="sr-only">
                 Username
               </label>
@@ -65,29 +81,28 @@ const Signup = () => {
                 onChange={handleInputChange}
                 value={formState.username}
                 required
-                className="relative block w-full appearance-none rounded-none rounded-t-md bg-[#22274f] border border-slate-700
-                px-3 py-2 text-sm md:text-lg text-gray-200 placeholder-slate-500 focus:z-10 focus:border-indigo-500 focus:outline-non
+                className="block w-full appearance-none rounded-none rounded-t-md bg-[#22274f] border border-slate-700
+                pl-10 pr-3 py-2 text-sm md:text-lg text-gray-200 placeholder-slate-500 focus:z-10 focus:border-indigo-500 focus:outline-non
                 focus:ring-indigo-500"
                 placeholder="Username"
               ></input>
-              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+            </div>
+            <div class="relative rounded-md shadow-sm">
+              <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke-width="1.5"
                   stroke="currentColor"
-                  className="w-5 h-auto text-slate-500"
+                  className="w-5 h-auto text-teal-300"
                 >
                   <path
                     stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"
+                    d="M16.5 12a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zm0 0c0 1.657 1.007 3 2.25 3S21 13.657 21 12a9 9 0 10-2.636 6.364M16.5 12V8.25"
                   />
                 </svg>
               </div>
-            </div>
-            <div class="relative rounded-md shadow-sm">
               <label For="email-address" className="sr-only">
                 Email address
               </label>
@@ -98,49 +113,19 @@ const Signup = () => {
                 onChange={handleInputChange}
                 value={formState.email}
                 required
-                className="relative block w-full appearance-none rounded-none bg-[#22274f] border border-slate-700 px-3 py-2 text-sm md:text-lg text-gray-200 placeholder-slate-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
+                className="block w-full appearance-none rounded-none bg-[#22274f] border border-slate-700 pl-10 pr-3 py-2 text-sm md:text-lg text-gray-200 placeholder-slate-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
                 placeholder="Email address"
               ></input>
-              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  className="w-5 h-auto text-slate-500"
-                >
-                  <path
-                    stroke-linecap="round"
-                    d="M16.5 12a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zm0 0c0 1.657 1.007 3 2.25 3S21 13.657 21 12a9 9 0 10-2.636 6.364M16.5 12V8.25"
-                  />
-                </svg>
-              </div>
             </div>
-            <div>
-              <label For="password" className="sr-only">
-                Password
-              </label>
-
-              <div class="relative rounded-md shadow-sm">
-                <input
-                  id="password"
-                  name="password"
-                  type="password"
-                  onChange={handleInputChange}
-                  value={formState.password}
-                  required
-                  className="relative block w-full appearance-none rounded-none rounded-b-md bg-[#22274f] border border-slate-700 px-3 py-2 text-sm md:text-lg text-gray-200 placeholder-slate-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
-                  placeholder="Password"
-                ></input>
-                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+            <div class="relative rounded-md shadow-sm">
+              <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke-width="1.5"
                     stroke="currentColor"
-                    className="w-5 h-auto text-slate-500"
+                    className="w-5 h-auto text-teal-300"
                   >
                     <path
                       stroke-linecap="round"
@@ -149,9 +134,20 @@ const Signup = () => {
                     />
                   </svg>
                 </div>
-              </div>
+              <label For="password" className="sr-only">
+                Password
+              </label>
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  onChange={handleInputChange}
+                  value={formState.password}
+                  required
+                  className="block w-full appearance-none rounded-none rounded-b-md bg-[#22274f] border border-slate-700 pl-10 pr-3 py-2 text-sm md:text-lg text-gray-200 placeholder-slate-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
+                  placeholder="Password"
+                ></input>
             </div>
-          </div>
           <div className="flex items-center justify-between">
             <div className="text-sm pt-4 pb-6">
               <a href="/login" className="font-medium">
@@ -177,6 +173,7 @@ const Signup = () => {
               </span>
               Sign up
             </button>
+          </div>
           </div>
         </form>
         {/* END SIGNUP FORM */}

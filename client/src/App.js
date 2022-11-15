@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
@@ -43,51 +43,49 @@ const client = new ApolloClient({
 });
 
 function App() {
-  const [animFinished, setAnimFinished] = useState(false);
-  const navStyle = useSpring(animFinished, null, {
-    from: { opacity: 0, transform: animFinished ? "translateY(0)" : "translateY(200px)" },
-    to: { opacity: 1 },
-    config: { duration: 2000 },
-    onRest: () => setAnimFinished(true)
-  });
+  // const [animFinished, setAnimFinished] = useState(false);
+  // const navStyle = useSpring(animFinished, null, {
+  //   from: { opacity: 0, transform: animFinished ? "translateY(0)" : "translateY(200px)" },
+  //   to: { opacity: 1 },
+  //   config: { duration: 2000 },
+  //   onRest: () => setAnimFinished(true)
+  // });
 
   return (
-    <ApolloProvider client = {client}>
+    <ApolloProvider client={client}>
       <Router>
-      <Header animFinished={animFinished} setAnimFinished={setAnimFinished} />
-        <Routes>
-              <Route
-                path="/"
-                element={<Index />}
-              />
-              <Route
-                path="/login"
-                element={<Login />}
-              />
-              <Route
-                path="/signup"
-                element={<Signup />}
-              />
-              <Route
-                path="/search"
-                element={<Search />}
-                
-              />
-              <Route
-                path="/profile"
-                element={<Profile />}
-              />
-              <Route
-                path="/editprofile"
-                element={<Editprofile />}
-              />
-              <Route
-              path='/logout'
-              element={<logout />}
-              />
-
+        <Header />
+          <Routes>
+            <Route
+              path="/"
+              element={<Index />}
+            />
+            <Route
+              path="/login"
+              element={<Login />}
+            />
+            <Route
+              path="/signup"
+              element={<Signup />}
+            />
+            <Route
+              path="/search"
+              element={<Search />}
+            />
+            <Route
+              path="/profile"
+              element={<Profile />}
+            />
+            <Route
+              path="/editprofile"
+              element={<Editprofile />}
+            />
+            <Route
+            path='/logout'
+            element={<logout />}
+            />
           </Routes>
-          <Footer />
+        <Footer />
       </Router>
     </ApolloProvider>
   );
