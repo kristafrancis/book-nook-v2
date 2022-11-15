@@ -5,7 +5,6 @@ const { signToken } = require("../utils/auth");
 const resolvers = {
   Query: {
     me: async (parent, args, context) => {
-      console.log("trying to workk")
       if (context.user) {
         const userData = await User.findOne({ _id: context.user._id }).select(
           "-__v -password"
@@ -117,7 +116,6 @@ const resolvers = {
     saveBook: async (parent, args, context) => {
       console.log("saveBook")
       if (context.user) {
-        console.log(context.user, "not working")
         const updateUser = await User.findByIdAndUpdate(
           { _id: context.user._id },
           { $push: { savedBooks: args.input } },
