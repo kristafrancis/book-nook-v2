@@ -4,6 +4,8 @@ import { useParams, Navigate } from 'react-router-dom';
 import Dropdown from "react-dropdown";
 // import Auth from '../utils/auth';
 import ReadingList from "../components/ReadingList";
+import { useQuery } from "@apollo/client";
+import { QUERY_ME } from "../utils/queries";
 
 const Profile = () => {
   const [count, setCount] = useState(0);
@@ -14,6 +16,9 @@ const Profile = () => {
       return newCount;
     });
   };
+
+  const { loading, data } = useQuery(QUERY_ME);
+  console.log(data)
 
   useEffect(() => {
     const initialValue = localStorage.getItem("count");
@@ -174,83 +179,33 @@ const Profile = () => {
               <div className="bg-slate-900 shadow-lg sm:rounded-lg mt-8">
                 <div className="px-4 py-5 sm:px-6">
                   {" "}
-                  <div className="overflow-hidden bg-[#22274f] shadow sm:rounded-md">
-                    <ul role="list" className="divide-y divide-gray-700">
-                      <li>
-                        <a href="#" className="block hover:bg-slate-800">
-                          <div className="px-4 py-2 sm:px-6">
-                            <div className="flex items-center justify-between">
-                              <p className="truncate font-medium">Book Title</p>
-                              <div className="ml-2 flex flex-shrink-0">
-                                <p className="inline-flex rounded-full bg-[#090c26] px-2 text-sm font-semibold leading-5 text-indigo-300">
-                                  View
-                                </p>
+                  {data?.me?.savedBooks?.map((book) => (
+                    <>
+                      <div className="overflow-hidden bg-[#22274f] shadow sm:rounded-md">
+                      <ul role="list" className="divide-y divide-gray-700">
+                        <li>
+                          <a href="#" className="block hover:bg-slate-800">
+                            
+                            <div className="px-4 py-2 sm:px-6">
+                              <div className="flex items-center justify-between">
+                                <p className="truncate font-medium">{book.title}</p>
+                                <div className="ml-2 flex flex-shrink-0">
+                                  <p className="inline-flex rounded-full bg-[#090c26] px-2 text-sm font-semibold leading-5 text-indigo-300">
+                                    View
+                                  </p>
+                                </div>
                               </div>
                             </div>
-                          </div>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="p-2"></div>
-                  <div className="overflow-hidden bg-[#22274f] shadow sm:rounded-md">
-                    <ul role="list" className="divide-y divide-gray-700">
-                      <li>
-                        <a href="#" className="block hover:bg-slate-800">
-                          <div className="px-4 py-2 sm:px-6">
-                            <div className="flex items-center justify-between">
-                              <p className="truncate font-medium">Book Title</p>
-                              <div className="ml-2 flex flex-shrink-0">
-                                <p className="inline-flex rounded-full bg-[#090c26] px-2 text-sm font-semibold leading-5 text-indigo-300">
-                                  View
-                                </p>
-                              </div>
-                            </div>
-                          </div>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="p-2"></div>
-                  <div className="overflow-hidden bg-[#22274f] shadow sm:rounded-md">
-                    <ul role="list" className="divide-y divide-gray-700">
-                      <li>
-                        <a href="#" className="block hover:bg-slate-800">
-                          <div className="px-4 py-2 sm:px-6">
-                            <div className="flex items-center justify-between">
-                              <p className="truncate font-medium">Book Title</p>
-                              <div className="ml-2 flex flex-shrink-0">
-                                <p className="inline-flex rounded-full bg-[#090c26] px-2 text-sm font-semibold leading-5 text-indigo-300">
-                                  View
-                                </p>
-                              </div>
-                            </div>
-                          </div>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="p-2"></div>
-                  <div className="overflow-hidden bg-[#22274f] shadow sm:rounded-md">
-                    <ul role="list" className="divide-y divide-gray-700">
-                      <li>
-                        <a href="#" className="block hover:bg-slate-800">
-                          <div className="px-4 py-2 sm:px-6">
-                            <div className="flex items-center justify-between">
-                              <p className="truncate font-medium">Book Title</p>
-                              <div className="ml-2 flex flex-shrink-0">
-                                <p className="inline-flex rounded-full bg-[#090c26] px-2 text-sm font-semibold leading-5 text-indigo-300">
-                                  View
-                                </p>
-                              </div>
-                            </div>
-                          </div>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <div>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div className="p-2"></div>
+                    </>
+                  ))}
+          
+             
+               
                   <a
                     href="/search"
                     className="cursor-pointer block bg-[#090c26] hover:bg-slate-800 px-4 py-4 text-center font-medium sm:rounded-b-lg"

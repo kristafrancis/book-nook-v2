@@ -9,61 +9,61 @@ import AnchorLink from "react-anchor-link-smooth-scroll";
 import StarsImg from "../images/stars.png";
 
 const Search = () => {
-	const [searchedBooks, setSearchedBooks] = useState([]);
-	const [searchInput, setSearchInput] = useState("");
-	const [savedBookIds, setSavedBookIds] = useState(getSavedBookIds());
-	const [saveBook] = useMutation(SAVE_BOOK);
-
-	const posts = [
-		{
-			title: "Adorable",
-			href: "#",
-			description:
-				"Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto accusantium praesentium eius, ut atque fuga culpa, similique sequi cum eos quis dolorum.",
-			date: "Mar 16, 2020",
-			datetime: "2020-03-16",
-			imageUrl:
-				"http://books.google.com/books/content?id=kLAoswEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
-			author: {
-				name: "Roel Aufderehar",
-				href: "#",
-				imageUrl:
-					"http://books.google.com/books/content?id=kLAoswEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
-			},
-		},
-		{
-			title: "My kid reads this everyday!",
-			href: "#",
-			description:
-				"Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit facilis asperiores porro quaerat doloribus, eveniet dolore. Adipisci tempora aut inventore optio animi., tempore temporibus quo laudantium.",
-			date: "Mar 10, 2020",
-			datetime: "2020-03-10",
-			imageUrl:
-				"http://books.google.com/books/content?id=kLAoswEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
-			author: {
-				name: "Brenna Goyette",
-				href: "#",
-				imageUrl:
-					"http://books.google.com/books/content?id=kLAoswEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
-			},
-		},
-		{
-			title: "Love this book!",
-			href: "#",
-			description:
-				"Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint harum rerum voluptatem quo recusandae magni placeat saepe molestiae, sed excepturi cumque corporis perferendis hic.",
-			date: "Feb 12, 2020",
-			datetime: "2020-02-12",
-			imageUrl:
-				"http://books.google.com/books/content?id=kLAoswEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
-			author: {
-				name: "Daniela Metz",
-				href: "#",
-				imageUrl:
-					"http://books.google.com/books/content?id=kLAoswEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
-			},
-		},
-	];
+  const [searchedBooks, setSearchedBooks] = useState([]);
+  const [searchInput, setSearchInput] = useState("");
+  const [savedBookIds, setSavedBookIds] = useState(getSavedBookIds());
+  const [saveBook] = useMutation(SAVE_BOOK);
+//trying to pull
+  const posts = [
+    {
+      title: "Adorable",
+      href: "#",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto accusantium praesentium eius, ut atque fuga culpa, similique sequi cum eos quis dolorum.",
+      date: "Mar 16, 2020",
+      datetime: "2020-03-16",
+      imageUrl:
+        "http://books.google.com/books/content?id=kLAoswEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      author: {
+        name: "Roel Aufderehar",
+        href: "#",
+        imageUrl:
+          "http://books.google.com/books/content?id=kLAoswEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      },
+    },
+    {
+      title: "My kid reads this everyday!",
+      href: "#",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit facilis asperiores porro quaerat doloribus, eveniet dolore. Adipisci tempora aut inventore optio animi., tempore temporibus quo laudantium.",
+      date: "Mar 10, 2020",
+      datetime: "2020-03-10",
+      imageUrl:
+        "http://books.google.com/books/content?id=kLAoswEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      author: {
+        name: "Brenna Goyette",
+        href: "#",
+        imageUrl:
+          "http://books.google.com/books/content?id=kLAoswEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      },
+    },
+    {
+      title: "Love this book!",
+      href: "#",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint harum rerum voluptatem quo recusandae magni placeat saepe molestiae, sed excepturi cumque corporis perferendis hic.",
+      date: "Feb 12, 2020",
+      datetime: "2020-02-12",
+      imageUrl:
+        "http://books.google.com/books/content?id=kLAoswEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      author: {
+        name: "Daniela Metz",
+        href: "#",
+        imageUrl:
+          "http://books.google.com/books/content?id=kLAoswEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      },
+    },
+  ];
 
 	// const style2 = useSpring({
 	//   from: { opacity: 0, marginBottom: -1000 },
@@ -123,10 +123,10 @@ const Search = () => {
 			return false;
 		}
 
-		try {
-			await saveBook({
-				variables: { BookInput: { ...bookToSave } },
-			});
+    try {
+      await saveBook({
+        variables: { input: { ...bookToSave } },
+      });
 
 			setSavedBookIds([...savedBookIds, bookToSave.bookId]);
 		} catch (err) {

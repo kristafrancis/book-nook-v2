@@ -28,17 +28,18 @@ export const ADD_USER = gql `
 `;
 
 export const SAVE_BOOK = gql `
-    mutation saveBook($BookInput: BookInput!) {
-        saveBook(BookInput: $BookInput) {
+    mutation saveBook($input: BookInput!) {
+        saveBook(input: $input) {
             _id
             username
+            email
             savedBooks {
-                title
-                authors
-                bookId
-                
-                description
-                image
+               bookId
+               authors
+               description
+               title
+               image
+                       
             }
         }
     }
@@ -55,50 +56,9 @@ export const REMOVE_BOOK = gql `
                 description
                 title
                 image
+                
             }
         }
-    }
-`;
-export const ADD_FRIEND = gql `
-mutation addFriend($friendId: ID!) {
-    addFriend(friendId: $friendId) {
-      _id
-      username
-      friendCount
-      friends {
-        _id
-        username
-      }
-    }
-  }
-`;
-
-export const ADD_COMMENT = gql `
-mutation addComment($comment_text: String!) {
-    addComment(comment_text: $comment_text) {
-      _id
-      comment_text
-      createdAt
-      username
-      
-    }
-  }
-`;
-
-export const UPDATE_USER = gql `
-mutation updateUser($id: ID!, $email: String!) {
-    updateUser(id: $id, email: $email) {
-      _id
-      username
-      email
-      
-    }
-  }
-`;
-
-export const DELETE_USER = gql `
-mutation deleteUser($id: ID!) {
-    deleteUser(id: $id)
     }
 `;
 
