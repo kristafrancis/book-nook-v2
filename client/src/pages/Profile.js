@@ -4,28 +4,26 @@ import { useParams, Navigate, useRouteLoaderData } from "react-router-dom";
 import Dropdown from "react-dropdown";
 import Auth from '../utils/auth';
 import ReadingList from "../components/ReadingList";
-import { useQuery, useMutation} from "@apollo/client";
+import { useMutation, useQuery} from "@apollo/client";
 import { QUERY_ME } from "../utils/queries";
 import { removeBookId } from "../utils/localStorage";
 import { REMOVE_BOOK } from "../utils/mutations";
 
 const Profile = () => {
   const [count, setCount] = useState(0);
+  console.log(count);
   const increase = () => {
     setCount((prevCount) => {
       const newCount = Number(prevCount) + 1;
-      localStorage.setItem("count", newCount);
+      sessionStorage.setItem("count", newCount);
       return newCount;
     });
   };
-
   const { loading, data } = useQuery(QUERY_ME);
   console.log(data);
   const userData = data?.me || {};
- 
-
   useEffect(() => {
-    const initialValue = localStorage.getItem("count");
+    const initialValue = sessionStorage.getItem("count");
     if (initialValue) setCount(initialValue);
   }, []);
 
@@ -34,15 +32,20 @@ const Profile = () => {
   const selectedValue = "SelectedValue";
   const [selected, setSelected] = useState([]);
   const handleChange = (s) => {
-    localStorage.setItem(selectedValue, JSON.stringify(s));
+    sessionStorage.setItem(selectedValue, JSON.stringify(s));
     setSelected(s);
   };
   React.useEffect(() => {
     const lastSelected = JSON.parse(
-      localStorage.getItem(selectedValue) ?? "[]"
+      sessionStorage.getItem(selectedValue) ?? "[]"
     );
     setSelected(lastSelected);
   }, []);
+
+
+  
+
+ 
 
   const [deleteBook] = useMutation(REMOVE_BOOK);
   const handleDeleteBook = async (bookId) => {
@@ -124,7 +127,7 @@ const Profile = () => {
                   <Dropdown
                     className="w-[60px] text-yellow-100 text-lg font-semibold ml-3 py-2 rounded-sm mr-4 border border-slate-600"
                     options={options}
-                    // onChange={handleChange}
+                    onChange={handleChange}
                     value={defaultOption}
                     isMulti
                     placeholder="Select an option"
@@ -145,6 +148,7 @@ const Profile = () => {
                     <button
                       type="button"
                       onClick={increase}
+                      value={count}
                       className="cursor-pointer inline-flex items-center justify-center rounded-md border bg-[#22274f] px-4 py-2 text-sm font-medium text-indigo-200 shadow-sm hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100"
                     >
                       <svg
