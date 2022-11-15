@@ -150,7 +150,7 @@ const Search = () => {
 							<div className="w-full m-4 md:w-[40%]" key={book.bookId}>
 								<div
 									class="cardBody"
-									className="w-full grid grid-cols-1 md:grid-cols-none md:grid-flow-col md:auto-cols-auto bg-slate-900 p-6 rounded-lg shadow-inner shadow-slate-700"
+									className="w-full grid grid-cols-1 md:grid-cols-none md:grid-flow-col md:auto-cols-auto bg-slate-900 p-6 rounded-lg shadow-lg"
 								>
 									<div>
 										{book.image ? (

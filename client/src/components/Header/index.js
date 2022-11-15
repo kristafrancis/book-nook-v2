@@ -6,8 +6,8 @@ import RandomAnimal from "../../hooks/RandomAnimal";
 import { Link } from "react-router-dom";
 import Auth from "../../utils/auth";
 
-const Header = (props) => {
-	const { animFinished, setAnimFinished } = props;
+const Header = () => {
+	// const { animFinished, setAnimFinished } = props;
 
 	const style1 = useSpring({
 		from: { opacity: 0 },
@@ -23,7 +23,7 @@ const Header = (props) => {
 	return (
 		<header>
 			<nav>
-				<animated.div style={props}>
+				<animated.div style={style1}>
 					<div className="mx-8 my-6 flex justify-between items-center">
 						<div>
 							<h1 className="drop-shadow-lg text-5xl md:text-7xl">
