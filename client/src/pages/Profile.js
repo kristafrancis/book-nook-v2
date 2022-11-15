@@ -194,11 +194,11 @@ const Profile = () => {
                                     {book.title}
                                   </p>
                                   <div className="ml-2 flex flex-shrink-0">
-                                    <button className="inline-flex rounded-full hover:text-slate-900 bg-emerald-800 text-emerald-300 px-2 text-sm hover:font-semibold leading-5 text-indigo-300">
+                                    <button className="inline-flex rounded-full hover:text-slate-900 bg-emerald-800 text-emerald-300 px-2 text-sm hover:font-semibold leading-5">
                                       View
                                     </button>
                                     <div class="px-2"></div>
-                                    <button className="inline-flex rounded-full hover:text-slate-900 bg-rose-900 text-rose-300 px-2 text-sm hover:font-semibold leading-5 text-indigo-300">
+                                    <button className="inline-flex rounded-full hover:text-slate-900 bg-rose-900 text-rose-300 px-2 text-sm hover:font-semibold leading-5">
                                       Remove
                                     </button>
                                   </div>
