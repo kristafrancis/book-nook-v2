@@ -60,11 +60,6 @@ const resolvers = {
       return user;
     },
 
-    deleteUser: async (parent, { id }) => {
-      const wasDeleted = (await User.deleteOne({ _id: id })).deletedCount;
-      return wasDeleted;
-    },
-
     addComment: async (parent, args, context) => {
       if (context.user) {
         const comment = await Comments.create({
@@ -84,21 +79,6 @@ const resolvers = {
       throw new AuthenticationError("You need to be logged in!");
     },
 
-   
-   
-   
-   
-   
-   
-
-   
-   
-
-    deleteComment: async (parent, { id }) => {
-      const wasDeleted = (await Comments.deleteOne({ _id: id })).deletedCount;
-      return wasDeleted;
-    },
-//commenting
     addFriend: async (parent, { friendId }, context) => {
       if (context.user) {
         const updatedUser = await User.findOneAndUpdate(

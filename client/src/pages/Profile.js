@@ -7,12 +7,13 @@ import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
 import Auth from "../utils/auth";
 import { useMutation, useQuery } from "@apollo/client";
-import { QUERY_ME } from "../utils/queries";
+import { QUERY_ME, QUERY_USER } from "../utils/queries";
 import { removeBookId } from "../utils/localStorage";
 import { REMOVE_BOOK } from "../utils/mutations";
 import { Menu, Transition } from "@headlessui/react";
 import RatingStars from "../components/RatingStars";
 import  Comments  from "../components/Comment";
+import CommentsForm from "../components/CommentsForm";
 import { useParams, Navigate } from "react-router-dom";
 
 
@@ -295,10 +296,10 @@ const Profile = () => {
                               <div>
                               console.log(commenting)
                               <Comments
-                              Comments={user.comments}
-                              title={`${user.username}'s comments...`}
-   />
- </div>
+                              Comments={userData.comments}
+                              title={`${userData.username}'s comments...`}
+                              />
+                            </div>
                             </div>
                             
                           </li>
@@ -313,6 +314,9 @@ const Profile = () => {
                           <Menu.Button className="cursor-pointer inline-flex items-center justify-center rounded-md border border-indigo-200 px-4 py-2 text-sm font-medium text-indigo-200 shadow-sm hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100">
                             Comment
                           </Menu.Button>
+                          <div>
+                            <CommentsForm />
+                          </div>
                         </div>
 
                         <Transition

@@ -51,8 +51,7 @@ type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     updateUser(id: ID!, email: String!): User
     deleteUser(id: ID!): Boolean
-    addComment(comment_text: String!): Comment
-    deleteComment(id: ID!): Boolean
+    addComment(commentText: String!): Comment
     addFriend(friendId: ID!): User
     saveBook(input: BookInput!): User
     removeBook(bookId: String!): User

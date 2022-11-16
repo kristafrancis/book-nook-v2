@@ -62,5 +62,15 @@ export const REMOVE_BOOK = gql `
     }
 `;
 
+export const ADD_COMMENT = gql`
+  mutation addComment($thoughtText: String!) {
+    addComment(commentText: $commentText) {
+      _id
+      commentText
+      createdAt
+      username
+    }
+  }
+`;
 
 
