@@ -74,7 +74,7 @@ const resolvers = {
 
         await User.findByIdAndUpdate(
           { _id: context.user._id },
-          { $push: { comments: comment._id } },
+          { $push: { comment: comment._id } },
           { new: true }
         );
 
@@ -84,15 +84,15 @@ const resolvers = {
       throw new AuthenticationError("You need to be logged in!");
     },
 
-    updateComment: async (parent, { id, comment_text }) => {
-      const comment = await Comments.findOneAndUpdate(
-        { _id: id },
-        { comment_text },
-        { new: true }
-      );
+   
+   
+   
+   
+   
+   
 
-      return comment;
-    },
+   
+   
 
     deleteComment: async (parent, { id }) => {
       const wasDeleted = (await Comments.deleteOne({ _id: id })).deletedCount;

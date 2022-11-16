@@ -6,12 +6,15 @@ import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
 import Auth from "../utils/auth";
-import ReadingList from "../components/ReadingList";
+//import ReadingList from "../components/ReadingList";
 import { useMutation, useQuery } from "@apollo/client";
 import { QUERY_ME } from "../utils/queries";
 import { removeBookId } from "../utils/localStorage";
 import { REMOVE_BOOK } from "../utils/mutations";
 import { Menu, Transition } from "@headlessui/react";
+import  Comments  from "../components/Comment";
+import { useParams, Navigate } from "react-router-dom";
+
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -80,6 +83,9 @@ const Profile = () => {
       console.error(err);
     }
   };
+
+
+  
 
   // redirect user to profile if logged in
   const { username: userParam } = useParams();
@@ -280,6 +286,13 @@ const Profile = () => {
                           <li>
                             <div className="block px-4 py-2 sm:px-6 flex items-center justify-between ml-2 flex flex-shrink-0 text-sm text-gray-400">
                               <p>Comment loads here</p>
+                              <div>
+                              console.log(commenting)
+                              <Comments
+                              Comments={user.comments}
+                              title={`${user.username}'s comments...`}
+   />
+ </div>
                             </div>
                           </li>
                         </ul>
