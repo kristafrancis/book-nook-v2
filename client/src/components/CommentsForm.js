@@ -83,7 +83,7 @@ const CommentsForm = ({book_id}) => {
         <textarea
           placeholder="Type your comment here!"
           value={commentText}
-          className="w-full bg-gray-200 text-sm p-2 text-gray-500 shadow-lg sm:rounded-lg rounded-xl"
+          className="w-full bg-slate-900 text-sm p-4 text-gray-200 border border-gray-600 shadow-lg sm:rounded-lg rounded-xl"
           onChange={handleChange}
         ></textarea>
 

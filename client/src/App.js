@@ -50,7 +50,10 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/search" element={<Search />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile">
+            <Route path=":username" element={<Profile />} />
+            <Route path="" element={<Profile />} />
+          </Route>
           <Route path="/editprofile" element={<Editprofile />} />
           <Route path="/logout" element={<logout />} />
         </Routes>

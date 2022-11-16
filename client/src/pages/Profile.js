@@ -109,7 +109,7 @@ const Profile = () => {
   }
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div className="text-center text-4xl">Loading...</div>;
   }
 
   if (!userData?.username) {
@@ -400,7 +400,7 @@ const Profile = () => {
               />
 
               <div className="justify-stretch mt-6 flex flex-col">
-                {/* {userParam && ( */}
+                {userParam && (
                 <button
                   onClick={handleClick}
                   type="button"
@@ -408,7 +408,7 @@ const Profile = () => {
                 >
                   ADD FRIENDS
                 </button>
-                {/* )} */}
+                )}
               </div>
             </div>
 
