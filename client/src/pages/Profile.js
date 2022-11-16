@@ -288,7 +288,7 @@ const Profile = () => {
                       <div className="overflow-hidden bg-slate-800 shadow sm:rounded-md">
                         <ul role="list" className="divide-y divide-gray-700">
                           <li>
-                            <div className="block px-4 py-2 sm:px-6 flex items-center justify-between ml-2 flex flex-shrink-0 text-sm text-gray-400">
+                            <div className="px-4 py-2 sm:px-6 flex items-center justify-between ml-2 flex-shrink-0 text-sm text-gray-400">
                               <p>Comment loads here</p>
                               <div>
                               console.log(commenting)
@@ -321,7 +321,7 @@ const Profile = () => {
                           leaveFrom="transform opacity-100 scale-100"
                           leaveTo="transform opacity-0 scale-95"
                         >
-                          <Menu.Items className="rounded-xl absolute left-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-slate-700 p-4 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                          <Menu.Items className="rounded-xl absolute left-0 z-10 mt-2 w-56 origin-top-right bg-slate-700 p-4 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                             <div className="py-1">
                               <Menu.Item>
                                 {({ active }) => (
@@ -381,6 +381,8 @@ const Profile = () => {
               <h2 className="text-4xl text-indigo-300 font-medium">
                 Friends List
               </h2>
+
+              <FriendList />
 
               <div className="mt-6">
                 <tr>
