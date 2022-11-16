@@ -8,18 +8,23 @@ const resolvers = {
       if (context.user) {
         const userData = await User.findOne({ _id: context.user._id })
         .select("-__v -password")
+        .populate('friends');
 
         return userData;
       }
       throw new AuthenticationError("Not logged in!");
     },
-
+    // GET all users
     users: async () => {
-      return User.find().select("-__v -password")
-      
+      return User.find()
+        .select("-__v -password")
+        .populate('friends');
     },
+    // GET a user by username
     user: async (parent, { username }) => {
-      return User.findOne({ username }).select("-__v -password");
+      return User.findOne({ username })
+        .select("-__v -password")
+        .populate('friends');
     },
     comments: async (parent, { username }) => {
       const params = username ? { username } : {};

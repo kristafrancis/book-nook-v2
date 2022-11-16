@@ -36,11 +36,7 @@ const Header = () => {
             <div>
               {/* NAVBAR AT 768PX & HIGHER */}
               <div className="uppercase tracking-widest">
-
                 {Auth.loggedIn() ? (
-
-                  {Auth.loggedIn() ? (
-
                     <>
                       <Link to="/search" className="mr-6">
                         Search
@@ -67,7 +63,6 @@ const Header = () => {
                     </>
                   )}
                 </div>
-              </div>
 
               {/* HAMBURGER MENU AT 768PX & LOWER */}
               <div className="md:hidden">
