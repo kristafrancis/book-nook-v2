@@ -1,11 +1,12 @@
 // const { faker } = require('@faker-js/faker');
 
-// const db = require('../config/connection');
-// const { Comments, User } = require('../models');
+const db = require('../config/connection');
+const { Comment, User } = require('../models');
 
-// db.once('open', async () => {
-//   await Comments.deleteMany({});
-//   await db.User.deleteMany({});
+db.once('open', async () => {
+  await Comment.deleteMany({});
+  await User.deleteMany({});
+});
 
 //   // create user data
 //   const userData = [];
