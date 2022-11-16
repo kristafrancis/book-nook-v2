@@ -1,4 +1,4 @@
-const { User, Comments } = require("../models");
+const { User, Comment } = require("../models");
 const { AuthenticationError } = require("apollo-server-express");
 const { signToken } = require("../utils/auth");
 
@@ -28,10 +28,10 @@ const resolvers = {
     },
     comments: async (parent, { username }) => {
       const params = username ? { username } : {};
-      return Comments.find(params).sort({ createdAt: -1 });
+      return Comment.find(params).sort({ createdAt: -1 });
     },
     comment: async (parent, { _id }) => {
-      return Comments.findOne({ _id });
+      return Comment.findOne({ _id });
     },
   },
   Mutation: {
@@ -72,7 +72,7 @@ const resolvers = {
 
     addComment: async (parent, args, context) => {
       if (context.user) {
-        const comment = await Comments.create({
+        const comment = await Comment.create({
           ...args,
           username: context.user.username,
         });
