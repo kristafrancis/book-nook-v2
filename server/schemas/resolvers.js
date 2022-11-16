@@ -1,4 +1,4 @@
-const { User, Comments } = require("../models");
+const { User, Comment } = require("../models");
 const { AuthenticationError } = require("apollo-server-express");
 const { signToken } = require("../utils/auth");
 
@@ -8,7 +8,8 @@ const resolvers = {
       if (context.user) {
         const userData = await User.findOne({ _id: context.user._id })
         .select("-__v -password")
-        .populate('friends');
+        .populate('friends')
+        .populate('comments');
 
         return userData;
       }
@@ -18,20 +19,22 @@ const resolvers = {
     users: async () => {
       return User.find()
         .select("-__v -password")
-        .populate('friends');
+        .populate('friends')
+        .populate('comments');
     },
     // GET a user by username
     user: async (parent, { username }) => {
       return User.findOne({ username })
         .select("-__v -password")
-        .populate('friends');
+        .populate('friends')
+        .populate('comments');
     },
     comments: async (parent, { username }) => {
       const params = username ? { username } : {};
-      return Comments.find(params).sort({ createdAt: -1 });
+      return Comment.find(params).sort({ createdAt: -1 });
     },
     comment: async (parent, { _id }) => {
-      return Comments.findOne({ _id });
+      return Comment.findOne({ _id });
     },
   },
   Mutation: {
@@ -67,14 +70,14 @@ const resolvers = {
 
     addComment: async (parent, args, context) => {
       if (context.user) {
-        const comment = await Comments.create({
+        const comment = await Comment.create({
           ...args,
           username: context.user.username,
         });
 
         await User.findByIdAndUpdate(
           { _id: context.user._id },
-          { $push: { comment: comment._id } },
+          { $push: { comments: comment._id } },
           { new: true }
         );
 

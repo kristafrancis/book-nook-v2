@@ -27,7 +27,7 @@ input BookInput {
 }
 type Comment {
     _id: ID
-    comment_text: String
+    commentText: String
     username: String
     createdAt: String
   }

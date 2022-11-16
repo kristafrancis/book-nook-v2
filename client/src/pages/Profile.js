@@ -7,15 +7,16 @@ import Dropdown from "react-dropdown";
 import { useParams, Navigate } from "react-router-dom";
 import "react-dropdown/style.css";
 import Auth from "../utils/auth";
-//import ReadingList from "../components/ReadingList";
 import { useMutation, useQuery } from "@apollo/client";
 import { QUERY_ME, QUERY_USER } from "../utils/queries";
 import { ADD_FRIEND } from "../utils/mutations";
 import { removeBookId } from "../utils/localStorage";
 import { REMOVE_BOOK } from "../utils/mutations";
 import { Menu, Transition } from "@headlessui/react";
-// import Comments from "../components/Comment";
+import Comments from "../components/Comment";
 import FriendList from "../components/FriendList";
+import RatingStars from "../components/RatingStars";
+import CommentsForm from '../components/CommentsForm';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -295,14 +296,12 @@ const Profile = () => {
                         <ul role="list" className="divide-y divide-gray-700">
                           <li>
                             <div className="px-4 py-2 sm:px-6 flex items-center justify-between ml-2 flex-shrink-0 text-sm text-gray-400">
-                              <p>Comment loads here</p>
+                              {/* <p>Comment loads here</p> */}
                               <div>
-                              {/* console.log(commenting)
                               <Comments
-                              Comments={userData.comments}
-                              title={`${userData.username}'s comments...`}
-   /> */}
- </div>
+                              comments={userData.comment}
+                              />
+                              </div>
                             </div>
                             
                           </li>
@@ -314,9 +313,9 @@ const Profile = () => {
                         className="relative inline-block text-left"
                       >
                         <div>
-                          <Menu.Button className="cursor-pointer inline-flex items-center justify-center rounded-md border border-indigo-200 px-4 py-2 text-sm font-medium text-indigo-200 shadow-sm hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100">
+                          {/* <Menu.Button className="cursor-pointer inline-flex items-center justify-center rounded-md border border-indigo-200 px-4 py-2 text-sm font-medium text-indigo-200 shadow-sm hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100">
                             Comment
-                          </Menu.Button>
+                          </Menu.Button> */}
                           <div>
                             <CommentsForm />
                           </div>
