@@ -17,7 +17,7 @@ const server = new ApolloServer({
 
 const app = express(); 
 
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // commenting out to use apollo server for test
@@ -25,9 +25,8 @@ app.use(express.json());
 //   res.sendFile(path.join(__dirname, '../client/build'));
 // });
 
-const startApolloServer = async (typeDefs, resolvers) => {
-    await server.start();
-    server.applyMiddleware({app});
+// const startApolloServer = async (typeDefs, resolvers) => {
+    server.start().then(() => server.applyMiddleware({app}));
 
     db.once('open', () => {
         app.listen(PORT, () => {
@@ -35,7 +34,7 @@ const startApolloServer = async (typeDefs, resolvers) => {
         console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
         })
     })
-}
+// }
 
   // Call the async function to start the server
-  startApolloServer(typeDefs, resolvers);
+  // startApolloServer(typeDefs, resolvers);

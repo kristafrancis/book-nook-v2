@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useSpring, animated, useTransition } from "react-spring";
+import { useParams, Navigate } from "react-router-dom";
+import { useSpring, animated } from "react-spring";
 import { googleBookSearch } from "../utils/API";
 import Auth from "../utils/auth";
 import { SAVE_BOOK } from "../utils/mutations";
 import { saveBookIds, getSavedBookIds } from "../utils/localStorage";
-import { useMutation } from "@apollo/client";
+import { QUERY_ME } from "../utils/queries";
+import { useMutation, useQuery } from "@apollo/client";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import StarsImg from "../images/stars.png";
 import { HiOutlineStar, HiStar } from "react-icons/hi";
@@ -14,12 +16,7 @@ const Search = () => {
   const [searchInput, setSearchInput] = useState("");
   const [savedBookIds, setSavedBookIds] = useState(getSavedBookIds());
   const [saveBook] = useMutation(SAVE_BOOK);
-
-  // const style2 = useSpring({
-  //   from: { opacity: 0, marginBottom: -1000 },
-  //   to: { opacity: 1, marginBottom: 0 },
-  //   config: { duration: 3000 },
-  // });
+  const { loading, data } = useQuery(QUERY_ME);
 
   const style1 = useSpring({
     from: { opacity: 0, marginTop: 0 },
@@ -83,6 +80,30 @@ const Search = () => {
       console.error(err);
     }
   };
+
+    // redirect user to search if logged in
+    const { username: userParam } = useParams();
+    const user = data?.me || data?.user || {};
+  
+    if (Auth.loggedIn() === userParam) {
+      return <Navigate to="/search" />;
+    }
+  
+    if (loading) {
+      return <div>Loading...</div>
+    }
+  
+    if (!user?.username) {
+      return (
+        <div className="w-full flex flex-col justify-center items-center text-center">
+          <h3 className="text-5xl mb-8">Oops!</h3>
+          <div className="max-w-screen-sm bg-slate-900 p-6 rounded-lg shadow-lg">
+            You need to be logged in to see this page.<br />
+            Use the navigation links above to sign up or log in!
+          </div>
+        </div>
+      );
+    }
 
   return (
     <>
