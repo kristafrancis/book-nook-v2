@@ -9,7 +9,7 @@ import { googleBookSearch } from "../utils/API";
 import Auth from "../utils/auth";
 import { SAVE_BOOK } from "../utils/mutations";
 import { saveBookIds, getSavedBookIds } from "../utils/localStorage";
-import { QUERY_ME_BASIC, QUERY_COMMENT } from "../utils/queries";
+import { QUERY_ME_BASIC} from "../utils/queries";
 // import icons & images
 import StarsImg from "../images/stars.png";
 import { HiOutlineStar, HiStar } from "react-icons/hi";

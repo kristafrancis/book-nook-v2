@@ -30,6 +30,7 @@ type Comment {
     commentText: String
     username: String
     createdAt: String
+    book_id: String
   }
 
 type Query {
@@ -51,7 +52,7 @@ type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     updateUser(id: ID!, email: String!): User
     deleteUser(id: ID!): Boolean
-    addComment(commentText: String!): Comment
+    addComment(commentText: String!, book_id: String!): Comment
     addFriend(friendId: ID!): User
     saveBook(input: BookInput!): User
     removeBook(bookId: String!): User

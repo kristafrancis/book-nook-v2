@@ -16,7 +16,8 @@ export const QUERY_ME = gql `
                 _id
                 commentText
                 createdAt
-
+                username
+                book_id
             }
             savedBooks {
                 bookId
@@ -84,6 +85,7 @@ export const QUERY_COMMENTS = gql`
       commentText
       createdAt
       username
+      book_id
     }
   }
 `;
@@ -95,6 +97,7 @@ export const QUERY_COMMENT = gql`
       commentText
       createdAt
       username
+      book_id
     }
   }
 `;

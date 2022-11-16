@@ -4,7 +4,7 @@ import { useMutation } from "@apollo/client";
 import { QUERY_COMMENTS, QUERY_ME } from "../../src/utils/queries";
 import { ADD_COMMENT } from "../utils/mutations";
 
-const CommentsForm = () => {
+const CommentsForm = ({book_id}) => {
   const [commentText, setText] = useState("");
   const [characterCount, setCharacterCount] = useState(0);
 
@@ -13,21 +13,29 @@ const CommentsForm = () => {
       // could potentially not exist yet, so wrap in a try/catch
       try {
         // update me array's cache
+        console.log(addComment);
         const { me } = cache.readQuery({ query: QUERY_ME });
         cache.writeQuery({
           query: QUERY_ME,
-          data: { me: { ...me, comments: [...me.comments, addComment] } },
+          data: { me: { ...me, comments: [...(me?.comments || []), addComment] } },
         });
       } catch (e) {
         console.warn("First comments insertion by user!");
       }
 
       // update comments array's cache
-      const { comments } = cache.readQuery({ query: QUERY_COMMENTS });
+      try {
+      const commentData = cache.readQuery({ query: QUERY_COMMENTS });
+      const comments = commentData?.comments || []
+      console.log(commentData);
+      // const { comments } = cache.readQuery({ query: QUERY_COMMENTS });
       cache.writeQuery({
         query: QUERY_COMMENTS,
-        data: { comments: [addComment, ...comments] },
+        data: { comments: [addComment, ...(comments.length ? comments: [])] },
       });
+    } catch (e) {
+      console.log(e);
+    }
     },
   });
 
@@ -45,7 +53,7 @@ const CommentsForm = () => {
 
     try {
       await addComment({
-        variables: { commentText },
+        variables: { commentText, book_id },
       });
 
       // clear form value
