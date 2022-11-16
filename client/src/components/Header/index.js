@@ -7,8 +7,6 @@ import { Link } from "react-router-dom";
 import Auth from "../../utils/auth";
 
 const Header = () => {
-  // const { animFinished, setAnimFinished } = props;
-
   const style1 = useSpring({
     from: { opacity: 0 },
     to: { opacity: 1 },

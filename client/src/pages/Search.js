@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Navigate } from "react-router-dom";
 import { useSpring, animated } from "react-spring";
+import AnchorLink from "react-anchor-link-smooth-scroll";
+import RatingStars from "../components/RatingStars";
+// google books api, mongoose, auth, graphql, localstorage
+import { useMutation, useQuery } from "@apollo/client";
 import { googleBookSearch } from "../utils/API";
 import Auth from "../utils/auth";
 import { SAVE_BOOK } from "../utils/mutations";
 import { saveBookIds, getSavedBookIds } from "../utils/localStorage";
 import { QUERY_ME } from "../utils/queries";
-import { useMutation, useQuery } from "@apollo/client";
-import AnchorLink from "react-anchor-link-smooth-scroll";
+// import icons & images
 import StarsImg from "../images/stars.png";
 import { HiOutlineStar, HiStar } from "react-icons/hi";
-import RatingStars from "../components/RatingStars";
 
 const Search = () => {
   const [searchedBooks, setSearchedBooks] = useState([]);
@@ -84,7 +86,7 @@ const Search = () => {
 
   // redirect user to search if logged in
   const { username: userParam } = useParams();
-  const user = data?.me || data?.user || {};
+  const userData = data?.me || data?.user || {};
 
   if (Auth.loggedIn() === userParam) {
     return <Navigate to="/search" />;
@@ -94,7 +96,7 @@ const Search = () => {
     return <div>Loading...</div>;
   }
 
-  if (!user?.username) {
+  if (!userData?.username) {
     return (
       <div className="w-full flex flex-col justify-center items-center text-center">
         <h3 className="text-5xl mb-8">Oops!</h3>
