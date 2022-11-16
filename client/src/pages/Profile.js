@@ -5,7 +5,6 @@ import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { useParams, Navigate} from 'react-router-dom';
 import Dropdown from "react-dropdown";
-import { useParams, Navigate } from "react-router-dom";
 import "react-dropdown/style.css";
 import Auth from "../utils/auth";
 import { useMutation, useQuery } from "@apollo/client";
@@ -13,6 +12,7 @@ import { QUERY_ME } from "../utils/queries";
 import { removeBookId } from "../utils/localStorage";
 import { REMOVE_BOOK } from "../utils/mutations";
 import { Menu, Transition } from "@headlessui/react";
+import RatingStars from "../components/RatingStars";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -256,6 +256,9 @@ const Profile = () => {
                                   <p className="truncate font-medium">
                                     {book.title}
                                   </p>
+                                  <div>
+                              <RatingStars />
+                            </div>
                                   <div className="ml-2 flex flex-shrink-0">
                                     <button
                                       className="inline-flex rounded-full hover:text-slate-900 bg-rose-900 text-rose-300 px-2 text-sm hover:font-semibold leading-5>"
@@ -279,6 +282,7 @@ const Profile = () => {
                             <div className="block px-4 py-2 sm:px-6 flex items-center justify-between ml-2 flex flex-shrink-0 text-sm text-gray-400">
                               <p>Comment loads here</p>
                             </div>
+                            
                           </li>
                         </ul>
                       </div>
