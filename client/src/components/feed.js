@@ -1,11 +1,9 @@
 import React from "react";
 
-//import friends image, booktitle, comment, rating, username
-const Feed = 
-({users, title, rating, comment}) => { 
-    // if (!users.length) {
-    //   return <h3>No Book Reviews yet</h3>
-    // }
+const Feed = ({ users, title, rating, comment }) => {
+  // if (!users.length) {
+  //   return <h3>No Book Reviews yet</h3>
+  // }
   return (
     <div>
       <div className="pb-4" id="Trending"></div>
