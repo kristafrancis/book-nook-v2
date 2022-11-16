@@ -24,16 +24,16 @@ const Search = () => {
   // const comments = data?.comments || [];
   // const loggedIn = Auth.loggedIn();
 
-    // animation effect
-    const style1 = useSpring({
-      from: { opacity: 0, marginTop: 0 },
-      to: { opacity: 1, marginTop: 0 },
-      config: { duration: 3000 },
-    });
-  
-    useEffect(() => {
-      return () => saveBookIds(savedBookIds);
-    });
+  // animation effect
+  const style1 = useSpring({
+    from: { opacity: 0, marginTop: 0 },
+    to: { opacity: 1, marginTop: 0 },
+    config: { duration: 3000 },
+  });
+
+  useEffect(() => {
+    return () => saveBookIds(savedBookIds);
+  });
 
   // redirect user to profile if logged in
   const { username: userParam } = useParams();
@@ -44,7 +44,7 @@ const Search = () => {
   }
 
   if (loading) {
-    return <div>Loading...</div>
+    return <div>Loading...</div>;
   }
 
   if (!user?.username) {
@@ -52,7 +52,8 @@ const Search = () => {
       <div className="w-full flex flex-col justify-center items-center text-center">
         <h3 className="text-5xl mb-8">Oops!</h3>
         <div className="max-w-screen-sm bg-slate-900 p-6 rounded-lg shadow-lg">
-          You need to be logged in to see this page.<br />
+          You need to be logged in to see this page.
+          <br />
           Use the navigation links above to sign up or log in!
         </div>
       </div>
