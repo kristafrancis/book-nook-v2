@@ -1,6 +1,7 @@
 # BookNook (V2)
 
-![readme header](/src/images/readme-header.png)
+![header option](https://user-images.githubusercontent.com/107075274/202078268-b9187eaa-8cb9-4d52-b50a-4c98027b46b5.png)
+
 
 ## Description
 
