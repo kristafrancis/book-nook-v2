@@ -57,7 +57,7 @@ Then run `npm run develop` from the root.
 
 First time users will need to signup with an email, username and password
 
-## Screenshots
+## Screenshot
 
 ## Technologies Used
 
