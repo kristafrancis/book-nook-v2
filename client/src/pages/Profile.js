@@ -13,6 +13,9 @@ import { removeBookId } from "../utils/localStorage";
 import { REMOVE_BOOK } from "../utils/mutations";
 import { Menu, Transition } from "@headlessui/react";
 import RatingStars from "../components/RatingStars";
+import  Comments  from "../components/Comment";
+import { useParams, Navigate } from "react-router-dom";
+
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -38,8 +41,14 @@ const Profile = () => {
     if (initialValue) setCount(initialValue);
   }, []);
 
+
+  
+  
+  
+
   const options = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
   const defaultOption = options[0];
+
 
   const selectedValue = "SelectedValue";
   const [selected, setSelected] = useState([]);
@@ -77,6 +86,9 @@ const Profile = () => {
       console.error(err);
     }
   };
+
+
+  
 
   // redirect user to profile if logged in
   const { username: userParam } = useParams();
@@ -281,6 +293,13 @@ const Profile = () => {
                           <li>
                             <div className="block px-4 py-2 sm:px-6 flex items-center justify-between ml-2 flex flex-shrink-0 text-sm text-gray-400">
                               <p>Comment loads here</p>
+                              <div>
+                              console.log(commenting)
+                              <Comments
+                              Comments={user.comments}
+                              title={`${user.username}'s comments...`}
+   />
+ </div>
                             </div>
                             
                           </li>
