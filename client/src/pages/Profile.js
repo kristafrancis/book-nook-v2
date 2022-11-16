@@ -36,7 +36,8 @@ const Profile = () => {
     if (initialValue) setCount(initialValue);
   }, []);
 
-  const options = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
+  const options = ["0","1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
+  const defaultOption = options[0]
   const selectedValue = "SelectedValue";
   const [selected, setSelected] = useState([]);
   const handleChange = (s) => {
@@ -141,7 +142,7 @@ const Profile = () => {
                     onChange={handleChange}
                     value={selected?.value}
                     isMulti
-                    placeholder="Select an option"
+                    placeholder="0"
                   />
                   books read!
                 </div>
