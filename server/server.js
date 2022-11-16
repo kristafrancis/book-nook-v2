@@ -21,12 +21,18 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // commenting out to use apollo server for test
-// app.get('*', (req, res) => {
-//   res.sendFile(path.join(__dirname, '../client/build'));
-// });
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build'));
+});
 
-// const startApolloServer = async (typeDefs, resolvers) => {
-    server.start().then(() => server.applyMiddleware({app}));
+
+const startApolloServer = async (typeDefs, resolvers) => {
+    await server.start();
+    server.applyMiddleware({ app });
+
+    if (process.env.NODE.ENV === 'production') {
+      app.use(express.static(path.join(_dirname, '../client/build')));
+    }
 
     db.once('open', () => {
         app.listen(PORT, () => {
@@ -34,7 +40,7 @@ app.use(express.json());
         console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
         })
     })
-// }
+ }
 
   // Call the async function to start the server
-  // startApolloServer(typeDefs, resolvers);
+  startApolloServer(typeDefs, resolvers);

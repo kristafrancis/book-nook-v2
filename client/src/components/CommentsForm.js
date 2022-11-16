@@ -64,9 +64,7 @@ const CommentsForm = ({book_id}) => {
     }
   };
 
-  function refreshPage() {
-    window.location.reload(false);
-  }
+
 
   return (
     <div>
@@ -88,7 +86,6 @@ const CommentsForm = ({book_id}) => {
         ></textarea>
 
         <button
-          onClick={refreshPage}
           className="cursor-pointer bg-slate-800 inline-flex items-center justify-center rounded-md border border-indigo-200 px-4 py-2 text-sm font-medium text-indigo-200 shadow-sm hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-10"
           type="submit"
         >
