@@ -77,7 +77,7 @@ const Profile = () => {
               <div class="relative">
                 <img
                   class="h-24 w-24 rounded-full"
-                  src="https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80"
+                  src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80"
                   alt=""
                 ></img>{" "}
                 <span
@@ -222,10 +222,6 @@ const Profile = () => {
                                     {book.title}
                                   </p>
                                   <div className="ml-2 flex flex-shrink-0">
-                                    <button className="inline-flex rounded-full hover:text-slate-900 bg-emerald-800 text-emerald-300 px-2 text-sm hover:font-semibold leading-5">
-                                      View
-                                    </button>
-                                    <div class="px-2"></div>
                                     <button
                                       className="inline-flex rounded-full hover:text-slate-900 bg-rose-900 text-rose-300 px-2 text-sm hover:font-semibold leading-5>"
                                       onClick={() =>
