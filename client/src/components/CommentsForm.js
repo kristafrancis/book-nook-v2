@@ -56,6 +56,10 @@ const CommentsForm = () => {
     }
   };
 
+  function refreshPage() {
+    window.location.reload(false);
+  }
+
   return (
     <div>
       <p
@@ -67,15 +71,16 @@ const CommentsForm = () => {
           </span>
         )}
       </p>
-      <form className="" onSubmit={handleFormSubmit}>
+      <form onSubmit={handleFormSubmit}>
         <textarea
           placeholder="Type your comment here!"
           value={commentText}
-          className="w-full bg-gray-200 text-sm p-2 bg-white shadow-lg sm:rounded-lg mt-8 rounded-xl"
+          className="w-full bg-gray-200 text-sm p-2 text-gray-500 shadow-lg sm:rounded-lg rounded-xl"
           onChange={handleChange}
         ></textarea>
 
         <button
+          onClick={refreshPage}
           className="cursor-pointer bg-slate-800 inline-flex items-center justify-center rounded-md border border-indigo-200 px-4 py-2 text-sm font-medium text-indigo-200 shadow-sm hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-10"
           type="submit"
         >
