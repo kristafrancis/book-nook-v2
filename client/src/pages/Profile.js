@@ -215,7 +215,7 @@ const Profile = () => {
                       <div className="overflow-hidden bg-[#22274f] shadow sm:rounded-md">
                         <ul role="list" className="divide-y divide-gray-700">
                           <li>
-                            <a href="#" className="block hover:bg-slate-800">
+                            <div className="block hover:bg-slate-800">
                               <div className="px-4 py-2 sm:px-6">
                                 <div className="flex items-center justify-between">
                                   <p className="truncate font-medium">
@@ -233,7 +233,7 @@ const Profile = () => {
                                   </div>
                                 </div>
                               </div>
-                            </a>
+                            </div>
                           </li>
                         </ul>
                       </div>
@@ -334,14 +334,14 @@ const Profile = () => {
                     <div className="flex items-center">
                       <div className="h-10 w-10 flex-shrink-0">
                         <img
-                          className="h-10 w-10 rounded-full"
-                          src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                          class="h-10 w-10 rounded-full"
+                          src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                           alt=""
                         ></img>
                       </div>
                       <div className="ml-4">
                         <div className="font-medium">Lindsay Walton</div>
-                        <div className="text-[#6bfbce]">Username</div>
+                        <div className="text-[#6bfbce]">bookworm2</div>
                       </div>
                     </div>
                   </td>
@@ -352,13 +352,13 @@ const Profile = () => {
                       <div className="h-10 w-10 flex-shrink-0">
                         <img
                           className="h-10 w-10 rounded-full"
-                          src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                          src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                           alt=""
-                        ></img>
+                        />
                       </div>
                       <div className="ml-4">
-                        <div className="font-medium">Lindsay Walton</div>
-                        <div className="text-[#6bfbce]">Username</div>
+                        <div className="font-medium">Rebecca Chase</div>
+                        <div className="text-[#6bfbce]">becky-chase</div>
                       </div>
                     </div>
                   </td>
@@ -369,13 +369,13 @@ const Profile = () => {
                       <div className="h-10 w-10 flex-shrink-0">
                         <img
                           className="h-10 w-10 rounded-full"
-                          src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                          src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                           alt=""
-                        ></img>
+                        />
                       </div>
                       <div className="ml-4">
-                        <div className="font-medium">Lindsay Walton</div>
-                        <div className="text-[#6bfbce]">Username</div>
+                        <div className="font-medium">Dusty Arnold</div>
+                        <div className="text-[#6bfbce]">dusty-arnold-55</div>
                       </div>
                     </div>
                   </td>

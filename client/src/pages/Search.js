@@ -230,14 +230,16 @@ const Search = () => {
                 <div className="flex space-x-3">
                   <img
                     className="h-6 w-6 rounded-full"
-                    src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80"
+                    src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                     alt=""
                   ></img>{" "}
                   <div className="flex-1 space-y-1">
                     <div className="flex items-center justify-between">
                       <h3 className="text-sm font-medium">Lindsay Walton</h3>
                     </div>
-                    <p className="text-sm text-gray-500">Commented on BOOK</p>
+                    <p className="text-sm text-gray-500">
+                      Commented on WHERE THE WILD THINGS ARE
+                    </p>
                   </div>
                   <div className="ml-2 flex flex-shrink-0">
                     <button className="rounded-full hover:text-slate-900 bg-slate-800 border-indigo-500/50 border-2 px-2 text-sm hover:font-semibold leading-5 text-indigo-300">
@@ -250,14 +252,16 @@ const Search = () => {
                 <div className="flex space-x-3">
                   <img
                     className="h-6 w-6 rounded-full"
-                    src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80"
+                    src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                     alt=""
                   ></img>{" "}
                   <div className="flex-1 space-y-1">
                     <div className="flex items-center justify-between">
-                      <h3 className="text-sm font-medium">Lindsay Walton</h3>
+                      <h3 className="text-sm font-medium">Rebecca Chase</h3>
                     </div>
-                    <p className="text-sm text-gray-500">Commented on BOOK</p>
+                    <p className="text-sm text-gray-500">
+                      Commented on READING RAINBOW
+                    </p>
                   </div>
                   <div className="ml-2 flex flex-shrink-0">
                     <button className="rounded-full hover:text-slate-900 bg-slate-800 border-indigo-500/50 border-2 px-2 text-sm hover:font-semibold leading-5 text-indigo-300">
@@ -270,34 +274,16 @@ const Search = () => {
                 <div className="flex space-x-3">
                   <img
                     className="h-6 w-6 rounded-full"
-                    src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80"
+                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                     alt=""
                   ></img>{" "}
                   <div className="flex-1 space-y-1">
                     <div className="flex items-center justify-between">
-                      <h3 className="text-sm font-medium">Lindsay Walton</h3>
+                      <h3 className="text-sm font-medium">Dusty Arnold</h3>
                     </div>
-                    <p className="text-sm text-gray-500">Commented on BOOK</p>
-                  </div>
-                  <div className="ml-2 flex flex-shrink-0">
-                    <button className="rounded-full hover:text-slate-900 bg-slate-800 border-indigo-500/50 border-2 px-2 text-sm hover:font-semibold leading-5 text-indigo-300">
-                      Add Friend
-                    </button>
-                  </div>
-                </div>
-              </li>
-              <li className="py-4">
-                <div className="flex space-x-3">
-                  <img
-                    className="h-6 w-6 rounded-full"
-                    src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80"
-                    alt=""
-                  ></img>{" "}
-                  <div className="flex-1 space-y-1">
-                    <div className="flex items-center justify-between">
-                      <h3 className="text-sm font-medium">Lindsay Walton</h3>
-                    </div>
-                    <p className="text-sm text-gray-500">Commented on BOOK</p>
+                    <p className="text-sm text-gray-500">
+                      Commented on ELOISE IN PARIS
+                    </p>
                   </div>
                   <div className="ml-2 flex flex-shrink-0">
                     <button className="rounded-full hover:text-slate-900 bg-slate-800 border-indigo-500/50 border-2 px-2 text-sm hover:font-semibold leading-5 text-indigo-300">
