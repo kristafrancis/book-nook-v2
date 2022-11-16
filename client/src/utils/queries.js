@@ -14,7 +14,7 @@ export const QUERY_ME = gql `
             }
             comments {
                 _id
-                comment_text
+                commentText
                 createdAt
 
             }
@@ -65,6 +65,13 @@ export const QUERY_ME_BASIC = gql `
         friends {
             _id
             username
+        }
+        savedBooks {
+            bookId
+            authors
+            description
+            title
+            image
         }
     }
 }

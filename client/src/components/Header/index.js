@@ -7,8 +7,6 @@ import { Link } from "react-router-dom";
 import Auth from "../../utils/auth";
 
 const Header = () => {
-  // const { animFinished, setAnimFinished } = props;
-
   const style1 = useSpring({
     from: { opacity: 0 },
     to: { opacity: 1 },
@@ -27,15 +25,16 @@ const Header = () => {
           <div className="mx-8 my-6 flex justify-between items-center">
             <div>
               <h1 className="drop-shadow-lg text-5xl md:text-7xl">
-                <Link to="/" className="hover:text-[#7286ff]">
+                <div className="transition-all ease-in duration-300 hover:text-[#7286ff] cursor-default">
                   book<span className="text-[#7286ff]">nook</span>
-                </Link>
+                </div>
               </h1>
             </div>
 
             <div>
               {/* NAVBAR AT 768PX & HIGHER */}
               <div className="uppercase tracking-widest">
+                <div className="hidden md:flex bg-[#02030ac8] px-7 py-2 rounded-md font-semibold">
                 {Auth.loggedIn() ? (
                     <>
                       <Link to="/search" className="mr-6">
@@ -63,6 +62,7 @@ const Header = () => {
                     </>
                   )}
                 </div>
+              </div>
 
               {/* HAMBURGER MENU AT 768PX & LOWER */}
               <div className="md:hidden">

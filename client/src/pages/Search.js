@@ -1,33 +1,63 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Navigate } from "react-router-dom";
 import { useSpring, animated } from "react-spring";
+import AnchorLink from "react-anchor-link-smooth-scroll";
+import RatingStars from "../components/RatingStars";
+// google books api, mongoose, auth, graphql, localstorage
+import { useMutation, useQuery } from "@apollo/client";
 import { googleBookSearch } from "../utils/API";
 import Auth from "../utils/auth";
 import { SAVE_BOOK } from "../utils/mutations";
 import { saveBookIds, getSavedBookIds } from "../utils/localStorage";
-import { QUERY_ME } from "../utils/queries";
-import { useMutation, useQuery } from "@apollo/client";
-import AnchorLink from "react-anchor-link-smooth-scroll";
+import { QUERY_ME_BASIC, QUERY_COMMENT } from "../utils/queries";
+// import icons & images
 import StarsImg from "../images/stars.png";
 import { HiOutlineStar, HiStar } from "react-icons/hi";
-import RatingStars from "../components/RatingStars";
 
 const Search = () => {
   const [searchedBooks, setSearchedBooks] = useState([]);
   const [searchInput, setSearchInput] = useState("");
   const [savedBookIds, setSavedBookIds] = useState(getSavedBookIds());
   const [saveBook] = useMutation(SAVE_BOOK);
-  const { loading, data } = useQuery(QUERY_ME);
+  const { loading, data } = useQuery(QUERY_ME_BASIC);
+  // const { data: userData } = useQuery(QUERY_ME_BASIC);
+  // const comments = data?.comments || [];
+  // const loggedIn = Auth.loggedIn();
 
-  const style1 = useSpring({
-    from: { opacity: 0, marginTop: 0 },
-    to: { opacity: 1, marginTop: 0 },
-    config: { duration: 3000 },
-  });
+    // animation effect
+    const style1 = useSpring({
+      from: { opacity: 0, marginTop: 0 },
+      to: { opacity: 1, marginTop: 0 },
+      config: { duration: 3000 },
+    });
+  
+    useEffect(() => {
+      return () => saveBookIds(savedBookIds);
+    });
 
-  useEffect(() => {
-    return () => saveBookIds(savedBookIds);
-  });
+  // redirect user to profile if logged in
+  const { username: userParam } = useParams();
+  const user = data?.me || data?.user || {};
+
+  if (Auth.loggedIn() === userParam) {
+    return <Navigate to="/profile" />;
+  }
+
+  if (loading) {
+    return <div>Loading...</div>
+  }
+
+  if (!user?.username) {
+    return (
+      <div className="w-full flex flex-col justify-center items-center text-center">
+        <h3 className="text-5xl mb-8">Oops!</h3>
+        <div className="max-w-screen-sm bg-slate-900 p-6 rounded-lg shadow-lg">
+          You need to be logged in to see this page.<br />
+          Use the navigation links above to sign up or log in!
+        </div>
+      </div>
+    );
+  }
 
   //search books method and set state on form submit
   const handleFormSubmit = async (event) => {
@@ -81,31 +111,6 @@ const Search = () => {
       console.error(err);
     }
   };
-
-  // redirect user to search if logged in
-  const { username: userParam } = useParams();
-  const user = data?.me || data?.user || {};
-
-  if (Auth.loggedIn() === userParam) {
-    return <Navigate to="/search" />;
-  }
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (!user?.username) {
-    return (
-      <div className="w-full flex flex-col justify-center items-center text-center">
-        <h3 className="text-5xl mb-8">Oops!</h3>
-        <div className="max-w-screen-sm bg-slate-900 p-6 rounded-lg shadow-lg">
-          You need to be logged in to see this page.
-          <br />
-          Use the navigation links above to sign up or log in!
-        </div>
-      </div>
-    );
-  }
 
   return (
     <>
