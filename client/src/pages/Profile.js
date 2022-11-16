@@ -33,7 +33,7 @@ const Profile = () => {
   const userData = data?.me || data?.user || {};
 
   // const { data: userData } = useQuery(QUERY_ME);
-  const comments = data?.comments || [];
+  const comments = userData?.comments || [];
   // const loggedIn = Auth.loggedIn();
 
   // book counter
@@ -267,7 +267,7 @@ const Profile = () => {
               <div className="bg-slate-900 shadow-lg sm:rounded-lg mt-8">
                 <div className="px-4 py-5 sm:px-6">
                   {" "}
-                  {data?.me?.savedBooks?.map((book) => (
+                  {userData?.savedBooks?.map((book) => (
                     <>
                       <div className="overflow-hidden bg-[#22274f] shadow sm:rounded-md">
                         <ul role="list" className="divide-y divide-gray-700">
@@ -302,10 +302,14 @@ const Profile = () => {
                         <ul role="list" className="divide-y divide-gray-700">
                           <li>
                             <div className="px-4 py-2 sm:px-6 flex items-center justify-between ml-2 flex-shrink-0 text-sm text-gray-400">
-                              <Comments comments={userData.comments} />
+                              <Comments comments={comments.filter(cmt=> {
+                                console.log(cmt)
+                            
+                                return cmt.book_id === book.bookId})} />
+                                {/* <Comments comments={comments} /> */}
                             </div>
                             <div className="px-8 pb-5">
-                              <CommentsForm />
+                              <CommentsForm book_id={book.bookId}/>
                             </div>
                           </li>
                         </ul>

@@ -16,6 +16,10 @@ const commentSchema = new Schema({
       default: Date.now,
       get: (timestamp) => dateFormat(timestamp),
     },
+    book_id: {
+      type: String,
+      required: true
+    }
   },
   {
     toJSON: {

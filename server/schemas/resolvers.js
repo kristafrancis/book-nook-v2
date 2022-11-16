@@ -10,7 +10,7 @@ const resolvers = {
         .select("-__v -password")
         .populate('friends')
         .populate('comments');
-
+        console.log(userData);
         return userData;
       }
       throw new AuthenticationError("Not logged in!");
@@ -31,7 +31,9 @@ const resolvers = {
     },
     comments: async (parent, { username }) => {
       const params = username ? { username } : {};
-      return Comment.find(params).sort({ createdAt: -1 });
+      const comments = await Comment.find(params).sort({ createdAt: -1 });
+      console.log(comments);
+      return comments
     },
     comment: async (parent, { _id }) => {
       return Comment.findOne({ _id });
