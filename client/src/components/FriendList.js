@@ -13,7 +13,7 @@ const FriendList = ({ friendCount, username, friends }) => {
       </h5>
       {friends.map((friend) => (
         <button
-          className="cursor-pointer bg-slate-800 inline-flex items-center justify-center rounded-md border border-indigo-200 px-4 py-2 text-sm font-medium text-indigo-200 shadow-sm hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100"
+          className="cursor-pointer bg-slate-800 inline-flex items-center justify-center rounded-md border border-indigo-200 mx-2 px-4 py-2 text-sm font-medium text-indigo-200 shadow-sm hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100"
           key={friend._id}
         >
           <Link to={`/profile/${friend.username}`}>{friend.username}</Link>

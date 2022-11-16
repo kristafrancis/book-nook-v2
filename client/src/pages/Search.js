@@ -44,7 +44,7 @@ const Search = () => {
   }
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div className="text-center text-4xl">Loading...</div>;
   }
 
   if (!user?.username) {
