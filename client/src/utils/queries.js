@@ -41,7 +41,7 @@ export const QUERY_USER = gql `
             }
             comments {
                 _id
-                comment_text
+                commentText
                 createdAt
             }
             savedBooks {
