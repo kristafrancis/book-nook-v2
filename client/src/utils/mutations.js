@@ -1,4 +1,5 @@
 import { gql } from '@apollo/client';
+import { faWater } from '@fortawesome/free-solid-svg-icons';
 
 
 // login user 
@@ -22,6 +23,20 @@ export const ADD_USER = gql `
                 _id
                 username
                 email
+            }
+        }
+    }
+`;
+
+export const ADD_FRIEND = gql`
+    mutation addFriend($id: ID!) {
+        addFriend(friendId: $id) {
+            _id
+            username
+            friendCount
+            friends {
+                _id
+                username
             }
         }
     }
