@@ -3,7 +3,6 @@ import React, { useState, useEffect, Fragment } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
-import { useParams, Navigate } from "react-router-dom";
 import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
 import Auth from "../utils/auth";
@@ -29,6 +28,7 @@ const Profile = () => {
       return newCount;
     });
   };
+  
   const { loading, data } = useQuery(QUERY_ME);
   console.log(data);
   const userData = data?.me || {};
@@ -40,13 +40,23 @@ const Profile = () => {
   // dropdown menu
   const options = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
   const defaultOption = options[0];
+
+  const options = ["0","1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
+  const defaultOption = options[0]
+
   const selectedValue = "SelectedValue";
   const [selected, setSelected] = useState([]);
   const handleChange = (s) => {
     sessionStorage.setItem(selectedValue, JSON.stringify(s));
     setSelected(s);
   };
-  React.useEffect(() => {
+  const handleReset = () => {
+    sessionStorage.setItem('count', 0);
+    
+    setCount(0);
+    console.log(count);
+  }
+    React.useEffect(() => {
     const lastSelected = JSON.parse(
       sessionStorage.getItem(selectedValue) ?? "[]"
     );
@@ -104,7 +114,7 @@ const Profile = () => {
               <div class="relative">
                 <img
                   class="h-24 w-24 rounded-full"
-                  src="https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80"
+                  src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80"
                   alt=""
                 ></img>{" "}
                 <span
@@ -161,9 +171,9 @@ const Profile = () => {
                     className="w-[60px] bg-slate-700 mx-4"
                     options={options}
                     onChange={handleChange}
-                    value={defaultOption}
+                    value={selected?.value}
                     isMulti
-                    placeholder="Select an option"
+                    placeholder="0"
                   />
                   books read!
                 </div>
@@ -203,7 +213,7 @@ const Profile = () => {
                     <div className="p-2"></div>
                     <button
                       type="button"
-                      onClick={() => setCount(0)}
+                      onClick={handleReset}
                       disabled={count === 0}
                       className="cursor-pointer inline-flex items-center justify-center rounded-md border px-4 py-2 text-sm font-medium text-indigo-200 shadow-sm hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100"
                     >
@@ -242,17 +252,13 @@ const Profile = () => {
                       <div className="overflow-hidden bg-[#22274f] shadow sm:rounded-md">
                         <ul role="list" className="divide-y divide-gray-700">
                           <li>
-                            <a href="#" className="block hover:bg-slate-800">
+                            <div className="block hover:bg-slate-800">
                               <div className="px-4 py-2 sm:px-6">
                                 <div className="flex items-center justify-between">
                                   <p className="truncate font-medium">
                                     {book.title}
                                   </p>
                                   <div className="ml-2 flex flex-shrink-0">
-                                    <button className="inline-flex rounded-full hover:text-slate-900 bg-emerald-800 text-emerald-300 px-2 text-sm hover:font-semibold leading-5">
-                                      View
-                                    </button>
-                                    <div class="px-2"></div>
                                     <button
                                       className="inline-flex rounded-full hover:text-slate-900 bg-rose-900 text-rose-300 px-2 text-sm hover:font-semibold leading-5>"
                                       onClick={() =>
@@ -264,7 +270,7 @@ const Profile = () => {
                                   </div>
                                 </div>
                               </div>
-                            </a>
+                            </div>
                           </li>
                         </ul>
                       </div>
@@ -298,7 +304,7 @@ const Profile = () => {
                           leaveFrom="transform opacity-100 scale-100"
                           leaveTo="transform opacity-0 scale-95"
                         >
-                          <Menu.Items className="rounded-xl absolute left-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-slate-500 p-4 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                          <Menu.Items className="rounded-xl absolute left-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-slate-700 p-4 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                             <div className="py-1">
                               <Menu.Item>
                                 {({ active }) => (
@@ -318,17 +324,19 @@ const Profile = () => {
 
                               <Menu.Item>
                                 {({ active }) => (
-                                  <a
-                                    href
-                                    className={classNames(
-                                      active
-                                        ? "cursor-pointer inline-flex items-center justify-center rounded-md border border-indigo-200 px-4 py-2 text-sm font-medium text-indigo-200 shadow-sm hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100"
-                                        : "cursor-pointer inline-flex items-center justify-center rounded-md border border-indigo-200 px-4 py-2 text-sm font-medium text-indigo-200 shadow-sm hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100",
-                                      "cursor-pointer inline-flex items-center justify-center rounded-md border border-indigo-200 px-4 py-2 text-sm font-medium text-indigo-200 shadow-sm hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100"
-                                    )}
-                                  >
-                                    Submit
-                                  </a>
+                                  <div className="pt-2">
+                                    <a
+                                      href
+                                      className={classNames(
+                                        active
+                                          ? "bg-slate-900 cursor-pointer inline-flex items-center justify-center rounded-md border border-indigo-200 px-4 py-2 text-sm font-medium text-indigo-200 shadow-sm hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100"
+                                          : "bg-slate-900 cursor-pointer inline-flex items-center justify-center rounded-md border border-indigo-200 px-4 py-2 text-sm font-medium text-indigo-200 shadow-sm hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100",
+                                        "bg-slate-900 cursor-pointer inline-flex items-center justify-center rounded-md border border-indigo-200 px-4 py-2 text-sm font-medium text-indigo-200 shadow-sm hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100"
+                                      )}
+                                    >
+                                      Submit your comment
+                                    </a>
+                                  </div>
                                 )}
                               </Menu.Item>
                             </div>
@@ -363,14 +371,14 @@ const Profile = () => {
                     <div className="flex items-center">
                       <div className="h-10 w-10 flex-shrink-0">
                         <img
-                          className="h-10 w-10 rounded-full"
-                          src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                          class="h-10 w-10 rounded-full"
+                          src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                           alt=""
                         ></img>
                       </div>
                       <div className="ml-4">
                         <div className="font-medium">Lindsay Walton</div>
-                        <div className="text-[#6bfbce]">Username</div>
+                        <div className="text-[#6bfbce]">bookworm2</div>
                       </div>
                     </div>
                   </td>
@@ -381,13 +389,13 @@ const Profile = () => {
                       <div className="h-10 w-10 flex-shrink-0">
                         <img
                           className="h-10 w-10 rounded-full"
-                          src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                          src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                           alt=""
-                        ></img>
+                        />
                       </div>
                       <div className="ml-4">
-                        <div className="font-medium">Lindsay Walton</div>
-                        <div className="text-[#6bfbce]">Username</div>
+                        <div className="font-medium">Rebecca Chase</div>
+                        <div className="text-[#6bfbce]">becky-chase</div>
                       </div>
                     </div>
                   </td>
@@ -398,13 +406,13 @@ const Profile = () => {
                       <div className="h-10 w-10 flex-shrink-0">
                         <img
                           className="h-10 w-10 rounded-full"
-                          src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                          src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                           alt=""
-                        ></img>
+                        />
                       </div>
                       <div className="ml-4">
-                        <div className="font-medium">Lindsay Walton</div>
-                        <div className="text-[#6bfbce]">Username</div>
+                        <div className="font-medium">Dusty Arnold</div>
+                        <div className="text-[#6bfbce]">dusty-arnold-55</div>
                       </div>
                     </div>
                   </td>
