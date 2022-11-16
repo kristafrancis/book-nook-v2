@@ -32,6 +32,10 @@ const Profile = () => {
 	});
 	const userData = data?.me || data?.user || {};
 
+	// const { data: userData } = useQuery(QUERY_ME);
+  	const comments = data?.comments || [];
+  	// const loggedIn = Auth.loggedIn();
+
 	// book counter
 	const [count, setCount] = useState(0);
 	console.log(count);
@@ -299,9 +303,9 @@ const Profile = () => {
 													<li>
 														<div className="px-4 py-2 sm:px-6 flex items-center justify-between ml-2 flex-shrink-0 text-sm text-gray-400">
 															<p>Comment loads here</p> */
-															{/* <div>
+															<div>
 																<Comments comments={userData.comments} />
-															</div> */}
+															</div>
 														</div>
 													</li>
 												</ul>
@@ -312,9 +316,9 @@ const Profile = () => {
 												className="relative inline-block text-left"
 											>
 												<div>
-													<Menu.Button className="cursor-pointer inline-flex items-center justify-center rounded-md border border-indigo-200 px-4 py-2 text-sm font-medium text-indigo-200 shadow-sm hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100">
+													{/* <Menu.Button className="cursor-pointer inline-flex items-center justify-center rounded-md border border-indigo-200 px-4 py-2 text-sm font-medium text-indigo-200 shadow-sm hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100">
 														Comment
-													</Menu.Button>
+													</Menu.Button> */}
 													<div>
 														<CommentsForm />
 													</div>
@@ -383,7 +387,6 @@ const Profile = () => {
 					</div>
 
 					<section className="lg:col-span-1 lg:col-start-3">
-
 						{/* FRIENDS */}
 						<div className="bg-slate-900 px-4 py-5 shadow-lg sm:rounded-lg sm:px-6">
 							<h2 className="text-4xl text-indigo-300 font-medium">
