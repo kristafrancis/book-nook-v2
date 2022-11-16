@@ -1,23 +1,41 @@
-// import { useQuery } from "@apollo/client";
 import React, { useState, useEffect, Fragment } from "react";
+import "react-dropdown/style.css";
+import Dropdown from "react-dropdown";
+import { Menu, Transition } from "@headlessui/react";
+import { useParams, Navigate } from "react-router-dom";
+// mongoose, auth, graphql
+import { useMutation, useQuery } from "@apollo/client";
+import Auth from "../utils/auth";
+import { QUERY_ME, QUERY_USER } from "../utils/queries";
+import { ADD_FRIEND, REMOVE_BOOK } from "../utils/mutations";
+import { removeBookId } from "../utils/localStorage";
+// import components
+import FriendList from "../components/FriendList";
+import RatingStars from "../components/RatingStars";
+import Comments from "../components/Comments";
+import CommentsForm from "../components/CommentsForm";
+//import icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
-import Dropdown from "react-dropdown";
-import "react-dropdown/style.css";
-import Auth from "../utils/auth";
-import ReadingList from "../components/ReadingList";
-import { useMutation, useQuery } from "@apollo/client";
-import { QUERY_ME } from "../utils/queries";
-import { removeBookId } from "../utils/localStorage";
-import { REMOVE_BOOK } from "../utils/mutations";
-import { Menu, Transition } from "@headlessui/react";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 const Profile = () => {
+  // retrieve user information
+  const [addFriend] = useMutation(ADD_FRIEND);
+  const { username: userParam } = useParams();
+  const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
+    variables: { username: userParam },
+  });
+  const userData = data?.me || data?.user || {};
+
+  // const { data: userData } = useQuery(QUERY_ME);
+  const comments = userData?.comments || [];
+  // const loggedIn = Auth.loggedIn();
+
   // book counter
   const [count, setCount] = useState(0);
   console.log(count);
@@ -28,22 +46,15 @@ const Profile = () => {
       return newCount;
     });
   };
-  
-  const { loading, data } = useQuery(QUERY_ME);
-  console.log(data);
-  const userData = data?.me || {};
+
   useEffect(() => {
     const initialValue = sessionStorage.getItem("count");
     if (initialValue) setCount(initialValue);
   }, []);
 
   // dropdown menu
-  const options = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
+  const options = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
   const defaultOption = options[0];
-
-  const options = ["0","1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
-  const defaultOption = options[0]
-
   const selectedValue = "SelectedValue";
   const [selected, setSelected] = useState([]);
   const handleChange = (s) => {
@@ -51,12 +62,12 @@ const Profile = () => {
     setSelected(s);
   };
   const handleReset = () => {
-    sessionStorage.setItem('count', 0);
-    
+    sessionStorage.setItem("count", 0);
+
     setCount(0);
     console.log(count);
-  }
-    React.useEffect(() => {
+  };
+  React.useEffect(() => {
     const lastSelected = JSON.parse(
       sessionStorage.getItem(selectedValue) ?? "[]"
     );
@@ -81,24 +92,33 @@ const Profile = () => {
     }
   };
 
-  // redirect user to profile if logged in
-  const { username: userParam } = useParams();
-  const user = data?.me || data?.user || {};
+  // add friend functionality
+  const handleClick = async () => {
+    try {
+      await addFriend({
+        variables: { id: userData._id },
+      });
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
-  if (Auth.loggedIn() === userParam) {
+  // redirect user to profile if logged in
+  if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
     return <Navigate to="/profile" />;
   }
 
   if (loading) {
-    return <div>Loading...</div>
+    return <div>Loading...</div>;
   }
 
-  if (!user?.username) {
+  if (!userData?.username) {
     return (
       <div className="w-full flex flex-col justify-center items-center text-center">
         <h3 className="text-5xl mb-8">Oops!</h3>
         <div className="max-w-screen-sm bg-slate-900 p-6 rounded-lg shadow-lg">
-          You need to be logged in to see this page.<br />
+          You need to be logged in to see this page.
+          <br />
           Use the navigation links above to sign up or log in!
         </div>
       </div>
@@ -247,7 +267,7 @@ const Profile = () => {
               <div className="bg-slate-900 shadow-lg sm:rounded-lg mt-8">
                 <div className="px-4 py-5 sm:px-6">
                   {" "}
-                  {data?.me?.savedBooks?.map((book) => (
+                  {userData?.savedBooks?.map((book) => (
                     <>
                       <div className="overflow-hidden bg-[#22274f] shadow sm:rounded-md">
                         <ul role="list" className="divide-y divide-gray-700">
@@ -258,6 +278,9 @@ const Profile = () => {
                                   <p className="truncate font-medium">
                                     {book.title}
                                   </p>
+                                  <div>
+                                    <RatingStars />
+                                  </div>
                                   <div className="ml-2 flex flex-shrink-0">
                                     <button
                                       className="inline-flex rounded-full hover:text-slate-900 bg-rose-900 text-rose-300 px-2 text-sm hover:font-semibold leading-5>"
@@ -278,21 +301,28 @@ const Profile = () => {
                       <div className="overflow-hidden bg-slate-800 shadow sm:rounded-md">
                         <ul role="list" className="divide-y divide-gray-700">
                           <li>
-                            <div className="block px-4 py-2 sm:px-6 flex items-center justify-between ml-2 flex flex-shrink-0 text-sm text-gray-400">
-                              <p>Comment loads here</p>
+                            <div className="px-4 py-2 sm:px-6 flex items-center justify-between ml-2 flex-shrink-0 text-sm text-gray-400">
+                              <Comments comments={comments.filter(cmt=> {
+                                console.log(cmt)
+                            
+                                return cmt.book_id === book.bookId})} />
+                                {/* <Comments comments={comments} /> */}
+                            </div>
+                            <div className="px-8 pb-5">
+                              <CommentsForm book_id={book.bookId}/>
                             </div>
                           </li>
                         </ul>
                       </div>
-                      <div className="p-2"></div>
+
                       <Menu
                         as="div"
                         className="relative inline-block text-left"
                       >
                         <div>
-                          <Menu.Button className="cursor-pointer inline-flex items-center justify-center rounded-md border border-indigo-200 px-4 py-2 text-sm font-medium text-indigo-200 shadow-sm hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100">
-                            Comment
-                          </Menu.Button>
+                          {/* <Menu.Button className="cursor-pointer inline-flex items-center justify-center rounded-md border border-indigo-200 px-4 py-2 text-sm font-medium text-indigo-200 shadow-sm hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100">
+														Comment
+													</Menu.Button> */}
                         </div>
 
                         <Transition
@@ -304,7 +334,7 @@ const Profile = () => {
                           leaveFrom="transform opacity-100 scale-100"
                           leaveTo="transform opacity-0 scale-95"
                         >
-                          <Menu.Items className="rounded-xl absolute left-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-slate-700 p-4 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                          <Menu.Items className="rounded-xl absolute left-0 z-10 mt-2 w-56 origin-top-right bg-slate-700 p-4 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                             <div className="py-1">
                               <Menu.Item>
                                 {({ active }) => (
@@ -314,7 +344,7 @@ const Profile = () => {
                                       active
                                         ? "bg-slate-900 text-gray-100"
                                         : "text-gray-100",
-                                      "block px-4 py-2 text-sm bg-slate-900"
+                                      "block px-4 text-sm bg-slate-900"
                                     )}
                                   >
                                     Write your comment here
@@ -343,7 +373,6 @@ const Profile = () => {
                           </Menu.Items>
                         </Transition>
                       </Menu>
-                      <div className="p-2"></div>
                     </>
                   ))}
                   <a
@@ -359,72 +388,27 @@ const Profile = () => {
 
           <section className="lg:col-span-1 lg:col-start-3">
             {/* FRIENDS */}
-
             <div className="bg-slate-900 px-4 py-5 shadow-lg sm:rounded-lg sm:px-6">
-              <h2 className="text-4xl text-indigo-300 font-medium">
+              <h2 className="text-4xl text-indigo-300 font-medium pb-4">
                 Friends List
               </h2>
 
-              <div className="mt-6">
-                <tr>
-                  <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6">
-                    <div className="flex items-center">
-                      <div className="h-10 w-10 flex-shrink-0">
-                        <img
-                          class="h-10 w-10 rounded-full"
-                          src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                          alt=""
-                        ></img>
-                      </div>
-                      <div className="ml-4">
-                        <div className="font-medium">Lindsay Walton</div>
-                        <div className="text-[#6bfbce]">bookworm2</div>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6">
-                    <div className="flex items-center">
-                      <div className="h-10 w-10 flex-shrink-0">
-                        <img
-                          className="h-10 w-10 rounded-full"
-                          src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                          alt=""
-                        />
-                      </div>
-                      <div className="ml-4">
-                        <div className="font-medium">Rebecca Chase</div>
-                        <div className="text-[#6bfbce]">becky-chase</div>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6">
-                    <div className="flex items-center">
-                      <div className="h-10 w-10 flex-shrink-0">
-                        <img
-                          className="h-10 w-10 rounded-full"
-                          src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                          alt=""
-                        />
-                      </div>
-                      <div className="ml-4">
-                        <div className="font-medium">Dusty Arnold</div>
-                        <div className="text-[#6bfbce]">dusty-arnold-55</div>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-              </div>
+              <FriendList
+                username={userData.username}
+                friendCount={userData.friendCount}
+                friends={userData.friends}
+              />
+
               <div className="justify-stretch mt-6 flex flex-col">
+                {/* {userParam && ( */}
                 <button
+                  onClick={handleClick}
                   type="button"
                   className="cursor-pointer inline-flex items-center justify-center rounded-md border border-indigo-200 px-4 py-2 text-sm font-medium text-indigo-200 shadow-sm hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100"
                 >
                   ADD FRIENDS
                 </button>
+                {/* )} */}
               </div>
             </div>
 

@@ -1,4 +1,4 @@
-const { User, Comments } = require("../models");
+const { User, Comment } = require("../models");
 const { AuthenticationError } = require("apollo-server-express");
 const { signToken } = require("../utils/auth");
 
@@ -8,25 +8,35 @@ const resolvers = {
       if (context.user) {
         const userData = await User.findOne({ _id: context.user._id })
         .select("-__v -password")
-
+        .populate('friends')
+        .populate('comments');
+        console.log(userData);
         return userData;
       }
       throw new AuthenticationError("Not logged in!");
     },
-
+    // GET all users
     users: async () => {
-      return User.find().select("-__v -password")
-      
+      return User.find()
+        .select("-__v -password")
+        .populate('friends')
+        .populate('comments');
     },
+    // GET a user by username
     user: async (parent, { username }) => {
-      return User.findOne({ username }).select("-__v -password");
+      return User.findOne({ username })
+        .select("-__v -password")
+        .populate('friends')
+        .populate('comments');
     },
     comments: async (parent, { username }) => {
       const params = username ? { username } : {};
-      return Comments.find(params).sort({ createdAt: -1 });
+      const comments = await Comment.find(params).sort({ createdAt: -1 });
+      console.log(comments);
+      return comments
     },
     comment: async (parent, { _id }) => {
-      return Comments.findOne({ _id });
+      return Comment.findOne({ _id });
     },
   },
   Mutation: {
@@ -60,14 +70,9 @@ const resolvers = {
       return user;
     },
 
-    deleteUser: async (parent, { id }) => {
-      const wasDeleted = (await User.deleteOne({ _id: id })).deletedCount;
-      return wasDeleted;
-    },
-
     addComment: async (parent, args, context) => {
       if (context.user) {
-        const comment = await Comments.create({
+        const comment = await Comment.create({
           ...args,
           username: context.user.username,
         });
@@ -82,21 +87,6 @@ const resolvers = {
       }
 
       throw new AuthenticationError("You need to be logged in!");
-    },
-
-    updateComment: async (parent, { id, comment_text }) => {
-      const comment = await Comments.findOneAndUpdate(
-        { _id: id },
-        { comment_text },
-        { new: true }
-      );
-
-      return comment;
-    },
-
-    deleteComment: async (parent, { id }) => {
-      const wasDeleted = (await Comments.deleteOne({ _id: id })).deletedCount;
-      return wasDeleted;
     },
 
     addFriend: async (parent, { friendId }, context) => {

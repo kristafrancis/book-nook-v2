@@ -31,7 +31,7 @@ const userSchema = new Schema({
 
     comments:[{
         type: Schema.Types.ObjectId,
-        ref: 'Comments'
+        ref: 'Comment'
     }],
     friends: [{
         type: Schema.Types.ObjectId,
@@ -70,18 +70,10 @@ userSchema.pre('save', async function(next) {
    return bcrypt.compare(password, this.password);
  };
 
-
-
-
 userSchema.virtual('friendCount').get(function() {
     return this.friends.length;
 })
 
 const User = model('User', userSchema);
 
-
-
-
-
 module.exports = User;
-

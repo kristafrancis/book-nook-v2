@@ -1,9 +1,8 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { USER_LOGIN } from "../utils/mutations";
 import Auth from "../utils/auth";
-import { useNavigate } from "react-router-dom";
-
 
 const Login = () => {
   const [formState, setFormState] = useState({ email: "", password: "" });
@@ -21,13 +20,11 @@ const Login = () => {
     navigate("/search");
     console.log(formState);
 
-
     try {
       const { data } = await loginUser({
         variables: { ...formState },
       });
 
-  
       Auth.login(data.login.token);
     } catch (err) {
       console.error(err);
@@ -38,7 +35,6 @@ const Login = () => {
       password: "",
     });
   };
-
 
   return (
     <main className="w-full h-full">

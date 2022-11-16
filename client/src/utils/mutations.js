@@ -27,6 +27,20 @@ export const ADD_USER = gql `
     }
 `;
 
+export const ADD_FRIEND = gql`
+    mutation addFriend($id: ID!) {
+        addFriend(friendId: $id) {
+            _id
+            username
+            friendCount
+            friends {
+                _id
+                username
+            }
+        }
+    }
+`;
+
 export const SAVE_BOOK = gql `
     mutation saveBook($input: BookInput!) {
         saveBook(input: $input) {
@@ -62,5 +76,16 @@ export const REMOVE_BOOK = gql `
     }
 `;
 
+export const ADD_COMMENT = gql`
+  mutation addComment($commentText: String!, $book_id: String!) {
+    addComment(commentText: $commentText, book_id: $book_id) {
+      _id
+      commentText
+      createdAt
+      username
+      book_id
+    }
+  }
+`;
 
 
