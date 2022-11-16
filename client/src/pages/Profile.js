@@ -1,44 +1,109 @@
 // import { useQuery } from "@apollo/client";
-import React, { useState, useEffect } from "react";
-import { useParams, Navigate } from "react-router-dom";
+import React, { useState, useEffect, Fragment } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faInstagram } from "@fortawesome/free-brands-svg-icons";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import Dropdown from "react-dropdown";
-// import Auth from '../utils/auth';
+import "react-dropdown/style.css";
+import Auth from "../utils/auth";
 import ReadingList from "../components/ReadingList";
-import { useQuery } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { QUERY_ME } from "../utils/queries";
+import { removeBookId } from "../utils/localStorage";
+import { REMOVE_BOOK } from "../utils/mutations";
+import { Menu, Transition } from "@headlessui/react";
+
+function classNames(...classes) {
+  return classes.filter(Boolean).join(" ");
+}
 
 const Profile = () => {
+  // book counter
   const [count, setCount] = useState(0);
+  console.log(count);
   const increase = () => {
     setCount((prevCount) => {
       const newCount = Number(prevCount) + 1;
-      localStorage.setItem("count", newCount);
+      sessionStorage.setItem("count", newCount);
       return newCount;
     });
   };
-
+  
   const { loading, data } = useQuery(QUERY_ME);
   console.log(data);
-
+  const userData = data?.me || {};
   useEffect(() => {
-    const initialValue = localStorage.getItem("count");
+    const initialValue = sessionStorage.getItem("count");
     if (initialValue) setCount(initialValue);
   }, []);
 
+  // dropdown menu
   const options = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
   const defaultOption = options[0];
+
+  const options = ["0","1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
+  const defaultOption = options[0]
+
   const selectedValue = "SelectedValue";
   const [selected, setSelected] = useState([]);
   const handleChange = (s) => {
-    localStorage.setItem(selectedValue, JSON.stringify(s));
+    sessionStorage.setItem(selectedValue, JSON.stringify(s));
     setSelected(s);
   };
-  React.useEffect(() => {
+  const handleReset = () => {
+    sessionStorage.setItem('count', 0);
+    
+    setCount(0);
+    console.log(count);
+  }
+    React.useEffect(() => {
     const lastSelected = JSON.parse(
-      localStorage.getItem(selectedValue) ?? "[]"
+      sessionStorage.getItem(selectedValue) ?? "[]"
     );
     setSelected(lastSelected);
   }, []);
+
+  // remove book functionality
+  const [deleteBook] = useMutation(REMOVE_BOOK);
+  const handleDeleteBook = async (bookId) => {
+    const token = Auth.loggedIn() ? Auth.getToken() : null;
+    if (!token) {
+      return false;
+    }
+    try {
+      await deleteBook({
+        variables: { bookId },
+      });
+
+      removeBookId(bookId);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  // redirect user to profile if logged in
+  const { username: userParam } = useParams();
+  const user = data?.me || data?.user || {};
+
+  if (Auth.loggedIn() === userParam) {
+    return <Navigate to="/profile" />;
+  }
+
+  if (loading) {
+    return <div>Loading...</div>
+  }
+
+  if (!user?.username) {
+    return (
+      <div className="w-full flex flex-col justify-center items-center text-center">
+        <h3 className="text-5xl mb-8">Oops!</h3>
+        <div className="max-w-screen-sm bg-slate-900 p-6 rounded-lg shadow-lg">
+          You need to be logged in to see this page.<br />
+          Use the navigation links above to sign up or log in!
+        </div>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -49,7 +114,7 @@ const Profile = () => {
               <div class="relative">
                 <img
                   class="h-24 w-24 rounded-full"
-                  src="https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80"
+                  src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80"
                   alt=""
                 ></img>{" "}
                 <span
@@ -59,8 +124,10 @@ const Profile = () => {
               </div>
             </div>
             <div>
-              <h1 className="text-4xl font-semibold drop-shadow">Username</h1>
-              <p className="font-medium text-gray-100">Bob Joe</p>
+              <h1 className="text-4xl font-semibold drop-shadow">
+                {userData.username}
+              </h1>
+              <p className="font-medium text-gray-100">{userData.username}</p>
             </div>
           </div>
           <div className="justify-stretch mt-6 flex flex-col-reverse space-y-4 space-y-reverse sm:flex-row-reverse sm:justify-end sm:space-y-0 sm:space-x-3 sm:space-x-reverse md:mt-0 md:flex-row md:space-x-3">
@@ -101,12 +168,12 @@ const Profile = () => {
                 <div className="text-center pb-8 font-['poppins'] text-2xl font-medium text-indigo-400 inline-flex w-full justify-center items-center">
                   Your goal is
                   <Dropdown
-                    className="w-[60px] text-yellow-100 text-lg font-semibold ml-3 py-2 rounded-sm mr-4 border border-slate-600"
+                    className="w-[60px] bg-slate-700 mx-4"
                     options={options}
-                    // onChange={handleChange}
-                    value={defaultOption}
+                    onChange={handleChange}
+                    value={selected?.value}
                     isMulti
-                    placeholder="Select an option"
+                    placeholder="0"
                   />
                   books read!
                 </div>
@@ -124,6 +191,7 @@ const Profile = () => {
                     <button
                       type="button"
                       onClick={increase}
+                      value={count}
                       className="cursor-pointer inline-flex items-center justify-center rounded-md border bg-[#22274f] px-4 py-2 text-sm font-medium text-indigo-200 shadow-sm hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100"
                     >
                       <svg
@@ -145,7 +213,7 @@ const Profile = () => {
                     <div className="p-2"></div>
                     <button
                       type="button"
-                      onClick={() => setCount(0)}
+                      onClick={handleReset}
                       disabled={count === 0}
                       className="cursor-pointer inline-flex items-center justify-center rounded-md border px-4 py-2 text-sm font-medium text-indigo-200 shadow-sm hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100"
                     >
@@ -184,27 +252,97 @@ const Profile = () => {
                       <div className="overflow-hidden bg-[#22274f] shadow sm:rounded-md">
                         <ul role="list" className="divide-y divide-gray-700">
                           <li>
-                            <a href="#" className="block hover:bg-slate-800">
+                            <div className="block hover:bg-slate-800">
                               <div className="px-4 py-2 sm:px-6">
                                 <div className="flex items-center justify-between">
                                   <p className="truncate font-medium">
                                     {book.title}
                                   </p>
                                   <div className="ml-2 flex flex-shrink-0">
-                                    <button className="inline-flex rounded-full hover:text-slate-900 bg-emerald-800 text-emerald-300 px-2 text-sm hover:font-semibold leading-5 text-indigo-300">
-                                      View
-                                    </button>
-                                    <div class="px-2"></div>
-                                    <button className="inline-flex rounded-full hover:text-slate-900 bg-rose-900 text-rose-300 px-2 text-sm hover:font-semibold leading-5 text-indigo-300">
+                                    <button
+                                      className="inline-flex rounded-full hover:text-slate-900 bg-rose-900 text-rose-300 px-2 text-sm hover:font-semibold leading-5>"
+                                      onClick={() =>
+                                        handleDeleteBook(book.bookId)
+                                      }
+                                    >
                                       Remove
                                     </button>
                                   </div>
                                 </div>
                               </div>
-                            </a>
+                            </div>
                           </li>
                         </ul>
                       </div>
+                      <div className="p-2"></div>
+                      <div className="overflow-hidden bg-slate-800 shadow sm:rounded-md">
+                        <ul role="list" className="divide-y divide-gray-700">
+                          <li>
+                            <div className="block px-4 py-2 sm:px-6 flex items-center justify-between ml-2 flex flex-shrink-0 text-sm text-gray-400">
+                              <p>Comment loads here</p>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                      <div className="p-2"></div>
+                      <Menu
+                        as="div"
+                        className="relative inline-block text-left"
+                      >
+                        <div>
+                          <Menu.Button className="cursor-pointer inline-flex items-center justify-center rounded-md border border-indigo-200 px-4 py-2 text-sm font-medium text-indigo-200 shadow-sm hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100">
+                            Comment
+                          </Menu.Button>
+                        </div>
+
+                        <Transition
+                          as={Fragment}
+                          enter="transition ease-out duration-100"
+                          enterFrom="transform opacity-0 scale-95"
+                          enterTo="transform opacity-100 scale-100"
+                          leave="transition ease-in duration-75"
+                          leaveFrom="transform opacity-100 scale-100"
+                          leaveTo="transform opacity-0 scale-95"
+                        >
+                          <Menu.Items className="rounded-xl absolute left-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-slate-700 p-4 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                            <div className="py-1">
+                              <Menu.Item>
+                                {({ active }) => (
+                                  <textarea
+                                    id="message"
+                                    className={classNames(
+                                      active
+                                        ? "bg-slate-900 text-gray-100"
+                                        : "text-gray-100",
+                                      "block px-4 py-2 text-sm bg-slate-900"
+                                    )}
+                                  >
+                                    Write your comment here
+                                  </textarea>
+                                )}
+                              </Menu.Item>
+
+                              <Menu.Item>
+                                {({ active }) => (
+                                  <div className="pt-2">
+                                    <a
+                                      href
+                                      className={classNames(
+                                        active
+                                          ? "bg-slate-900 cursor-pointer inline-flex items-center justify-center rounded-md border border-indigo-200 px-4 py-2 text-sm font-medium text-indigo-200 shadow-sm hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100"
+                                          : "bg-slate-900 cursor-pointer inline-flex items-center justify-center rounded-md border border-indigo-200 px-4 py-2 text-sm font-medium text-indigo-200 shadow-sm hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100",
+                                        "bg-slate-900 cursor-pointer inline-flex items-center justify-center rounded-md border border-indigo-200 px-4 py-2 text-sm font-medium text-indigo-200 shadow-sm hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100"
+                                      )}
+                                    >
+                                      Submit your comment
+                                    </a>
+                                  </div>
+                                )}
+                              </Menu.Item>
+                            </div>
+                          </Menu.Items>
+                        </Transition>
+                      </Menu>
                       <div className="p-2"></div>
                     </>
                   ))}
@@ -233,14 +371,14 @@ const Profile = () => {
                     <div className="flex items-center">
                       <div className="h-10 w-10 flex-shrink-0">
                         <img
-                          className="h-10 w-10 rounded-full"
-                          src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                          class="h-10 w-10 rounded-full"
+                          src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                           alt=""
                         ></img>
                       </div>
                       <div className="ml-4">
                         <div className="font-medium">Lindsay Walton</div>
-                        <div className="text-[#6bfbce]">Username</div>
+                        <div className="text-[#6bfbce]">bookworm2</div>
                       </div>
                     </div>
                   </td>
@@ -251,13 +389,13 @@ const Profile = () => {
                       <div className="h-10 w-10 flex-shrink-0">
                         <img
                           className="h-10 w-10 rounded-full"
-                          src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                          src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                           alt=""
-                        ></img>
+                        />
                       </div>
                       <div className="ml-4">
-                        <div className="font-medium">Lindsay Walton</div>
-                        <div className="text-[#6bfbce]">Username</div>
+                        <div className="font-medium">Rebecca Chase</div>
+                        <div className="text-[#6bfbce]">becky-chase</div>
                       </div>
                     </div>
                   </td>
@@ -268,13 +406,13 @@ const Profile = () => {
                       <div className="h-10 w-10 flex-shrink-0">
                         <img
                           className="h-10 w-10 rounded-full"
-                          src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                          src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                           alt=""
-                        ></img>
+                        />
                       </div>
                       <div className="ml-4">
-                        <div className="font-medium">Lindsay Walton</div>
-                        <div className="text-[#6bfbce]">Username</div>
+                        <div className="font-medium">Dusty Arnold</div>
+                        <div className="text-[#6bfbce]">dusty-arnold-55</div>
                       </div>
                     </div>
                   </td>
@@ -290,37 +428,25 @@ const Profile = () => {
               </div>
             </div>
 
-            <div className="p-10"></div>
-            <div className="bg-slate-900 pb-5 pt-3 shadow-lg sm:rounded-lg sm:px-6">
-              <h2 className="text-1xl text-center text-indigo-300 font-medium">
+            <div className="bg-slate-900 mt-8 pb-5 pt-3 shadow-lg sm:rounded-lg sm:px-6">
+              <h2 className="text-2xl tracking-widest text-center text-indigo-300 font-medium">
                 Stay in touch!
               </h2>
 
-              <div className="columns-2 flex justify-center gap-4 mt-2">
+              <div className="columns-2 flex justify-center gap-4 mt-4">
                 <tr>
                   <a
-                    className="bg-[#22274f] rounded-lg pt-2 px-2 hover:opacity-50 ease-in duration-300"
+                    className="bg-[#22274f] hover:bg-slate-700 rounded-md border border-indigo-200 py-2 px-4 text-base"
                     href="https://www.instagram.com/thebooknookproject/"
                   >
+                    <FontAwesomeIcon
+                      icon={faInstagram}
+                      style={{ color: "a4b4fc" }}
+                    />
                     <td>
-                      <div className="flex items-center">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke-width="1.5"
-                          stroke="currentColor"
-                          class="w-6 h-6"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z"
-                          />
-                        </svg>
-
-                        <div className="ml-2 text-center">
-                          <div className="font-medium">Instagram</div>
+                      <div className="flex items-center ml-2 text-center">
+                        <div className="text-indigo-200 font-normal uppercase tracking-widest">
+                          Instagram
                         </div>
                       </div>
                     </td>
@@ -329,28 +455,17 @@ const Profile = () => {
 
                 <tr>
                   <a
-                    className="bg-[#22274f] rounded-lg pt-2 px-2 hover:opacity-50 ease-in duration-300"
+                    className="bg-[#22274f] hover:bg-slate-700 rounded-md border border-indigo-200 py-2 px-4 text-base"
                     href="mailto:traveltothestars.booknook@gmail.com"
                   >
+                    <FontAwesomeIcon
+                      icon={faEnvelope}
+                      style={{ color: "a4b4fc" }}
+                    />
                     <td>
-                      <div className="flex items-center">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke-width="1.5"
-                          stroke="currentColor"
-                          class="w-6 h-6"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M9 3.75H6.912a2.25 2.25 0 00-2.15 1.588L2.35 13.177a2.25 2.25 0 00-.1.661V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18v-4.162c0-.224-.034-.447-.1-.661L19.24 5.338a2.25 2.25 0 00-2.15-1.588H15M2.25 13.5h3.86a2.25 2.25 0 012.012 1.244l.256.512a2.25 2.25 0 002.013 1.244h3.218a2.25 2.25 0 002.013-1.244l.256-.512a2.25 2.25 0 012.013-1.244h3.859M12 3v8.25m0 0l-3-3m3 3l3-3"
-                          />
-                        </svg>
-
-                        <div className="ml-2">
-                          <div className="font-medium">Email</div>
+                      <div className="flex items-center ml-2 text-center">
+                        <div className="text-indigo-200 font-normal uppercase tracking-widest">
+                          Email
                         </div>
                       </div>
                     </td>

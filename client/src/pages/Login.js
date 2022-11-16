@@ -4,6 +4,7 @@ import { USER_LOGIN } from "../utils/mutations";
 import Auth from "../utils/auth";
 import { useNavigate } from "react-router-dom";
 
+
 const Login = () => {
   const [formState, setFormState] = useState({ email: "", password: "" });
   // const [validated] = useState(false);
@@ -20,20 +21,13 @@ const Login = () => {
     navigate("/search");
     console.log(formState);
 
-    // // check if form has everything (as per react-bootstrap docs)
-    // const form = event.currentTarget;
-    // if (form.checkValidity() === false) {
-    //   event.preventDefault();
-    //   event.stopPropagation();
-    // }
 
     try {
       const { data } = await loginUser({
         variables: { ...formState },
       });
 
-      //const { token, user } = await response.json();
-      // console.log(user);
+  
       Auth.login(data.login.token);
     } catch (err) {
       console.error(err);
@@ -45,7 +39,6 @@ const Login = () => {
     });
   };
 
-  //const Login = () => {
 
   return (
     <main className="w-full h-full">
@@ -60,12 +53,27 @@ const Login = () => {
           method="POST"
           onSubmit={handleFormSubmit}
         >
-          <input type="hidden" name="remember" value="true"></input>{" "}
           <div className="rounded-md shadow-lg">
+          <label for="email-address" className="sr-only">
+            Email address
+          </label>
+          <input type="hidden" name="remember" value="true"></input>{" "}
             <div class="relative rounded-md shadow-sm">
-              <label for="email-address" className="sr-only">
-                Email address
-              </label>
+              <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  className="w-5 h-auto text-teal-300"
+                >
+                  <path
+                    stroke-linecap="round"
+                    d="M16.5 12a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zm0 0c0 1.657 1.007 3 2.25 3S21 13.657 21 12a9 9 0 10-2.636 6.364M16.5 12V8.25"
+                  />
+                </svg>
+              </div>
               <input
                 id="email-address"
                 name="email"
@@ -74,26 +82,27 @@ const Login = () => {
                 required
                 onChange={handleInputChange}
                 value={formState.email}
-                className="relative block w-full appearance-none rounded-none rounded-t-md bg-[#22274f] border border-slate-700 px-3 py-2 text-sm md:text-lg text-gray-200 placeholder-slate-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
+                className="block w-full appearance-none rounded-none rounded-t-md bg-[#22274f] border border-slate-700 pl-10 pr-3 py-2 text-sm md:text-lg text-gray-200 placeholder-slate-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
                 placeholder="Email address"
               ></input>
-              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+            </div>
+            <div class="relative rounded-md shadow-sm">
+              <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke-width="1.5"
                   stroke="currentColor"
-                  className="w-5 h-auto text-slate-500"
+                  className="w-5 h-auto text-teal-300"
                 >
                   <path
                     stroke-linecap="round"
-                    d="M16.5 12a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zm0 0c0 1.657 1.007 3 2.25 3S21 13.657 21 12a9 9 0 10-2.636 6.364M16.5 12V8.25"
+                    stroke-linejoin="round"
+                    d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"
                   />
                 </svg>
               </div>
-            </div>
-            <div class="relative rounded-md shadow-sm">
               <label for="password" className="sr-only">
                 Password
               </label>
@@ -105,25 +114,9 @@ const Login = () => {
                 required
                 onChange={handleInputChange}
                 value={formState.password}
-                className="relative block w-full appearance-none rounded-none rounded-b-md bg-[#22274f] border border-slate-700 px-3 py-2 text-sm md:text-lg text-gray-200 placeholder-slate-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
+                className="block w-full appearance-none rounded-none rounded-b-md bg-[#22274f] border border-slate-700 pl-10 pr-3 py-2 text-sm md:text-lg text-gray-200 placeholder-slate-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
                 placeholder="Password"
               ></input>
-              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  className="w-5 h-auto text-slate-500"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"
-                  />
-                </svg>
-              </div>
             </div>
           </div>
           <div className="flex items-center justify-between">

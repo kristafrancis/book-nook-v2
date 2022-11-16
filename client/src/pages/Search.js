@@ -1,24 +1,22 @@
 import React, { useEffect, useState } from "react";
-import { useSpring, animated, useTransition } from "react-spring";
+import { useParams, Navigate } from "react-router-dom";
+import { useSpring, animated } from "react-spring";
 import { googleBookSearch } from "../utils/API";
 import Auth from "../utils/auth";
 import { SAVE_BOOK } from "../utils/mutations";
 import { saveBookIds, getSavedBookIds } from "../utils/localStorage";
-import { useMutation } from "@apollo/client";
+import { QUERY_ME } from "../utils/queries";
+import { useMutation, useQuery } from "@apollo/client";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import StarsImg from "../images/stars.png";
+import { HiOutlineStar, HiStar } from "react-icons/hi";
 
 const Search = () => {
   const [searchedBooks, setSearchedBooks] = useState([]);
   const [searchInput, setSearchInput] = useState("");
   const [savedBookIds, setSavedBookIds] = useState(getSavedBookIds());
   const [saveBook] = useMutation(SAVE_BOOK);
-
-  // const style2 = useSpring({
-  //   from: { opacity: 0, marginBottom: -1000 },
-  //   to: { opacity: 1, marginBottom: 0 },
-  //   config: { duration: 3000 },
-  // });
+  const { loading, data } = useQuery(QUERY_ME);
 
   const style1 = useSpring({
     from: { opacity: 0, marginTop: 0 },
@@ -83,6 +81,30 @@ const Search = () => {
     }
   };
 
+    // redirect user to search if logged in
+    const { username: userParam } = useParams();
+    const user = data?.me || data?.user || {};
+  
+    if (Auth.loggedIn() === userParam) {
+      return <Navigate to="/search" />;
+    }
+  
+    if (loading) {
+      return <div>Loading...</div>
+    }
+  
+    if (!user?.username) {
+      return (
+        <div className="w-full flex flex-col justify-center items-center text-center">
+          <h3 className="text-5xl mb-8">Oops!</h3>
+          <div className="max-w-screen-sm bg-slate-900 p-6 rounded-lg shadow-lg">
+            You need to be logged in to see this page.<br />
+            Use the navigation links above to sign up or log in!
+          </div>
+        </div>
+      );
+    }
+
   return (
     <>
       <div className="w-[85%] h-auto mx-auto flex flex-col justify-center items-center">
@@ -102,7 +124,7 @@ const Search = () => {
             <div className="relative">
               <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                 <svg
-                  className="h-5 w-5 text-gray-300"
+                  className="h-5 w-5 text-teal-300"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
                   fill="currentColor"
@@ -120,7 +142,7 @@ const Search = () => {
                 value={searchInput}
                 onChange={(e) => setSearchInput(e.target.value)}
                 type="text"
-                className="block w-full rounded-md  bg-slate-900 border border-slate-600 text-gray-200 placeholder-slate-500 mt-2 mb-4 py-2 pl-10 pr-3 text-sm focus:border-indigo-500 focus:text-gray-200 focus:placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-2xl"
+                className="block w-full rounded-md bg-slate-900 border border-slate-600 text-gray-200 placeholder-slate-500 mt-2 mb-4 py-2 pl-10 pr-3 text-sm focus:border-indigo-500 focus:text-gray-200 focus:placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-2xl"
                 placeholder="Search"
               ></input>
             </div>
@@ -149,7 +171,7 @@ const Search = () => {
               <div className="w-full m-4 md:w-[40%]" key={book.bookId}>
                 <div
                   class="cardBody"
-                  className="w-full grid grid-cols-1 md:grid-cols-none md:grid-flow-col md:auto-cols-auto bg-slate-900 p-6 rounded-lg shadow-inner shadow-slate-700"
+                  className="w-full grid grid-cols-1 md:grid-cols-none md:grid-flow-col md:auto-cols-auto bg-slate-900 p-6 rounded-lg shadow-lg"
                 >
                   <div>
                     {book.image ? (
@@ -171,7 +193,7 @@ const Search = () => {
                     <div className="mt-4 flex items-center justify-end">
                       {/* {Auth.loggedIn() && ( */}
                       <button
-                        className="rounded-md border border-indigo-300 bg-[#22274f] px-4 py-2 text-sm font-medium shadow-md"
+                        className="rounded-md border border-indigo-300 bg-[#22274f] px-4 py-2 text-sm font-medium shadow-md inline-flex items-center"
                         disabled={savedBookIds?.some(
                           (savedBookId) => savedBookId === book.bookId
                         )}
@@ -179,9 +201,25 @@ const Search = () => {
                       >
                         {savedBookIds?.some(
                           (savedBookId) => savedBookId === book.bookId
-                        )
-                          ? "This book has already been saved"
-                          : "Save this book"}
+                        ) ? (
+                          <div className="inline-flex items-center">
+                            <HiStar
+                              size={25}
+                              style={{ color: "#f9d18f" }}
+                              className="mr-1"
+                            />{" "}
+                            Saved
+                          </div>
+                        ) : (
+                          <div className="inline-flex items-center">
+                            <HiOutlineStar
+                              size={25}
+                              style={{ color: "#f9d18f" }}
+                              className="mr-1"
+                            />{" "}
+                            Save Book
+                          </div>
+                        )}
                       </button>
                       {/* )} */}
                     </div>
@@ -204,9 +242,7 @@ const Search = () => {
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
               Main Feed
             </h2>
-            <p className="mx-auto mt-3 max-w-2xl text-xl sm:mt-4">
-              should we have text here?
-            </p>
+
             <div className="p-2"></div>
           </div>
           <div className="p-5 bg-slate-900 rounded-lg">
@@ -215,14 +251,16 @@ const Search = () => {
                 <div className="flex space-x-3">
                   <img
                     className="h-6 w-6 rounded-full"
-                    src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80"
+                    src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                     alt=""
                   ></img>{" "}
                   <div className="flex-1 space-y-1">
                     <div className="flex items-center justify-between">
                       <h3 className="text-sm font-medium">Lindsay Walton</h3>
                     </div>
-                    <p className="text-sm text-gray-500">Commented on BOOK</p>
+                    <p className="text-sm text-gray-500">
+                      Commented on WHERE THE WILD THINGS ARE
+                    </p>
                   </div>
                   <div className="ml-2 flex flex-shrink-0">
                     <button className="rounded-full hover:text-slate-900 bg-slate-800 border-indigo-500/50 border-2 px-2 text-sm hover:font-semibold leading-5 text-indigo-300">
@@ -235,14 +273,16 @@ const Search = () => {
                 <div className="flex space-x-3">
                   <img
                     className="h-6 w-6 rounded-full"
-                    src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80"
+                    src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                     alt=""
                   ></img>{" "}
                   <div className="flex-1 space-y-1">
                     <div className="flex items-center justify-between">
-                      <h3 className="text-sm font-medium">Lindsay Walton</h3>
+                      <h3 className="text-sm font-medium">Rebecca Chase</h3>
                     </div>
-                    <p className="text-sm text-gray-500">Commented on BOOK</p>
+                    <p className="text-sm text-gray-500">
+                      Commented on READING RAINBOW
+                    </p>
                   </div>
                   <div className="ml-2 flex flex-shrink-0">
                     <button className="rounded-full hover:text-slate-900 bg-slate-800 border-indigo-500/50 border-2 px-2 text-sm hover:font-semibold leading-5 text-indigo-300">
@@ -255,34 +295,16 @@ const Search = () => {
                 <div className="flex space-x-3">
                   <img
                     className="h-6 w-6 rounded-full"
-                    src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80"
+                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                     alt=""
                   ></img>{" "}
                   <div className="flex-1 space-y-1">
                     <div className="flex items-center justify-between">
-                      <h3 className="text-sm font-medium">Lindsay Walton</h3>
+                      <h3 className="text-sm font-medium">Dusty Arnold</h3>
                     </div>
-                    <p className="text-sm text-gray-500">Commented on BOOK</p>
-                  </div>
-                  <div className="ml-2 flex flex-shrink-0">
-                    <button className="rounded-full hover:text-slate-900 bg-slate-800 border-indigo-500/50 border-2 px-2 text-sm hover:font-semibold leading-5 text-indigo-300">
-                      Add Friend
-                    </button>
-                  </div>
-                </div>
-              </li>
-              <li className="py-4">
-                <div className="flex space-x-3">
-                  <img
-                    className="h-6 w-6 rounded-full"
-                    src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80"
-                    alt=""
-                  ></img>{" "}
-                  <div className="flex-1 space-y-1">
-                    <div className="flex items-center justify-between">
-                      <h3 className="text-sm font-medium">Lindsay Walton</h3>
-                    </div>
-                    <p className="text-sm text-gray-500">Commented on BOOK</p>
+                    <p className="text-sm text-gray-500">
+                      Commented on ELOISE IN PARIS
+                    </p>
                   </div>
                   <div className="ml-2 flex flex-shrink-0">
                     <button className="rounded-full hover:text-slate-900 bg-slate-800 border-indigo-500/50 border-2 px-2 text-sm hover:font-semibold leading-5 text-indigo-300">
