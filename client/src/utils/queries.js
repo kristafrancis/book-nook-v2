@@ -14,7 +14,7 @@ export const QUERY_ME = gql `
             }
             comments {
                 _id
-                comment_text
+                commentText
                 createdAt
 
             }
@@ -41,7 +41,7 @@ export const QUERY_USER = gql `
             }
             comments {
                 _id
-                comment_text
+                commentText
                 createdAt
             }
             savedBooks {
@@ -66,8 +66,35 @@ export const QUERY_ME_BASIC = gql `
             _id
             username
         }
+        savedBooks {
+            bookId
+            authors
+            description
+            title
+            image
+        }
     }
 }
 `
 
-// do we need a query saved book? 
+export const QUERY_COMMENTS = gql`
+  query comments($username: String) {
+    comments(username: $username) {
+      _id
+      commentText
+      createdAt
+      username
+    }
+  }
+`;
+
+export const QUERY_COMMENT = gql`
+  query comment($id: ID!) {
+    comment(_id: $id) {
+      _id
+      commentText
+      createdAt
+      username
+    }
+  }
+`;
