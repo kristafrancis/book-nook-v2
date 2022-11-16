@@ -27,6 +27,7 @@ const Profile = () => {
       return newCount;
     });
   };
+  
   const { loading, data } = useQuery(QUERY_ME);
   console.log(data);
   const userData = data?.me || {};
@@ -36,14 +37,19 @@ const Profile = () => {
   }, []);
 
   const options = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
-  const defaultOption = options[0];
   const selectedValue = "SelectedValue";
   const [selected, setSelected] = useState([]);
   const handleChange = (s) => {
     sessionStorage.setItem(selectedValue, JSON.stringify(s));
     setSelected(s);
   };
-  React.useEffect(() => {
+  const handleReset = () => {
+    sessionStorage.setItem('count', 0);
+    
+    setCount(0);
+    console.log(count);
+  }
+    React.useEffect(() => {
     const lastSelected = JSON.parse(
       sessionStorage.getItem(selectedValue) ?? "[]"
     );
@@ -133,7 +139,7 @@ const Profile = () => {
                     className="w-[60px] bg-slate-700 mx-4"
                     options={options}
                     onChange={handleChange}
-                    value={defaultOption}
+                    value={selected?.value}
                     isMulti
                     placeholder="Select an option"
                   />
@@ -175,7 +181,7 @@ const Profile = () => {
                     <div className="p-2"></div>
                     <button
                       type="button"
-                      onClick={() => setCount(0)}
+                      onClick={handleReset}
                       disabled={count === 0}
                       className="cursor-pointer inline-flex items-center justify-center rounded-md border px-4 py-2 text-sm font-medium text-indigo-200 shadow-sm hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100"
                     >
