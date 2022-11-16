@@ -1,25 +1,24 @@
 import React, { useState } from "react";
+import { Rating } from "react-simple-star-rating";
 
 const RatingStars = () => {
-  const [rating, setRating] = useState(0);
-  const [hover, setHover] = useState(0);
+  const [rate, setRating] = useState(0);
+
+  const handleRating = () => {
+    setRating(rate);
+  };
+  const onPointerEnter = () => console.log("Enter");
+  const onPointerLeave = () => console.log("Leave");
+  const onPointerMove = () => console.log();
+
   return (
-    <div className="star-rating">
-      {[...Array(5)].map((star, index) => {
-        index += 1;
-        return (
-          <button
-            type="button"
-            key={index}
-            className={index <= (hover || rating) ? "on" : "off"}
-            onClick={() => setRating(index)}
-            onMouseEnter={() => setHover(index)}
-            onMouseLeave={() => setHover(rating)}
-          >
-            <span className="star">&#9733;</span>
-          </button>
-        );
-      })}
+    <div className="inline-flex">
+      <Rating
+        onClick={handleRating}
+        onPointerEnter={onPointerEnter}
+        onPointerLeave={onPointerLeave}
+        onPointerMove={onPointerMove}
+      />
     </div>
   );
 };

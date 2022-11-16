@@ -8,19 +8,14 @@ import { useMutation } from "@apollo/client";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import StarsImg from "../images/stars.png";
 import { HiOutlineStar, HiStar } from "react-icons/hi";
+import RatingStars from "../components/RatingStars";
 
 const Search = () => {
   const [searchedBooks, setSearchedBooks] = useState([]);
   const [searchInput, setSearchInput] = useState("");
   const [savedBookIds, setSavedBookIds] = useState(getSavedBookIds());
   const [saveBook] = useMutation(SAVE_BOOK);
-
-  // const style2 = useSpring({
-  //   from: { opacity: 0, marginBottom: -1000 },
-  //   to: { opacity: 1, marginBottom: 0 },
-  //   config: { duration: 3000 },
-  // });
-
+  const Stars = RatingStars();
   const style1 = useSpring({
     from: { opacity: 0, marginTop: 0 },
     to: { opacity: 1, marginTop: 0 },
@@ -202,6 +197,8 @@ const Search = () => {
                       </button>
                       {/* )} */}
                     </div>
+
+                    <RatingStars />
                   </div>
                 </div>
               </div>

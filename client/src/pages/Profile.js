@@ -27,7 +27,7 @@ const Profile = () => {
       return newCount;
     });
   };
-  
+
   const { loading, data } = useQuery(QUERY_ME);
   console.log(data);
   const userData = data?.me || {};
@@ -36,8 +36,8 @@ const Profile = () => {
     if (initialValue) setCount(initialValue);
   }, []);
 
-  const options = ["0","1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
-  const defaultOption = options[0]
+  const options = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
+  const defaultOption = options[0];
   const selectedValue = "SelectedValue";
   const [selected, setSelected] = useState([]);
   const handleChange = (s) => {
@@ -45,12 +45,12 @@ const Profile = () => {
     setSelected(s);
   };
   const handleReset = () => {
-    sessionStorage.setItem('count', 0);
-    
+    sessionStorage.setItem("count", 0);
+
     setCount(0);
     console.log(count);
-  }
-    React.useEffect(() => {
+  };
+  React.useEffect(() => {
     const lastSelected = JSON.parse(
       sessionStorage.getItem(selectedValue) ?? "[]"
     );
