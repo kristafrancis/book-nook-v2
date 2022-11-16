@@ -3,6 +3,7 @@ import React, { useState, useEffect, Fragment } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { useParams, Navigate} from 'react-router-dom';
 import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
 import Auth from "../utils/auth";
@@ -38,9 +39,6 @@ const Profile = () => {
   }, []);
 
   // dropdown menu
-  const options = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
-  const defaultOption = options[0];
-
   const options = ["0","1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
   const defaultOption = options[0]
 
