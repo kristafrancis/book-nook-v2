@@ -27,7 +27,7 @@ const Header = () => {
           <div className="mx-8 my-6 flex justify-between items-center">
             <div>
               <h1 className="drop-shadow-lg text-5xl md:text-7xl">
-                <Link to="/search" className="hover:text-[#7286ff]">
+                <Link to="/" className="hover:text-[#7286ff]">
                   book<span className="text-[#7286ff]">nook</span>
                 </Link>
               </h1>
@@ -37,8 +37,8 @@ const Header = () => {
               {/* NAVBAR AT 768PX & HIGHER */}
               <div className="uppercase tracking-widest">
                 <div className="hidden md:flex bg-[#02030ac8] px-7 py-2 rounded-md font-semibold">
-                  {/* {Auth.loggedIn() ? (
-										<> */}
+                  {Auth.loggedIn() ? (
+										<>
                   <Link to="/search" className="mr-6">
                     Search
                   </Link>
@@ -47,13 +47,13 @@ const Header = () => {
                   </Link>
                   <button
                     onClick={logout}
-                    className="bg-transparent hover:bg-transparent ml-6 mr-10 text-[#6bfbce] hover:text-[#7286ff]"
+                    className="bg-transparent hover:bg-transparent ml-6 text-[#6bfbce] hover:text-[#7286ff]"
                   >
                     Logout
                   </button>
-                  {/* </>
+                  </>
 										) : (
-										<> */}
+										<>
                   <Link to="/signup" className="mr-6">
                     Sign Up
                   </Link>
@@ -61,8 +61,8 @@ const Header = () => {
                   <Link to="/login" className="ml-6">
                     Log In
                   </Link>
-                  {/* </>
-									)} */}
+                  </>
+									)}
                 </div>
               </div>
 
