@@ -7,7 +7,6 @@ import { useParams, Navigate} from 'react-router-dom';
 import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
 import Auth from "../utils/auth";
-import ReadingList from "../components/ReadingList";
 import { useMutation, useQuery } from "@apollo/client";
 import { QUERY_ME } from "../utils/queries";
 import { removeBookId } from "../utils/localStorage";
