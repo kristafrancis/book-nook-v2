@@ -297,11 +297,11 @@ const Profile = () => {
                           <li>
                             <div className="px-4 py-2 sm:px-6 flex items-center justify-between ml-2 flex-shrink-0 text-sm text-gray-400">
                               {/* <p>Comment loads here</p> */}
-                              <div>
+                              {/* <div>
                               <Comments
                               comments={userData.comment}
                               />
-                              </div>
+                              </div> */}
                             </div>
                             
                           </li>
