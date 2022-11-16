@@ -1,10 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const FriendList = ({ username, friends }) => {
+const FriendList = ({ friendCount, username, friends }) => {
     if (!friends || !friends.length) {
         return <p class="friendmessage">{username}, make some friends! </p>;
-    
     }
 
     return (

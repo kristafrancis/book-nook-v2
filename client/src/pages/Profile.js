@@ -9,19 +9,26 @@ import "react-dropdown/style.css";
 import Auth from "../utils/auth";
 //import ReadingList from "../components/ReadingList";
 import { useMutation, useQuery } from "@apollo/client";
-import { QUERY_ME } from "../utils/queries";
+import { QUERY_ME, QUERY_USER } from "../utils/queries";
+import { ADD_FRIEND } from "../utils/mutations";
 import { removeBookId } from "../utils/localStorage";
 import { REMOVE_BOOK } from "../utils/mutations";
 import { Menu, Transition } from "@headlessui/react";
-import  Comments  from "../components/Comment";
-import { useParams, Navigate } from "react-router-dom";
-
+// import Comments from "../components/Comment";
+import FriendList from "../components/FriendList";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 const Profile = () => {
+  const [addFriend] = useMutation(ADD_FRIEND);
+  const { username: userParam } = useParams();
+  const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
+    variables: { username: userParam }
+  });
+  const userData = data?.me || data?.user || {};
+
   // book counter
   const [count, setCount] = useState(0);
   console.log(count);
@@ -33,23 +40,14 @@ const Profile = () => {
     });
   };
 
-  const { loading, data } = useQuery(QUERY_ME);
-  console.log(data);
-  const userData = data?.me || {};
   useEffect(() => {
     const initialValue = sessionStorage.getItem("count");
     if (initialValue) setCount(initialValue);
   }, []);
 
-
-  
-  
-  
-
+  // dropdown menu
   const options = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
   const defaultOption = options[0];
-
-
   const selectedValue = "SelectedValue";
   const [selected, setSelected] = useState([]);
   const handleChange = (s) => {
@@ -87,14 +85,19 @@ const Profile = () => {
     }
   };
 
-
-  
+  // add friend functionality
+  const handleClick = async () => {
+    try {
+      await addFriend({
+        variables: { id: userData._id }
+      });
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   // redirect user to profile if logged in
-  const { username: userParam } = useParams();
-  const user = data?.me || data?.user || {};
-
-  if (Auth.loggedIn() === userParam) {
+  if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
     return <Navigate to="/profile" />;
   }
 
@@ -102,7 +105,7 @@ const Profile = () => {
     return <div>Loading...</div>;
   }
 
-  if (!user?.username) {
+  if (!userData?.username) {
     return (
       <div className="w-full flex flex-col justify-center items-center text-center">
         <h3 className="text-5xl mb-8">Oops!</h3>
@@ -291,11 +294,11 @@ const Profile = () => {
                             <div className="px-4 py-2 sm:px-6 flex items-center justify-between ml-2 flex-shrink-0 text-sm text-gray-400">
                               <p>Comment loads here</p>
                               <div>
-                              console.log(commenting)
+                              {/* console.log(commenting)
                               <Comments
-                              Comments={user.comments}
-                              title={`${user.username}'s comments...`}
-   />
+                              Comments={userData.comments}
+                              title={`${userData.username}'s comments...`}
+   /> */}
  </div>
                             </div>
                           </li>
@@ -382,7 +385,11 @@ const Profile = () => {
                 Friends List
               </h2>
 
-              <FriendList />
+              <FriendList
+                username={userData.username}
+                friendCount={userData.friendCount}
+                friends={userData.friends}
+              />
 
               <div className="mt-6">
                 <tr>
@@ -438,12 +445,15 @@ const Profile = () => {
                 </tr>
               </div>
               <div className="justify-stretch mt-6 flex flex-col">
+              {/* {userParam && ( */}
                 <button
+                  onClick={handleClick}
                   type="button"
                   className="cursor-pointer inline-flex items-center justify-center rounded-md border border-indigo-200 px-4 py-2 text-sm font-medium text-indigo-200 shadow-sm hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100"
                 >
                   ADD FRIENDS
                 </button>
+              {/* )} */}
               </div>
             </div>
 
