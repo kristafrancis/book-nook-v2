@@ -11,15 +11,15 @@
 
 ## Description
 
-Generator for README files
+description
 
 ## Installation
 
-Through GITHUB
+install
 
 ## Usage
 
-VSCODE Terminal
+usage
 
 ## Contribution
 
