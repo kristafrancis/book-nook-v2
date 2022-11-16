@@ -5,6 +5,7 @@ import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { useParams, Navigate} from 'react-router-dom';
 import Dropdown from "react-dropdown";
+import { useParams, Navigate } from "react-router-dom";
 import "react-dropdown/style.css";
 import Auth from "../utils/auth";
 import { useMutation, useQuery } from "@apollo/client";
@@ -28,7 +29,7 @@ const Profile = () => {
       return newCount;
     });
   };
-  
+
   const { loading, data } = useQuery(QUERY_ME);
   console.log(data);
   const userData = data?.me || {};
@@ -37,9 +38,9 @@ const Profile = () => {
     if (initialValue) setCount(initialValue);
   }, []);
 
-  // dropdown menu
-  const options = ["0","1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
-  const defaultOption = options[0]
+  const options = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
+  const defaultOption = options[0];
+
   const selectedValue = "SelectedValue";
   const [selected, setSelected] = useState([]);
   const handleChange = (s) => {
@@ -47,12 +48,12 @@ const Profile = () => {
     setSelected(s);
   };
   const handleReset = () => {
-    sessionStorage.setItem('count', 0);
-    
+    sessionStorage.setItem("count", 0);
+
     setCount(0);
     console.log(count);
-  }
-    React.useEffect(() => {
+  };
+  React.useEffect(() => {
     const lastSelected = JSON.parse(
       sessionStorage.getItem(selectedValue) ?? "[]"
     );
@@ -86,7 +87,7 @@ const Profile = () => {
   }
 
   if (loading) {
-    return <div>Loading...</div>
+    return <div>Loading...</div>;
   }
 
   if (!user?.username) {
@@ -94,7 +95,8 @@ const Profile = () => {
       <div className="w-full flex flex-col justify-center items-center text-center">
         <h3 className="text-5xl mb-8">Oops!</h3>
         <div className="max-w-screen-sm bg-slate-900 p-6 rounded-lg shadow-lg">
-          You need to be logged in to see this page.<br />
+          You need to be logged in to see this page.
+          <br />
           Use the navigation links above to sign up or log in!
         </div>
       </div>

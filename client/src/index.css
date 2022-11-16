@@ -99,3 +99,9 @@ div.Dropdown-option:hover {
   @apply text-yellow-100;
   @apply font-semibold;
 }
+
+span svg.star-svg {
+  @apply inline-flex;
+  @apply w-5;
+  @apply h-5;
+}

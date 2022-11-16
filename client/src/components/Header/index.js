@@ -37,7 +37,7 @@ const Header = () => {
               {/* NAVBAR AT 768PX & HIGHER */}
               <div className="uppercase tracking-widest">
                 <div className="hidden md:flex bg-[#02030ac8] px-7 py-2 rounded-md font-semibold">
-                {Auth.loggedIn() ? (
+                  {Auth.loggedIn() ? (
                     <>
                       <Link to="/search" className="mr-6">
                         Search
@@ -63,7 +63,6 @@ const Header = () => {
                       </Link>
                     </>
                   )}
-
                 </div>
               </div>
 
