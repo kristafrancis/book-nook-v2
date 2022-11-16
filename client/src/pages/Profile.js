@@ -369,7 +369,6 @@ const Profile = () => {
                           </Menu.Items>
                         </Transition>
                       </Menu>
-                      <div className="p-2"></div>
                     </>
                   ))}
                   <a
