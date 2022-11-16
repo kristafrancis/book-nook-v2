@@ -98,7 +98,7 @@ const resolvers = {
       const wasDeleted = (await Comments.deleteOne({ _id: id })).deletedCount;
       return wasDeleted;
     },
-
+//commenting
     addFriend: async (parent, { friendId }, context) => {
       if (context.user) {
         const updatedUser = await User.findOneAndUpdate(
