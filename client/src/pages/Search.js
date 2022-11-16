@@ -17,7 +17,8 @@ const Search = () => {
   const [searchInput, setSearchInput] = useState("");
   const [savedBookIds, setSavedBookIds] = useState(getSavedBookIds());
   const [saveBook] = useMutation(SAVE_BOOK);
-  const Stars = RatingStars();
+  const { loading, data } = useQuery(QUERY_ME);
+
   const style1 = useSpring({
     from: { opacity: 0, marginTop: 0 },
     to: { opacity: 1, marginTop: 0 },

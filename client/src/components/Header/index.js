@@ -38,33 +38,6 @@ const Header = () => {
               <div className="uppercase tracking-widest">
                 <div className="hidden md:flex bg-[#02030ac8] px-7 py-2 rounded-md font-semibold">
                   {Auth.loggedIn() ? (
-
-										<>
-                  <Link to="/search" className="mr-6">
-                    Search
-                  </Link>
-                  <Link to="/profile" className="mx-6">
-                    Profile
-                  </Link>
-                  <button
-                    onClick={logout}
-                    className="bg-transparent hover:bg-transparent ml-6 text-[#6bfbce] hover:text-[#7286ff]"
-                  >
-                    Logout
-                  </button>
-                  </>
-										) : (
-										<>
-                  <Link to="/signup" className="mr-6">
-                    Sign Up
-                  </Link>
-
-                  <Link to="/login" className="ml-6">
-                    Log In
-                  </Link>
-                  </>
-									)}
-
                     <>
                       <Link to="/search" className="mr-6">
                         Search
@@ -90,7 +63,6 @@ const Header = () => {
                       </Link>
                     </>
                   )}
-
                 </div>
               </div>
 
