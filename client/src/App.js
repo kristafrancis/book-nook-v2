@@ -7,7 +7,7 @@ import {
   createHttpLink,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
-import { useSpring, animated } from "react-spring";
+// import { useSpring, animated } from "react-spring";
 
 // import components
 import Header from "./components/Header";

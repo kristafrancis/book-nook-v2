@@ -54,7 +54,7 @@ const Profile = () => {
 
   // dropdown menu
   const options = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
-  const defaultOption = options[0];
+  // const defaultOption = options[0];
   const selectedValue = "SelectedValue";
   const [selected, setSelected] = useState([]);
   const handleChange = (s) => {
@@ -270,7 +270,7 @@ const Profile = () => {
                   {userData?.savedBooks?.map((book) => (
                     <>
                       <div className="overflow-hidden bg-[#22274f] shadow sm:rounded-md">
-                        <ul role="list" className="divide-y divide-gray-700">
+                        <ul className="divide-y divide-gray-700">
                           <li>
                             <div className="block hover:bg-slate-800">
                               <div className="px-4 py-2 sm:px-6">
@@ -299,17 +299,20 @@ const Profile = () => {
                       </div>
                       <div className="p-2"></div>
                       <div className="overflow-hidden bg-slate-800 shadow sm:rounded-md">
-                        <ul role="list" className="divide-y divide-gray-700">
+                        <ul className="divide-y divide-gray-700">
                           <li>
                             <div className="px-4 py-2 sm:px-6 flex items-center justify-between ml-2 flex-shrink-0 text-sm text-gray-400">
-                              <Comments comments={comments.filter(cmt=> {
-                                console.log(cmt)
-                            
-                                return cmt.book_id === book.bookId})} />
-                                {/* <Comments comments={comments} /> */}
+                              <Comments
+                                comments={comments.filter((cmt) => {
+                                  console.log(cmt);
+
+                                  return cmt.book_id === book.bookId;
+                                })}
+                              />
+                              {/* <Comments comments={comments} /> */}
                             </div>
                             <div className="px-8 pb-5">
-                              <CommentsForm book_id={book.bookId}/>
+                              <CommentsForm book_id={book.bookId} />
                             </div>
                           </li>
                         </ul>
@@ -401,13 +404,13 @@ const Profile = () => {
 
               <div className="justify-stretch mt-6 flex flex-col">
                 {userParam && (
-                <button
-                  onClick={handleClick}
-                  type="button"
-                  className="cursor-pointer inline-flex items-center justify-center rounded-md border border-indigo-200 px-4 py-2 text-sm font-medium text-indigo-200 shadow-sm hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100"
-                >
-                  ADD FRIENDS
-                </button>
+                  <button
+                    onClick={handleClick}
+                    type="button"
+                    className="cursor-pointer inline-flex items-center justify-center rounded-md border border-indigo-200 px-4 py-2 text-sm font-medium text-indigo-200 shadow-sm hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100"
+                  >
+                    ADD FRIENDS
+                  </button>
                 )}
               </div>
             </div>

@@ -9,7 +9,7 @@ import { googleBookSearch } from "../utils/API";
 import Auth from "../utils/auth";
 import { SAVE_BOOK } from "../utils/mutations";
 import { saveBookIds, getSavedBookIds } from "../utils/localStorage";
-import { QUERY_ME_BASIC} from "../utils/queries";
+import { QUERY_ME_BASIC } from "../utils/queries";
 // import icons & images
 import StarsImg from "../images/stars.png";
 import { HiOutlineStar, HiStar } from "react-icons/hi";
@@ -256,7 +256,7 @@ const Search = () => {
             <div className="p-2"></div>
           </div>
           <div className="p-5 bg-slate-900 rounded-lg">
-            <ul role="list" className="divide-y divide-gray-200">
+            <ul className="divide-y divide-gray-200">
               <li className="py-4">
                 <div className="flex space-x-3">
                   <img
