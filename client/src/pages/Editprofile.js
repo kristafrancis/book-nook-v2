@@ -12,19 +12,7 @@ const EditProfile = () => {
     }
   };
 
-  const handleUpload = async (e) => {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append("image", image.raw);
 
-    await fetch("YOUR_URL", {
-      method: "POST",
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-      body: formData,
-    });
-  };
 
   return (
     <>
@@ -72,6 +60,7 @@ const EditProfile = () => {
                                 <img
                                   src={image.preview}
                                   className="opacity-50 h-16 w-16 rounded-full"
+                                  alt="image"
                                 />
                                 <div class="absolute w-full py-3 bottom-0 inset-0 mt-3 text-white text-xs text-center leading-4 rounded cursor-pointer tracking-widest ease-in duration-300">
                                   UPDATE

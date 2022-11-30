@@ -165,8 +165,8 @@ const Search = () => {
 
         {/* LAYOUT BREAK - HORIZONTAL LINE */}
         <div className="w-1/3 my-4 inline-flex justify-center items-center">
-          <img src={StarsImg} />
-          <img src={StarsImg} />
+          <img src={StarsImg} alt="stars" />
+          <img src={StarsImg} alt="stars" />
         </div>
       </div>
 
