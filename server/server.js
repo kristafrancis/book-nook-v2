@@ -25,14 +25,14 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/build'));
 });
 
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(_dirname, '../client/build/index.html')));
+}
+
 
 const startApolloServer = async (typeDefs, resolvers) => {
     await server.start();
     server.applyMiddleware({ app });
-
-    if (process.env.NODE_ENV === 'production') {
-      app.use(express.static(path.join(_dirname, '../client/build')));
-    }
 
     db.once('open', () => {
         app.listen(PORT, () => {
