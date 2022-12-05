@@ -30,8 +30,8 @@ const startApolloServer = async (typeDefs, resolvers) => {
     await server.start();
     server.applyMiddleware({ app });
 
-    if (process.env.NODE.ENV === 'production') {
-      app.use(express.static(path.join(_dirname, '../client/build/index.html')));
+    if (process.env.NODE_ENV === 'production') {
+      app.use(express.static(path.join(_dirname, '../client/build')));
     }
 
     db.once('open', () => {
