@@ -7,7 +7,7 @@
 This application is designed to provide a platform and community for parents and/or teachers of young readers. This platform is designed to allow parents to discover and discuss new reads for their child based on their individual reading level and interest. The main features of this application include account registration, searching for books through Google Books API, creating a profile page where you can save books, have reading goals for your child and add friends.
 
 ## Link to Deployed Application
-<p align="center">:sparkles: <a href="https://book-nook2.herokuapp.com/">Visit deployed application here</a> :sparkles:</p>
+<p align="center">:sparkles: <a href="https://book-nook-v2.herokuapp.com/">Visit deployed application here</a> :sparkles:</p>
 
 ![Live view of Book Nook](/../main/client/src/images/screenshots/homepage.png)
 
